@@ -9,14 +9,15 @@ char *appendString(char *cadena, char caracter);
 
 int main()
 {
-    int n = 27, i, counter, j;
+    int n = 24, i, counter, j;
     for (i = 0; i < n; ++i)
     {
         counter = (int) pow(2, i + 1);
         printf("res: %d, \n", i);
         for (j = 0; j < counter; ++j)
-        {
-            getWord(i, j, "");
+        {    
+            char * res = "";
+            res = getWord(i, j, res);
         }
     }
     return 0;
@@ -41,7 +42,7 @@ char* getWord(int length, int number, char* res)
     for (i = length; i >= 0; --i)
     {
         aux = number >> i;
-        if (aux)
+        if (aux & 1)
             res = appendString(res, '1');
         else
             res = appendString(res, '0');

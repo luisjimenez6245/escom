@@ -6,3 +6,7 @@ teoría/documentos/.DS_Store
 *.log
 *.aux
 *.pdf
+/teoría/practicas/tarea1/algoritmo/nbproject/private/
+/teoría/practicas/tarea1/algoritmo/build/
+teoría/practicas/tarea1/python/con
+teoría/practicas/tarea1/python/con1
