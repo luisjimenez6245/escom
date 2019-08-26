@@ -1,6 +1,6 @@
 import files as Files
 
-n = 5
+n = 27
 dic = []
 
 def get_binary(num, length):
@@ -18,9 +18,9 @@ def get_res(to_add = ""):
 
 if __name__ == "__main__":
     res = get_res("\n")
-    Files.write_binary_file("can", res)
+    Files.write_binary_file("con", res)
     res = res.replace("\n", "")
-    Files.write_binary_file("can1", res)
+    Files.write_binary_file("con1", res)
 
 
 
