@@ -38,7 +38,7 @@ def create_directory_w_sub(path):
 
 def write_file(name, content):
     if(os.path.isfile(name)):
-        manage_merge(name, content)
+        pass
 
     f = open(name, "w+")
     f.write(content)
@@ -48,7 +48,7 @@ def write_file(name, content):
 
 def write_binary_file(name, content):
     if(os.path.isfile(name)):
-        manage_merge(name, content)
+        pass
     arr = array.array('b')
     arr.frombytes(content.encode())
     f = open(name, "w+b")
