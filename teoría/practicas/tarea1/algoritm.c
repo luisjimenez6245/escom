@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
 #include <stdlib.h>
 
 void getWord(int length, int number);
