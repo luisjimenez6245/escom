@@ -2,6 +2,8 @@ import os
 import array
 from os.path import isfile, join
 import shutil
+import csv
+
 
 def  get_files_from_directory(path):
     res = [f for f in os.listdir(path) if isfile(join(path, f))]
@@ -71,3 +73,4 @@ def read_file(path):
             res += line
             line = fp.readline()
     return res
+
