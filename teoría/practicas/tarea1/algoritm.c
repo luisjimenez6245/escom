@@ -35,6 +35,7 @@ void getWord(int length, int number)
     res[length + 1] = '\0';
     res[length + 2] = '\n';
     int i, aux;
+    char  * res = "";
     for (i = length; i >= 0; --i)
     {
         aux = number >> i;
