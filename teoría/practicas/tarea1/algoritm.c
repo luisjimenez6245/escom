@@ -1,56 +1,48 @@
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
-char* getWord(int length, int number, char* res);
+void getWord(int length, int number);
 
-char *appendString(char *cadena, char caracter);
+FILE *fp;
 
-int main()
+int main(int argc, const char** argv)
 {
-    int n = 27, i, counter, j;
-    //for (i = 0; i < n; ++i)
-    //{
-        counter = (int) pow(2, n );
-        printf("res: %d, \n", i);
+    char * file_name = "res";
+    int n = 4, i, counter, j;
+    if(argc == 2){
+        n = atoi(argv[1]); 
+    }
+    fp = fopen (file_name, "wb");
+    fclose (fp);
+    fp = fopen (file_name, "ab");
+    for (i = 0; i <= n; ++i)
+    {
+        counter = (int) pow(2, i + 1);
+        printf("item: %d \n", i);
         for (j = 0; j < counter; ++j)
         {
-           char * res =   "";
-            res = getWord(i, j, res);
-            printf("%s", res);
+            getWord(i, j);
         }
-    //}
+    }
+    fclose (fp);
     return 0;
 }
 
-char *appendString(char *cadena, char caracter)
+void getWord(int length, int number)
 {
-	size_t tam = strlen(cadena);
-	char *res = malloc(tam + 1 + 1);
-	strcpy(res, cadena);
-	res[tam] = caracter;
-	res[tam + 1] = '\0';
-	cadena = malloc(strlen(res));
-	strcpy(cadena, res);
-	free(res);
-	return cadena;
-}
-
-char * getWord(int length, int number, char* answer)
-{
+    char res[length + 2];
+    res[length + 1] = '\0';
+    res[length + 2] = '\n';
     int i, aux;
     char  * res = "";
     for (i = length; i >= 0; --i)
     {
         aux = number >> i;
-        if (aux)
-            res = appendString(res, '1');
+        if (aux & 1)
+            res[i] = '1';
         else
-            res = appendString(res, '0');
+            res[i] = '0';
     }
-    answer =  malloc(strlen(res));
-    strcpy(answer, res);
-    free(res);
-    return answer;
+    fputs(res, fp);
 }
