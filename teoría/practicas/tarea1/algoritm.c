@@ -10,15 +10,17 @@ char *appendString(char *cadena, char caracter);
 int main()
 {
     int n = 27, i, counter, j;
-    for (i = 0; i < n; ++i)
-    {
-        counter = (int) pow(2, i + 1);
+    //for (i = 0; i < n; ++i)
+    //{
+        counter = (int) pow(2, n );
         printf("res: %d, \n", i);
         for (j = 0; j < counter; ++j)
         {
-            getWord(i, j, "");
+           char * res =   "";
+            res = getWord(i, j, res);
+            printf("%s", res);
         }
-    }
+    //}
     return 0;
 }
 
@@ -35,9 +37,10 @@ char *appendString(char *cadena, char caracter)
 	return cadena;
 }
 
-char* getWord(int length, int number, char* res)
+char * getWord(int length, int number, char* answer)
 {
     int i, aux;
+    char  * res = "";
     for (i = length; i >= 0; --i)
     {
         aux = number >> i;
@@ -46,5 +49,8 @@ char* getWord(int length, int number, char* res)
         else
             res = appendString(res, '0');
     }
-    return res;
+    answer =  malloc(strlen(res));
+    strcpy(answer, res);
+    free(res);
+    return answer;
 }
