@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - executor",
+            "request": "launch",
+            "mainClass": "executor"
+        }
+    ]
+}
