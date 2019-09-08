@@ -193,3 +193,4 @@ hs_err_pid*
 *.exe
 *.out
 *.app
+/lineal/calculadora_matrices/matrix_solver/nbproject/private/
