@@ -1,7 +1,11 @@
-import numpy as np 
 
-a = np.array([[3,1,3], [1,2,3]])
-b = np.array([9,8])
-res = np.linalg.solve(a,b)
+import numpy  
 
-print(res)
+matrix=[[6, 1, 1], [4, -2, 5], [2, 8, 7]]
+print(matrix) 
+print("\n") 
+print(numpy.transpose(matrix)) 
+
+
+matrix =  [[3, 3.2], [3.5, 3.6]]
+print(numpy.linalg.inv(matrix)) 
