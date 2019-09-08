@@ -11,23 +11,6 @@ package matrix_solver;
  */
 public class solver implements sol {
 
-    private boolean isMultiple(double[] rowA, double[] rowB) {
-        for (int i = 0; i < rowA.length; ++i) {
-            if (!isMultiple(rowA[i], rowB[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isMultiple(double a, double b) {
-        if (a <= b) {
-            return a % b == 0;
-        } else {
-            return b % a == 0;
-        }
-    }
-
     @Override
     public boolean isSquareMatrix(double[][] matrix) {
         int dimen = matrix.length;
@@ -40,15 +23,20 @@ public class solver implements sol {
     }
 
     @Override
-    public double[] operateRow(double[] row) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public double[] solveMatrix(double[][] matrix, double[] dependent) {
         double[] res = new double[matrix[0].length];
         if (isSquareMatrix(matrix)) {
-            res = dotMatrix(dependent, getInverseMatrix(matrix));
+            double determinant = determinant(matrix);
+            if (determinant == 0) {
+                for (int i = 0; i < matrix.length; ++i) {
+                    double aux = determinant(swapCols(matrix, dependent, i));
+                    if (aux != 0) {
+
+                    }
+                }
+            } else {
+                res = dotMatrix(dependent, getInverseMatrix(matrix, determinant, matrix.length));
+            }
         } else {
 
         }
@@ -59,7 +47,6 @@ public class solver implements sol {
     public double[][] getInverseMatrix(double[][] matrix) {
         if (isSquareMatrix(matrix)) {
             int dimen = matrix.length;
-            
             double determinant = determinant(matrix);
             return getInverseMatrix(matrix, determinant, dimen);
         }
@@ -80,8 +67,7 @@ public class solver implements sol {
                 return res;
             }
         }
-        throw new Error("Matriz no tiene inversa, el determinante es 0");
-
+        throw new UnsupportedOperationException("Matriz no tiene inversa, el determinante es 0");
     }
 
     @Override
@@ -90,7 +76,7 @@ public class solver implements sol {
             int dimen = matrix.length;
             return getInverseMatrixLargeBatch(matrix, dimen);
         }
-        throw new Error("Matriz no valida");
+        throw new UnsupportedOperationException("Matriz no valida");
     }
 
     private double[][] getInverseMatrixLargeBatch(double[][] matrix, int dimen) {
@@ -140,22 +126,18 @@ public class solver implements sol {
             }
             return res;
         }
-        throw new Error("Matrices no validas");
+        throw new UnsupportedOperationException("Matrices no validas");
     }
 
     @Override
-    public double[][] getAdjointMatrix(double[][] matrix) throws Error {
-        if (isSquareMatrix(matrix)) {
-            int dimen = matrix.length;
-            double res[][] = new double[dimen][dimen];
-            for (int i = 0; i < dimen; ++i) {
-                for (int j = 0; j < dimen; ++j) {
-                    res[j][i] = matrix[i][j];
-                }
+    public double[][] getAdjointMatrix(double[][] matrix) {
+        double res[][] = new double[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix[0].length; ++j) {
+                res[j][i] = matrix[i][j];
             }
-            return res;
         }
-        throw new Error("");
+        return res;
     }
 
     @Override
@@ -209,7 +191,24 @@ public class solver implements sol {
         throw new Error("La matriz no es valida.");
     }
 
-    public double[][] swapRows(double[][] matrix, int from, int to) {
+    private boolean isMultiple(double[] rowA, double[] rowB) {
+        for (int i = 0; i < rowA.length; ++i) {
+            if (!isMultiple(rowA[i], rowB[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isMultiple(double a, double b) {
+        if (a <= b) {
+            return a % b == 0;
+        } else {
+            return b % a == 0;
+        }
+    }
+
+    private double[][] swapRows(double[][] matrix, int from, int to) {
         double res[][] = cloneMatrix(matrix);
         for (int i = 0; i < matrix[0].length; ++i) {
             res[to][i] = matrix[from][i];
@@ -218,7 +217,7 @@ public class solver implements sol {
         return res;
     }
 
-    public double[][] swapRows(double[][] matrix, double[] row, int to) {
+    private double[][] swapRows(double[][] matrix, double[] row, int to) {
         double res[][] = cloneMatrix(matrix);
         res[to] = row;
         return res;
@@ -240,9 +239,22 @@ public class solver implements sol {
         return res;
     }
 
-    private boolean MatrixInfiniteSolutions(double[][] matrix, double[] dependent) {
+    private int searchForZeros(double[][] matrix) {
+        for (int i = 0; i < matrix.length; ++i) {
+            if (isZeroRow(matrix[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
-        return false;
+    private boolean isZeroRow(double[] row) {
+        for (double d : row) {
+            if (d != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private double[][] cloneMatrix(double[][] matrix) {
@@ -251,6 +263,14 @@ public class solver implements sol {
             for (int j = 0; j < matrix[0].length; ++j) {
                 res[i][j] = matrix[i][j];
             }
+        }
+        return res;
+    }
+
+    private double[] cloneMatrix(double[] matrix) {
+        double res[] = new double[matrix.length];
+        for (int i = 0; i < matrix.length; ++i) {
+            res[i] = matrix[i];
         }
         return res;
     }
@@ -309,8 +329,6 @@ interface sol {
     double[] dotMatrix(double[] matrixA, double[][] matrixB) throws Error;
 
     double[] dotMatrix(double[][] matrixA, double[] matrixB) throws Error;
-
-    double[] operateRow(double[] row);
 
     double determinant(double[][] matrix);
 

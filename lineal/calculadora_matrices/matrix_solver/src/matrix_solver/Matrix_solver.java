@@ -39,18 +39,20 @@ public class Matrix_solver {
 
         double d[] = {118.4, 135.2, 2, 3.2};
 
+        
+        
         double dependent[] = {118.4, 135.2};
         double res[][] = new double[4][4];
+       // s.printMatrix(test);
+        System.out.println("resaaa");
+        
 
-        s.printMatrix(test);
+      //  s.printMatrix(s.swapRows(test, 1, 2));
         System.out.println("res");
 
-        s.printMatrix(s.swapRows(test, 1, 2));
-        System.out.println("res");
+     //   s.printMatrix(s.swapRows(test, d, 1));
 
-        s.printMatrix(s.swapRows(test, d, 1));
-
-        //s.printMatrix(s.solveMatrix(test2, dependent));
+        s.printMatrix(s.solveMatrix(test2, dependent));
     }
 
 }
