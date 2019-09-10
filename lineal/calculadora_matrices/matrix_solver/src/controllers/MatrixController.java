@@ -18,8 +18,8 @@ public class MatrixController {
 
     public double[] solveMatrix(double[][] matrix, double[] dependent) {
         int n = dependent.length;
-        printMatrix(matrix);
-        System.out.println("a");
+        pasos += "Matriz original: \n\n";
+        pasos += textMatrix(joinMatrix(matrix, dependent));
         for (int p = 0; p < n; p++) {
             int max = p;
             for (int i = p + 1; i < n; i++) {
@@ -27,18 +27,16 @@ public class MatrixController {
                     max = i;
                 }
             }
-            printMatrix(matrix);
-            System.out.println("a");
+            pasos += "Se cambian filas " + p + " a la fila: " + max + " \n\n";
             double[] temp = matrix[p];
             matrix[p] = matrix[max];
             matrix[max] = temp;
             double t = dependent[p];
             dependent[p] = dependent[max];
             dependent[max] = t;
-            printMatrix(matrix);
-            System.out.println("a");
+            pasos += textMatrix(joinMatrix(matrix, dependent));
             if (Math.abs(matrix[p][p]) <= EPSILON) {
-                throw new ArithmeticException("Matrix is singular or nearly singular");
+                throw new ArithmeticException("Los resultados son incalculables.");
             }
             for (int i = p + 1; i < n; i++) {
                 double alpha = matrix[i][p] / matrix[p][p];
@@ -46,10 +44,9 @@ public class MatrixController {
                 for (int j = p; j < n; j++) {
                     matrix[i][j] -= alpha * matrix[p][j];
                 }
-                printMatrix(matrix);
-                System.out.println("a");
+                pasos += "Se opera la matriz: \n\n";
+                pasos += textMatrix(joinMatrix(matrix, dependent));
             }
-
         }
         double[] x = new double[n];
         for (int i = n - 1; i >= 0; i--) {
@@ -220,6 +217,19 @@ public class MatrixController {
                 res += (n + "\t");
             }
             res += "\n";
+        }
+        return res;
+    }
+
+    public double[][] joinMatrix(double[][] matrixA, double[] matrixB) {
+        double[][] res = new double[matrixA.length][matrixA[0].length + 1];
+        for (int i = 0; i < matrixA.length; ++i) {
+            for (int j = 0; j < matrixA[0].length; ++j) {
+                res[i][j] = matrixA[i][j];
+            }
+        }
+        for (int j = 0; j < matrixA[0].length; ++j) {
+            res[j][matrixA[0].length] = matrixB[j];
         }
         return res;
     }

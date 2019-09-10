@@ -30,13 +30,15 @@ import javax.swing.event.DocumentListener;
  */
 public class MainController extends iViewController implements ActionListener {
 
-    private JPanel panel;
+    private JPanel panelMatrix;
+    private JPanel panelDependent;
     private int n = 3;
-
     private JComboBox combo;
     private List<JTextField> textFields;
+    private List<JTextField> dependentFields;
     private JTextArea output;
     private boolean isValid;
+    private static String dict[] = {"s", "t", "u", "v", "w", "x", "y", "z"};
 
     public MainController() {
         super();
@@ -45,9 +47,9 @@ public class MainController extends iViewController implements ActionListener {
 
     @Override
     protected void loadView() {
-        setTitle("Edad");
+        setTitle("Matrices");
         setLayout(null);
-        setSize(840, 420);
+        setSize(940, 420);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -67,8 +69,8 @@ public class MainController extends iViewController implements ActionListener {
         buttonCalc.setBounds(20, 60, 80, 30);
         buttonCalcInver.setBounds(100, 60, 80, 30);
 
-        output.setSize(520, 420);
-        scroll.setBounds(420, 0, 520, 420);
+        output.setSize(620, 420);
+        scroll.setBounds(420, 0, 620, 420);
 
         buttonCalc.addActionListener(this);
         buttonCalcInver.addActionListener(this);
@@ -86,7 +88,8 @@ public class MainController extends iViewController implements ActionListener {
         fillPanel();
         combo.addActionListener((ActionEvent e) -> {
             n = Integer.parseInt(combo.getSelectedItem().toString());
-            remove(panel);
+            remove(panelMatrix);
+            remove(panelDependent);
             fillPanel();
             this.invalidate();
             this.validate();
@@ -110,8 +113,22 @@ public class MainController extends iViewController implements ActionListener {
         return res;
     }
 
+    private double[] getDependent() {
+        double[] res = new double[n];
+        int iIterable = 0;
+        for (JTextField f : dependentFields) {
+            res[iIterable] = Double.parseDouble(f.getText());
+            ++iIterable;
+        }
+        return res;
+    }
+
     private boolean isValidMatrix() {
         return textFields.stream().map((b) -> b.getText() == null ? "" : b.getText()).noneMatch((aux) -> (!isInteger(aux)));
+    }
+
+    private boolean isValidDependent() {
+        return dependentFields.stream().map((b) -> b.getText() == null ? "" : b.getText()).noneMatch((aux) -> (!isInteger(aux)));
     }
 
     private boolean isInteger(String text) {
@@ -124,15 +141,27 @@ public class MainController extends iViewController implements ActionListener {
     }
 
     private void fillPanel() {
-        panel = new JPanel();
-        panel.setBounds(20, 90, (n * 55), (n * 35));
-        GridLayout layout = new GridLayout(n, n);
+        panelDependent = new JPanel();
+        panelMatrix = new JPanel();
+        panelMatrix.setBounds(20, 90, (n * 55), (n * 35));
+        panelDependent.setBounds((n * 55) + 50, 90, 55, (n * 35));
         combo.setSelectedIndex(n - 2);
+
         textFields = new ArrayList<>();
-        panel.setLayout(layout);
+        dependentFields = new ArrayList<>();
+
+        panelMatrix.setLayout(new GridLayout(n + 1, n));
+        panelDependent.setLayout(new GridLayout(n + 1, 1));
+        panelDependent.add(new JLabel("<html><div style='text-align:center;'>d</div></html>"));
+
+        for (int i = 0; i < n; ++i) {
+            JLabel text = new JLabel("<html><div style='text-align:center;'>" + dict[i] + "</div></html>");
+            this.panelMatrix.add(text);
+        }
+
         for (int i = 0; i < Math.pow(n, 2); ++i) {
             JTextField text = new JTextField("0");
-            this.panel.add(text);
+            this.panelMatrix.add(text);
             text.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -151,7 +180,30 @@ public class MainController extends iViewController implements ActionListener {
             });
             textFields.add(text);
         }
-        add(panel);
+
+        for (int i = 0; i < n; ++i) {
+            JTextField text = new JTextField("0");
+            this.panelDependent.add(text);
+            text.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    changeTexFieldContent(text);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    changeTexFieldContent(text);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    changeTexFieldContent(text);
+                }
+            });
+            dependentFields.add(text);
+        }
+        add(panelDependent);
+        add(panelMatrix);
         this.isValid = true;
     }
 
@@ -168,8 +220,25 @@ public class MainController extends iViewController implements ActionListener {
 
     private void calAction() {
         MatrixController control = new MatrixController();
-        String res = control.textMatrix(getMatrix());
-        output.setText(output.getText() + "\n" + res);
+        String res;
+        double[][] matrix = getMatrix();
+        double[] dependent = getDependent();
+        try {
+            double ress[] = control.solveMatrix(matrix, dependent);
+            res = control.pasos;
+            res += "\n\nSolucion de la matriz:";
+            int i = 0;
+            for (double d : ress) {
+                res += "\n" + dict[i] + " = " + d + ".";
+                ++i;
+            }
+            res += "\n\n";
+        } catch (Exception ex) {
+            res = ex.getMessage();
+            res += "\n \n" + control.textMatrix(control.joinMatrix(matrix, dependent));
+
+        }
+        output.setText("\n" + res);
     }
 
     private void inverseAction() {
@@ -184,7 +253,7 @@ public class MainController extends iViewController implements ActionListener {
             res += "\n \n" + control.textMatrix(matrix);
 
         }
-        output.setText(output.getText() + "\n" + res);
+        output.setText("\n" + res);
     }
 
     @Override
@@ -193,7 +262,12 @@ public class MainController extends iViewController implements ActionListener {
             String b = ((JButton) e.getSource()).getText();
             b = b.toLowerCase();
             if (b.equals("calcular")) {
-                calAction();
+                if (isValidDependent()) {
+                    calAction();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Revisa las dependendientes");
+                }
+
             } else {
                 inverseAction();
             }
