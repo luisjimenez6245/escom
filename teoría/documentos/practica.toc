@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Titulo}{2}% 
+\contentsline {subsection}{\numberline {1.1}Presentation}{2}% 
+\contentsline {subsection}{\numberline {1.2}Discussion of the Problem}{2}% 
+\contentsline {section}{\numberline {2}Titulo}{2}% 
+\contentsline {subsection}{\numberline {2.1}Algorithmic Solution Description}{2}% 
+\contentsline {subsection}{\numberline {2.2}Subtitulo}{2}% 
+\contentsline {subsection}{\numberline {2.3}Subtitulo}{2}% 
+\contentsline {subsection}{\numberline {2.4}Subtitulo}{2}% 
+\contentsline {subsection}{\numberline {2.5}Subtitulo}{2}% 
+\contentsline {section}{\numberline {3}Titulo}{2}% 
+\contentsline {subsection}{\numberline {3.1}Subtitulo}{2}% 
+\contentsline {subsection}{\numberline {3.2}Subtitulo}{2}% 
+\contentsline {section}{\numberline {4}Titulo}{2}% 

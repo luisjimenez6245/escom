@@ -5,25 +5,62 @@
  */
 package controllers;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author lusi
  */
 public class MatrixController {
 
-    public double[] solveMatrix(double[][] matrix, double[] dependent) {
-        double[] res = new double[matrix[0].length];
-        if (isSquareMatrix(matrix)) {
-            double determinant = determinant(matrix);
-            if (determinant == 0) {
+    private static final double EPSILON = 1e-10;
+    public String pasos = "";
 
-            } else {
-                res = dotMatrix(getInverseMatrix(matrix), dependent);
+    public double[] solveMatrix(double[][] matrix, double[] dependent) {
+        int n = dependent.length;
+        printMatrix(matrix);
+        System.out.println("a");
+        for (int p = 0; p < n; p++) {
+            int max = p;
+            for (int i = p + 1; i < n; i++) {
+                if (Math.abs(matrix[i][p]) > Math.abs(matrix[max][p])) {
+                    max = i;
+                }
             }
-        } else {
+            printMatrix(matrix);
+            System.out.println("a");
+            double[] temp = matrix[p];
+            matrix[p] = matrix[max];
+            matrix[max] = temp;
+            double t = dependent[p];
+            dependent[p] = dependent[max];
+            dependent[max] = t;
+            printMatrix(matrix);
+            System.out.println("a");
+            if (Math.abs(matrix[p][p]) <= EPSILON) {
+                throw new ArithmeticException("Matrix is singular or nearly singular");
+            }
+            for (int i = p + 1; i < n; i++) {
+                double alpha = matrix[i][p] / matrix[p][p];
+                dependent[i] -= alpha * dependent[p];
+                for (int j = p; j < n; j++) {
+                    matrix[i][j] -= alpha * matrix[p][j];
+                }
+                printMatrix(matrix);
+                System.out.println("a");
+            }
 
         }
-        return res;
+        double[] x = new double[n];
+        for (int i = n - 1; i >= 0; i--) {
+            double sum = 0.0;
+            for (int j = i + 1; j < n; j++) {
+                sum += matrix[i][j] * x[j];
+            }
+            x[i] = (dependent[i] - sum) / matrix[i][i];
+        }
+        return x;
+
     }
 
     public double[][] dotMatrix(double[][] matrixA, double[][] matrixB) throws Error {
@@ -45,10 +82,8 @@ public class MatrixController {
 
     public double[] dotMatrix(double[][] matrixA, double[] matrixB) throws Error {
         double toWork[][] = new double[1][matrixB.length];
-        for (int i = 0; i < matrixB.length; ++i) {
-            toWork[0][i] = matrixB[i];
-        }
-        return dotMatrix(matrixA, toWork)[0];
+        toWork[0] = matrixB;
+        return dotMatrix(toWork, matrixA)[0];
     }
 
     public double[] dotMatrix(double[] matrixA, double[][] matrixB) throws Error {
@@ -59,7 +94,7 @@ public class MatrixController {
         return dotMatrix(toWork, matrixB)[0];
     }
 
-    public double[][] getInverseMatrix(double[][] matrix) {
+    public double[][] getInverseMatrix(double[][] matrix) throws Exception {
         if (isSquareMatrix(matrix)) {
             int dimen = matrix.length;
             return getInverseMatrixLargeBatch(matrix, dimen);
@@ -98,17 +133,20 @@ public class MatrixController {
         throw new Error("La matriz no es valida.");
     }
 
-    private double[][] getInverseMatrixLargeBatch(double[][] matrix, int dimen) {
+    private double[][] getInverseMatrixLargeBatch(double[][] matrix, int dimen) throws Exception {
         double determinant = determinant(matrix);
-        matrix = getCofactorMatrix(matrix);
-        matrix = getAdjointMatrix(matrix);
-        double res[][] = new double[dimen][dimen];
-        for (int i = 0; i < dimen; ++i) {
-            for (int j = 0; j < dimen; ++j) {
-                res[i][j] = matrix[i][j] / determinant;
+        if (determinant != 0) {
+            matrix = getCofactorMatrix(matrix);
+            matrix = getAdjointMatrix(matrix);
+            double res[][] = new double[dimen][dimen];
+            for (int i = 0; i < dimen; ++i) {
+                for (int j = 0; j < dimen; ++j) {
+                    res[i][j] = matrix[i][j] / determinant;
+                }
             }
+            return res;
         }
-        return res;
+        throw new Exception("La matriz no es tiene inversa.");
     }
 
     public double[][] getAdjointMatrix(double[][] matrix) {
@@ -154,18 +192,34 @@ public class MatrixController {
     private double dotMatrix(double[] matrixA, double[] matrixB) {
         double res = 0;
         for (int i = 0; i < matrixA.length; ++i) {
-            res += matrixA[i] * matrixB[i];
+            res += workDecimals(matrixA[i] * matrixB[i]);
         }
-        if (res <= 1e-12) {
-            res = 0;
+        if (res <= 1e-15) {
+            res = workDecimals(res);
         }
         return res;
+    }
+
+    private double workDecimals(double res) {
+        BigDecimal toWork = BigDecimal.valueOf(res);
+        return (double) toWork.floatValue();
     }
 
     public double[][] getIdentityMatrix(int dimen) {
         double res[][] = new double[dimen][dimen];
         for (int i = 0; i < dimen; ++i) {
             res[i][i] = 1;
+        }
+        return res;
+    }
+
+    public String textMatrix(double[][] matrix) {
+        String res = "";
+        for (double[] arr : matrix) {
+            for (double n : arr) {
+                res += (n + "\t");
+            }
+            res += "\n";
         }
         return res;
     }
