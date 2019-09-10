@@ -5,11 +5,16 @@
  */
 package matrix_solver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author lusi
  */
 public class solver implements sol {
+
+    private static final double EPSILON = 1e-10;
 
     @Override
     public boolean isSquareMatrix(double[][] matrix) {
@@ -28,12 +33,7 @@ public class solver implements sol {
         if (isSquareMatrix(matrix)) {
             double determinant = determinant(matrix);
             if (determinant == 0) {
-                for (int i = 0; i < matrix.length; ++i) {
-                    double aux = determinant(swapCols(matrix, dependent, i));
-                    if (aux != 0) {
-
-                    }
-                }
+                
             } else {
                 res = dotMatrix(dependent, getInverseMatrix(matrix, determinant, matrix.length));
             }
@@ -208,37 +208,6 @@ public class solver implements sol {
         }
     }
 
-    private double[][] swapRows(double[][] matrix, int from, int to) {
-        double res[][] = cloneMatrix(matrix);
-        for (int i = 0; i < matrix[0].length; ++i) {
-            res[to][i] = matrix[from][i];
-            res[from][i] = matrix[to][i];
-        }
-        return res;
-    }
-
-    private double[][] swapRows(double[][] matrix, double[] row, int to) {
-        double res[][] = cloneMatrix(matrix);
-        res[to] = row;
-        return res;
-    }
-
-    public double[][] swapCols(double[][] matrix, int from, int to) {
-        double res[][] = cloneMatrix(matrix);
-        for (int i = 0; i < matrix[0].length; ++i) {
-            res[from][i] = matrix[i][to];
-        }
-        return res;
-    }
-
-    public double[][] swapCols(double[][] matrix, double[] col, int to) {
-        double res[][] = cloneMatrix(matrix);
-        for (int i = 0; i < matrix[0].length; ++i) {
-            res[i][to] = col[i];
-        }
-        return res;
-    }
-
     private int searchForZeros(double[][] matrix) {
         for (int i = 0; i < matrix.length; ++i) {
             if (isZeroRow(matrix[i])) {
@@ -312,6 +281,125 @@ public class solver implements sol {
         }
         return res;
     }
+
+    private double[] swapItem(double[] dependent, int to, int from) {
+        double[] res = cloneMatrix(dependent);
+        res[to] = dependent[from];
+        res[from] = dependent[to];
+        return res;
+    }
+    
+
+
+    private double[][] swapRows(double[][] matrix, int from, int to) {
+        double res[][] = cloneMatrix(matrix);
+        for (int i = 0; i < matrix[0].length; ++i) {
+            res[to][i] = matrix[from][i];
+            res[from][i] = matrix[to][i];
+        }
+        return res;
+    }
+
+    public double[][] swapCols(double[][] matrix, int from, int to) {
+        double res[][] = cloneMatrix(matrix);
+        for (int i = 0; i < matrix[0].length; ++i) {
+            res[from][i] = matrix[i][to];
+        }
+        return res;
+    }
+
+    public Equation operateMatrix(Equation eq) {
+        Equation res = new Equation();
+        int n = eq.dependent.length;
+        for (int p = 0; p < n; p++) {
+            int max = p;
+            for (int i = p + 1; i < n; i++) {
+                if (Math.abs(eq.matrix[i][p]) > Math.abs(eq.matrix[max][p])) {
+                    max = i;
+                }
+            }
+            eq.matrix = swapRows(eq.matrix, p, max);
+            eq.dependent = swapItem(eq.dependent, p, max);
+
+            if (Math.abs(eq.matrix[p][p]) <= EPSILON) {
+                throw new ArithmeticException("Matrix is singular or nearly singular");
+            }
+            for (int i = p + 1; i < n; i++) {
+                double alpha = eq.matrix[i][p] / eq.matrix[p][p];
+                eq.dependent[i] -= alpha * eq.dependent[p];
+                for (int j = p; j < n; j++) {
+                    eq.matrix[i][j] -= alpha * eq.matrix[p][j];
+                }
+            }
+            printEquation(eq);
+        }
+        double[] x = new double[n];
+        for (int i = n - 1; i >= 0; i--) {
+            double sum = 0.0;
+            for (int j = i + 1; j < n; j++) {
+                sum += eq.matrix[i][j] * x[j];
+            }
+            x[i] = (eq.dependent[i] - sum) / eq.matrix[i][i];
+        }
+        eq.dependent = x;
+        printEquation(eq);
+
+        return res;
+    }
+
+    @Override
+    public double[] solveMatrixLargeBacth(double[][] matrix, double[] dependent) throws Error {
+        operateMatrix(Equation.build(matrix, dependent));
+        return dependent;
+    }
+
+    private void printEquation(Equation eq) {
+        System.out.println("dependent:");
+        printMatrix(eq.dependent);
+        System.out.println("matrix:");
+        printMatrix(eq.matrix);
+
+    }
+
+    public boolean isScalonadeMatrix(double[][] matrix) {
+        for (int i = 0; i < matrix.length; ++i) {
+            if ((i - 1) >= 0) {
+                for (int j = 0; j < i; ++j) {
+                    if (matrix[i][j] != 0) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
+
+class Equation {
+
+    double[][] matrix;
+    double[] dependent;
+
+    public Equation() {
+    }
+
+    public static Equation build(double[][] matrix, double[] dependent) {
+        Equation res = new Equation();
+        res.matrix = matrix;
+        res.dependent = dependent;
+        return res;
+    }
+;
+
+}
+
+class Operation {
+
+    boolean isTranslation = false;
+    boolean isSum = false;
+    double operator = 0;
+    int row = 0;
+    int to = 0;
 }
 
 interface sol {
@@ -321,6 +409,8 @@ interface sol {
     void printMatrix(double[] matrix);
 
     double[][] getInverseMatrixLargeBatch(double[][] matrix) throws Error;
+
+    double[] solveMatrixLargeBacth(double[][] matrix, double[] dependent) throws Error;
 
     boolean isSquareMatrix(double[][] matrix);
 

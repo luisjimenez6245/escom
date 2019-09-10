@@ -4,8 +4,11 @@ import numpy
 matrix=[[3, 3.5], [3.2, 3.6],  [1,2]]
 print(matrix) 
 print("\n") 
-print(numpy.transpose(matrix)) 
 
 
-matrix =  [[6, 1, 1, 3], [4, -2, 5, 3], [2, 8, 7, 4], [6, 7, 8, 8]]
+matrix =  [[0, 1, 1], [2, 4, -2],[0, 3, 15]]
+print(numpy.linalg.inv(matrix)) 
+
+print()
+matrix = [[3, 0, 2], [2, 0, -2], [0, 1, 1]]
 print(numpy.linalg.inv(matrix)) 
