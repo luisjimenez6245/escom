@@ -8,8 +8,8 @@ FILE *fp;
 
 int main(int argc, const char** argv)
 {
-    char * file_name = "res";
-    int n = 4, i, counter, j;
+    char * file_name = "/media/luis/FILES/res2";
+    int n = 27, i, counter, j;
     if(argc == 2){
         n = atoi(argv[1]); 
     }
@@ -31,11 +31,10 @@ int main(int argc, const char** argv)
 
 void getWord(int length, int number)
 {
-    char res[length + 2];
+    char res[length + 1];
     res[length + 1] = '\0';
-    res[length + 2] = '\n';
+    //res[length + 2] = '\n';
     int i, aux;
-    char  * res = "";
     for (i = length; i >= 0; --i)
     {
         aux = number >> i;
