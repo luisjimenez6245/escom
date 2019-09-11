@@ -21,10 +21,3 @@ if __name__ == "__main__":
     Files.write_binary_file("can", res)
     res = res.replace("\n", "")
     Files.write_binary_file("can1", res)
-
-
-
-
-
-
-
