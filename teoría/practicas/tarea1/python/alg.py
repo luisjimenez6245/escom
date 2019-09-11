@@ -1,6 +1,7 @@
 import files as Files
 
-n = 4
+name ="/media/luis/FILES/bin-dict"
+n = 27
 dic = []
 
 def get_binary(num, length):
@@ -9,18 +10,17 @@ def get_binary(num, length):
         res = "0" + res
     return res
 
-def get_res(to_add = ""):
-    res = ""
+def get_res(to_add = "", file_name = ""):
+    Files.write_binary_file(file_name, "")
     for x in range(0, n + 1):
         for y in range(0, pow(2,x)):
-            res += get_binary(y, x) + to_add
-    return res
+            Files.append_to_file(file_name, get_binary(y, x) + to_add)
+        print(x)
+    return 
 
 if __name__ == "__main__":
-    res = get_res("\n")
-    Files.write_binary_file("can", res)
-    res = res.replace("\n", "")
-    Files.write_binary_file("can1", res)
+    get_res("\n", name)
+    get_res("", name + "-1")
 
 
 

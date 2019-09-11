@@ -3,7 +3,7 @@ import array
 from os.path import isfile, join
 import shutil
 
-def  get_files_from_directory(path):
+def get_files_from_directory(path):
     res = [f for f in os.listdir(path) if isfile(join(path, f))]
     return res
 
@@ -45,6 +45,11 @@ def write_file(name, content):
     f.close()
     return
 
+def append_to_file(name, content):
+    f = open(name, "a+")
+    f.write(content)
+    f.close()
+    return
 
 def write_binary_file(name, content):
     if(os.path.isfile(name)):
