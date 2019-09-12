@@ -8,8 +8,8 @@ from IPython.display import display, HTML
 import sys
 
 
-file_name =  '/media/luis/FILES/name.html'
-fi = Files.read_file("/media/luis/FILES/res")  
+file_name =  '/Volumes/FILES/name2.html'
+fi = Files.read_file("/Volumes/FILES/res-test")  
 fi = fi[:-1]
 items =  fi.split("\n")
 
