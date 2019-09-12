@@ -102,3 +102,14 @@ alter table Asistencia add constraint FKIdClase FOREIGN KEY (IdC) REFERENCES Cla
 alter table Asistencia add constraint FKIdAsignatura FOREIGN KEY (IdA) REFERENCES Asignatura(IdA) on Delete cascade on update cascade;
 
 
+select timestampdiff(year, FechaNacimiento, now()) as Edad from profesor;
+
+alter TABLE  Profesor add Edad int; 
+
+update Profesor set edad =  timestampdiff(year, FechaNacimiento, now());
+
+alter table profesor add CONSTRAINT  ChEdad check(edad <= 40);
+
+insert into Profesor  values ('P15', 'Laura', 110, '1970/12/12', 48);
+
+alter TABLE  Profesor add Edad2 int null check (edad2 <= 50); 
