@@ -19,6 +19,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class executor {
 
@@ -90,8 +91,7 @@ class Panel extends JFrame implements ActionListener {
 
 }
 
-
-protected abstract class Controller {
+abstract class Controller {
 
     public Controller(){
 
@@ -101,7 +101,7 @@ protected abstract class Controller {
 }
 
 
-protected class Clock extends Thread {
+ class Clock extends Thread {
 
     public Clock(){
         super();
@@ -113,7 +113,7 @@ protected class Clock extends Thread {
     }
 }
 
-protected class Files {
+ class Files {
 
     protected String getFile(String path) throws FileNotFoundException, IOException {
         String res = "";
