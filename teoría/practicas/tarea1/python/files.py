@@ -56,7 +56,7 @@ def write_binary_file(name, content):
         pass
     arr = array.array('b')
     arr.frombytes(content.encode())
-    f = open(name, "w+b")
+    f = open(name, "wb")
     f.write(arr.tobytes())
     f.close()
     return
