@@ -1,0 +1,78 @@
+[
+    {
+        "index": 0,
+        "palabra": "#include"
+    },
+    {
+        "index": 19,
+        "palabra": "#include"
+    },
+    {
+        "index": 37,
+        "palabra": "#include"
+    },
+    {
+        "index": 58,
+        "palabra": "void"
+    },
+    {
+        "index": 83,
+        "palabra": "int"
+    },
+    {
+        "index": 108,
+        "palabra": "int"
+    },
+    {
+        "index": 127,
+        "palabra": "const"
+    },
+    {
+        "index": 152,
+        "palabra": "char"
+    },
+    {
+        "index": 202,
+        "palabra": "int"
+    },
+    {
+        "index": 371,
+        "palabra": "for"
+    },
+    {
+        "index": 483,
+        "palabra": "for"
+    },
+    {
+        "index": 587,
+        "palabra": "return"
+    },
+    {
+        "index": 600,
+        "palabra": "void"
+    },
+    {
+        "index": 625,
+        "palabra": "int"
+    },
+    {
+        "index": 643,
+        "palabra": "char"
+    },
+    {
+        "index": 725,
+        "palabra": "int"
+    },
+    {
+        "index": 741,
+        "palabra": "for"
+    },
+    {
+        "index": 812,
+        "palabra": "if"
+    },
+    {
+        "index": 859,
+        "palabra": "else"
+    }
+]
