@@ -40,7 +40,7 @@ class Panel extends JFrame implements ActionListener {
         calcButton.setText("Calcular");
         calcButton.setFont(new Font("Arial", Font.PLAIN, 25));
         calcButton.setBounds(10, 80, 300, 50);
-        calcButton.setVisible(true);
+        calcButton.setVisible(true);  
 
         calcButton.addActionListener(this);
         this.add(calcButton);
