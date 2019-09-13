@@ -1,47 +1,58 @@
 from tkinter import Tk, Canvas, Frame, BOTH
+from Panel import Panel
 
-class Panel(Frame):
+class Coordinate():
+    x = 0
+    y = 0
 
-    canvas = None
-    width_stroke = 1
-    fill = "#ffffff"
-    outline = "#000000"
-
-    def __init__(self, title = ""):
-        super().__init__()
-        self.canvas = Canvas(self)
-        self.pack(fill=BOTH, expand=1)
-        self.canvas.pack(fill=BOTH, expand=1)
+    def __init__(self, x, y):
+        self.x  = x
+        self.y = y
     
-    def add_arc(self, position_x, position_y):
-        self.canvas.create_arc(position_x, position_y, 90, 100, start= 0, extent= 210, outline= self.outline, fill= self.fill, width= self.width_stroke)  
-    
-    def add_circle(self, position_x, position_y, text = ""):
-        radio = 40
-        diameter = radio / 2
-        position_x = position_x - radio
-        position_y = position_y - radio
-        self.canvas.create_circle(position_x , position_y, radio,  outline= self.outline, fill= self.fill, width= self.width_stroke)
-        self.canvas.create_text(position_x , position_y , text= text)
-        self.canvas.update()
-    
-    def add_line(self, points):
-        return self.canvas.create_line(points, width = self. width_stroke)
-
-
-def _create_circle(self, x, y, r, **kwargs):
-    return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
-
 def main():
-    Canvas.create_circle = _create_circle
     root = Tk()
     panel = Panel()
-    width = 330
-    heigth = 220 
-    panel.add_circle(100, 130, "perro")
-    root.geometry("1630x220+300+300")
+    width = 0
+    heigth = 420 
+    parent = create_main_node(panel, Coordinate(x = 0, y = 0), "q0", heigth)
+    r = parent
+    dic = {("sa", "rrrr"), ("s","wwww"), ("sf", "")}
+    for item in dic:
+        r = create_node(panel, r, item)
+        node_to_node(panel, r, parent, 30, 50)
+    final = create_main_node(panel, r, "qf", heigth)
+    node_to_node(panel, final, parent, 1)
+    width = final.x
+    width += 50
+    root.geometry( str(width) +"x"+ str(heigth) +"+300+300")
     root.mainloop()
 
+def create_main_node(panel, coordinate, state, heigth):
+    middle_heigth = (heigth/2)
+    r = create_double_node(panel, Coordinate(x = coordinate.x + 100, y = middle_heigth), state)
+    panel.add_line(coordinate.x,  middle_heigth, coordinate.x + 50,  middle_heigth, end_arrow=1)
+    return r
+
+def create_double_node(panel, coordinate, state):
+    panel.add_circle(coordinate.x, coordinate.y, "", 50)
+    panel.add_circle(coordinate.x,  coordinate.y, state, 30)
+    return Coordinate(x = coordinate.x + 50, y = coordinate.y)
+
+def create_node(panel, coordinate, state, changing_state = ""):
+    width = 30
+    res =  Coordinate(x = coordinate.x + 20 + (width * 2), y = coordinate.y)
+    panel.add_line(coordinate.x, res.y, res.x - width, res.y, end_arrow=1)
+    panel.add_circle(res.x, res.y, state, width)
+    res.x += width
+    return res
+
+def node_to_node(panel, coordinate_self, coordinate_to, radio_self, radio_to = 0):
+    if radio_to == 0:
+        radio_to = radio_self
+    mid_x = (coordinate_self.x + (coordinate_to.x /3) ) /2
+    mid_y = coordinate_self.y  
+    panel.add_elliptical_arc(mid_x, mid_y, coordinate_self.x - mid_x, 100, 30, 180-30)
+    pass
 
 if __name__ == '__main__':
     main()

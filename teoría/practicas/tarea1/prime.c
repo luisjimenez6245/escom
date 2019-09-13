@@ -8,7 +8,7 @@ FILE *fp;
 
 int main(int argc, const char **argv)
 {
-    char *file_name = "prime.txt";
+    char *file_name = "/Volumes/FILES/files/prime.txt";
     int n = 27, i, counter, j = 1;
     if (argc == 2)
     {
@@ -17,7 +17,7 @@ int main(int argc, const char **argv)
     fp = fopen(file_name, "wb");
     fclose(fp);
     fp = fopen(file_name, "ab");
-    for (i = 0; i <= n; ++i)
+    for (i = 2; i <= n; ++i)
     {
         if((i % (10*j)) == 0)
         {

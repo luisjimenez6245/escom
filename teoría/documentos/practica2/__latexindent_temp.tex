@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+
+\title{Practica 1 \newline \newline
+	  \large \textbf{ Teoría computacional N, Profesor: Genaro Martinez} }
+
+\author{\Large \textbf{Alumno:} \\ Luis Diego Jiménez Delgado \\ 
+		\texttt{2CM5, luijsimenez6245@hotmail.com}}
+
+\begin{document}
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	{ \large \tableofcontents }
+	\newpage
+        \section{Cadenas Binarias}
+        Tendencia de los números primos
+Objetivo del programa: Encontrar un patrón cuando se generan números primos de entre en el intervalo (1,1000 000)
+Proceso: 
+\begin{itemize}
+    \item Recibe un numero n <=1 000 000 y n>1
+    \item Guarda los números primos desde n=1 hasta n
+    \item Convierte los números a binario
+    \item Se lee la cantidad de 1’s aparecen por número y se guarda esa cantidad por posición
+    \item  Se representan estos resultados en una gráfica de posición contra cantidad de unos por número primo.
+    \end{itemize}
+Se escogen los números que sean primos en un rango en el intervalo [2,n] donde n es un numero proporcionado por el usuario. Se aceptan los números dados sí y solo sí n>1, después se verifica que desde 2 hasta n no existan números que dividan a n, es decir, el número módulo i (número dentro del rango), tiene que ser distinto de cero excepto cuanto i es igual al número.
+Segunda etapa: Los números se convierten a binario usando recursividad cuyo caso base es cuando el valor del número es menor a 2 y en el caso recursivo se envía el número divido entre dos.
+Tercera etapa: Para cada número generado se realiza un conteo de las ocurrencias del número 1 y se les asigna una posición por número. Estos datos se salvan en un archivo y posteriormente se grafican.
+Se obtiene una conclusión: este método no puede generalizarse para encontarr tendencia en los números primos, debido a que no parece tener un patro en el intervalo 1 - 1,000,000.
+            \subsection{Espaciadas}
+            
+			\subsection{Juntas}
+			\subsection{Numeros Primos}
+		\section{Automata de cadenas}
+			En este programa se verifican a través de un autómata las cadenas de que simulan ser transacciones y consiste en lo siguiente: 
+			\begin{itemize}
+\item El autómata comienza si tiene un número aleatorio que 
+\item Se generan los datos de entrada.
+\item Espera de dos segundos.
+\item Se hace la lectura de las cadenas generadas.
+\item En el bloque ACK se generan dos archivos 
+\item  Se genera un número aleatorio entre 0 y 1 (inclusive), y se regresa al paso 1. 
+\end{itemize}
+Primeramente, se genera un número aleatorio entre 0 y 1 que nos indicará si el autómata comienza o no.
+Posteriormente, se crea (aleatoriamente) un archivo como se muestra en la figura 2 ``datain.txt''  que contenga 1 cadena con 100000 caracteres cada una.
+Después, se hace una lectura cadena a cadena de este archivo. Por cada una de las cadenas se valida que la cantidad de 1 y ceros tengan paridad. 
+En caso de que tengan paridad se crea un archivo ``accepted.txt'' (véase la figura 3), el cual contiene la cantidad de cadenas aceptadas y el número de proceso en el que se encontraron. 
+En el otro caso, se crea un archivo ``rejected.txt'' (véase la figura 4), el cual contiene la cantidad de cadenas rechazadas y el número de proceso en el que se encontraron. 
+Luego, se tiene un archivo ``history.txt'' (véase la figura 5 y 6), el cual nos indica el estado del autómata por proceso, y finalmente se genera otro número aleatorio que nos indicará si nuevos datos van a entrar o el programa finaliza. 
+
+
+\end{document}  

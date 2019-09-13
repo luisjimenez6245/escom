@@ -3,28 +3,37 @@ import string
 
 class Sender():
     times = 0
+    history = None
+    accepted = None
+    unaccepted = None
 
-    def __init__(self):
+    def __init__(self,  history, accepted, unaccepted):
         self.time = 0
+        self.accepted = accepted
+        self.unaccepted = unaccepted
+        self.history = history
 
     def enable(self, reciever):
-        while(self.is_active(reciever)):
-            while ((reciever.recieve_word(self.construct_word()))):
-                pass
-            pass
-            self.times += 1
+        x = 0
+        while(x < 10):
+            word = self.construct_word()
+            if(self.is_active(reciever)):
+                self.accepted.write(word + "\n")
+                self.history.write("q" + str(self.times)+  "--> q" +  str(self.times + 1) + "\n")
+                self.times += 1
+            else:
+                self.history.write("q" + str(self.times)+  "--> q0\n")
+                self.unaccepted.write(word + "\n")
+                self.times == 0
+            x += 1
+        self.history.close()
         return
 
     def is_active(self, reciever):
         return reciever.is_active()
     
     def construct_word(self):
-        x = 0
-        file = list()
-        while (x < 10):
-            file.append(self.get_word(10000))
-            x += 1
-        return file
+        return self.get_word(100000)
     
     def get_word(self, length):
         res = ""
