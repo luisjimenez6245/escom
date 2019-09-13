@@ -1,6 +1,8 @@
 import os
 from os.path import isfile, join
-word = ""
+import json 
+
+rdic = dict()
 
 def evaluate(c, position, dictionary):
     res = list()
@@ -11,32 +13,41 @@ def evaluate(c, position, dictionary):
                 res.append(word)
     return res
 
-def create_exiting_item(word, index, possible_words):
-    return "{\"index\": " + str(index -  len(word))+ ", \"word\":\"" + str(word)+"\"}"
+def create_existing_item(word, index, line):
+    if word in rdic:
+        rdic[word] += 1
+    else: 
+        rdic[word] = 1
+    return "{\"linea\":"+str(line)+",\"caracter\": " + str(index -  len(word))+ ", \"word\":\"" + str(word)+"\"}"
 
 def scope(dictionary, text):
     is_posible = True
     possible_words = dictionary
     counter = 0
     index = 0
+    line_counter = 0
     word = ""
     res =  ""
-    for item in text:
-        if(item == " " or item == "\n" or item == "\t" or item == "\0"):
-            counter = 0
-            if(is_posible) and index != 0 and word in dictionary:
-                res +=  create_exiting_item(word, index, possible_words) + ","
-            word = ""
-            possible_words = dictionary
-            is_posible = True
-        elif(is_posible):
-            word += item
-            possible_words = evaluate(item, counter, possible_words)
-            is_posible = (len(possible_words)!= 0)
-            if(is_posible):
-                counter += 1 
-        index += 1 
-    return res
+    lines = text.split("\n")
+    for line in lines:
+        index = 0
+        for item in line:
+            if(item == " " or item == "\n" or item == "\t" or item == "\0"):
+                counter = 0
+                if(is_posible) and index != 0 and word in dictionary:
+                    res +=  create_existing_item(word, index, line_counter) + ","
+                word = ""
+                possible_words = dictionary
+                is_posible = True
+            elif(is_posible):
+                word += item
+                possible_words = evaluate(item, counter, possible_words)
+                is_posible = (len(possible_words)!= 0)
+                if(is_posible):
+                    counter += 1 
+            index += 1
+        line_counter += 1
+    return res[:-1]
 
 
 def read_file(path):
@@ -61,6 +72,7 @@ if __name__ == "__main__":
     file_content = read_file("dic.txt")
     dictio = file_content.split("\n")
     document = read_file("./program.c")
-    r = scope(dictio, document)[:-1]
-    r = "["+ r +"]"
+    r = scope(dictio, document)
+    r = "{\"items\": ["+ r +"]," +  "\"repeticiones\" : " + json.dumps(rdic) + "}"
+
     write_file("./res.json", r)
