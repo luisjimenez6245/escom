@@ -11,8 +11,12 @@ class Receiver():
     def recieve_word(self, word):
         return self.verify_word(word)
 
-    def verify_word(self, file):
-        for word in file:
-            if(len(word) is not 10000):
-                return False
-        return True
+    def verify_word(self, word):
+        one = 0
+        cero = 0
+        for item in word:
+            if(item == "1"):
+                one += 1
+            else:
+                cero += 1 
+        return cero%2==0 and one%2==0

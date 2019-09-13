@@ -2,7 +2,8 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
-
+\usepackage{graphicx}
+\graphicspath{ {./imagenes/} }
 
 \lstset{
   frame=tb,
@@ -92,6 +93,8 @@ void getWord(int length, int number)
     fputs(res, fp);
 }
             \end{lstlisting}
+            Gráfica de 1's.
+            \includegraphics{File3}
 
             \subsection{Juntas}
             Se generó un archivo que contiene las cadenas sin separación alguna, generado así un archivo ``nospaces.txt'', aplicando el mismo caso anterior.
@@ -143,6 +146,12 @@ void getWord(int length, int number)
     fputs(res, fp);
 }
             \end{lstlisting}
+            
+            Gráfica de 1 de cadenas de 16 bits.\newline
+            \includegraphics{File2}
+            Gráfica de 1 de cadenas de 8 bits.\newline
+            \includegraphics{File1}
+
             \subsection{Numeros Primos}
             Por medio de un algortimo básico para veirificar si un número era primo o no, se generó un archivo con todos lo números primarios del 2 - 100000 guardandolos en un archivo de texto de nombre ``prime.txt''
             Del cual se obtuvo el siguiente analisis:
@@ -209,26 +218,179 @@ void getWord(int length, int number)
     fputs(res, fp);
 }
             \end{lstlisting}
-            
-            
+            \includegraphics{File4}
+
+        \section{Buscador de ANSI C}
+            El proposito de programa es realizar un automata capaz de identificar todas las palabras reservadas de ANSI extraerlas y en un archivo guardar en donde se encunetran y el númrero de repeticiones que hay en el texto de entrada.
+            \begin{itemize}
+                \item El autómata comienza con cualquier caracter de entrada.
+                \item Cuando el automata encuentra un cáracter diferente a un espacio o salto de linea el programa comienza a busacr en el diccionario que tiene almacenado con las palabras reservadas.
+                \item Va verificando caracter por caracter para ver que sea una palabra correcta, indentifica todos los caracteres al igual que distingue de mayúsculas y minúsculas.
+                \item Almacena las palabras que guardo
+                \item Genera un archivo para visualizar los resultados.
+            \end{itemize}
+            Se realizó otro automata para visualizar el proceso de este de manera gráfica representado por nodos.
+            \begin{lstlisting}
+import os
+from os.path import isfile, join
+import json 
+
+rdic = dict()
+
+def evaluate(c, position, dictionary):
+    res = list()
+    for word in dictionary:
+        l = list(word)
+        if not (len(l) <= position):
+            if l[position] == c:
+                res.append(word)
+    return res
+
+def create_existing_item(word, index, line):
+    if word in rdic:
+        rdic[word] += 1
+    else: 
+        rdic[word] = 1
+    return "{\"linea\":"+str(line)+",\"caracter\": " + str(index -  len(word))+ ", \"word\":\"" + str(word)+"\"}"
+
+def scope(dictionary, text):
+    is_posible = True
+    possible_words = dictionary
+    counter = 0
+    index = 0
+    line_counter = 0
+    word = ""
+    res =  ""
+    lines = text.split("\n")
+    for line in lines:
+        index = 0
+        for item in line:
+            if(item == " " or item == "\n" or item == "\t" or item == "\0"):
+                counter = 0
+                if(is_posible) and index != 0 and word in dictionary:
+                    res +=  create_existing_item(word, index, line_counter) + ","
+                word = ""
+                possible_words = dictionary
+                is_posible = True
+            elif(is_posible):
+                word += item
+                possible_words = evaluate(item, counter, possible_words)
+                is_posible = (len(possible_words)!= 0)
+                if(is_posible):
+                    counter += 1 
+            index += 1
+        line_counter += 1
+    return res[:-1]
+
+
+def read_file(path):
+    res = ""
+    with open(path) as fp:
+        line = fp.readline()
+        while line:
+            res += line
+            line = fp.readline()
+    return res
+
+
+def write_file(name, content):
+    if(os.path.isfile(name)):
+        pass
+    f = open(name, "w+")
+    f.write(content)
+    f.close()
+    return
+
+if __name__ == "__main__":
+    file_content = read_file("dic.txt")
+    dictio = file_content.split("\n")
+    document = read_file("./program.c")
+    r = scope(dictio, document)
+    r = "{\"items\": ["+ r +"]," +  "\"repeticiones\" : " + json.dumps(rdic) + "}"
+
+    write_file("./res.json", r)                
+            \end{lstlisting}
+            Modelo de autómata funcional en caso particular.\newline
+            \includegraphics{auto}
+            Modelo de autómata funcional en caso particular no valido.\newline
+            \includegraphics{autoM}
+
 		\section{Automata de cadenas}
 			En este programa se verifican a través de un autómata las cadenas de que simulan ser transacciones y consiste en lo siguiente: 
 			\begin{itemize}
                 \item El autómata comienza si tiene un número aleatorio que 
                 \item Se generan los datos de entrada.
-                \item Espera de dos segundos.
                 \item Se hace la lectura de las cadenas generadas.
                 \item En el bloque ACK se generan dos archivos 
                 \item  Se genera un número aleatorio entre 0 y 1 (inclusive), y se regresa al paso 1. 
             \end{itemize}
-            Primeramente, se genera un número aleatorio entre 0 y 1 que nos indicará si el autómata comienza o no.
-            Posteriormente, se crea (aleatoriamente) un archivo como se muestra en la figura 2 ``history.txt''  que contenga 1 cadena con 100000 caracteres cada una.
-            Después, se hace una lectura cadena a cadena de este archivo. Por cada una de las cadenas se valida que la cantidad de 1 y ceros tengan paridad. 
+            Para comenzar con la explicación del automata, pirmero se debe de generar un número aleatorio entre 0 y 1 que nos indicará si el autómata comienza o no.
+            Se crea una cadena de 100000 caracteres que se envia solo si el otro automata está encendido o no.
+            Si el segundo está encendido, recibe la cadena generada y valida que sea una cadena de 1000000 caracteres, y que su valor en binario sea impar. 
             En caso de que tengan paridad se crea un archivo ``accepted.txt'' (véase la figura 3), el cual contiene la cantidad de cadenas aceptadas y el número de proceso en el que se encontraron. 
             En el otro caso, se crea un archivo ``unaccepted.txt'' (véase la figura 4), el cual contiene la cantidad de cadenas rechazadas y el número de proceso en el que se encontraron. 
             Luego, se tiene un archivo ``history.txt'' (véase la figura 5 y 6), el cual nos indica el estado del autómata por proceso, y finalmente se genera otro número aleatorio que nos indicará si nuevos datos van a entrar o el programa finaliza. 
             
+            \begin{lstlisting}
+from random import randint
 
+class Receiver():
+
+    def __init__(self):
+        pass
+
+    def is_active(self):
+        return ((randint(0, 2) % 2) == 0)
+    
+    def recieve_word(self, word):
+        return self.verify_word(word)
+
+    def verify_word(self, word):
+        one = 0
+        cero = 0
+        for item in word:
+            if(item == "1"):
+                one += 1
+            else:
+                cero += 1 
+        return cero%2==0 and one%2==0
+            \end{lstlisting}
+            \begin{lstlisting}
+from random import randint
+                
+class Receiver():
+                
+    def __init__(self):
+        pass
+
+    def is_active(self):
+        return ((randint(0, 2) % 2) == 0)
+    
+    def recieve_word(self, word):
+        return self.verify_word(word)
+
+    def verify_word(self, word):
+        one = 0
+        cero = 0
+        for item in word:
+            if(item == "1"):
+                one += 1
+            else:
+                cero += 1 
+        return cero%2==0 and one%2==0
+                            \end{lstlisting}
+                            \begin{lstlisting}
+import Sender
+import Receiver
+
+if __name__ == "__main__":
+    res = Sender.Sender(open("./history.text", "w+"), open("./accepted.txt", "w+"), open("./unaccepted.txt", "w+"))
+    res.enable(Receiver.Receiver())
+    print(res.times)
+    res.history.close()
+    res.accepted.close()
+    res.unaccepted.close()
+                                            \end{lstlisting}
         \section{Graficadores}
             Por último se agregan 2 de las herramientas que se utilizaron para mostrar als imagenes presentadas en el reporte
             \subsection{Graficadora de elementos}

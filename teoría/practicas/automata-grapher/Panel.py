@@ -30,7 +30,7 @@ class Panel(Frame):
     def add_elliptical_arc(self,x, y, r1, r2, t0, t1, start_arrow=1, end_arrow=0):
         return self.canvas.create_arc(x-r1, y-r2, x+r1, y+r2, start=t0, extent=t1-t0, style='arc', width= self.width_stroke)
 
-    def add_line(self, x1, y1, x2, y2, start_arrow=0, end_arrow=0, text = "s", font_size = 15):
+    def add_line(self, x1, y1, x2, y2, start_arrow=0, end_arrow=0, text = "", font_size = 15):
         arrow_opts = start_arrow << 1 | end_arrow
         arrows = {0b10: 'first', 0b01: 'last', 0b11: 'both'}.get(arrow_opts, None)
         if(text !=  ""):

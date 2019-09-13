@@ -2,8 +2,9 @@
 \contentsline {section}{\numberline {1}Cadenas Binarias}{2}% 
 \contentsline {subsection}{\numberline {1.1}Espaciadas}{2}% 
 \contentsline {subsection}{\numberline {1.2}Juntas}{3}% 
-\contentsline {subsection}{\numberline {1.3}Numeros Primos}{4}% 
-\contentsline {section}{\numberline {2}Automata de cadenas}{5}% 
-\contentsline {section}{\numberline {3}Graficadores}{6}% 
-\contentsline {subsection}{\numberline {3.1}Graficadora de elementos}{6}% 
-\contentsline {subsection}{\numberline {3.2}Graficadora de automatas}{7}% 
+\contentsline {subsection}{\numberline {1.3}Numeros Primos}{5}% 
+\contentsline {section}{\numberline {2}Buscador de ANSI C}{7}% 
+\contentsline {section}{\numberline {3}Automata de cadenas}{10}% 
+\contentsline {section}{\numberline {4}Graficadores}{11}% 
+\contentsline {subsection}{\numberline {4.1}Graficadora de elementos}{11}% 
+\contentsline {subsection}{\numberline {4.2}Graficadora de automatas}{13}% 

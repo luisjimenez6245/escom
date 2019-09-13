@@ -1,5 +1,4 @@
-from random import choice
-import string
+from random import choice, randint
 
 class Sender():
     times = 0
@@ -18,13 +17,14 @@ class Sender():
         while(x < 10):
             word = self.construct_word()
             if(self.is_active(reciever)):
-                self.accepted.write(word + "\n")
-                self.history.write("q" + str(self.times)+  "--> q" +  str(self.times + 1) + "\n")
-                self.times += 1
-            else:
-                self.history.write("q" + str(self.times)+  "--> q0\n")
-                self.unaccepted.write(word + "\n")
-                self.times == 0
+                if(reciever.recieve_word(word)):
+                    self.accepted.write(word + "\n")
+                    self.history.write("q" + str(self.times)+  "--> q" +  str(self.times + 1) + "\n")
+                    self.times += 1
+                else:
+                    self.history.write("q" + str(self.times)+  "--> q0\n")
+                    self.unaccepted.write(word + "\n")
+                    self.times == 0
             x += 1
         self.history.close()
         return
@@ -38,5 +38,5 @@ class Sender():
     def get_word(self, length):
         res = ""
         for x in range(length):
-            res += (choice(string.ascii_letters))
+            res += str((randint(0, 2) % 2) == 0)
         return res
