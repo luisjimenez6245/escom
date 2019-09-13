@@ -9,7 +9,7 @@ FILE *fp;
 int main(int argc, const char **argv)
 {
     char *file_name = "/Volumes/FILES/files/prime.txt";
-    int n = 27, i, counter, j = 1;
+    int n = 100000, i, counter, j = 1;
     if (argc == 2)
     {
         n = atoi(argv[1]);

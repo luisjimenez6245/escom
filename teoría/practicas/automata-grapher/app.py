@@ -16,10 +16,9 @@ def main():
     heigth = 420 
     parent = create_main_node(panel, Coordinate(x = 0, y = 0), "q0", heigth)
     r = parent
-    dic = {("sa", "rrrr"), ("s","wwww"), ("sf", "")}
+    dic = {("q1", "1"), ("q2","cadena"), ("q3", "es valida")}
     for item in dic:
         r = create_node(panel, r, item)
-        node_to_node(panel, r, parent, 30, 50)
     final = create_main_node(panel, r, "qf", heigth)
     node_to_node(panel, final, parent, 1)
     width = final.x

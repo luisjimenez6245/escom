@@ -1,6 +1,9 @@
 \babel@toc {spanish}{}
 \contentsline {section}{\numberline {1}Cadenas Binarias}{2}% 
 \contentsline {subsection}{\numberline {1.1}Espaciadas}{2}% 
-\contentsline {subsection}{\numberline {1.2}Juntas}{2}% 
-\contentsline {subsection}{\numberline {1.3}Numeros Primos}{3}% 
-\contentsline {section}{\numberline {2}Automata de cadenas}{3}% 
+\contentsline {subsection}{\numberline {1.2}Juntas}{3}% 
+\contentsline {subsection}{\numberline {1.3}Numeros Primos}{4}% 
+\contentsline {section}{\numberline {2}Automata de cadenas}{5}% 
+\contentsline {section}{\numberline {3}Graficadores}{6}% 
+\contentsline {subsection}{\numberline {3.1}Graficadora de elementos}{6}% 
+\contentsline {subsection}{\numberline {3.2}Graficadora de automatas}{7}% 
