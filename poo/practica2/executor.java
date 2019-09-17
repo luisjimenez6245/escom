@@ -1,9 +1,12 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 public class executor {
 
@@ -38,11 +42,12 @@ class Remainder {
 
     public Remainder[] build(String json) {
         List<Remainder> res = new ArrayList<>();
-        String list[] = json.split("$$%");
+        String list[] = json.split("\n");
         for (String l : list) {
             Remainder r = new Remainder().buildSelf(l);
-            if (r != null)
+            if (r != null) {
                 res.add(r);
+            }
         }
         return res.toArray(new Remainder[res.size()]);
     }
@@ -50,15 +55,14 @@ class Remainder {
     public Remainder buildSelf(String json) {
         String helper[] = json.split("&&%");
         try {
-            this.hour = helper[1];
-            this.day = helper[2];
             this.shouldRepeat = Boolean.parseBoolean(helper[3]);
             this.isRepatable = Repetable.valueOf(helper[0]);
+            this.hour = helper[1];
+            this.day = helper[2];
             this.content = helper[4];
             return this;
-
         } catch (Exception ex) {
-
+            System.out.println(ex.toString());
         }
         return null;
     }
@@ -72,12 +76,14 @@ class Remainder {
 
 class Panel extends Controller implements ActionListener {
 
-    private static final String FILE = "/Users/lusi/Documents/GitHub/escom/poo/practica2/remainder.txt";
+    private static final String FILE = "/Users/luis/Documents/GitHub/escom/poo/practica2/remainder.txt";
     private static final long serialVersionUID = 1L;
     private JLabel clockLabel;
+    private JLabel dateLabel;
     private List<JLabel> remiandersLabels;
     private Remainder[] remainders;
     private JPanel panelRemainder;
+    private DateFormat hourFormat;
     private DateFormat dateFormat;
 
     public Panel() {
@@ -93,38 +99,48 @@ class Panel extends Controller implements ActionListener {
     @Override
     protected void loadView() {
         JPanel panelClock = new JPanel();
-        dateFormat = new SimpleDateFormat("hh:mm:ss a");
+        hourFormat = new SimpleDateFormat("hh:mm:ss a");
+        dateFormat = new SimpleDateFormat("DD-MM-YYYY");
         setTitle("Reloj");
         setVisible(true);
         setLayout(null);
         setSize(320, 320);
         panelClock = new JPanel();
         panelRemainder = new JPanel();
-        clockLabel = new JLabel("aaa");
-        JScrollPane scroll = new JScrollPane(panelRemainder, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        dateLabel =  new JLabel("");
+        clockLabel = new JLabel("");
         panelClock.setBounds(0, 20, 320, 100);
+        panelRemainder.setLocation(0, 0);
+        JScrollPane scroll = new JScrollPane(panelRemainder, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setBounds(0, 100, 320, 220);
-        panelRemainder.setSize(320, 100);
-        clockLabel.setSize(270, 100);
-        clockLabel.setFont(new Font("Arial", Font.PLAIN, 35));
-        clockLabel.setBackground(Color.RED);
-        int x =  (panelClock.getWidth() / 2) - (clockLabel.getWidth() / 2);
+        panelRemainder.setLayout(new BoxLayout(panelRemainder, BoxLayout.Y_AXIS));
+        clockLabel.setSize(270, 8);
+        dateLabel.setSize(270, 100);
+        int x = (panelClock.getWidth() / 2) - (clockLabel.getWidth() / 2);
         int y = (panelClock.getHeight() / 2) - (clockLabel.getHeight() / 2);
         clockLabel.setLocation(x, y);
+        dateLabel.setLocation(x, y +100);
         add(scroll);
         add(panelClock);
         panelClock.add(clockLabel);
+        panelClock.add(dateLabel);
 
     }
 
     @Override
     protected void loadContent() {
+        clockLabel.setBackground(Color.RED);
+        clockLabel.setFont(new Font("Arial", Font.PLAIN, 35));
+        dateLabel.setFont(new Font("Arial", Font.PLAIN, 5));
         remainders = new Remainder().build(Files.getFile(FILE));
         remiandersLabels = new ArrayList<>();
         for (Remainder r : remainders) {
-            JLabel l = new JLabel(r.content);
-            l.setSize(100, 100);
+            String toEval =  r.day + r.hour;
+            System.out.println(toEval);
+            JLabel l = new JLabel(r.content, SwingConstants.CENTER);
+            l.setSize(320, 100);
+            l.setHorizontalAlignment(SwingConstants.CENTER);
+            l.setVerticalAlignment(SwingConstants.CENTER);
             remiandersLabels.add(l);
             panelRemainder.add(l);
         }
@@ -134,7 +150,7 @@ class Panel extends Controller implements ActionListener {
     protected void loadActions() {
     }
 
-    private void changeHour(String date) {
+    private void changeHour(String date, String day) {
         clockLabel.setText(date);
     }
 
@@ -143,7 +159,7 @@ class Panel extends Controller implements ActionListener {
             public void run() {
                 while (true) {
                     Date date = new Date();
-                    changeHour(dateFormat.format(date));
+                    changeHour(hourFormat.format(date), dateFormat.format(date) );
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {
@@ -185,7 +201,7 @@ class Files {
             String helper = "";
             try (BufferedReader stdInput = new BufferedReader(new FileReader(path))) {
                 while ((helper = stdInput.readLine()) != null) {
-                    res += helper;
+                    res += helper + "\n";
                 }
             }
             return res;

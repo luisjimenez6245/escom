@@ -1,1 +1,15 @@
-DAILY&&%10:10:00&&%1&&%1&&%Lavar la ropa&&%$$%
+DAILY&&%10:10:00&&%31-08-2019&&%true&&%Lavar la rapa&&%
+DAILY&&%10:10:00&&%31-08-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-08-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-08-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%true&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%true&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%true&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%
+DAILY&&%10:10:00&&%31-09-2019&&%false&&%Lavar la ropa&&%

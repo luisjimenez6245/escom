@@ -38,5 +38,5 @@ class Sender():
     def get_word(self, length):
         res = ""
         for x in range(length):
-            res += str((randint(0, 2) % 2) == 0)
+            res += str((randint(0, 2) % 2))
         return res

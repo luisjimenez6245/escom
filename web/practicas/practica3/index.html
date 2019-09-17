@@ -1,0 +1,471 @@
+<html>
+
+<head>
+    <title>Examples</title>
+    <meta charset="UTF-8" />
+    <style>
+        table.azuladdo {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+
+        table.azuladdo td,
+        table.azuladdo th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+
+        table.azuladdo tbody td {
+            font-size: 13px;
+        }
+
+        table.azuladdo tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+
+        table.azuladdo thead {
+            background: #A4196C;
+            background: -moz-linear-gradient(top, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+            background: -webkit-linear-gradient(top, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+            background: linear-gradient(to bottom, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+            border-bottom: 2px solid #444444;
+        }
+
+        table.azuladdo thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+
+        table.azuladdo thead th:first-child {
+            border-left: none;
+        }
+
+        table.azuladdo tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+
+        table.azuladdo tfoot td {
+            font-size: 14px;
+        }
+
+        table.azuladdo tfoot .links {
+            text-align: right;
+        }
+
+        table.azuladdo tfoot .links a {
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        table.tablaroja {
+            
+            border: 2px solid #A40808;
+            background-color: #EEE7DB;
+            width: 100% !important;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table.tablaroja td,
+        table.tablaroja th {
+            border: 0px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+
+        table.tablaroja tbody td {
+            font-size: 13px;
+        }
+
+        table.tablaroja tr:nth-child(even) {
+            background: #F5C8BF;
+        }
+
+        table.tablaroja thead {
+            background: #A40808;
+        }
+
+        table.tablaroja thead th {
+            font-size: 19px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #A40808;
+        }
+
+        table.tablaroja thead th:first-child {
+            border-left: none;
+        }
+
+        table.tablaroja tfoot {
+            font-size: 13px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #A40808;
+        }
+
+        table.tablaroja tfoot td {
+            font-size: 13px;
+        }
+
+        table.tablaroja tfoot .links {
+            text-align: right;
+        }
+
+        table.tablaroja tfoot .links a {
+            display: inline-block;
+            background: #FFFFFF;
+            color: #A40808;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        table.morada {
+            border: 4px solid #966996;
+            background-color: #555555;
+            width: 100%;;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table.morada td,
+        table.morada th {
+            border: 0px solid #555555;
+            padding: 5px 2px;
+        }
+
+        table.morada tbody td {
+            font-size: 13px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        table.morada tr:nth-child(even) {
+            background: #FC003F;
+        }
+
+        table.morada td:nth-child(even) {
+            background: #FCB4B4;
+        }
+
+        table.morada thead {
+            background: #969696;
+            border-bottom: 4px solid #969696;
+        }
+
+        table.morada thead th {
+            font-size: 19px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: left;
+            border-left: 2px solid #969696;
+        }
+
+        table.morada thead th:first-child {
+            border-left: none;
+        }
+
+        table.morada tfoot {
+            font-size: 13px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #FFFFFF;
+            background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+            border-top: 5px solid #969696;
+        }
+
+        table.morada tfoot td {
+            font-size: 13px;
+        }
+
+        table.morada tfoot .links {
+            text-align: right;
+        }
+
+        table.morada tfoot .links a {
+            display: inline-block;
+            background: #969696;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" class="azuladdo">
+        <tr class="azuladdo">
+            <td>
+                <img src="./img/Unknown-1.jpeg" alt="" />
+            </td>
+            <td>
+                <h2>Ejemplo</h2>
+            </td>
+            <td>
+                <img src="./img/Unknown-2.jpeg" alt="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="">Datos personales</a>
+            </td>
+            <td>
+                <a href="./horario.htmlr">Horario</a>
+            </td>
+            <td>
+                <a href="https://new.edmodo.com/?go2url=%2Fhome">Edmodo</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <table>
+                        <tr>
+                            <td colspan="4">
+                                <h3>Datos Personales</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre:</td>
+                            <td colspan="2">Luis Diego Jiménez Delgado</td>
+                            <td rowspan="8"><img src="./img/profile.jpg" alt="2" />
+                            <td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Nacimeinto:</td>
+                            <td colspan="2">3 de agosto del 2000</td>
+
+                        </tr>
+                        <tr>
+                            <td>Signo zodiacal:</td>
+                            <td colspan="2">Leo</td>
+
+                        </tr>
+                        <tr>
+                            <td>Direccion:</td>
+                            <td colspan="2">Corumbá 550, </td>
+
+                        </tr>
+                        <tr>
+                            <td>Correo Electrónico:</td>
+                            <td colspan="2"><a href="malito:luisjimenez6245@hotmail.com">luisjimenez6245@hotmail.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Twitter:</td>
+                            <td colspan="2"><a href="www.twitter.com/luisjimenez6245">luisjimenez6245</a></td>
+                        </tr>
+                        <tr>
+                            <td>Facebook:</td>
+                            <td colspan="2"><a href="www.facebook.com/luisjimenez6245">Luis Jiménez</a></td>
+                        </tr>
+                        <tr>
+                            <td>Intagram:</td>
+                            <td colspan="2"><a href="www.instagram.com/l_jimenez6245">l_jimenez6245</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <h3>Sitaucion Académica</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nivel Medio Superior:</td>
+                            <td colspan="2">Cecyt #9</td>
+                            <td rowspan="5"><img src="./img/Unknown-5.jpeg" alt="2" />
+                            <td>
+                        </tr>
+                        <tr>
+                            <td>Promedio:</td>
+                            <td colspan="2">8.8</td>
+
+                        </tr>
+                        <tr>
+                            <td>Nivel Superior:</td>
+                            <td colspan="2">ESCOM</td>
+
+                        </tr>
+                        <tr>
+                            <td>Promedio acutal:</td>
+                            <td colspan="2">8.0</td>
+
+                        </tr>
+                        <tr>
+                            <td>Semestre</td>
+                            <td colspan="2">3ro</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <h3>Otros Datos</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pasatiempo:</td>
+                            <td colspan="2"></td>
+                            <td rowspan="8"><img src="./img/Unknown-3.jpeg" alt="2" />
+                            <td>
+                        </tr>
+                        <tr>
+                            <td>Materias que me gustan:</td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>Teoría Computacional</li>
+                                    <li>Tecnologías Web</li>
+                                </ul>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Materias que menos me gustan:</td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>Teoría Computacional</li>
+                                    <li>Tecnologías Web</li>
+                                </ul>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Canción Favorita:</td>
+                            <td colspan="2">California Dreamin' - José Feliciano</td>
+
+                        </tr>
+                        <tr>
+                            <td>Pelicula Favorita:</td>
+                            <td colspan="2">El gato con botas </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <table class="morada">
+                        <tr>
+                            <td colspan="3">
+                                <h2>Noticias</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Incendios en el Amazonas</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                El gobierno de Brasil informó que rechazará la oferta de ayuda ofrecida por el grupo de
+                                países del G7 (Estados Unidos, Francia, Alemania, Japón, Canadá, Reino Unido e Italia)
+                                para ayudar a combatir los incendios que consumen la Amazonía.
+                                Este lunes, durante la cumbre de los líderes de los siete países en la localidad
+                                francesa de Biarritz, el presidente de Francia, Emmanuel Macron, informó sobre la
+                                creación de un fondo de US$22 millones para colaborar en la lucha contra el fuego.
+                                El G7 aprueba un fondo de US$22 millones para ayudar a combatir los incendios en el
+                                Amazonas
+                                "Agradecemos la oferta, pero tal vez esos recursos sean más útiles para reforestar a
+                                Europa", dijo tras el anuncio Onyx Lorenzoni, jefe de gabinete del presidente de Brasil,
+                                Jair Bolsonaro, según los medios brasileños.
+                                "Macron no pudo prevenir un incendio en una iglesia que es considerada patrimonio de la
+                                humanidad y ¿ahora quiere darnos lecciones?", agregó, en referencia a las llamas que
+                                devastaron la catedral de Notre Dame, en París, el pasado abril.
+                                El ministro de Medio Ambiente de Brasil, Ricardo Salles, había dicho que su país
+                                agradecería la financiación del G7, pero después de una reunión entre Bolsonaro y sus
+                                ministros el gobierno brasileño cambió el discurso.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Fake news, aportes de campaña y transparencia</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                A esta altura, con su sexta edición al hilo, la Media Party (https://mediaparty.info/es/
+                                ) es un evento tan instalado como indispensable: cada año desde 2014, alrededor de 2500
+                                emprendedores, periodistas, programadores de software y diseñadores de cinco continentes
+                                se dan cita para discutir, debatir, conocer y aprender sobre el presente –y sobre todo
+                                adivinar el futuro– del periodismo. Y como en cada edición, en ésta que se desarrollará
+                                entre el jueves 29 y el sábado 31 en la Ciudad Cultural Konex también aparecerán los
+                                casos que refrendan el quehacer correcto y señalan rumbos posibles, aunque nunca
+                                sellados, dicen. Es el ejemplo de ProPublica (https://www.propublica.org/ ), una
+                                organización sin fines de lucro dedicada al periodismo de investigación que, desde su
+                                inauguración en 2007, ha sido señalada en el mundo entero como el modelo a seguir, con
+                                su combinado de riqueza periodística, éxito financiero –mediante donaciones de
+                                importantes filántropos y aportes de los lectores– y la entrega de importantes
+                                investigaciones a grandes medios sin cobrarles por ello. Su objetivo es difundir lo que
+                                investigan.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h6>Me hackearon mi cuenta de Instagram y perdí mi negocio</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Bree Kotomah, una joven británica de 23 años, casi se dio por vencida en el momento más
+                                exitoso de su floreciente carrera como diseñadora de moda.
+                                En noviembre de 2018 unos piratas informáticos comprometieron la cuenta de Instagram de
+                                su marca Boresa Kotomah, que en ese momento solo contaba con la plataforma como forma de
+                                promoción y venta.
+                                "Desafortunadamente, en ese momento ejecutaba todo en Instagram, así que cuando mi
+                                cuenta desapareció, todo el negocio desapareció", le dijo la joven a BBC Radio 5 Live.
+                                Kotomah se despertó una mañana y su cuenta había sido eliminada.
+                                "Instagram decía que había violado algunos términos y que había hecho ciertas cosas que
+                                sé que no hice", expuso.s
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div>
+                    <table class="tablaroja">
+                        <tr>
+                            <td rowspan="3">
+                                <img src="./img/Unknown-4.jpeg" alt="" />
+                            </td>
+                            <td>
+                                Elaboró: Luis Diego Jiménez Delgado
+                            </td>
+                            <td rowspan="3">
+                                <img src="./img/Unknown.jpeg" alt="" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                Fecha: 27 de Agosto del 2019
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                Lugar: ESCOM
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+</body>
+
+</html>
