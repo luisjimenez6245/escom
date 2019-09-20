@@ -1,0 +1,167 @@
+(DELAYFILE
+  (SDFVERSION "3.0")
+  (DESIGN "Compuertas")
+  (DATE "Fri Sep 20 02:42:37 2019")
+  (VENDOR "Lattice")
+  (PROGRAM "ldbanno")
+  (VERSION "Diamond (64-bit) 3.11.0.396.4")
+  (DIVIDER /)
+  (VOLTAGE 1.26:1.20:1.14)
+  (PROCESS "default")
+  (TEMPERATURE -40:25:85)
+  (TIMESCALE 1ps)
+  (CELL
+    (CELLTYPE "SLICE_0")
+    (INSTANCE SLICE_0)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH C0 F0 (324:388:452)(324:388:452))
+        (IOPATH B0 F0 (324:388:452)(324:388:452))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "SLICE_1")
+    (INSTANCE SLICE_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH C0 F0 (324:388:452)(324:388:452))
+        (IOPATH B0 F0 (324:388:452)(324:388:452))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "A")
+    (INSTANCE A_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO A (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "B")
+    (INSTANCE B_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO B (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "C")
+    (INSTANCE C_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO C (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "D")
+    (INSTANCE D_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO D (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "E")
+    (INSTANCE E_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO E (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "F")
+    (INSTANCE F_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO F (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "G")
+    (INSTANCE G_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO G (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "AI")
+    (INSTANCE AI_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH AI PADDI (1223:1297:1372)(1223:1297:1372))
+      )
+    )
+    (TIMINGCHECK
+      (WIDTH (posedge AI) (3330:3330:3330))
+      (WIDTH (negedge AI) (3330:3330:3330))
+    )
+  )
+  (CELL
+    (CELLTYPE "BI")
+    (INSTANCE BI_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH BI PADDI (1223:1297:1372)(1223:1297:1372))
+      )
+    )
+    (TIMINGCHECK
+      (WIDTH (posedge BI) (3330:3330:3330))
+      (WIDTH (negedge BI) (3330:3330:3330))
+    )
+  )
+  (CELL
+    (CELLTYPE "CI")
+    (INSTANCE CI_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH CI PADDI (1223:1297:1372)(1223:1297:1372))
+      )
+    )
+    (TIMINGCHECK
+      (WIDTH (posedge CI) (3330:3330:3330))
+      (WIDTH (negedge CI) (3330:3330:3330))
+    )
+  )
+  (CELL
+    (CELLTYPE "DI")
+    (INSTANCE DI_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH DI PADDI (1223:1297:1372)(1223:1297:1372))
+      )
+    )
+    (TIMINGCHECK
+      (WIDTH (posedge DI) (3330:3330:3330))
+      (WIDTH (negedge DI) (3330:3330:3330))
+    )
+  )
+  (CELL
+    (CELLTYPE "Compuertas")
+    (INSTANCE )
+    (DELAY
+      (ABSOLUTE
+        (INTERCONNECT AI_I/PADDI SLICE_0/C0 (1340:1476:1613)(1340:1476:1613))
+        (INTERCONNECT AI_I/PADDI A_I/PADDO (2085:2233:2382)(2085:2233:2382))
+        (INTERCONNECT BI_I/PADDI SLICE_0/B0 (1592:1752:1913)(1592:1752:1913))
+        (INTERCONNECT BI_I/PADDI C_I/PADDO (1822:1964:2106)(1822:1964:2106))
+        (INTERCONNECT SLICE_0/F0 F_I/PADDO (1165:1269:1373)(1165:1269:1373))
+        (INTERCONNECT DI_I/PADDI SLICE_1/C0 (2521:2746:2971)(2521:2746:2971))
+        (INTERCONNECT DI_I/PADDI B_I/PADDO (2588:2781:2975)(2588:2781:2975))
+        (INTERCONNECT DI_I/PADDI E_I/PADDO (2965:3177:3390)(2965:3177:3390))
+        (INTERCONNECT CI_I/PADDI SLICE_1/B0 (2720:2947:3174)(2720:2947:3174))
+        (INTERCONNECT CI_I/PADDI D_I/PADDO (3251:3484:3717)(3251:3484:3717))
+        (INTERCONNECT SLICE_1/F0 G_I/PADDO (1210:1323:1437)(1210:1323:1437))
+      )
+    )
+  )
+)

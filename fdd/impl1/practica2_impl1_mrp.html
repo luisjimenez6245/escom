@@ -23,42 +23,127 @@ Target Vendor:  LATTICE
 Target Device:  LCMXO2-7000HETQFP144
 Target Performance:   5
 Mapper:  xo2c00,  version:  Diamond (64-bit) 3.11.0.396.4
-Mapped on:  09/20/19  01:06:34
+Mapped on:  09/20/19  02:42:24
 
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
+   Number of registers:      0 out of  7209 (0%)
+      PFU registers:            0 out of  6864 (0%)
+      PIO registers:            0 out of   345 (0%)
+   Number of SLICEs:         2 out of  3432 (0%)
+      SLICEs as Logic/ROM:      2 out of  3432 (0%)
+      SLICEs as RAM:            0 out of  2574 (0%)
+      SLICEs as Carry:          0 out of  3432 (0%)
+   Number of LUT4s:          2 out of  6864 (0%)
+      Number used as logic LUTs:          2
+      Number used as distributed RAM:     0
+      Number used as ripple logic:        0
+      Number used as shift registers:     0
+   Number of PIO sites used: 11 + 4(JTAG) out of 115 (13%)
+   Number of block RAMs:  0 out of 26 (0%)
+   Number of GSRs:        0 out of 1 (0%)
+   EFB used :        No
+   JTAG used :       No
+   Readback used :   No
+   Oscillator used : No
+   Startup used :    No
+   POR :             On
+   Bandgap :         On
+   Number of Power Controller:  0 out of 1 (0%)
+   Number of Dynamic Bank Controller (BCINRD):  0 out of 6 (0%)
+   Number of Dynamic Bank Controller (BCLVDSO):  0 out of 1 (0%)
+   Number of DCCA:  0 out of 8 (0%)
+   Number of DCMA:  0 out of 2 (0%)
+   Number of PLLs:  0 out of 2 (0%)
+   Number of DQSDLLs:  0 out of 2 (0%)
+   Number of CLKDIVC:  0 out of 4 (0%)
+   Number of ECLKSYNCA:  0 out of 4 (0%)
+   Number of ECLKBRIDGECS:  0 out of 2 (0%)
+   Notes:-
+      1. Total number of LUT4s = (Number of logic LUT4s) + 2*(Number of
+     distributed RAMs) + 2*(Number of ripple logic)
+      2. Number of logic LUT4s does not include count of distributed RAM and
+     ripple logic.
+   Number of clocks:  0
+   Number of Clock Enables:  0
+   Number of LSRs:  0
+
+   Number of nets driven by tri-state buffers:  0
+   Top 10 highest fanout non-clock nets:
+     Net E_c_c: 3 loads
+     Net A_c_c: 2 loads
+     Net C_c_c: 2 loads
+     Net D_c_c: 2 loads
+     Net F_c: 1 loads
+     Net G_c: 1 loads
 
 
 
 
-   Number of warnings:  2
-   Number of errors:    1
+   Number of warnings:  0
+   Number of errors:    0
      
+
 
 
 
 <A name="mrp_dwe"></A><B><U><big>Design Errors/Warnings</big></U></B>
 
-WARNING - map: input pad net 'A' has no legal load.
-WARNING - map: input pad net 'B' has no legal load.
-ERROR - map: Design is empty.
+   No errors or warnings present.
 
 
 
 <A name="mrp_ioa"></A><B><U><big>IO (PIO) Attributes</big></U></B>
 
-   IO attributes information not available.
++---------------------+-----------+-----------+------------+
+| IO Name             | Direction | Levelmode | IO         |
+|                     |           |  IO_TYPE  | Register   |
++---------------------+-----------+-----------+------------+
+| A                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| B                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| C                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| D                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| E                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| F                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| G                   | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AI                  | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| BI                  | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| CI                  | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DI                  | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
 
 
 
 <A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
 
-Block i24 undriven or does not drive anything - clipped.
+Block i26 undriven or does not drive anything - clipped.
 Block GSR_INST undriven or does not drive anything - clipped.
-Block i23 undriven or does not drive anything - clipped.
+
+Block i25 undriven or does not drive anything - clipped.
 Signal VCC_net undriven or does not drive anything - clipped.
 Signal GND_net undriven or does not drive anything - clipped.
 
+     
+
+
+
+<A name="mrp_runtime"></A><B><U><big>Run Time and Memory Usage</big></U></B>
+-------------------------
+
+   Total CPU Time: 0 secs  
+   Total REAL Time: 0 secs  
+   Peak Memory Usage: 57 MB
+        
 
 
 
@@ -78,8 +163,32 @@ Signal GND_net undriven or does not drive anything - clipped.
 
 
 
-ASIC Components
----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
      Copyright (c) 1995 AT&T Corp.   All rights reserved.

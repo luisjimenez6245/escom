@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BaliMessageLog>
-    <Task name="Map">
+    <Task name="MapVerilogSimFile">
         <Message>
-            <ID>1166064</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>input</Dynamic>
-            <Dynamic>A</Dynamic>
+            <ID>35400250</ID>
+            <Severity>Info</Severity>
+            <Dynamic>0</Dynamic>
         </Message>
+    </Task>
+    <Task name="MapVHDLSimFile">
         <Message>
-            <ID>1166064</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>input</Dynamic>
-            <Dynamic>B</Dynamic>
+            <ID>35400250</ID>
+            <Severity>Info</Severity>
+            <Dynamic>0</Dynamic>
         </Message>
+    </Task>
+    <Task name="IBIS">
         <Message>
-            <ID>51001032</ID>
-            <Severity>Error</Severity>
-        </Message>
-        <Message>
-            <ID>51001088</ID>
+            <ID>1191031</ID>
             <Severity>Info</Severity>
         </Message>
     </Task>
@@ -30,11 +28,6 @@
         <Message>
             <ID>35001781</ID>
             <Severity>Info</Severity>
-        </Message>
-        <Message>
-            <ID>35001200</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>Compuertas</Dynamic>
         </Message>
         <Message>
             <ID>35921504</ID>
@@ -51,70 +44,25 @@
             <Navigation>3</Navigation>
         </Message>
         <Message>
-            <ID>35921012</ID>
+            <ID>35921010</ID>
             <Severity>Info</Severity>
-            <Dynamic>c:/users/luisj/documents/github/escom/fdd/segments1.vhd(3): </Dynamic>
-            <Dynamic>compuertas</Dynamic>
+            <Dynamic>c:/users/luisj/documents/github/escom/fdd/segments1.vhd(18): </Dynamic>
+            <Dynamic>cmp</Dynamic>
             <Navigation>c:/users/luisj/documents/github/escom/fdd/segments1.vhd</Navigation>
-            <Navigation>3</Navigation>
+            <Navigation>18</Navigation>
         </Message>
         <Message>
-            <ID>35921404</ID>
+            <ID>35921205</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/luisj/documents/github/escom/fdd/segments1.vhd(8): </Dynamic>
-            <Dynamic>compuertas</Dynamic>
+            <Dynamic>c:/users/luisj/documents/github/escom/fdd/segments1.vhd(17): </Dynamic>
+            <Dynamic>Compuertas</Dynamic>
+            <Dynamic>Cmp</Dynamic>
             <Navigation>c:/users/luisj/documents/github/escom/fdd/segments1.vhd</Navigation>
-            <Navigation>8</Navigation>
-        </Message>
-        <Message>
-            <ID>35002005</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>A</Dynamic>
-        </Message>
-        <Message>
-            <ID>35002005</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>B</Dynamic>
-        </Message>
-        <Message>
-            <ID>35002005</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>A</Dynamic>
-        </Message>
-        <Message>
-            <ID>35002005</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>B</Dynamic>
+            <Navigation>17</Navigation>
         </Message>
         <Message>
             <ID>35001611</ID>
             <Severity>Warning</Severity>
-        </Message>
-        <Message>
-            <ID>1166052</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>logical</Dynamic>
-            <Dynamic>A</Dynamic>
-            <Navigation>A</Navigation>
-        </Message>
-        <Message>
-            <ID>1166064</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>input</Dynamic>
-            <Dynamic>A</Dynamic>
-        </Message>
-        <Message>
-            <ID>1166052</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>logical</Dynamic>
-            <Dynamic>B</Dynamic>
-            <Navigation>B</Navigation>
-        </Message>
-        <Message>
-            <ID>1166064</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>input</Dynamic>
-            <Dynamic>B</Dynamic>
         </Message>
         <Message>
             <ID>1166052</ID>
@@ -126,7 +74,29 @@
         <Message>
             <ID>1163101</ID>
             <Severity>Warning</Severity>
+            <Dynamic>1</Dynamic>
+        </Message>
+    </Task>
+    <Task name="PAR">
+        <Message>
+            <ID>61061038</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>a</Dynamic>
             <Dynamic>5</Dynamic>
+        </Message>
+    </Task>
+    <Task name="TimingSimFileVHD">
+        <Message>
+            <ID>35400250</ID>
+            <Severity>Info</Severity>
+            <Dynamic>0</Dynamic>
+        </Message>
+    </Task>
+    <Task name="TimingSimFileVlg">
+        <Message>
+            <ID>35400250</ID>
+            <Severity>Info</Severity>
+            <Dynamic>0</Dynamic>
         </Message>
     </Task>
 </BaliMessageLog>

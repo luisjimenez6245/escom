@@ -2,15 +2,26 @@ Library IEEE;
 Use IEEE.STD_LOGIC_1164.ALL;
 entity Compuertas is
 	port(
-		A : in STD_LOGIC;
-		B : in STD_LOGIC;
-		S1 : out STD_LOGIC;
-		S2 : out STD_LOGIC;
-		S3 : out STD_LOGIC;
-		S4 : out STD_LOGIC;
-		S5 : out STD_LOGIC;
-		S6 : out STD_LOGIC;
-		S7 : out STD_LOGIC
-
+		AI : in STD_LOGIC;
+		BI : in STD_LOGIC;
+		CI :  in STD_LOGIC;
+		DI :  in STD_LOGIC;
+		A : out STD_LOGIC;
+		B : out STD_LOGIC;
+		C : out STD_LOGIC;
+		D : out STD_LOGIC;
+		E : out STD_LOGIC;
+		F : out STD_LOGIC;
+		G : out STD_LOGIC
 	);
 end Compuertas;
+architecture Cmp of Compuertas is
+begin
+	A <= AI;
+	B <= DI;
+	C <= BI;
+	D <= CI;
+	E <= DI;
+	F <= AI and BI;
+	G <= DI and CI;
+end Cmp;

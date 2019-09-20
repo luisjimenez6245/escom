@@ -1,0 +1,8 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N:"C:\Users\luisj\Documents\GitHub\escom\fdd\Segments1.vhd":3:7:3:16|Top entity is set to Compuertas.
+@N: CD630 :"C:\Users\luisj\Documents\GitHub\escom\fdd\Segments1.vhd":3:7:3:16|Synthesizing work.compuertas.cmp.
+@N|Running in 64-bit mode
+@N: NF107 :"C:\Users\luisj\Documents\GitHub\escom\fdd\Segments1.vhd":3:7:3:16|Selected library: work cell: Compuertas view cmp as top level
+@N: NF107 :"C:\Users\luisj\Documents\GitHub\escom\fdd\Segments1.vhd":3:7:3:16|Selected library: work cell: Compuertas view cmp as top level
+

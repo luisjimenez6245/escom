@@ -18,17 +18,54 @@
 <unit name = "Compuertas">
 
     <!--
-        Top Level Pins: 2
+        Top Level Pins: 11
     -->
 
     <pins>
-        <pitem  name = "A"  direction = "in"  />
-        <pitem  name = "B"  direction = "in"  />
+        <pitem  name = "AI"  direction = "in"  />
+        <pitem  name = "BI"  direction = "in"  />
+        <pitem  name = "CI"  direction = "in"  />
+        <pitem  name = "DI"  direction = "in"  />
+        <pitem  name = "A"  direction = "out"  />
+        <pitem  name = "B"  direction = "out"  />
+        <pitem  name = "C"  direction = "out"  />
+        <pitem  name = "D"  direction = "out"  />
+        <pitem  name = "E"  direction = "out"  />
+        <pitem  name = "F"  direction = "out"  />
+        <pitem  name = "G"  direction = "out"  />
     </pins>
 
     <!--
-        Instances in netlist: 0
+        Instances in netlist: 2
     -->
+
+    <instance  name = "AI_I_0"  library = "work"  arch = "RTL"  type = "comb">
+        <pins>
+        <pitem  name = "a0"  direction = "in"  />
+        <pitem  name = "a1"  direction = "in"  />
+        <pitem  name = "o"  direction = "out"  />
+        </pins>
+
+        <nets>
+        <nitem  name = "AI"  />
+        <nitem  name = "BI"  />
+        <nitem  name = "F"  />
+        </nets>
+    </instance>
+
+    <instance  name = "DI_I_0"  library = "work"  arch = "RTL"  type = "comb">
+        <pins>
+        <pitem  name = "a0"  direction = "in"  />
+        <pitem  name = "a1"  direction = "in"  />
+        <pitem  name = "o"  direction = "out"  />
+        </pins>
+
+        <nets>
+        <nitem  name = "DI"  />
+        <nitem  name = "CI"  />
+        <nitem  name = "G"  />
+        </nets>
+    </instance>
 
     <!--
         Views in design "Compuertas": 0

@@ -1,0 +1,212 @@
+
+// Verilog netlist produced by program ldbanno, Version Diamond (64-bit) 3.11.0.396.4
+
+// ldbanno -n Verilog -o practica2_impl1_mapvo.vo -w -neg -gui -msgset C:/Users/luisj/Documents/GitHub/escom/fdd/promote.xml practica2_impl1_map.ncd 
+// Netlist created on Fri Sep 20 02:42:24 2019
+// Netlist written on Fri Sep 20 02:42:27 2019
+// Design is for device LCMXO2-7000HE
+// Design is for package TQFP144
+// Design is for performance grade 5
+
+`timescale 1 ns / 1 ps
+
+module Compuertas ( AI, BI, CI, DI, A, B, C, D, E, F, G );
+  input  AI, BI, CI, DI;
+  output A, B, C, D, E, F, G;
+  wire   C_c_c, A_c_c, F_c, D_c_c, E_c_c, G_c, VCCI;
+
+  SLICE_0 SLICE_0( .B0(C_c_c), .A0(A_c_c), .F0(F_c));
+  SLICE_1 SLICE_1( .B0(D_c_c), .A0(E_c_c), .F0(G_c));
+  A A_I( .PADDO(A_c_c), .A(A));
+  B B_I( .PADDO(E_c_c), .B(B));
+  C C_I( .PADDO(C_c_c), .C(C));
+  D D_I( .PADDO(D_c_c), .D(D));
+  E E_I( .PADDO(E_c_c), .E(E));
+  F F_I( .PADDO(F_c), .F(F));
+  G G_I( .PADDO(G_c), .G(G));
+  AI AI_I( .PADDI(A_c_c), .AI(AI));
+  BI BI_I( .PADDI(C_c_c), .BI(BI));
+  CI CI_I( .PADDI(D_c_c), .CI(CI));
+  DI DI_I( .PADDI(E_c_c), .DI(DI));
+  VHI VHI_INST( .Z(VCCI));
+  PUR PUR_INST( .PUR(VCCI));
+  GSR GSR_INST( .GSR(VCCI));
+endmodule
+
+module SLICE_0 ( input B0, A0, output F0 );
+  wire   GNDI;
+
+  lut4 AI_I_0_2_lut( .A(A0), .B(B0), .C(GNDI), .D(GNDI), .Z(F0));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (B0 => F0) = (0:0:0,0:0:0);
+    (A0 => F0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module lut4 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'h8888) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module gnd ( output PWR0 );
+
+  VLO INST1( .Z(PWR0));
+endmodule
+
+module SLICE_1 ( input B0, A0, output F0 );
+  wire   GNDI;
+
+  lut4 DI_I_0_2_lut( .A(A0), .B(B0), .C(GNDI), .D(GNDI), .Z(F0));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (B0 => F0) = (0:0:0,0:0:0);
+    (A0 => F0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module A ( input PADDO, output A );
+  wire   GNDI;
+
+  xo2iobuf A_pad( .I(PADDO), .T(GNDI), .PAD(A));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => A) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module xo2iobuf ( input I, T, output PAD );
+
+  OBZPD INST5( .I(I), .T(T), .O(PAD));
+endmodule
+
+module B ( input PADDO, output B );
+  wire   GNDI;
+
+  xo2iobuf B_pad( .I(PADDO), .T(GNDI), .PAD(B));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => B) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module C ( input PADDO, output C );
+  wire   GNDI;
+
+  xo2iobuf C_pad( .I(PADDO), .T(GNDI), .PAD(C));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => C) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module D ( input PADDO, output D );
+  wire   GNDI;
+
+  xo2iobuf D_pad( .I(PADDO), .T(GNDI), .PAD(D));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => D) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module E ( input PADDO, output E );
+  wire   GNDI;
+
+  xo2iobuf E_pad( .I(PADDO), .T(GNDI), .PAD(E));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => E) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module F ( input PADDO, output F );
+  wire   GNDI;
+
+  xo2iobuf F_pad( .I(PADDO), .T(GNDI), .PAD(F));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => F) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module G ( input PADDO, output G );
+  wire   GNDI;
+
+  xo2iobuf G_pad( .I(PADDO), .T(GNDI), .PAD(G));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => G) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module AI ( output PADDI, input AI );
+
+  xo2iobuf0001 A_c_pad( .Z(PADDI), .PAD(AI));
+
+  specify
+    (AI => PADDI) = (0:0:0,0:0:0);
+    $width (posedge AI, 0:0:0);
+    $width (negedge AI, 0:0:0);
+  endspecify
+
+endmodule
+
+module xo2iobuf0001 ( output Z, input PAD );
+
+  IBPD INST1( .I(PAD), .O(Z));
+endmodule
+
+module BI ( output PADDI, input BI );
+
+  xo2iobuf0001 C_c_pad( .Z(PADDI), .PAD(BI));
+
+  specify
+    (BI => PADDI) = (0:0:0,0:0:0);
+    $width (posedge BI, 0:0:0);
+    $width (negedge BI, 0:0:0);
+  endspecify
+
+endmodule
+
+module CI ( output PADDI, input CI );
+
+  xo2iobuf0001 D_c_pad( .Z(PADDI), .PAD(CI));
+
+  specify
+    (CI => PADDI) = (0:0:0,0:0:0);
+    $width (posedge CI, 0:0:0);
+    $width (negedge CI, 0:0:0);
+  endspecify
+
+endmodule
+
+module DI ( output PADDI, input DI );
+
+  xo2iobuf0001 E_c_pad( .Z(PADDI), .PAD(DI));
+
+  specify
+    (DI => PADDI) = (0:0:0,0:0:0);
+    $width (posedge DI, 0:0:0);
+    $width (negedge DI, 0:0:0);
+  endspecify
+
+endmodule
