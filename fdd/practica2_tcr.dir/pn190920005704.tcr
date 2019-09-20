@@ -1,0 +1,10 @@
+#Start recording tcl command: 9/20/2019 00:52:58
+#Project Location: C:/Users/luisj/Documents/GitHub/escom/fdd; Project name: practica2
+prj_project open "C:/Users/luisj/Documents/GitHub/escom/fdd/practica2.ldf"
+prj_src add "C:/Users/luisj/Documents/GitHub/escom/fdd/Segments1.vhd"
+prj_run Map -impl impl1 -task MapTrace
+prj_run Map -impl impl1
+prj_run Synthesis -impl impl1
+prj_project save
+prj_project close
+#Stop recording: 9/20/2019 00:57:04

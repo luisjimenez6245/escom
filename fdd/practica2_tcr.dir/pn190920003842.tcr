@@ -1,0 +1,6 @@
+#Start recording tcl command: 9/20/2019 00:34:16
+#Project Location: C:/Users/luisj/Documents/GitHub/escom/fdd; Project name: practica2
+prj_project new -name "practica2" -impl "impl1" -dev LCMXO2-7000HE-5TG144C -synthesis "lse"
+prj_project save
+prj_project close
+#Stop recording: 9/20/2019 00:38:42
