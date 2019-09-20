@@ -1,1 +1,78 @@
-{"items": [{"linea":0,"caracter": 0, "word":"#include"},{"linea":4,"caracter": 25, "word":"int"},{"linea":8,"caracter": 19, "word":"const"},{"linea":10,"caracter": 4, "word":"char"},{"linea":11,"caracter": 4, "word":"int"},{"linea":18,"caracter": 4, "word":"for"},{"linea":22,"caracter": 8, "word":"for"},{"linea":28,"caracter": 4, "word":"return"},{"linea":31,"caracter": 25, "word":"int"},{"linea":33,"caracter": 4, "word":"char"},{"linea":36,"caracter": 4, "word":"int"},{"linea":37,"caracter": 4, "word":"for"},{"linea":40,"caracter": 8, "word":"if"}],"repeticiones" : {"#include": 1, "int": 4, "const": 1, "char": 2, "for": 3, "return": 1, "if": 1}}
+{
+    "items": [
+        {
+            "linea": 0,
+            "caracter": 0,
+            "word": "#include"
+        },
+        {
+            "linea": 4,
+            "caracter": 25,
+            "word": "int"
+        },
+        {
+            "linea": 8,
+            "caracter": 19,
+            "word": "const"
+        },
+        {
+            "linea": 10,
+            "caracter": 4,
+            "word": "char"
+        },
+        {
+            "linea": 11,
+            "caracter": 4,
+            "word": "int"
+        },
+        {
+            "linea": 18,
+            "caracter": 4,
+            "word": "for"
+        },
+        {
+            "linea": 22,
+            "caracter": 8,
+            "word": "for"
+        },
+        {
+            "linea": 28,
+            "caracter": 4,
+            "word": "return"
+        },
+        {
+            "linea": 31,
+            "caracter": 25,
+            "word": "int"
+        },
+        {
+            "linea": 33,
+            "caracter": 4,
+            "word": "char"
+        },
+        {
+            "linea": 36,
+            "caracter": 4,
+            "word": "int"
+        },
+        {
+            "linea": 37,
+            "caracter": 4,
+            "word": "for"
+        },
+        {
+            "linea": 40,
+            "caracter": 8,
+            "word": "if"
+        }
+    ],
+    "repeticiones": {
+        "#include": 1,
+        "int": 4,
+        "const": 1,
+        "char": 2,
+        "for": 3,
+        "return": 1,
+        "if": 1
+    }
+}

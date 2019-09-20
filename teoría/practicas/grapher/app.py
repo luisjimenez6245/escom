@@ -1,8 +1,8 @@
 import numpy as np
 import files as Files
+import matplotlib.pyplot as plt
 import sys
 import csv
-
 
 file_name =  '/Volumes/FILES/files/'
 name = "spaces"
@@ -26,3 +26,13 @@ with open(path_c, 'a') as csvFile:
             writer.writerow((aux,i))
             i = i +1
 csvFile.close()
+
+
+x, y = np.loadtxt(path_c, delimiter=',', unpack=True)
+plt.plot(x,y, label='')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Gráfica')
+plt.legend()
+plt.show()
