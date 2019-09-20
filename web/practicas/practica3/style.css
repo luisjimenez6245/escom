@@ -1,0 +1,201 @@
+table.azuladdo {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.azuladdo td,
+table.azuladdo th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.azuladdo tbody td {
+    font-size: 13px;
+}
+
+table.azuladdo tr:nth-child(even) {
+    background: #D0E4F5;
+}
+
+table.azuladdo thead {
+    background: #A4196C;
+    background: -moz-linear-gradient(top, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+    background: -webkit-linear-gradient(top, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+    background: linear-gradient(to bottom, #bb5291 0%, #ad307a 66%, #A4196C 100%);
+    border-bottom: 2px solid #444444;
+}
+
+table.azuladdo thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+
+table.azuladdo thead th:first-child {
+    border-left: none;
+}
+
+table.azuladdo tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 2px solid #444444;
+}
+
+table.azuladdo tfoot td {
+    font-size: 14px;
+}
+
+table.azuladdo tfoot .links {
+    text-align: right;
+}
+
+table.azuladdo tfoot .links a {
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+table.tablaroja {
+    
+    border: 2px solid #A40808;
+    background-color: #EEE7DB;
+    width: 100% !important;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.tablaroja td,
+table.tablaroja th {
+    border: 0px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.tablaroja tbody td {
+    font-size: 13px;
+}
+
+table.tablaroja tr:nth-child(even) {
+    background: #F5C8BF;
+}
+
+table.tablaroja thead {
+    background: #A40808;
+}
+
+table.tablaroja thead th {
+    font-size: 19px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #A40808;
+}
+
+table.tablaroja thead th:first-child {
+    border-left: none;
+}
+
+table.tablaroja tfoot {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #A40808;
+}
+
+table.tablaroja tfoot td {
+    font-size: 13px;
+}
+
+table.tablaroja tfoot .links {
+    text-align: right;
+}
+
+table.tablaroja tfoot .links a {
+    display: inline-block;
+    background: #FFFFFF;
+    color: #A40808;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+table.morada {
+    border: 4px solid #966996;
+    background-color: #555555;
+    width: 100%;;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.morada td,
+table.morada th {
+    border: 0px solid #555555;
+    padding: 5px 2px;
+}
+
+table.morada tbody td {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+table.morada tr:nth-child(even) {
+    background: #FC003F;
+}
+
+table.morada td:nth-child(even) {
+    background: #FCB4B4;
+}
+
+table.morada thead {
+    background: #969696;
+    border-bottom: 4px solid #969696;
+}
+
+table.morada thead th {
+    font-size: 19px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: left;
+    border-left: 2px solid #969696;
+}
+
+table.morada thead th:first-child {
+    border-left: none;
+}
+
+table.morada tfoot {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #FFFFFF;
+    background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+    border-top: 5px solid #969696;
+}
+
+table.morada tfoot td {
+    font-size: 13px;
+}
+
+table.morada tfoot .links {
+    text-align: right;
+}
+
+table.morada tfoot .links a {
+    display: inline-block;
+    background: #969696;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
