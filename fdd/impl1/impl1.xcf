@@ -20,14 +20,15 @@
 				<BScanVal>0</BScanVal>
 			</Bypass>
 			<File>C:/Users/luisj/Documents/GitHub/escom/fdd/impl1/practica2_impl1.jed</File>
-			<FileTime>09/20/19 01:45:31</FileTime>
-			<JedecChecksum>0x643A</JedecChecksum>
+			<FileTime>09/22/19 16:04:40</FileTime>
+			<JedecChecksum>0x7936</JedecChecksum>
 			<Operation>FLASH Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
 				<IOState>HighZ</IOState>
 				<PreloadLength>664</PreloadLength>
 				<IOVectorData>0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</IOVectorData>
+				<SVFProcessor>SVF Processor</SVFProcessor>
 				<Usercode>0x00000000</Usercode>
 				<AccessMode>FLASH</AccessMode>
 			</Option>

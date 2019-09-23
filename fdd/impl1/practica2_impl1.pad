@@ -6,24 +6,24 @@ Performance Grade:      5
 PACKAGE:          TQFP144
 Package Status:                     Final          Version 1.39
 
-Fri Sep 20 02:42:30 2019
+Sun Sep 22 21:13:45 2019
 
 Pinout by Port Name:
-+-----------+----------+--------------+-------+-----------+-----------+--------------------------------------+
-| Port Name | Pin/Bank | Buffer Type  | Site  | PG Enable | BC Enable | Properties                           |
-+-----------+----------+--------------+-------+-----------+-----------+--------------------------------------+
-| A         | 35/3     | LVCMOS25_OUT | PL25B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| AI        | 38/2     | LVCMOS25_IN  | PB4A  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
-| B         | 34/3     | LVCMOS25_OUT | PL25A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| BI        | 39/2     | LVCMOS25_IN  | PB4B  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
-| C         | 33/3     | LVCMOS25_OUT | PL24B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| CI        | 45/2     | LVCMOS25_IN  | PB12B |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
-| D         | 32/3     | LVCMOS25_OUT | PL24A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| DI        | 44/2     | LVCMOS25_IN  | PB12A |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
-| E         | 28/3     | LVCMOS25_OUT | PL22B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| F         | 27/3     | LVCMOS25_OUT | PL22A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-| G         | 26/3     | LVCMOS25_OUT | PL19B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
-+-----------+----------+--------------+-------+-----------+-----------+--------------------------------------+
++-----------------+----------+--------------+-------+-----------+-----------+--------------------------------------+
+| Port Name       | Pin/Bank | Buffer Type  | Site  | PG Enable | BC Enable | Properties                           |
++-----------------+----------+--------------+-------+-----------+-----------+--------------------------------------+
+| display[0]      | 35/3     | LVCMOS25_OUT | PL25B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[1]      | 34/3     | LVCMOS25_OUT | PL25A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[2]      | 33/3     | LVCMOS25_OUT | PL24B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[3]      | 32/3     | LVCMOS25_OUT | PL24A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[4]      | 28/3     | LVCMOS25_OUT | PL22B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[5]      | 27/3     | LVCMOS25_OUT | PL22A |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| display[6]      | 26/3     | LVCMOS25_OUT | PL19B |           |           | DRIVE:8mA PULL:DOWN SLEW:SLOW        |
+| input_number[0] | 38/2     | LVCMOS25_IN  | PB4A  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
+| input_number[1] | 40/2     | LVCMOS25_IN  | PB6A  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
+| input_number[2] | 39/2     | LVCMOS25_IN  | PB4B  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
+| input_number[3] | 41/2     | LVCMOS25_IN  | PB6B  |           |           | PULL:DOWN CLAMP:ON HYSTERESIS:SMALL  |
++-----------------+----------+--------------+-------+-----------+-----------+--------------------------------------+
 
 Vccio by Bank:
 +------+-------+
@@ -64,22 +64,22 @@ Pinout by Pin Number:
 | 23/4     |     unused, PULL:DOWN |            |              | PL17A |                |           |           |
 | 24/4     |     unused, PULL:DOWN |            |              | PL17B |                |           |           |
 | 25/3     |     unused, PULL:DOWN |            |              | PL19A |                |           |           |
-| 26/3     | G                     | LOCATED    | LVCMOS25_OUT | PL19B |                |           |           |
-| 27/3     | F                     | LOCATED    | LVCMOS25_OUT | PL22A | PCLKT3_0       |           |           |
-| 28/3     | E                     | LOCATED    | LVCMOS25_OUT | PL22B | PCLKC3_0       |           |           |
+| 26/3     | display[6]            | LOCATED    | LVCMOS25_OUT | PL19B |                |           |           |
+| 27/3     | display[5]            | LOCATED    | LVCMOS25_OUT | PL22A | PCLKT3_0       |           |           |
+| 28/3     | display[4]            | LOCATED    | LVCMOS25_OUT | PL22B | PCLKC3_0       |           |           |
 | 31/3     |     unused, PULL:DOWN |            |              | PL23D |                |           |           |
-| 32/3     | D                     | LOCATED    | LVCMOS25_OUT | PL24A |                |           |           |
-| 33/3     | C                     | LOCATED    | LVCMOS25_OUT | PL24B |                |           |           |
-| 34/3     | B                     | LOCATED    | LVCMOS25_OUT | PL25A |                |           |           |
-| 35/3     | A                     | LOCATED    | LVCMOS25_OUT | PL25B |                |           |           |
-| 38/2     | AI                    | LOCATED    | LVCMOS25_IN  | PB4A  |                |           |           |
-| 39/2     | BI                    | LOCATED    | LVCMOS25_IN  | PB4B  |                |           |           |
-| 40/2     |     unused, PULL:DOWN |            |              | PB6A  | CSSPIN         |           |           |
-| 41/2     |     unused, PULL:DOWN |            |              | PB6B  |                |           |           |
+| 32/3     | display[3]            | LOCATED    | LVCMOS25_OUT | PL24A |                |           |           |
+| 33/3     | display[2]            | LOCATED    | LVCMOS25_OUT | PL24B |                |           |           |
+| 34/3     | display[1]            | LOCATED    | LVCMOS25_OUT | PL25A |                |           |           |
+| 35/3     | display[0]            | LOCATED    | LVCMOS25_OUT | PL25B |                |           |           |
+| 38/2     | input_number[0]       | LOCATED    | LVCMOS25_IN  | PB4A  |                |           |           |
+| 39/2     | input_number[2]       | LOCATED    | LVCMOS25_IN  | PB4B  |                |           |           |
+| 40/2     | input_number[1]       | LOCATED    | LVCMOS25_IN  | PB6A  | CSSPIN         |           |           |
+| 41/2     | input_number[3]       | LOCATED    | LVCMOS25_IN  | PB6B  |                |           |           |
 | 42/2     |     unused, PULL:DOWN |            |              | PB9A  |                |           |           |
 | 43/2     |     unused, PULL:DOWN |            |              | PB9B  |                |           |           |
-| 44/2     | DI                    | LOCATED    | LVCMOS25_IN  | PB12A | MCLK/CCLK      |           |           |
-| 45/2     | CI                    | LOCATED    | LVCMOS25_IN  | PB12B | SO/SPISO       |           |           |
+| 44/2     |     unused, PULL:DOWN |            |              | PB12A | MCLK/CCLK      |           |           |
+| 45/2     |     unused, PULL:DOWN |            |              | PB12B | SO/SPISO       |           |           |
 | 47/2     |     unused, PULL:DOWN |            |              | PB13A |                |           |           |
 | 48/2     |     unused, PULL:DOWN |            |              | PB13B |                |           |           |
 | 49/2     |     unused, PULL:DOWN |            |              | PB16A | PCLKT2_0       |           |           |
@@ -397,17 +397,17 @@ Dedicated sysCONFIG Pins:
 List of All Pins' Locate Preferences Based on Final Placement After PAR 
 to Help Users Lock Down ALL the Pins Easily (by Simply Copy & Paste): 
 
-LOCATE  COMP  "A"  SITE  "35";
-LOCATE  COMP  "AI"  SITE  "38";
-LOCATE  COMP  "B"  SITE  "34";
-LOCATE  COMP  "BI"  SITE  "39";
-LOCATE  COMP  "C"  SITE  "33";
-LOCATE  COMP  "CI"  SITE  "45";
-LOCATE  COMP  "D"  SITE  "32";
-LOCATE  COMP  "DI"  SITE  "44";
-LOCATE  COMP  "E"  SITE  "28";
-LOCATE  COMP  "F"  SITE  "27";
-LOCATE  COMP  "G"  SITE  "26";
+LOCATE  COMP  "display[0]"  SITE  "35";
+LOCATE  COMP  "display[1]"  SITE  "34";
+LOCATE  COMP  "display[2]"  SITE  "33";
+LOCATE  COMP  "display[3]"  SITE  "32";
+LOCATE  COMP  "display[4]"  SITE  "28";
+LOCATE  COMP  "display[5]"  SITE  "27";
+LOCATE  COMP  "display[6]"  SITE  "26";
+LOCATE  COMP  "input_number[0]"  SITE  "38";
+LOCATE  COMP  "input_number[1]"  SITE  "40";
+LOCATE  COMP  "input_number[2]"  SITE  "39";
+LOCATE  COMP  "input_number[3]"  SITE  "41";
 
 
 
@@ -419,5 +419,5 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2019 Lattice Semiconductor Corporation,  All rights reserved.
-Fri Sep 20 02:42:30 2019
+Sun Sep 22 21:13:45 2019
 

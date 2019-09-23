@@ -1,19 +1,19 @@
 NOTE Copyright (C), 1992-2010, Lattice Semiconductor Corporation *
 NOTE All Rights Reserved *
-NOTE DATE CREATED: Fri Sep 20 02:42:47 2019 *
+NOTE DATE CREATED: Sun Sep 22 21:13:58 2019 *
 NOTE DESIGN NAME: Compuertas *
 NOTE DEVICE NAME: LCMXO2-7000HE-5TQFP144 *
 NOTE PIN ASSIGNMENTS *
-NOTE PINS A : 35 : out *
-NOTE PINS B : 34 : out *
-NOTE PINS C : 33 : out *
-NOTE PINS D : 32 : out *
-NOTE PINS E : 28 : out *
-NOTE PINS F : 27 : out *
-NOTE PINS G : 26 : out *
-NOTE PINS AI : 38 : in *
-NOTE PINS BI : 39 : in *
-NOTE PINS CI : 45 : in *
-NOTE PINS DI : 44 : in *
+NOTE PINS input_number[0] : 38 : in *
+NOTE PINS input_number[1] : 40 : in *
+NOTE PINS input_number[2] : 39 : in *
+NOTE PINS input_number[3] : 41 : in *
+NOTE PINS display[0] : 35 : out *
+NOTE PINS display[1] : 34 : out *
+NOTE PINS display[2] : 33 : out *
+NOTE PINS display[3] : 32 : out *
+NOTE PINS display[4] : 28 : out *
+NOTE PINS display[5] : 27 : out *
+NOTE PINS display[6] : 26 : out *
 NOTE CONFIGURATION MODE: NONE *
 NOTE COMPRESSION: on *

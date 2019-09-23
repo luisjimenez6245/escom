@@ -2,44 +2,67 @@
 // Verilog netlist produced by program ldbanno, Version Diamond (64-bit) 3.11.0.396.4
 
 // ldbanno -n Verilog -o practica2_impl1_mapvo.vo -w -neg -gui -msgset C:/Users/luisj/Documents/GitHub/escom/fdd/promote.xml practica2_impl1_map.ncd 
-// Netlist created on Fri Sep 20 02:42:24 2019
-// Netlist written on Fri Sep 20 02:42:27 2019
+// Netlist created on Sun Sep 22 21:13:39 2019
+// Netlist written on Sun Sep 22 21:13:42 2019
 // Design is for device LCMXO2-7000HE
 // Design is for package TQFP144
 // Design is for performance grade 5
 
 `timescale 1 ns / 1 ps
 
-module Compuertas ( AI, BI, CI, DI, A, B, C, D, E, F, G );
-  input  AI, BI, CI, DI;
-  output A, B, C, D, E, F, G;
-  wire   C_c_c, A_c_c, F_c, D_c_c, E_c_c, G_c, VCCI;
+module Compuertas ( input_number, display );
+  input  [3:0] input_number;
+  output [6:0] display;
+  wire   input_number_c_2, input_number_c_1, input_number_c_3, 
+         input_number_c_0, display_c_0, display_c_6, display_c_3, display_c_5, 
+         display_c_1, display_c_4, display_c_2, VCCI;
 
-  SLICE_0 SLICE_0( .B0(C_c_c), .A0(A_c_c), .F0(F_c));
-  SLICE_1 SLICE_1( .B0(D_c_c), .A0(E_c_c), .F0(G_c));
-  A A_I( .PADDO(A_c_c), .A(A));
-  B B_I( .PADDO(E_c_c), .B(B));
-  C C_I( .PADDO(C_c_c), .C(C));
-  D D_I( .PADDO(D_c_c), .D(D));
-  E E_I( .PADDO(E_c_c), .E(E));
-  F F_I( .PADDO(F_c), .F(F));
-  G G_I( .PADDO(G_c), .G(G));
-  AI AI_I( .PADDI(A_c_c), .AI(AI));
-  BI BI_I( .PADDI(C_c_c), .BI(BI));
-  CI CI_I( .PADDI(D_c_c), .CI(CI));
-  DI DI_I( .PADDI(E_c_c), .DI(DI));
+  SLICE_0 SLICE_0( .D1(input_number_c_2), .C1(input_number_c_1), 
+    .B1(input_number_c_3), .A1(input_number_c_0), .D0(input_number_c_2), 
+    .C0(input_number_c_3), .B0(input_number_c_0), .A0(input_number_c_1), 
+    .F0(display_c_0), .F1(display_c_6));
+  SLICE_1 SLICE_1( .D1(input_number_c_1), .C1(input_number_c_0), 
+    .B1(input_number_c_2), .A1(input_number_c_3), .D0(input_number_c_1), 
+    .C0(input_number_c_0), .B0(input_number_c_2), .A0(input_number_c_3), 
+    .F0(display_c_3), .F1(display_c_5));
+  SLICE_2 SLICE_2( .D1(input_number_c_1), .C1(input_number_c_2), 
+    .B1(input_number_c_3), .A1(input_number_c_0), .D0(input_number_c_0), 
+    .C0(input_number_c_1), .B0(input_number_c_3), .A0(input_number_c_2), 
+    .F0(display_c_1), .F1(display_c_4));
+  SLICE_3 SLICE_3( .D0(input_number_c_1), .C0(input_number_c_2), 
+    .B0(input_number_c_3), .A0(input_number_c_0), .F0(display_c_2));
+  input_number_0_ \input_number[0]_I ( .PADDI(input_number_c_0), 
+    .inputnumber0(input_number[0]));
+  input_number_1_ \input_number[1]_I ( .PADDI(input_number_c_1), 
+    .inputnumber1(input_number[1]));
+  input_number_2_ \input_number[2]_I ( .PADDI(input_number_c_2), 
+    .inputnumber2(input_number[2]));
+  input_number_3_ \input_number[3]_I ( .PADDI(input_number_c_3), 
+    .inputnumber3(input_number[3]));
+  display_0_ \display[0]_I ( .PADDO(display_c_0), .display0(display[0]));
+  display_1_ \display[1]_I ( .PADDO(display_c_1), .display1(display[1]));
+  display_2_ \display[2]_I ( .PADDO(display_c_2), .display2(display[2]));
+  display_3_ \display[3]_I ( .PADDO(display_c_3), .display3(display[3]));
+  display_4_ \display[4]_I ( .PADDO(display_c_4), .display4(display[4]));
+  display_5_ \display[5]_I ( .PADDO(display_c_5), .display5(display[5]));
+  display_6_ \display[6]_I ( .PADDO(display_c_6), .display6(display[6]));
   VHI VHI_INST( .Z(VCCI));
   PUR PUR_INST( .PUR(VCCI));
   GSR GSR_INST( .GSR(VCCI));
 endmodule
 
-module SLICE_0 ( input B0, A0, output F0 );
-  wire   GNDI;
+module SLICE_0 ( input D1, C1, B1, A1, D0, C0, B0, A0, output F0, F1 );
 
-  lut4 AI_I_0_2_lut( .A(A0), .B(B0), .C(GNDI), .D(GNDI), .Z(F0));
-  gnd DRIVEGND( .PWR0(GNDI));
+  lut4 input_number_c_0_bdd_4_lut_124( .A(A1), .B(B1), .C(C1), .D(D1), .Z(F1));
+  lut40001 input_number_c_1_bdd_4_lut( .A(A0), .B(B0), .C(C0), .D(D0), .Z(F0));
 
   specify
+    (D1 => F1) = (0:0:0,0:0:0);
+    (C1 => F1) = (0:0:0,0:0:0);
+    (B1 => F1) = (0:0:0,0:0:0);
+    (A1 => F1) = (0:0:0,0:0:0);
+    (D0 => F0) = (0:0:0,0:0:0);
+    (C0 => F0) = (0:0:0,0:0:0);
     (B0 => F0) = (0:0:0,0:0:0);
     (A0 => F0) = (0:0:0,0:0:0);
   endspecify
@@ -48,7 +71,158 @@ endmodule
 
 module lut4 ( input A, B, C, D, output Z );
 
-  ROM16X1A #(16'h8888) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+  ROM16X1A #(16'hF67D) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module lut40001 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'hEFFA) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module SLICE_1 ( input D1, C1, B1, A1, D0, C0, B0, A0, output F0, F1 );
+
+  lut40002 input_number_c_3_bdd_4_lut_125( .A(A1), .B(B1), .C(C1), .D(D1), 
+    .Z(F1));
+  lut40003 input_number_c_3_bdd_4_lut( .A(A0), .B(B0), .C(C0), .D(D0), .Z(F0));
+
+  specify
+    (D1 => F1) = (0:0:0,0:0:0);
+    (C1 => F1) = (0:0:0,0:0:0);
+    (B1 => F1) = (0:0:0,0:0:0);
+    (A1 => F1) = (0:0:0,0:0:0);
+    (D0 => F0) = (0:0:0,0:0:0);
+    (C0 => F0) = (0:0:0,0:0:0);
+    (B0 => F0) = (0:0:0,0:0:0);
+    (A0 => F0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module lut40002 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'h53A7) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module lut40003 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'h3DCB) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module SLICE_2 ( input D1, C1, B1, A1, D0, C0, B0, A0, output F0, F1 );
+
+  lut40004 input_number_c_0_bdd_4_lut_126( .A(A1), .B(B1), .C(C1), .D(D1), 
+    .Z(F1));
+  lut40005 input_number_c_2_bdd_4_lut( .A(A0), .B(B0), .C(C0), .D(D0), .Z(F0));
+
+  specify
+    (D1 => F1) = (0:0:0,0:0:0);
+    (C1 => F1) = (0:0:0,0:0:0);
+    (B1 => F1) = (0:0:0,0:0:0);
+    (A1 => F1) = (0:0:0,0:0:0);
+    (D0 => F0) = (0:0:0,0:0:0);
+    (C0 => F0) = (0:0:0,0:0:0);
+    (B0 => F0) = (0:0:0,0:0:0);
+    (A0 => F0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module lut40004 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'h3EBD) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module lut40005 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'hC7EF) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module SLICE_3 ( input D0, C0, B0, A0, output F0 );
+
+  lut40006 input_number_c_0_bdd_4_lut( .A(A0), .B(B0), .C(C0), .D(D0), .Z(F0));
+
+  specify
+    (D0 => F0) = (0:0:0,0:0:0);
+    (C0 => F0) = (0:0:0,0:0:0);
+    (B0 => F0) = (0:0:0,0:0:0);
+    (A0 => F0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module lut40006 ( input A, B, C, D, output Z );
+
+  ROM16X1A #(16'hDDC7) INST10( .AD0(A), .AD1(B), .AD2(C), .AD3(D), .DO0(Z));
+endmodule
+
+module input_number_0_ ( output PADDI, input inputnumber0 );
+
+  xo2iobuf input_number_pad_0( .Z(PADDI), .PAD(inputnumber0));
+
+  specify
+    (inputnumber0 => PADDI) = (0:0:0,0:0:0);
+    $width (posedge inputnumber0, 0:0:0);
+    $width (negedge inputnumber0, 0:0:0);
+  endspecify
+
+endmodule
+
+module xo2iobuf ( output Z, input PAD );
+
+  IBPD INST1( .I(PAD), .O(Z));
+endmodule
+
+module input_number_1_ ( output PADDI, input inputnumber1 );
+
+  xo2iobuf input_number_pad_1( .Z(PADDI), .PAD(inputnumber1));
+
+  specify
+    (inputnumber1 => PADDI) = (0:0:0,0:0:0);
+    $width (posedge inputnumber1, 0:0:0);
+    $width (negedge inputnumber1, 0:0:0);
+  endspecify
+
+endmodule
+
+module input_number_2_ ( output PADDI, input inputnumber2 );
+
+  xo2iobuf input_number_pad_2( .Z(PADDI), .PAD(inputnumber2));
+
+  specify
+    (inputnumber2 => PADDI) = (0:0:0,0:0:0);
+    $width (posedge inputnumber2, 0:0:0);
+    $width (negedge inputnumber2, 0:0:0);
+  endspecify
+
+endmodule
+
+module input_number_3_ ( output PADDI, input inputnumber3 );
+
+  xo2iobuf input_number_pad_3( .Z(PADDI), .PAD(inputnumber3));
+
+  specify
+    (inputnumber3 => PADDI) = (0:0:0,0:0:0);
+    $width (posedge inputnumber3, 0:0:0);
+    $width (negedge inputnumber3, 0:0:0);
+  endspecify
+
+endmodule
+
+module display_0_ ( input PADDO, output display0 );
+  wire   GNDI;
+
+  xo2iobuf0007 display_pad_0( .I(PADDO), .T(GNDI), .PAD(display0));
+  gnd DRIVEGND( .PWR0(GNDI));
+
+  specify
+    (PADDO => display0) = (0:0:0,0:0:0);
+  endspecify
+
+endmodule
+
+module xo2iobuf0007 ( input I, T, output PAD );
+
+  OBZPD INST5( .I(I), .T(T), .O(PAD));
 endmodule
 
 module gnd ( output PWR0 );
@@ -56,157 +230,74 @@ module gnd ( output PWR0 );
   VLO INST1( .Z(PWR0));
 endmodule
 
-module SLICE_1 ( input B0, A0, output F0 );
+module display_1_ ( input PADDO, output display1 );
   wire   GNDI;
 
-  lut4 DI_I_0_2_lut( .A(A0), .B(B0), .C(GNDI), .D(GNDI), .Z(F0));
+  xo2iobuf0007 display_pad_1( .I(PADDO), .T(GNDI), .PAD(display1));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (B0 => F0) = (0:0:0,0:0:0);
-    (A0 => F0) = (0:0:0,0:0:0);
+    (PADDO => display1) = (0:0:0,0:0:0);
   endspecify
 
 endmodule
 
-module A ( input PADDO, output A );
+module display_2_ ( input PADDO, output display2 );
   wire   GNDI;
 
-  xo2iobuf A_pad( .I(PADDO), .T(GNDI), .PAD(A));
+  xo2iobuf0007 display_pad_2( .I(PADDO), .T(GNDI), .PAD(display2));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (PADDO => A) = (0:0:0,0:0:0);
+    (PADDO => display2) = (0:0:0,0:0:0);
   endspecify
 
 endmodule
 
-module xo2iobuf ( input I, T, output PAD );
-
-  OBZPD INST5( .I(I), .T(T), .O(PAD));
-endmodule
-
-module B ( input PADDO, output B );
+module display_3_ ( input PADDO, output display3 );
   wire   GNDI;
 
-  xo2iobuf B_pad( .I(PADDO), .T(GNDI), .PAD(B));
+  xo2iobuf0007 display_pad_3( .I(PADDO), .T(GNDI), .PAD(display3));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (PADDO => B) = (0:0:0,0:0:0);
+    (PADDO => display3) = (0:0:0,0:0:0);
   endspecify
 
 endmodule
 
-module C ( input PADDO, output C );
+module display_4_ ( input PADDO, output display4 );
   wire   GNDI;
 
-  xo2iobuf C_pad( .I(PADDO), .T(GNDI), .PAD(C));
+  xo2iobuf0007 display_pad_4( .I(PADDO), .T(GNDI), .PAD(display4));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (PADDO => C) = (0:0:0,0:0:0);
+    (PADDO => display4) = (0:0:0,0:0:0);
   endspecify
 
 endmodule
 
-module D ( input PADDO, output D );
+module display_5_ ( input PADDO, output display5 );
   wire   GNDI;
 
-  xo2iobuf D_pad( .I(PADDO), .T(GNDI), .PAD(D));
+  xo2iobuf0007 display_pad_5( .I(PADDO), .T(GNDI), .PAD(display5));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (PADDO => D) = (0:0:0,0:0:0);
+    (PADDO => display5) = (0:0:0,0:0:0);
   endspecify
 
 endmodule
 
-module E ( input PADDO, output E );
+module display_6_ ( input PADDO, output display6 );
   wire   GNDI;
 
-  xo2iobuf E_pad( .I(PADDO), .T(GNDI), .PAD(E));
+  xo2iobuf0007 display_pad_6( .I(PADDO), .T(GNDI), .PAD(display6));
   gnd DRIVEGND( .PWR0(GNDI));
 
   specify
-    (PADDO => E) = (0:0:0,0:0:0);
-  endspecify
-
-endmodule
-
-module F ( input PADDO, output F );
-  wire   GNDI;
-
-  xo2iobuf F_pad( .I(PADDO), .T(GNDI), .PAD(F));
-  gnd DRIVEGND( .PWR0(GNDI));
-
-  specify
-    (PADDO => F) = (0:0:0,0:0:0);
-  endspecify
-
-endmodule
-
-module G ( input PADDO, output G );
-  wire   GNDI;
-
-  xo2iobuf G_pad( .I(PADDO), .T(GNDI), .PAD(G));
-  gnd DRIVEGND( .PWR0(GNDI));
-
-  specify
-    (PADDO => G) = (0:0:0,0:0:0);
-  endspecify
-
-endmodule
-
-module AI ( output PADDI, input AI );
-
-  xo2iobuf0001 A_c_pad( .Z(PADDI), .PAD(AI));
-
-  specify
-    (AI => PADDI) = (0:0:0,0:0:0);
-    $width (posedge AI, 0:0:0);
-    $width (negedge AI, 0:0:0);
-  endspecify
-
-endmodule
-
-module xo2iobuf0001 ( output Z, input PAD );
-
-  IBPD INST1( .I(PAD), .O(Z));
-endmodule
-
-module BI ( output PADDI, input BI );
-
-  xo2iobuf0001 C_c_pad( .Z(PADDI), .PAD(BI));
-
-  specify
-    (BI => PADDI) = (0:0:0,0:0:0);
-    $width (posedge BI, 0:0:0);
-    $width (negedge BI, 0:0:0);
-  endspecify
-
-endmodule
-
-module CI ( output PADDI, input CI );
-
-  xo2iobuf0001 D_c_pad( .Z(PADDI), .PAD(CI));
-
-  specify
-    (CI => PADDI) = (0:0:0,0:0:0);
-    $width (posedge CI, 0:0:0);
-    $width (negedge CI, 0:0:0);
-  endspecify
-
-endmodule
-
-module DI ( output PADDI, input DI );
-
-  xo2iobuf0001 E_c_pad( .Z(PADDI), .PAD(DI));
-
-  specify
-    (DI => PADDI) = (0:0:0,0:0:0);
-    $width (posedge DI, 0:0:0);
-    $width (negedge DI, 0:0:0);
+    (PADDO => display6) = (0:0:0,0:0:0);
   endspecify
 
 endmodule

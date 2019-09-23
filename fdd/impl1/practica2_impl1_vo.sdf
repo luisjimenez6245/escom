@@ -1,7 +1,7 @@
 (DELAYFILE
   (SDFVERSION "3.0")
   (DESIGN "Compuertas")
-  (DATE "Fri Sep 20 02:42:37 2019")
+  (DATE "Sun Sep 22 21:13:50 2019")
   (VENDOR "Lattice")
   (PROGRAM "ldbanno")
   (VERSION "Diamond (64-bit) 3.11.0.396.4")
@@ -15,8 +15,14 @@
     (INSTANCE SLICE_0)
     (DELAY
       (ABSOLUTE
+        (IOPATH D1 F1 (324:388:452)(324:388:452))
+        (IOPATH C1 F1 (324:388:452)(324:388:452))
+        (IOPATH B1 F1 (324:388:452)(324:388:452))
+        (IOPATH A1 F1 (324:388:452)(324:388:452))
+        (IOPATH D0 F0 (324:388:452)(324:388:452))
         (IOPATH C0 F0 (324:388:452)(324:388:452))
         (IOPATH B0 F0 (324:388:452)(324:388:452))
+        (IOPATH A0 F0 (324:388:452)(324:388:452))
       )
     )
   )
@@ -25,124 +31,158 @@
     (INSTANCE SLICE_1)
     (DELAY
       (ABSOLUTE
+        (IOPATH D1 F1 (324:388:452)(324:388:452))
+        (IOPATH C1 F1 (324:388:452)(324:388:452))
+        (IOPATH B1 F1 (324:388:452)(324:388:452))
+        (IOPATH A1 F1 (324:388:452)(324:388:452))
+        (IOPATH D0 F0 (324:388:452)(324:388:452))
         (IOPATH C0 F0 (324:388:452)(324:388:452))
         (IOPATH B0 F0 (324:388:452)(324:388:452))
+        (IOPATH A0 F0 (324:388:452)(324:388:452))
       )
     )
   )
   (CELL
-    (CELLTYPE "A")
-    (INSTANCE A_I)
+    (CELLTYPE "SLICE_2")
+    (INSTANCE SLICE_2)
     (DELAY
       (ABSOLUTE
-        (IOPATH PADDO A (3220:3334:3448)(3220:3334:3448))
+        (IOPATH D1 F1 (324:388:452)(324:388:452))
+        (IOPATH C1 F1 (324:388:452)(324:388:452))
+        (IOPATH B1 F1 (324:388:452)(324:388:452))
+        (IOPATH A1 F1 (324:388:452)(324:388:452))
+        (IOPATH D0 F0 (324:388:452)(324:388:452))
+        (IOPATH C0 F0 (324:388:452)(324:388:452))
+        (IOPATH B0 F0 (324:388:452)(324:388:452))
+        (IOPATH A0 F0 (324:388:452)(324:388:452))
       )
     )
   )
   (CELL
-    (CELLTYPE "B")
-    (INSTANCE B_I)
+    (CELLTYPE "SLICE_3")
+    (INSTANCE SLICE_3)
     (DELAY
       (ABSOLUTE
-        (IOPATH PADDO B (3220:3334:3448)(3220:3334:3448))
+        (IOPATH D0 F0 (324:388:452)(324:388:452))
+        (IOPATH C0 F0 (324:388:452)(324:388:452))
+        (IOPATH B0 F0 (324:388:452)(324:388:452))
+        (IOPATH A0 F0 (324:388:452)(324:388:452))
       )
     )
   )
   (CELL
-    (CELLTYPE "C")
-    (INSTANCE C_I)
+    (CELLTYPE "input_number_0_")
+    (INSTANCE input_number\[0\]_I)
     (DELAY
       (ABSOLUTE
-        (IOPATH PADDO C (3220:3334:3448)(3220:3334:3448))
-      )
-    )
-  )
-  (CELL
-    (CELLTYPE "D")
-    (INSTANCE D_I)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH PADDO D (3220:3334:3448)(3220:3334:3448))
-      )
-    )
-  )
-  (CELL
-    (CELLTYPE "E")
-    (INSTANCE E_I)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH PADDO E (3220:3334:3448)(3220:3334:3448))
-      )
-    )
-  )
-  (CELL
-    (CELLTYPE "F")
-    (INSTANCE F_I)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH PADDO F (3220:3334:3448)(3220:3334:3448))
-      )
-    )
-  )
-  (CELL
-    (CELLTYPE "G")
-    (INSTANCE G_I)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH PADDO G (3220:3334:3448)(3220:3334:3448))
-      )
-    )
-  )
-  (CELL
-    (CELLTYPE "AI")
-    (INSTANCE AI_I)
-    (DELAY
-      (ABSOLUTE
-        (IOPATH AI PADDI (1223:1297:1372)(1223:1297:1372))
+        (IOPATH inputnumber0 PADDI (1223:1297:1372)(1223:1297:1372))
       )
     )
     (TIMINGCHECK
-      (WIDTH (posedge AI) (3330:3330:3330))
-      (WIDTH (negedge AI) (3330:3330:3330))
+      (WIDTH (posedge inputnumber0) (3330:3330:3330))
+      (WIDTH (negedge inputnumber0) (3330:3330:3330))
     )
   )
   (CELL
-    (CELLTYPE "BI")
-    (INSTANCE BI_I)
+    (CELLTYPE "input_number_1_")
+    (INSTANCE input_number\[1\]_I)
     (DELAY
       (ABSOLUTE
-        (IOPATH BI PADDI (1223:1297:1372)(1223:1297:1372))
+        (IOPATH inputnumber1 PADDI (1223:1297:1372)(1223:1297:1372))
       )
     )
     (TIMINGCHECK
-      (WIDTH (posedge BI) (3330:3330:3330))
-      (WIDTH (negedge BI) (3330:3330:3330))
+      (WIDTH (posedge inputnumber1) (3330:3330:3330))
+      (WIDTH (negedge inputnumber1) (3330:3330:3330))
     )
   )
   (CELL
-    (CELLTYPE "CI")
-    (INSTANCE CI_I)
+    (CELLTYPE "input_number_2_")
+    (INSTANCE input_number\[2\]_I)
     (DELAY
       (ABSOLUTE
-        (IOPATH CI PADDI (1223:1297:1372)(1223:1297:1372))
+        (IOPATH inputnumber2 PADDI (1223:1297:1372)(1223:1297:1372))
       )
     )
     (TIMINGCHECK
-      (WIDTH (posedge CI) (3330:3330:3330))
-      (WIDTH (negedge CI) (3330:3330:3330))
+      (WIDTH (posedge inputnumber2) (3330:3330:3330))
+      (WIDTH (negedge inputnumber2) (3330:3330:3330))
     )
   )
   (CELL
-    (CELLTYPE "DI")
-    (INSTANCE DI_I)
+    (CELLTYPE "input_number_3_")
+    (INSTANCE input_number\[3\]_I)
     (DELAY
       (ABSOLUTE
-        (IOPATH DI PADDI (1223:1297:1372)(1223:1297:1372))
+        (IOPATH inputnumber3 PADDI (1223:1297:1372)(1223:1297:1372))
       )
     )
     (TIMINGCHECK
-      (WIDTH (posedge DI) (3330:3330:3330))
-      (WIDTH (negedge DI) (3330:3330:3330))
+      (WIDTH (posedge inputnumber3) (3330:3330:3330))
+      (WIDTH (negedge inputnumber3) (3330:3330:3330))
+    )
+  )
+  (CELL
+    (CELLTYPE "display_0_")
+    (INSTANCE display\[0\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display0 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_1_")
+    (INSTANCE display\[1\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display1 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_2_")
+    (INSTANCE display\[2\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display2 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_3_")
+    (INSTANCE display\[3\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display3 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_4_")
+    (INSTANCE display\[4\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display4 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_5_")
+    (INSTANCE display\[5\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display5 (3220:3334:3448)(3220:3334:3448))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "display_6_")
+    (INSTANCE display\[6\]_I)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH PADDO display6 (3220:3334:3448)(3220:3334:3448))
+      )
     )
   )
   (CELL
@@ -150,17 +190,69 @@
     (INSTANCE )
     (DELAY
       (ABSOLUTE
-        (INTERCONNECT AI_I/PADDI SLICE_0/C0 (1340:1476:1613)(1340:1476:1613))
-        (INTERCONNECT AI_I/PADDI A_I/PADDO (2085:2233:2382)(2085:2233:2382))
-        (INTERCONNECT BI_I/PADDI SLICE_0/B0 (1592:1752:1913)(1592:1752:1913))
-        (INTERCONNECT BI_I/PADDI C_I/PADDO (1822:1964:2106)(1822:1964:2106))
-        (INTERCONNECT SLICE_0/F0 F_I/PADDO (1165:1269:1373)(1165:1269:1373))
-        (INTERCONNECT DI_I/PADDI SLICE_1/C0 (2521:2746:2971)(2521:2746:2971))
-        (INTERCONNECT DI_I/PADDI B_I/PADDO (2588:2781:2975)(2588:2781:2975))
-        (INTERCONNECT DI_I/PADDI E_I/PADDO (2965:3177:3390)(2965:3177:3390))
-        (INTERCONNECT CI_I/PADDI SLICE_1/B0 (2720:2947:3174)(2720:2947:3174))
-        (INTERCONNECT CI_I/PADDI D_I/PADDO (3251:3484:3717)(3251:3484:3717))
-        (INTERCONNECT SLICE_1/F0 G_I/PADDO (1210:1323:1437)(1210:1323:1437))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_0/D1 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_0/D0 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_1/D1 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_1/D0 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_2/D1 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_2/D0 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[2\]_I/PADDI SLICE_3/D0 (1252:1338:1425)
+          (1252:1338:1425))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_0/C1 (1691:1850:2010)
+          (1691:1850:2010))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_0/C0 (1691:1850:2010)
+          (1691:1850:2010))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_1/C1 (2013:2200:2387)
+          (2013:2200:2387))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_1/C0 (2013:2200:2387)
+          (2013:2200:2387))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_2/A1 (1875:2040:2205)
+          (1875:2040:2205))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_2/A0 (1875:2040:2205)
+          (1875:2040:2205))
+        (INTERCONNECT input_number\[1\]_I/PADDI SLICE_3/A0 (2197:2389:2582)
+          (2197:2389:2582))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_0/B1 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_0/B0 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_1/B1 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_1/B0 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_2/B1 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_2/B0 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[3\]_I/PADDI SLICE_3/B0 (1955:2137:2320)
+          (1955:2137:2320))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_0/A1 (1539:1682:1826)
+          (1539:1682:1826))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_0/A0 (1539:1682:1826)
+          (1539:1682:1826))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_1/A1 (1861:2032:2203)
+          (1861:2032:2203))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_1/A0 (1861:2032:2203)
+          (1861:2032:2203))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_2/C1 (1355:1493:1631)
+          (1355:1493:1631))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_2/C0 (1355:1493:1631)
+          (1355:1493:1631))
+        (INTERCONNECT input_number\[0\]_I/PADDI SLICE_3/C0 (1677:1842:2008)
+          (1677:1842:2008))
+        (INTERCONNECT SLICE_0/F0 display\[0\]_I/PADDO (599:658:718)(599:658:718))
+        (INTERCONNECT SLICE_0/F1 display\[6\]_I/PADDO (986:1084:1183)(986:1084:1183))
+        (INTERCONNECT SLICE_1/F0 display\[3\]_I/PADDO (1311:1429:1548)(1311:1429:1548))
+        (INTERCONNECT SLICE_1/F1 display\[5\]_I/PADDO (975:1072:1169)(975:1072:1169))
+        (INTERCONNECT SLICE_2/F0 display\[1\]_I/PADDO (900:984:1068)(900:984:1068))
+        (INTERCONNECT SLICE_2/F1 display\[4\]_I/PADDO (1202:1319:1436)(1202:1319:1436))
+        (INTERCONNECT SLICE_3/F0 display\[2\]_I/PADDO (1202:1319:1436)(1202:1319:1436))
       )
     )
   )

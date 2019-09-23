@@ -13,7 +13,7 @@ Setup and Hold Report
 
 --------------------------------------------------------------------------------
 Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.11.0.396.4
-Fri Sep 20 02:42:26 2019
+Sun Sep 22 21:13:41 2019
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -38,17 +38,17 @@ BLOCK RESETPATHS
 
 ================================================================================
 Preference: Default path enumeration
-            9 items scored, 0 timing errors detected.
+            28 items scored, 0 timing errors detected.
 --------------------------------------------------------------------------------
 
-Report:    7.332ns delay AI to F
+Report:    7.332ns delay input_number[0] to display[0]
 
    Name    Fanout   Delay (ns)          Site               Resource
-PADI_DEL    ---     1.372         38.PAD to       38.PADDI AI
-ROUTE         2   e 1.030       38.PADDI to     SLICE_0.A0 A_c_c
-CTOF_DEL    ---     0.452     SLICE_0.A0 to     SLICE_0.F0 SLICE_0
-ROUTE         1   e 1.030     SLICE_0.F0 to       27.PADDO F_c
-DOPAD_DEL   ---     3.448       27.PADDO to         27.PAD F
+PADI_DEL    ---     1.372         38.PAD to       38.PADDI input_number[0]
+ROUTE         7   e 1.030       38.PADDI to     SLICE_0.B0 input_number_c_0
+CTOF_DEL    ---     0.452     SLICE_0.B0 to     SLICE_0.F0 SLICE_0
+ROUTE         1   e 1.030     SLICE_0.F0 to       35.PADDO display_c_0
+DOPAD_DEL   ---     3.448       35.PADDO to         35.PAD display[0]
                   --------
                     7.332   (71.9% logic, 28.1% route), 3 logic levels.
 
@@ -57,17 +57,15 @@ Report:    7.332ns is the maximum delay for this preference.
 
 ================================================================================
 Preference: Default net enumeration
-            6 items scored, 0 timing errors detected.
+            11 items scored, 0 timing errors detected.
 --------------------------------------------------------------------------------
 
-Report:    1.838ns maximum delay on E_c_c
+Report:    1.030ns maximum delay on display_c_6
 
            Delays             Connection(s)
-         e 1.838ns         44.PADDI to 28.PADDO        
-         e 1.421ns         44.PADDI to 34.PADDO        
-         e 1.030ns         44.PADDI to SLICE_1.A0      
+         e 1.030ns       SLICE_0.F1 to 26.PADDO        
 
-Report:    1.838ns is the maximum delay for this preference.
+Report:    1.030ns is the maximum delay for this preference.
 
 Report Summary
 --------------
@@ -77,7 +75,7 @@ Preference                              |   Constraint|       Actual|Levels
                                         |             |             |
 Default path enumeration                |     0.000 ns|     7.332 ns|   0  
                                         |             |             |
-Default net enumeration                 |     0.000 ns|     1.838 ns|   0  
+Default net enumeration                 |     0.000 ns|     1.030 ns|   0  
                                         |             |             |
 ----------------------------------------------------------------------------
 
@@ -97,7 +95,7 @@ Timing summary (Setup):
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 9 paths, 6 nets, and 11 connections (100.00% coverage)
+Constraints cover 28 paths, 11 nets, and 35 connections (100.00% coverage)
 
 --------------------------------------------------------------------------------
 

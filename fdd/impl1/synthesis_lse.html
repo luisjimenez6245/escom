@@ -14,7 +14,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2019 Lattice Semiconductor Corporation,  All rights reserved.
-Fri Sep 20 02:42:08 2019
+Sun Sep 22 21:13:38 2019
 
 
 Command Line:  synthesis -f practica2_impl1_lattice.synproj -gui -msgset C:/Users/luisj/Documents/GitHub/escom/fdd/promote.xml 
@@ -87,13 +87,14 @@ Compile design.
 Compile Design Begin
 INFO - synthesis: The default VHDL library search path is now "C:/Users/luisj/Documents/GitHub/escom/fdd/impl1". VHDL-1504
 Analyzing VHDL file c:/users/luisj/documents/github/escom/fdd/segments1.vhd. VHDL-1481
-INFO - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(3): analyzing entity compuertas. VHDL-1012
-INFO - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(18): analyzing architecture cmp. VHDL-1010
+INFO - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(5): analyzing entity compuertas. VHDL-1012
+INFO - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(11): analyzing architecture cmp. VHDL-1010
 unit Compuertas is not yet analyzed. VHDL-1485
 unit Compuertas is not yet analyzed. VHDL-1485
-c:/users/luisj/documents/github/escom/fdd/segments1.vhd(3): executing Compuertas(Cmp)
+unit Compuertas is not yet analyzed. VHDL-1485
+c:/users/luisj/documents/github/escom/fdd/segments1.vhd(5): executing Compuertas(Cmp)
 
-WARNING - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(17): replacing existing netlist Compuertas(Cmp). VHDL-1205
+WARNING - synthesis: c:/users/luisj/documents/github/escom/fdd/segments1.vhd(10): replacing existing netlist Compuertas(Cmp). VHDL-1205
 Top module name (VHDL): Compuertas
 Loading NGL library 'C:/lscc/diamond/3.11_x64/ispfpga/xo2c00a/data/xo2alib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.11_x64/ispfpga/xo2c00/data/xo2clib.ngl'...
@@ -123,7 +124,7 @@ Writing NGD file practica2_impl1.ngd.
 Number of register bits => 0 of 7209 (0 % )
 GSR => 1
 IB => 4
-LUT4 => 2
+LUT4 => 7
 OB => 7
 ################### End Area Report ##################
 
@@ -139,22 +140,22 @@ Number of Clock Enables: 0
 Top 0 highest fanout Clock Enables:
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : E_c_c, loads : 3
-  Net : A_c_c, loads : 2
-  Net : C_c_c, loads : 2
-  Net : D_c_c, loads : 2
-  Net : F_c, loads : 1
-  Net : G_c, loads : 1
-  Net : A, loads : 0
-  Net : B, loads : 0
-  Net : C, loads : 0
-  Net : D, loads : 0
+  Net : input_number_c_3, loads : 7
+  Net : input_number_c_2, loads : 7
+  Net : input_number_c_1, loads : 7
+  Net : input_number_c_0, loads : 7
+  Net : display_c_6, loads : 1
+  Net : display_c_5, loads : 1
+  Net : display_c_4, loads : 1
+  Net : display_c_3, loads : 1
+  Net : display_c_2, loads : 1
+  Net : display_c_1, loads : 1
 ################### End Clock Report ##################
 
-Peak Memory Usage: 72.020  MB
+Peak Memory Usage: 73.055  MB
 
 --------------------------------------------------------------
-Elapsed CPU time for LSE flow : 0.656  secs
+Elapsed CPU time for LSE flow : 0.609  secs
 --------------------------------------------------------------
 
 

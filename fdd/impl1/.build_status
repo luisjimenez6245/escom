@@ -2,53 +2,53 @@
 <BuildStatus>
     <Strategy name="Strategy1">
         <Milestone name="Export" build_result="0" build_time="0">
-            <Task name="IBIS" build_result="2" update_result="0" update_time="1568965356"/>
-            <Task name="TimingSimFileVlg" build_result="2" update_result="0" update_time="1568965357"/>
-            <Task name="TimingSimFileVHD" build_result="2" update_result="0" update_time="1568965358"/>
-            <Task name="Bitgen" build_result="2" update_result="0" update_time="1568965363"/>
-            <Task name="Jedecgen" build_result="2" update_result="0" update_time="1568965367"/>
+            <Task name="IBIS" build_result="2" update_result="0" update_time="1569204829"/>
+            <Task name="TimingSimFileVlg" build_result="2" update_result="0" update_time="1569204830"/>
+            <Task name="TimingSimFileVHD" build_result="2" update_result="0" update_time="1569204831"/>
+            <Task name="Bitgen" build_result="2" update_result="0" update_time="1569204835"/>
+            <Task name="Jedecgen" build_result="2" update_result="0" update_time="1569204838"/>
         </Milestone>
-        <Milestone name="Map" build_result="2" build_time="1568965346">
-            <Task name="Map" build_result="2" update_result="0" update_time="1568965346"/>
-            <Task name="MapTrace" build_result="2" update_result="0" update_time="1568965346"/>
-            <Task name="MapVerilogSimFile" build_result="2" update_result="0" update_time="1568965348"/>
-            <Task name="MapVHDLSimFile" build_result="2" update_result="0" update_time="1568965349"/>
+        <Milestone name="Map" build_result="2" build_time="1569204821">
+            <Task name="Map" build_result="2" update_result="0" update_time="1569204821"/>
+            <Task name="MapTrace" build_result="2" update_result="0" update_time="1569204821"/>
+            <Task name="MapVerilogSimFile" build_result="2" update_result="0" update_time="1569204822"/>
+            <Task name="MapVHDLSimFile" build_result="2" update_result="0" update_time="1569204823"/>
         </Milestone>
-        <Milestone name="PAR" build_result="2" build_time="1568965352">
-            <Task name="PAR" build_result="2" update_result="0" update_time="1568965352"/>
-            <Task name="PARTrace" build_result="2" update_result="0" update_time="1568965353"/>
-            <Task name="IOTiming" build_result="2" update_result="0" update_time="1568965355"/>
+        <Milestone name="PAR" build_result="2" build_time="1569204827">
+            <Task name="PAR" build_result="2" update_result="0" update_time="1569204827"/>
+            <Task name="PARTrace" build_result="2" update_result="0" update_time="1569204827"/>
+            <Task name="IOTiming" build_result="2" update_result="0" update_time="1569204829"/>
         </Milestone>
-        <Milestone name="Synthesis" build_result="2" build_time="1568965329">
-            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1568965329"/>
-            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1568965334"/>
+        <Milestone name="Synthesis" build_result="2" build_time="1569204819">
+            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1569204819"/>
+            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1569204838"/>
         </Milestone>
         <Milestone name="TOOL_Report" build_result="0" build_time="0">
-            <Task name="HDLE" build_result="2" update_result="0" update_time="1568965326"/>
+            <Task name="HDLE" build_result="2" update_result="0" update_time="1569204816"/>
             <Task name="BKM" build_result="0" update_result="2" update_time="0"/>
             <Task name="SSO" build_result="0" update_result="2" update_time="0"/>
             <Task name="PIODRC" build_result="0" update_result="2" update_time="0"/>
             <Task name="DEC" build_result="0" update_result="2" update_time="0"/>
         </Milestone>
-        <Report name=".vdbs/practica2_impl1_map.vdb" last_build_time="1568965346" last_build_size="27350"/>
-        <Report name="IBIS/practica2_impl1.ibs" last_build_time="1568965356" last_build_size="65654"/>
-        <Report name="practica2_impl1.bgn" last_build_time="1568965367" last_build_size="4364"/>
-        <Report name="practica2_impl1.bit" last_build_time="1568965363" last_build_size="25181"/>
-        <Report name="practica2_impl1.ior" last_build_time="1568965355" last_build_size="1505"/>
-        <Report name="practica2_impl1.jed" last_build_time="1568965367" last_build_size="1464688"/>
-        <Report name="practica2_impl1.lsedata" last_build_time="1568965329" last_build_size="2126"/>
-        <Report name="practica2_impl1.ncd" last_build_time="1568965352" last_build_size="9101"/>
-        <Report name="practica2_impl1.ngd" last_build_time="1568965329" last_build_size="7245"/>
-        <Report name="practica2_impl1.tw1" last_build_time="1568965346" last_build_size="4121"/>
-        <Report name="practica2_impl1.twr" last_build_time="1568965353" last_build_size="8614"/>
-        <Report name="practica2_impl1_map.ncd" last_build_time="1568965345" last_build_size="7485"/>
-        <Report name="practica2_impl1_mapvho.sdf" last_build_time="1568965349" last_build_size="3722"/>
-        <Report name="practica2_impl1_mapvho.vho" last_build_time="1568965349" last_build_size="33550"/>
-        <Report name="practica2_impl1_mapvo.sdf" last_build_time="1568965347" last_build_size="3702"/>
-        <Report name="practica2_impl1_mapvo.vo" last_build_time="1568965347" last_build_size="4591"/>
-        <Report name="practica2_impl1_vho.sdf" last_build_time="1568965358" last_build_size="3920"/>
-        <Report name="practica2_impl1_vho.vho" last_build_time="1568965358" last_build_size="33543"/>
-        <Report name="practica2_impl1_vo.sdf" last_build_time="1568965357" last_build_size="3900"/>
-        <Report name="practica2_impl1_vo.vo" last_build_time="1568965357" last_build_size="4584"/>
+        <Report name=".vdbs/practica2_impl1_map.vdb" last_build_time="1569204820" last_build_size="28013"/>
+        <Report name="IBIS/practica2_impl1.ibs" last_build_time="1569204829" last_build_size="65654"/>
+        <Report name="practica2_impl1.bgn" last_build_time="1569204838" last_build_size="4364"/>
+        <Report name="practica2_impl1.bit" last_build_time="1569204835" last_build_size="25206"/>
+        <Report name="practica2_impl1.ior" last_build_time="1569204829" last_build_size="1505"/>
+        <Report name="practica2_impl1.jed" last_build_time="1569204838" last_build_size="1464803"/>
+        <Report name="practica2_impl1.lsedata" last_build_time="1569204819" last_build_size="9108"/>
+        <Report name="practica2_impl1.ncd" last_build_time="1569204827" last_build_size="14172"/>
+        <Report name="practica2_impl1.ngd" last_build_time="1569204819" last_build_size="11663"/>
+        <Report name="practica2_impl1.tw1" last_build_time="1569204821" last_build_size="4080"/>
+        <Report name="practica2_impl1.twr" last_build_time="1569204827" last_build_size="12202"/>
+        <Report name="practica2_impl1_map.ncd" last_build_time="1569204820" last_build_size="11320"/>
+        <Report name="practica2_impl1_mapvho.sdf" last_build_time="1569204823" last_build_size="7438"/>
+        <Report name="practica2_impl1_mapvho.vho" last_build_time="1569204823" last_build_size="55882"/>
+        <Report name="practica2_impl1_mapvo.sdf" last_build_time="1569204822" last_build_size="7526"/>
+        <Report name="practica2_impl1_mapvo.vo" last_build_time="1569204822" last_build_size="8943"/>
+        <Report name="practica2_impl1_vho.sdf" last_build_time="1569204831" last_build_size="8054"/>
+        <Report name="practica2_impl1_vho.vho" last_build_time="1569204831" last_build_size="55875"/>
+        <Report name="practica2_impl1_vo.sdf" last_build_time="1569204830" last_build_size="8478"/>
+        <Report name="practica2_impl1_vo.vo" last_build_time="1569204830" last_build_size="8936"/>
     </Strategy>
 </BuildStatus>

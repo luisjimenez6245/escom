@@ -1,6 +1,6 @@
 |************************************************************************
 | IBIS Models Generator: Lattice Diamond (64-bit) 3.11.0.396.4
-| Generate date: Fri Sep 20 02:42:35 2019
+| Generate date: Sun Sep 22 21:13:49 2019
 |************************************************************************
 | IBIS File LibisMaker.ibs
 | LibisGen v2.0.1.0, 02/25/2008, Lattice Semiconductor Corporation
@@ -201,17 +201,17 @@ L_pkg                7.50nH           6.34nH           8.65nH
 C_pkg                1.22pF           1.06pF           1.38pF
 |
 [Pin] signal_name           model_name           R_pin     L_pin     C_pin
-35            A                    lvc250s080caaaaaaaou
-38            AI                   lvc250axxxggaaaaaain
-34            B                    lvc250s080caaaaaaaou
-39            BI                   lvc250axxxggaaaaaain
-33            C                    lvc250s080caaaaaaaou
-45            CI                   lvc250axxxggaaaaaain
-32            D                    lvc250s080caaaaaaaou
-44            DI                   lvc250axxxggaaaaaain
-28            E                    lvc250s080caaaaaaaou
-27            F                    lvc250s080caaaaaaaou
-26            G                    lvc250s080caaaaaaaou
+35            display[0]           lvc250s080caaaaaaaou
+34            display[1]           lvc250s080caaaaaaaou
+33            display[2]           lvc250s080caaaaaaaou
+32            display[3]           lvc250s080caaaaaaaou
+28            display[4]           lvc250s080caaaaaaaou
+27            display[5]           lvc250s080caaaaaaaou
+26            display[6]           lvc250s080caaaaaaaou
+38            input_number[0]      lvc250axxxggaaaaaain
+40            input_number[1]      lvc250axxxggaaaaaain
+39            input_number[2]      lvc250axxxggaaaaaain
+41            input_number[3]      lvc250axxxggaaaaaain
 |************************************************************************
 [Model]           lvc250axxxggaaaaaain
 Model_type        Input

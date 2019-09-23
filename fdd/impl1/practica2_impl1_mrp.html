@@ -23,19 +23,19 @@ Target Vendor:  LATTICE
 Target Device:  LCMXO2-7000HETQFP144
 Target Performance:   5
 Mapper:  xo2c00,  version:  Diamond (64-bit) 3.11.0.396.4
-Mapped on:  09/20/19  02:42:24
+Mapped on:  09/22/19  21:13:39
 
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
    Number of registers:      0 out of  7209 (0%)
       PFU registers:            0 out of  6864 (0%)
       PIO registers:            0 out of   345 (0%)
-   Number of SLICEs:         2 out of  3432 (0%)
-      SLICEs as Logic/ROM:      2 out of  3432 (0%)
+   Number of SLICEs:         4 out of  3432 (0%)
+      SLICEs as Logic/ROM:      4 out of  3432 (0%)
       SLICEs as RAM:            0 out of  2574 (0%)
       SLICEs as Carry:          0 out of  3432 (0%)
-   Number of LUT4s:          2 out of  6864 (0%)
-      Number used as logic LUTs:          2
+   Number of LUT4s:          7 out of  6864 (0%)
+      Number used as logic LUTs:          7
       Number used as distributed RAM:     0
       Number used as ripple logic:        0
       Number used as shift registers:     0
@@ -70,12 +70,16 @@ Mapped on:  09/20/19  02:42:24
 
    Number of nets driven by tri-state buffers:  0
    Top 10 highest fanout non-clock nets:
-     Net E_c_c: 3 loads
-     Net A_c_c: 2 loads
-     Net C_c_c: 2 loads
-     Net D_c_c: 2 loads
-     Net F_c: 1 loads
-     Net G_c: 1 loads
+     Net input_number_c_0: 7 loads
+     Net input_number_c_1: 7 loads
+     Net input_number_c_2: 7 loads
+     Net input_number_c_3: 7 loads
+     Net display_c_0: 1 loads
+     Net display_c_1: 1 loads
+     Net display_c_2: 1 loads
+     Net display_c_3: 1 loads
+     Net display_c_4: 1 loads
+     Net display_c_5: 1 loads
 
 
 
@@ -99,37 +103,38 @@ Mapped on:  09/20/19  02:42:24
 | IO Name             | Direction | Levelmode | IO         |
 |                     |           |  IO_TYPE  | Register   |
 +---------------------+-----------+-----------+------------+
-| A                   | OUTPUT    | LVCMOS25  |            |
+| input_number[0]     | INPUT     | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| B                   | OUTPUT    | LVCMOS25  |            |
+| input_number[1]     | INPUT     | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| C                   | OUTPUT    | LVCMOS25  |            |
+| input_number[2]     | INPUT     | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| D                   | OUTPUT    | LVCMOS25  |            |
+| input_number[3]     | INPUT     | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| E                   | OUTPUT    | LVCMOS25  |            |
+| display[0]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| F                   | OUTPUT    | LVCMOS25  |            |
+| display[1]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| G                   | OUTPUT    | LVCMOS25  |            |
+| display[2]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| AI                  | INPUT     | LVCMOS25  |            |
+| display[3]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| BI                  | INPUT     | LVCMOS25  |            |
+| display[4]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| CI                  | INPUT     | LVCMOS25  |            |
+| display[5]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
-| DI                  | INPUT     | LVCMOS25  |            |
+| display[6]          | OUTPUT    | LVCMOS25  |            |
 +---------------------+-----------+-----------+------------+
+
+
 
 
 
 <A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
 
-Block i26 undriven or does not drive anything - clipped.
+Block i128 undriven or does not drive anything - clipped.
 Block GSR_INST undriven or does not drive anything - clipped.
-
-Block i25 undriven or does not drive anything - clipped.
+Block i127 undriven or does not drive anything - clipped.
 Signal VCC_net undriven or does not drive anything - clipped.
 Signal GND_net undriven or does not drive anything - clipped.
 
@@ -144,9 +149,6 @@ Signal GND_net undriven or does not drive anything - clipped.
    Total REAL Time: 0 secs  
    Peak Memory Usage: 57 MB
         
-
-
-
 
 
 
