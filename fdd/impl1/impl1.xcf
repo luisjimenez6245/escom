@@ -19,9 +19,9 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>C:/Users/luisj/Documents/GitHub/escom/fdd/impl1/practica2_impl1.jed</File>
-			<FileTime>09/22/19 16:04:40</FileTime>
-			<JedecChecksum>0x7936</JedecChecksum>
+			<File>C:/Users/luisj/Downloads/Dec_16Seg_Dec_16Seg.jed</File>
+			<FileTime>09/20/19 00:30:15</FileTime>
+			<JedecChecksum>0xB6D7</JedecChecksum>
 			<Operation>FLASH Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
