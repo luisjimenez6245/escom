@@ -4,8 +4,13 @@ div {
     text-transform: capitalize;
   }
   p {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
+}
+
+body{
+    width: 90vw;
+    margin-left: 5%;
 }
 .table-layout {
   table {
@@ -44,7 +49,7 @@ div {
 }
 @font-face {
   font-family: thirdFont;
-  src: url(sansation_light.woff);
+  src: url(Habitual.otf);
 }
 .font_properties {
   .font {
@@ -138,131 +143,144 @@ div {
   }
   .letter-spacing {
     .a {
-        letter-spacing: 10px;
+      letter-spacing: 10px;
     }
     .b {
-        letter-spacing: 1rem;
-
+      letter-spacing: 1rem;
     }
     .c {
-        letter-spacing: 1cm;
-
+      letter-spacing: 1cm;
     }
   }
   .line-heigth {
     .a {
-        line-height: 50px;
+      line-height: 50px;
     }
     .b {
-        line-height: 100%;
+      line-height: 100%;
     }
     .c {
-        line-height: 10vw;;
+      line-height: 10vw;
     }
   }
   .text-aling {
     .a {
-        text-align: center
+      text-align: center;
     }
     .b {
-        text-align: justify
+      text-align: justify;
     }
     .c {
-        text-align: left
+      text-align: left;
     }
   }
   .text-decoration {
     .a {
-        text-decoration: overline;
-        text-decoration-color: blueviolet;
+      text-decoration: overline;
+      text-decoration-color: blueviolet;
     }
     .b {
-        text-decoration: line-through;
+      text-decoration: line-through;
     }
     .c {
-        text-decoration: underline;
-        text-decoration-color: red;
+      text-decoration: underline;
+      text-decoration-color: red;
     }
   }
   .text-indent {
     .a {
-        text-indent: 50px;
+      text-indent: 50px;
     }
     .b {
-        text-indent: -2em;
+      text-indent: -2em;
     }
     .c {
-        text-indent: 30%;
+      text-indent: 30%;
     }
   }
   .text-shadow {
     .a {
-        text-shadow: 10px 50px;
+      text-shadow: 10px 50px;
     }
     .b {
-        text-shadow: 2px 4px #FF0000;
+      text-shadow: 2px 4px #ff0000;
     }
     .c {
-        text-shadow: 2px 2px #5382DE;
+      text-shadow: 2px 2px #5382de;
     }
   }
   .text-transform {
     .a {
-        text-transform: uppercase;
+      text-transform: uppercase;
     }
     .b {
-        text-transform: lowercase;
+      text-transform: lowercase;
     }
     .c {
-        text-transform: capitalize;
+      text-transform: capitalize;
     }
   }
   .text-overflow {
-      div{
-        width: 50px; 
-        white-space: nowrap; 
-        overflow: hidden;
-
-      }
+    div {
+      width: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
     .a {
-        text-overflow: clip; 
-
+      text-overflow: clip;
     }
     .b {
-        text-overflow: ellipsis; 
+      text-overflow: ellipsis;
     }
     .c {
-        text-overflow: "----"; 
+      text-overflow: "----";
     }
   }
   .unicode-bidi {
     .a {
-        direction: rtl;
-        unicode-bidi: bidi-override;
+      direction: rtl;
+      unicode-bidi: bidi-override;
     }
   }
   .vertical-align {
+    div{
+        background-color: #ff0000 ;
+        height: 70px;
+        p{
+            vertical-align: middle;
+
+        }
+      }
     .a {
+      vertical-align: text-top;
     }
     .b {
+      vertical-align: middle;
     }
     .c {
+      vertical-align: super;
     }
   }
   .white-space {
+    p {
+      background-color: rgba(50,50,65, .6) ;
+    }
     .a {
+      white-space: nowrap;
     }
     .b {
+      white-space: normal;
     }
     .c {
+      white-space: pre;
     }
   }
   .word-spacing {
     .a {
+        word-spacing: 30px;
     }
     .b {
-    }
-    .c {
+        word-spacing: 20vw;
     }
   }
 }

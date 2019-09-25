@@ -6,6 +6,11 @@ div p {
   font-size: 1.2rem;
 }
 
+body {
+  width: 90vw;
+  margin-left: 5%;
+}
+
 .table-layout table {
   border-collapse: collapse;
   border: 1px solid black;
@@ -41,7 +46,7 @@ div p {
 }
 @font-face {
   font-family: thirdFont;
-  src: url(sansation_light.woff);
+  src: url(Habitual.otf);
 }
 .font_properties .font .a {
   font: 15px arial, sans-serif;
@@ -161,10 +166,10 @@ div p {
   text-shadow: 10px 50px;
 }
 .text-properties .text-shadow .b {
-  text-shadow: 2px 4px #FF0000;
+  text-shadow: 2px 4px #ff0000;
 }
 .text-properties .text-shadow .c {
-  text-shadow: 2px 2px #5382DE;
+  text-shadow: 2px 2px #5382de;
 }
 .text-properties .text-transform .a {
   text-transform: uppercase;
@@ -193,5 +198,37 @@ div p {
   direction: rtl;
   unicode-bidi: bidi-override;
 }
-
-/*# sourceMappingURL=general.css.map */
+.text-properties .vertical-align div {
+  background-color: #ff0000;
+  height: 70px;
+}
+.text-properties .vertical-align div p {
+  vertical-align: middle;
+}
+.text-properties .vertical-align .a {
+  vertical-align: text-top;
+}
+.text-properties .vertical-align .b {
+  vertical-align: middle;
+}
+.text-properties .vertical-align .c {
+  vertical-align: super;
+}
+.text-properties .white-space p {
+  background-color: rgba(50, 50, 65, 0.6);
+}
+.text-properties .white-space .a {
+  white-space: nowrap;
+}
+.text-properties .white-space .b {
+  white-space: normal;
+}
+.text-properties .white-space .c {
+  white-space: pre;
+}
+.text-properties .word-spacing .a {
+  word-spacing: 30px;
+}
+.text-properties .word-spacing .b {
+  word-spacing: 20vw;
+}
