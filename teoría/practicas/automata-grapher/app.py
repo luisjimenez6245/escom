@@ -19,15 +19,8 @@ def main():
     dic = {("in", "c"), ("inc","l"), ("incl", "u"), ("inclu", "d"), ("includ", "e"), ("include", "")}
     for x in range(2, len(dic) + 1):
         item = "include"
-        if (x < 3):
-            r = create_node(panel, r, item[:x], (list(item[x-1:]))[0])
-        elif (x != 3):
-            r = create_node(panel, r, "", "")
-        if(x == 3):
-            before = r
-            a = create_node(panel, before, item[:x], "r")
-            r = a
-            node_to_node(panel, a, before, 50)
+        r = create_node(panel, r, item[:x], (list(item[x-1:]))[0])
+
 
     final = create_main_node(panel, r, "include", heigth, "")
     #node_to_node(panel, final, parent, 1)

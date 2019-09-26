@@ -37,25 +37,21 @@ body {
 }
 
 @font-face {
-  font-family: firstFont;
-  src: url(sansation_light.woff);
-}
-@font-face {
   font-family: secondFont;
-  src: url(sansation_light.woff);
+  src: url(bold.tff);
 }
 @font-face {
   font-family: thirdFont;
   src: url(Habitual.otf);
 }
 .font_properties .font .a {
-  font: 15px arial, sans-serif;
+  font: 15px thirdFont, sans-serif;
 }
 .font_properties .font .b {
   font: italic bold 12px/30px Helveltica, serif;
 }
 .font_properties .font .c {
-  font: italic bold 12px/30px Georgia, serif;
+  font: italic bold 1.2rem secondFont, serif;
 }
 .font_properties .font_family .a {
   font-family: "Times New Roman", Times, serif;
