@@ -1,0 +1,5 @@
+#Start recording tcl command: 9/23/2019 08:46:03
+#Project Location: C:/Users/luisj/Documents/GitHub/escom/fdd; Project name: practica2
+prj_project open "C:/Users/luisj/Documents/GitHub/escom/fdd/practica2.ldf"
+prj_project close
+#Stop recording: 9/23/2019 08:46:35

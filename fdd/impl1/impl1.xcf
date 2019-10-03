@@ -19,8 +19,8 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>C:/Users/luisj/Downloads/Dec_16Seg_Dec_16Seg.jed</File>
-			<FileTime>09/20/19 00:30:15</FileTime>
+			<File>C:/Users/luisj/Desktop/FFD/16SEG/Dec_16Seg_Dec_16Seg.jed</File>
+			<FileTime>09/19/19 20:26:16</FileTime>
 			<JedecChecksum>0xB6D7</JedecChecksum>
 			<Operation>FLASH Erase,Program,Verify</Operation>
 			<Option>
@@ -46,6 +46,6 @@
 	<CableOptions>
 		<CableName>USB2</CableName>
 		<PortAdd>FTUSB-0</PortAdd>
-		<USBID>Lattice FTUSB Interface Cable B Location 0000 Serial B</USBID>
+		<USBID>Lattice FTUSB Interface Cable A Location 0000 Serial A</USBID>
 	</CableOptions>
 </ispXCF>
