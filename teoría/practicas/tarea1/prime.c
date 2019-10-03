@@ -8,7 +8,7 @@ FILE *fp;
 
 int main(int argc, const char **argv)
 {
-    char *file_name = "/Volumes/FILES/files/prime.txt";
+    char *file_name = "./prime.txt";
     int n = 100000, i, counter, j = 1;
     if (argc == 2)
     {
@@ -19,7 +19,7 @@ int main(int argc, const char **argv)
     fp = fopen(file_name, "ab");
     for (i = 2; i <= n; ++i)
     {
-        if((i % (10*j)) == 0)
+        if(i % ((int)pow(2, j+1)) == 0)
         {
             j += 1;
         }
@@ -48,6 +48,7 @@ int isPrime(int number)
 
 void getWord(int length, int number)
 {
+    printf("%d\n", length);
     char res[length + 2];
     res[length + 1] = '\n';
     res[length + 2] = '\0';

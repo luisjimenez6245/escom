@@ -8,7 +8,7 @@ FILE *fp;
 
 int main(int argc, const char** argv)
 {
-    char * file_name = "/Volumes/FILES/files/spaces.txt";
+    char * file_name = "./spaces.txt";
     int n = 27, i, counter, j;
     if(argc == 2){
         n = atoi(argv[1]); 
