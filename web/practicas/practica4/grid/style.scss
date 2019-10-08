@@ -1,3 +1,27 @@
+h2, h3,h4, h5, h6{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h6{
+  font-size: 1rem;
+}
+p{
+  width: 90% !important; 
+  margin-left: 5%;
+}
+img {
+  align-self: auto;
+  margin: center;
+}
+a{
+  outline: none !important;
+  text-decoration: none;
+  text-align: center;
+  &:visited{
+    color: red;
+  }
+}
 .grid {
   &_3_3,
   &_4_4 {
@@ -12,10 +36,7 @@
     .container {
       grid-row: 1;
       align-content: center;
-      img {
-        align-self: auto;
-        margin: center;
-      }
+
       &_1 {
         grid-column: 1;
       }

@@ -1,3 +1,31 @@
+h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  width: 90% !important;
+  margin-left: 5%;
+}
+
+img {
+  align-self: auto;
+  margin: center;
+}
+
+a {
+  outline: none !important;
+  text-decoration: none;
+  text-align: center;
+}
+a:visited {
+  color: red;
+}
+
 .grid_3_3, .grid_4_4 {
   display: grid;
   grid-gap: 10px;
@@ -11,10 +39,6 @@
 .grid_3_3 .container {
   grid-row: 1;
   align-content: center;
-}
-.grid_3_3 .container img {
-  align-self: auto;
-  margin: center;
 }
 .grid_3_3 .container_1 {
   grid-column: 1;
