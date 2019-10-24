@@ -1,0 +1,2 @@
+\contentsline {section}{\numberline {1}Automata de Ajedrez}{3}% 
+\contentsline {section}{\numberline {2}Automata de decimales}{5}% 

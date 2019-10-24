@@ -4,6 +4,51 @@
     <title>Es</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <style>
+        .cambio {
+            color: aqua !important;
+        }
+    </style>
+    <script>
+
+        function onClickCalcFactorial() {
+            var numero = prompt("Ingrese elnúmero", "0");
+            numero = factorial(numero);
+            alert("El factorial es:" + numero);
+        }
+
+        function factorial(numero) {
+            if (numero === 0) {
+                return 1;
+            }
+            else {
+                return numero * factorial(numero - 1);
+            }
+
+        }
+
+        var isParagraphChanged = false;
+
+        function onClickChangeItems() {
+            let ids= ['p1', 'p2' , 'p3'];
+            if (isParagraphChanged) {
+                var elements = document.getElementsByClassName("aCambiar");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.backgroundColor = "rgba(0,0,0,0)";
+                }
+                isParagraphChanged = false;
+            }
+            else {
+                var elements = document.getElementsByClassName("aCambiar");
+                var i;
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.backgroundColor = "red";
+                }
+                isParagraphChanged = true;
+            }
+        }
+    </script>
 </head>
 
 <body class="gradient">
@@ -157,7 +202,7 @@
                             </div>
                         </div>
                         <div>
-                            <p>
+                            <p class="aCambiar">
                                 El gobierno de Brasil informó que rechazará la oferta de ayuda
                                 ofrecida por el grupo de
                                 países del G7 (Estados Unidos, Francia, Alemania, Japón, Canadá,
@@ -195,7 +240,7 @@
                             </div>
                         </div>
                         <div>
-                            <p>
+                            <p class="aCambiar">
                                 A esta altura, con su sexta edición al hilo, la Media Party
                                 (https://mediaparty.info/es/
                                 ) es un evento tan instalado como indispensable: cada año desde
@@ -231,7 +276,7 @@
                             </div>
                         </div>
                         <div>
-                            <p>
+                            <p class="aCambiar">
                                 Bree Kotomah, una joven británica de 23 años, casi se dio por
                                 vencida en el momento más
                                 exitoso de su floreciente carrera como diseñadora de moda.
@@ -259,6 +304,7 @@
     <div class=" grid_3_3 ">
         <div class="container container_1">
             <img src="./img/Unknown-4.jpeg" alt="" />
+            <button onclick="onClickChangeItems()">cambia parrafos</button>
         </div>
         <div class="container container_2">
             <div>Elaboró: Luis Diego Jiménez Delgado</span>
@@ -268,6 +314,7 @@
         </div>
         <div class="container container_3">
             <img src="./img/Unknown.jpeg" alt="" />
+            <button onclick="onClickCalcFactorial()">calcula factorial</button>
         </div>
     </div>
 </body>
