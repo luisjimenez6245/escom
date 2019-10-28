@@ -1,12 +1,12 @@
 package practica3;
 
-import com.sun.j3d.utils.geometry.*;
+import org.jogamp.java3d.utils.geometry.*;
 
-import com.sun.j3d.utils.geometry.Primitive;
-import com.sun.j3d.utils.image.TextureLoader;
-import com.sun.j3d.utils.universe.SimpleUniverse;
+import org.jogamp.java3d.utils.geometry.Primitive;
+import org.jogamp.java3d.utils.image.TextureLoader;
+import org.jogamp.java3d.utils.universe.SimpleUniverse;
 import java.awt.GraphicsConfiguration;
-import javax.media.j3d.Alpha;
+import org.jdesktopmedia.j3d.Alpha;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
