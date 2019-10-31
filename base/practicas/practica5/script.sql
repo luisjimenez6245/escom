@@ -1,9 +1,7 @@
 DROP database if exists Gustar;
 
 CREATE database  Gustar;
-
 use Gustar;
-
 
 CREATE TABLE HOMBRE
 (
@@ -179,7 +177,7 @@ where hsim.nomh =msim.nomh
 select nomm from matrim where nomm not in (select matrim.nomm from matrim, msim where matrim.nomm = msim.nomm and matrim.nomh = msim.nomh);
 
 
-SELECT nomh from  hsim where hsim.nomm in (SELECT nomm from msim);
+SELECT distinct nomh from  hsim where hsim.nomm in (SELECT nomm from msim);
 
 
 SELECT nomh from matrim where nomh in (select matrim.nomh from matrim, msim where matrim.nomm = msim.nomm and matrim.nomh = msim.nomh) and nomh not in (SELECT nomh )
@@ -189,3 +187,6 @@ SELECT nomh from msim where nomm in (select nomm from matrim);
 
 SELECT nomm from msim where nomm in (select nomm from matrim);
 
+SELECT  DISTINCT matrim.nomm from matrim, hsim where hsim.nomh = matrim.nomh;
+
+SELECT  matrim.nomh from matrim, msim where matrim.nomh=msim.nomh  and matrim.nomm=msim.nomm and matrim.nomh = matrim.nomh in (SELECT matrim.nomh from matrim, msim where maim )
