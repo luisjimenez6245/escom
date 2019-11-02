@@ -22,8 +22,9 @@ def get_selector(item, count):
             dic_aux.append(h)
     for it in dic_aux:
         if item+it in dictio:
-            resa += "else if(c == '"+ it + "'){\n return 1;\n}\n"
+            resa += "else if(c == '"+ it + "'){\n return register_word(\""+ item+it +"\");\n}\n"
         elif it is not "":
+            methods.append("int manage_" + item+ it+ "();")
             resa += "else if(c == '"+ it + "'){\n return manage_" + item+ it+ "();\n}\n"
     resa = resa[4:]
     if(item is ""):
@@ -46,6 +47,7 @@ if __name__ == "__main__":
     dictio = file_content.split("\n")
     r = 16
     final = ""
+    methods = list()
     for i in range(16):
         res = list()
         for item in dictio:
@@ -58,4 +60,6 @@ if __name__ == "__main__":
             result += ("\nint manage_" + item +  "()\n{\n char c = get_char();\n " + get_selector (item, i + 1)+" \n}\n")
             #result += "\n else if (c == '" + item + "'){\n return manage_" +item + "();\n}"
         final += (result)
+    for item in methods:
+        print(item)
     write_file("./a.txt", final)

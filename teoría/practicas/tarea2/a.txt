@@ -90,7 +90,7 @@ int manage_d()
  return manage_de();
 }
 else if(c == 'o'){
- return 1;
+ return register_word("do");
 }
 return 0; 
 }
@@ -135,7 +135,7 @@ int manage_i()
 {
  char c = get_char();
   if(c == 'f'){
- return 1;
+ return register_word("if");
 }
 else if(c == 'n'){
  return manage_in();
@@ -270,7 +270,7 @@ int manage_do()
 {
  char c = get_char();
   if(c == ''){
- return 1;
+ return register_word("do");
 }
 else if(c == 'u'){
  return manage_dou();
@@ -318,7 +318,7 @@ int manage_fo()
 {
  char c = get_char();
   if(c == 'r'){
- return 1;
+ return register_word("for");
 }
 return 0; 
 }
@@ -336,7 +336,7 @@ int manage_in()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("int");
 }
 else if(c == 'c'){
  return manage_inc();
@@ -444,7 +444,7 @@ int manage_aut()
 {
  char c = get_char();
   if(c == 'o'){
- return 1;
+ return register_word("auto");
 }
 return 0; 
 }
@@ -462,7 +462,7 @@ int manage_cas()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("case");
 }
 return 0; 
 }
@@ -471,7 +471,7 @@ int manage_cha()
 {
  char c = get_char();
   if(c == 'r'){
- return 1;
+ return register_word("char");
 }
 return 0; 
 }
@@ -510,7 +510,7 @@ int manage_els()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("else");
 }
 return 0; 
 }
@@ -519,7 +519,7 @@ int manage_enu()
 {
  char c = get_char();
   if(c == 'm'){
- return 1;
+ return register_word("enum");
 }
 return 0; 
 }
@@ -546,7 +546,7 @@ int manage_got()
 {
  char c = get_char();
   if(c == 'o'){
- return 1;
+ return register_word("goto");
 }
 return 0; 
 }
@@ -555,7 +555,7 @@ int manage_lon()
 {
  char c = get_char();
   if(c == 'g'){
- return 1;
+ return register_word("long");
 }
 return 0; 
 }
@@ -654,7 +654,7 @@ int manage_voi()
 {
  char c = get_char();
   if(c == 'd'){
- return 1;
+ return register_word("void");
 }
 return 0; 
 }
@@ -690,7 +690,7 @@ int manage_brea()
 {
  char c = get_char();
   if(c == 'k'){
- return 1;
+ return register_word("break");
 }
 return 0; 
 }
@@ -699,7 +699,7 @@ int manage_cons()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("const");
 }
 return 0; 
 }
@@ -744,7 +744,7 @@ int manage_floa()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("float");
 }
 return 0; 
 }
@@ -771,7 +771,7 @@ int manage_shor()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("short");
 }
 return 0; 
 }
@@ -825,7 +825,7 @@ int manage_unio()
 {
  char c = get_char();
   if(c == 'n'){
- return 1;
+ return register_word("union");
 }
 return 0; 
 }
@@ -852,7 +852,7 @@ int manage_whil()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("while");
 }
 return 0; 
 }
@@ -888,7 +888,7 @@ int manage_doubl()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("double");
 }
 return 0; 
 }
@@ -897,7 +897,7 @@ int manage_exter()
 {
  char c = get_char();
   if(c == 'n'){
- return 1;
+ return register_word("extern");
 }
 return 0; 
 }
@@ -915,7 +915,7 @@ int manage_retur()
 {
  char c = get_char();
   if(c == 'n'){
- return 1;
+ return register_word("return");
 }
 return 0; 
 }
@@ -924,7 +924,7 @@ int manage_signe()
 {
  char c = get_char();
   if(c == 'd'){
- return 1;
+ return register_word("signed");
 }
 return 0; 
 }
@@ -933,7 +933,7 @@ int manage_sizeo()
 {
  char c = get_char();
   if(c == 'f'){
- return 1;
+ return register_word("sizeof");
 }
 return 0; 
 }
@@ -942,7 +942,7 @@ int manage_stati()
 {
  char c = get_char();
   if(c == 'c'){
- return 1;
+ return register_word("static");
 }
 return 0; 
 }
@@ -951,7 +951,7 @@ int manage_struc()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("struct");
 }
 return 0; 
 }
@@ -1005,7 +1005,7 @@ int manage_defaul()
 {
  char c = get_char();
   if(c == 't'){
- return 1;
+ return register_word("default");
 }
 return 0; 
 }
@@ -1023,7 +1023,7 @@ int manage_typede()
 {
  char c = get_char();
   if(c == 'f'){
- return 1;
+ return register_word("typedef");
 }
 return 0; 
 }
@@ -1050,7 +1050,7 @@ int manage_includ()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("include");
 }
 return 0; 
 }
@@ -1059,7 +1059,7 @@ int manage_continu()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("continue");
 }
 return 0; 
 }
@@ -1068,7 +1068,7 @@ int manage_registe()
 {
  char c = get_char();
   if(c == 'r'){
- return 1;
+ return register_word("register");
 }
 return 0; 
 }
@@ -1077,7 +1077,7 @@ int manage_unsigne()
 {
  char c = get_char();
   if(c == 'd'){
- return 1;
+ return register_word("unsigned");
 }
 return 0; 
 }
@@ -1086,7 +1086,7 @@ int manage_volatil()
 {
  char c = get_char();
   if(c == 'e'){
- return 1;
+ return register_word("volatile");
 }
 return 0; 
 }

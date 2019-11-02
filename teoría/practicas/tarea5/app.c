@@ -5,7 +5,145 @@
 
 */
 
+int manage_();
+int manage_a();
+int manage_b();
+int manage_c();
+int manage_d();
+int manage_e();
+int manage_f();
+int manage_g();
+int manage_i();
+int manage_l();
+int manage_r();
+int manage_s();
+int manage_t();
+int manage_u();
+int manage_v();
+int manage_w();
+int manage_au();
+int manage_br();
+int manage_ca();
+int manage_ch();
+int manage_co();
+int manage_de();
+int manage_el();
+int manage_en();
+int manage_ex();
+int manage_fl();
+int manage_fo();
+int manage_go();
+int manage_in();
+int manage_lo();
+int manage_re();
+int manage_sh();
+int manage_si();
+int manage_st();
+int manage_ty();
+int manage_un();
+int manage_vo();
+int manage_wh();
+int manage_aut();
+int manage_bre();
+int manage_cas();
+int manage_cha();
+int manage_con();
+int manage_def();
+int manage_dou();
+int manage_els();
+int manage_enu();
+int manage_ext();
+int manage_flo();
+int manage_got();
+int manage_inc();
+int manage_lon();
+int manage_reg();
+int manage_ret();
+int manage_sho();
+int manage_sig();
+int manage_siz();
+int manage_sta();
+int manage_str();
+int manage_typ();
+int manage_uni();
+int manage_uns();
+int manage_voi();
+int manage_vol();
+int manage_whi();
+int manage_brea();
+int manage_cons();
+int manage_cont();
+int manage_defa();
+int manage_doub();
+int manage_exte();
+int manage_floa();
+int manage_regi();
+int manage_retu();
+int manage_shor();
+int manage_sign();
+int manage_size();
+int manage_stat();
+int manage_stru();
+int manage_type();
+int manage_unio();
+int manage_unsi();
+int manage_vola();
+int manage_whil();
+int manage_incl();
+int manage_conti();
+int manage_defau();
+int manage_doubl();
+int manage_exter();
+int manage_regis();
+int manage_retur();
+int manage_signe();
+int manage_sizeo();
+int manage_stati();
+int manage_struc();
+int manage_typed();
+int manage_unsig();
+int manage_volat();
+int manage_inclu();
+int manage_contin();
+int manage_defaul();
+int manage_regist();
+int manage_typede();
+int manage_unsign();
+int manage_volati();
+int manage_includ();
+int manage_continu();
+int manage_registe();
+int manage_unsigne();
+int manage_volatil();
+
 int lines = 0;
+int char_count = 0;
+
+FILE *file;
+
+int main(int argc, const char **argv)
+{
+    int res = 0;
+    file = fopen("app.c", "r");
+    while(res != -1)
+    {
+        res = manage_();
+    }
+    return 0;
+}
+
+int register_word(char word[])
+{
+    printf("\n%s line:%i char:%i", word, lines, char_count - (int) (sizeof(word) / 4));
+    return 1;
+}
+
+char get_char()
+{
+    char_count += 1;
+    return  (char)fgetc(file);
+}
+
 int manage_()
 {
     char c = get_char();
@@ -71,12 +209,14 @@ int manage_()
     }
     else if (c == '\n')
     {
+        char_count = 0;
         lines += 1;
     }
-    if (c == EOF)
+    else if (c == EOF)
     {
         return -1;
     }
+    return 0;
 }
 
 int manage_a()
@@ -126,7 +266,7 @@ int manage_d()
     }
     else if (c == 'o')
     {
-        return 1;
+        return register_word("do");
     }
     return 0;
 }
@@ -178,7 +318,7 @@ int manage_i()
     char c = get_char();
     if (c == 'f')
     {
-        return 1;
+        return register_word("if");
     }
     else if (c == 'n')
     {
@@ -328,15 +468,11 @@ int manage_de()
 int manage_do()
 {
     char c = get_char();
-    if (c == '')
-    {
-        return 1;
-    }
-    else if (c == 'u')
+    if (c == 'u')
     {
         return manage_dou();
     }
-    return 0;
+    return register_word("do");
 }
 
 int manage_el()
@@ -384,7 +520,7 @@ int manage_fo()
     char c = get_char();
     if (c == 'r')
     {
-        return 1;
+        return register_word("for");
     }
     return 0;
 }
@@ -404,7 +540,7 @@ int manage_in()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("int");
     }
     else if (c == 'c')
     {
@@ -528,7 +664,7 @@ int manage_aut()
     char c = get_char();
     if (c == 'o')
     {
-        return 1;
+        return register_word("auto");
     }
     return 0;
 }
@@ -548,7 +684,7 @@ int manage_cas()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("case");
     }
     return 0;
 }
@@ -558,7 +694,7 @@ int manage_cha()
     char c = get_char();
     if (c == 'r')
     {
-        return 1;
+        return register_word("char");
     }
     return 0;
 }
@@ -602,7 +738,7 @@ int manage_els()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("else");
     }
     return 0;
 }
@@ -612,7 +748,7 @@ int manage_enu()
     char c = get_char();
     if (c == 'm')
     {
-        return 1;
+        return register_word("enum");
     }
     return 0;
 }
@@ -642,7 +778,7 @@ int manage_got()
     char c = get_char();
     if (c == 'o')
     {
-        return 1;
+        return register_word("goto");
     }
     return 0;
 }
@@ -652,7 +788,7 @@ int manage_lon()
     char c = get_char();
     if (c == 'g')
     {
-        return 1;
+        return register_word("long");
     }
     return 0;
 }
@@ -762,7 +898,7 @@ int manage_voi()
     char c = get_char();
     if (c == 'd')
     {
-        return 1;
+        return register_word("void");
     }
     return 0;
 }
@@ -802,7 +938,7 @@ int manage_brea()
     char c = get_char();
     if (c == 'k')
     {
-        return 1;
+        return register_word("break");
     }
     return 0;
 }
@@ -812,7 +948,7 @@ int manage_cons()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("const");
     }
     return 0;
 }
@@ -862,7 +998,7 @@ int manage_floa()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("float");
     }
     return 0;
 }
@@ -892,7 +1028,7 @@ int manage_shor()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("short");
     }
     return 0;
 }
@@ -952,7 +1088,7 @@ int manage_unio()
     char c = get_char();
     if (c == 'n')
     {
-        return 1;
+        return register_word("union");
     }
     return 0;
 }
@@ -982,7 +1118,7 @@ int manage_whil()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("while");
     }
     return 0;
 }
@@ -1022,7 +1158,7 @@ int manage_doubl()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("double");
     }
     return 0;
 }
@@ -1032,7 +1168,7 @@ int manage_exter()
     char c = get_char();
     if (c == 'n')
     {
-        return 1;
+        return register_word("extern");
     }
     return 0;
 }
@@ -1052,7 +1188,7 @@ int manage_retur()
     char c = get_char();
     if (c == 'n')
     {
-        return 1;
+        return register_word("return");
     }
     return 0;
 }
@@ -1062,7 +1198,7 @@ int manage_signe()
     char c = get_char();
     if (c == 'd')
     {
-        return 1;
+        return register_word("signed");
     }
     return 0;
 }
@@ -1072,7 +1208,7 @@ int manage_sizeo()
     char c = get_char();
     if (c == 'f')
     {
-        return 1;
+        return register_word("sizeof");
     }
     return 0;
 }
@@ -1082,7 +1218,7 @@ int manage_stati()
     char c = get_char();
     if (c == 'c')
     {
-        return 1;
+        return register_word("static");
     }
     return 0;
 }
@@ -1092,7 +1228,7 @@ int manage_struc()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("struct");
     }
     return 0;
 }
@@ -1152,7 +1288,7 @@ int manage_defaul()
     char c = get_char();
     if (c == 't')
     {
-        return 1;
+        return register_word("default");
     }
     return 0;
 }
@@ -1172,7 +1308,7 @@ int manage_typede()
     char c = get_char();
     if (c == 'f')
     {
-        return 1;
+        return register_word("typedef");
     }
     return 0;
 }
@@ -1202,7 +1338,7 @@ int manage_includ()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("include");
     }
     return 0;
 }
@@ -1212,7 +1348,7 @@ int manage_continu()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("continue");
     }
     return 0;
 }
@@ -1222,7 +1358,7 @@ int manage_registe()
     char c = get_char();
     if (c == 'r')
     {
-        return 1;
+        return register_word("register");
     }
     return 0;
 }
@@ -1232,7 +1368,7 @@ int manage_unsigne()
     char c = get_char();
     if (c == 'd')
     {
-        return 1;
+        return register_word("unsigned");
     }
     return 0;
 }
@@ -1242,16 +1378,10 @@ int manage_volatil()
     char c = get_char();
     if (c == 'e')
     {
-        return 1;
+        return register_word("volatile");
     }
     return 0;
 }
 
-int main(int argc, const char **argv)
-{
 
-    return 0;
-}
-char get_char()
-{
-}
+
