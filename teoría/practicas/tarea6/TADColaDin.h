@@ -25,9 +25,8 @@ typedef unsigned char boolean;
 typedef struct elemento
 {
 	//Variables de la estructura "elemento" (El usuario puede modificar)
-	boolean shouldContinue;
-    boolean isValid;
-    int state;
+	int x;
+	int y;
 } elemento;
 
 //Definir un nodo que será utilizado para almacenar una posición de la cola (Nodo), lo que incluira a un elemento y a un apuntador al siguiente nodo

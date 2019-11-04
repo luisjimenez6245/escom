@@ -62,6 +62,6 @@ if __name__ == "__main__":
         final += (result)
     res_aux = ""
     for item in methods:
-        item = "\n" + "int manage_" + item+ it+ "();" (item)
-    final = item + final
+        res_aux += "\n" + "int manage_" + item+ it+ "();"
+    final = res_aux + final
     write_file("./a.txt", final)

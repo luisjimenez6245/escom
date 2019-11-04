@@ -56,19 +56,14 @@ void isValidProcess(char initialChar)
     Initialize(&listos);
     Initialize(&porHacer);
     manageProcess(&porHacer, createElemento(0));
-    boolean isValidString = FALSE;
     while (!Empty(&listos))
     {
-        if (initialChar == '0' || initialChar == '1')
+        if (initialChar == 'r' || initialChar == 'b')
         {
-            isValidString = manageCola(&listos, &porHacer, initialChar)
+            manageCola(&listos, &porHacer, initialChar)
         }
         else
         {
-            if(isValidString)
-            {
-                
-            }
         }
         initialChar = getChar();
     }
@@ -76,7 +71,7 @@ void isValidProcess(char initialChar)
     Destroy(&listos);
 }
 
-boolean manageCola(cola *listos, cola *porHacer, char c)
+void manageCola(cola *listos, cola *porHacer, char c)
 {
     while (!Empty(listos))
     {
@@ -85,6 +80,7 @@ boolean manageCola(cola *listos, cola *porHacer, char c)
         }
         else
         {
+            //printf("");
         }
     }
     if (!Empty(porHacer))
@@ -96,30 +92,36 @@ boolean manageCola(cola *listos, cola *porHacer, char c)
     }
 }
 
-elemento createElemento(int state)
+elemento createElemento(int x, int y)
 {
     elemento e;
-    e.state = state;
+    e.x = x;
+    e.y = y;
+    return e;
 }
 
 boolean manageProcess(cola *porHacer, elemento e, char toEval)
 {
-    if (e.state == 0)
+    if (toEval == 'r')
+    {
+        e
+    }
+    else
     {
     }
-    else if (e.state == 1)
+}
+
+elemento getEntity(int startX, int startY, char toSearch)
+{
+    int i, j;
+    if
+    for (i = 0; i < 3; ++i)
     {
-        if ()
+        for (j = startY; j < 3; ++j)
+        {
+            if (matrixContainer[i][j] == toSearch)
+                return createElemento(i, j);
+        }
     }
-    else if (e.state == 2)
-    {
-    }
-    else if (e.state == 3)
-    {
-    }
-    else if (e.state == 4)
-    {
-        return TRUE;
-    }
-    return FALSE;
+    return NULL;
 }
