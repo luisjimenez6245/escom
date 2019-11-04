@@ -1382,6 +1382,3 @@ int manage_volatil()
     }
     return 0;
 }
-
-
-

@@ -24,11 +24,11 @@ def get_selector(item, count):
         if item+it in dictio:
             resa += "else if(c == '"+ it + "'){\n return register_word(\""+ item+it +"\");\n}\n"
         elif it is not "":
-            methods.append("int manage_" + item+ it+ "();")
+            methods.append(")
             resa += "else if(c == '"+ it + "'){\n return manage_" + item+ it+ "();\n}\n"
     resa = resa[4:]
     if(item is ""):
-        resa += "return -1;"
+        resa += "else if (c == '\n')\n{\nchar_count = 0;\nlines += 1;\n}\nelse if (c == EOF)\n{\nreturn -1;\n}\nreturn 0;"
     else:
         resa += "return 0;"
     return resa
@@ -60,6 +60,8 @@ if __name__ == "__main__":
             result += ("\nint manage_" + item +  "()\n{\n char c = get_char();\n " + get_selector (item, i + 1)+" \n}\n")
             #result += "\n else if (c == '" + item + "'){\n return manage_" +item + "();\n}"
         final += (result)
+    res_aux = ""
     for item in methods:
-        print(item)
+        item = "\n" + "int manage_" + item+ it+ "();" (item)
+    final = item + final
     write_file("./a.txt", final)

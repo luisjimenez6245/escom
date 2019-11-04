@@ -1,25 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "TADColaDin.h"
 
 /*
 
 */
 
-#define TRUE 1
-#define FALSE 0
-
-typedef unsigned char boolean;
-
-typedef struct process
-{
-    boolean shouldContinue;
-    boolean isValid;
-    int state;
-} process;
-
 FILE *fp;
+int lengthProcArr;
 
-int main(int argc, const char** argv)
+int main(int argc, const char **argv)
 {
     char *fileName = "./file.txt";
     fp = fopen(fileName, "r");
@@ -33,3 +23,40 @@ int main(int argc, const char** argv)
     return 0;
 }
 
+void isValidProcess()
+{
+    cola listos, porHacer;
+    Initialize(&listos);
+    Initialize(&porHacer);
+    while (!Empty(&listos))
+    {
+        while (!Empty(&listos))
+        {
+            if(manageProcess(&porHacer, Dequeue(&listos)))
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        if (!Empty(&porHacer))
+        {
+            while (!Empty(&porHacer))
+            {
+                Queue(&listos, Dequeue(&porHacer));
+            }
+        }
+    }
+    Destroy(&finalizados);
+    Destroy(&listos);
+}
+
+boolean manageProcess(cola *porHacer, elemento e)
+{
+    if(e.state == 4)
+    {
+        return FALSE;
+    }
+}
