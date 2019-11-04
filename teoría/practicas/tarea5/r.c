@@ -3,7 +3,7 @@
 #include "TADColaDin.h"
 
 /*
-
+01
 */
 
 FILE *fp;
@@ -52,7 +52,7 @@ void isValidProcess(char initialChar)
                 Queue(&listos, Dequeue(&porHacer));
             }
         }
-        initialChar 
+        initialChar = getChar();
     }
     Destroy(&finalizados);
     Destroy(&listos);
@@ -66,10 +66,14 @@ elemento createElemento(int state)
 
 boolean manageProcess(cola *porHacer, elemento e, char toEval)
 {
-    if (e.state == 0)
+    if (e.state == 1)
     {
+        if (toEval == '0')
+        {
+            Queue(porHacer, createElemento(1));
+        }
     }
-    else if (e.state == 1)
+    else if (e.state == 2)
     {
         if (toEval == '0')
         {
@@ -79,15 +83,25 @@ boolean manageProcess(cola *porHacer, elemento e, char toEval)
             
         }
     }
-    else if (e.state == 2)
-    {
-    }
     else if (e.state == 3)
     {
+        if (toEval == '0')
+        {
+        }
+        else
+        {
+            
+        }
     }
     else if (e.state == 4)
     {
-        return TRUE;
+        if (toEval == '0')
+        {
+        }
+        else
+        {
+            
+        }
     }
     return FALSE;
 }

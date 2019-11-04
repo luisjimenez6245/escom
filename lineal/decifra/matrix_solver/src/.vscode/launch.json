@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Matrix_solver",
+            "request": "launch",
+            "mainClass": "matrix_solver.Matrix_solver"
+        }
+    ]
+}
