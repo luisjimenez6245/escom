@@ -16,29 +16,33 @@ int main(int argc, const char **argv)
     char toWork = (char)fgetc(fp);
     while (toWork != EOF)
     {
-        printf("%c", toWork);
+        isValidProcess(toWork);
         toWork = (char)fgetc(fp);
     }
     fclose(fp);
     return 0;
 }
 
-void isValidProcess()
+char getChar()
+{
+    return  (char)fgetc(fp);
+}
+
+void isValidProcess(char initialChar)
 {
     cola listos, porHacer;
     Initialize(&listos);
     Initialize(&porHacer);
+    manageProcess(&porHacer, createElemento(0));
     while (!Empty(&listos))
     {
         while (!Empty(&listos))
         {
-            if(manageProcess(&porHacer, Dequeue(&listos)))
+            if (manageProcess(&porHacer, Dequeue(&listos)))
             {
-
             }
             else
             {
-
             }
         }
         if (!Empty(&porHacer))
@@ -48,15 +52,42 @@ void isValidProcess()
                 Queue(&listos, Dequeue(&porHacer));
             }
         }
+        initialChar 
     }
     Destroy(&finalizados);
     Destroy(&listos);
 }
 
-boolean manageProcess(cola *porHacer, elemento e)
+elemento createElemento(int state)
 {
-    if(e.state == 4)
+    elemento e;
+    e.state = state;
+}
+
+boolean manageProcess(cola *porHacer, elemento e, char toEval)
+{
+    if (e.state == 0)
     {
-        return FALSE;
     }
+    else if (e.state == 1)
+    {
+        if (toEval == '0')
+        {
+        }
+        else
+        {
+            
+        }
+    }
+    else if (e.state == 2)
+    {
+    }
+    else if (e.state == 3)
+    {
+    }
+    else if (e.state == 4)
+    {
+        return TRUE;
+    }
+    return FALSE;
 }

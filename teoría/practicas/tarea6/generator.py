@@ -6,8 +6,8 @@ if __name__ == "__main__":
     while(length > 0):
         i = (randint(0, 2) % 2)
         if (i == 0):
-            f.write('1')
+            f.write('r')
         else:
-            f.write('0')
+            f.write('b')
         length = length - 1
     f.close()

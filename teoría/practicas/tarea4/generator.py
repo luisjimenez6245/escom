@@ -4,10 +4,6 @@ if __name__ == "__main__":
     length = 100
     f = open("file.txt", "w+")
     while(length > 0):
-        i = (randint(0, 2) % 2)
-        if (i == 0):
-            f.write('1')
-        else:
-            f.write('0')
+        f.write(str((randint(0, 2) % 2)))
         length = length - 1
     f.close()
