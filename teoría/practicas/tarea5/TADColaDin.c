@@ -209,7 +209,7 @@ elemento Element(cola * c, int i)
 	else
 	{
 		//AQUÍ SE MODIFICÓ
-		r.n=0;
+		r.state = -1;
 	}
 	return r;
 }

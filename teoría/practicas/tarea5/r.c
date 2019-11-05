@@ -6,13 +6,22 @@
 01
 */
 
+char getChar();
+void isValidProcess(char initialChar);
+elemento createElemento(int state);
+int manageProcess(cola *porHacer, elemento e, char toEval);
+void moveToAnswer();
+
 FILE *fp;
+FILE *fhelper;
+FILE *fanswer;
+
 int lengthProcArr;
 
 int main(int argc, const char **argv)
 {
-    char *fileName = "./file.txt";
-    fp = fopen(fileName, "r");
+    fp = fopen("./file.txt", "r");
+    fanswer = fopen("./answer.txt", "w");
     char toWork = (char)fgetc(fp);
     while (toWork != EOF)
     {
@@ -20,12 +29,13 @@ int main(int argc, const char **argv)
         toWork = (char)fgetc(fp);
     }
     fclose(fp);
+    fclose(fanswer);
     return 0;
 }
 
 char getChar()
 {
-    return  (char)fgetc(fp);
+    return (char)fgetc(fp);
 }
 
 void isValidProcess(char initialChar)
@@ -33,75 +43,90 @@ void isValidProcess(char initialChar)
     cola listos, porHacer;
     Initialize(&listos);
     Initialize(&porHacer);
-    manageProcess(&porHacer, createElemento(0));
+    manageProcess(&listos, createElemento(0), initialChar);
+    fhelper = fopen("./helper.txt", "w+");
     while (!Empty(&listos))
     {
         while (!Empty(&listos))
         {
-            if (manageProcess(&porHacer, Dequeue(&listos)))
+            int helper = manageProcess(&porHacer, Dequeue(&listos), initialChar);
+            if (helper == 1)
             {
+                Destroy(&porHacer);
+                Destroy(&listos);
+                moveToAnswer();
+                return;
             }
             else
             {
+                if (helper == -1)
+                {
+                    Destroy(&porHacer);
+                    Destroy(&listos);
+                    fclose(fhelper);
+                    remove("./helper.txt");
+                    return;
+                }
             }
         }
-        if (!Empty(&porHacer))
+
+        while (!Empty(&porHacer))
         {
-            while (!Empty(&porHacer))
-            {
-                Queue(&listos, Dequeue(&porHacer));
-            }
+            Queue(&listos, Dequeue(&porHacer));
         }
+        fputc(initialChar, fhelper);
         initialChar = getChar();
     }
-    Destroy(&finalizados);
+    Destroy(&porHacer);
     Destroy(&listos);
+    fclose(fhelper);
+    remove("./helper.txt");
+}
+
+void moveToAnswer()
+{
+    rewind(fhelper);
+    char toWork = (char)fgetc(fhelper);
+    while (toWork != EOF)
+    {
+        fputc(toWork, fanswer);
+        toWork = (char)fgetc(fhelper);
+    }
+    fclose(fhelper);
+    remove("./helper.txt");
+    fputc('\n', fanswer);
 }
 
 elemento createElemento(int state)
 {
     elemento e;
     e.state = state;
+    return e;
 }
 
-boolean manageProcess(cola *porHacer, elemento e, char toEval)
+int manageProcess(cola *porHacer, elemento e, char toEval)
 {
-    if (e.state == 1)
+    if (e.state == 0)
     {
-        if (toEval == '0')
+        if (toEval == '1' || toEval == '0')
         {
-            Queue(porHacer, createElemento(1));
+            Queue(porHacer, createElemento(0));
+            if(toEval == '0'){
+                Queue(porHacer, createElemento(1));
+            }
+        }
+    }
+    else if(e.state ==1){
+        if (toEval == '1')
+        {
+                        Queue(porHacer, createElemento(2));
         }
     }
     else if (e.state == 2)
     {
-        if (toEval == '0')
-        {
-        }
-        else
-        {
-            
+        if (toEval == ' ' || toEval == '\n'){
+            return 1;
         }
     }
-    else if (e.state == 3)
-    {
-        if (toEval == '0')
-        {
-        }
-        else
-        {
-            
-        }
-    }
-    else if (e.state == 4)
-    {
-        if (toEval == '0')
-        {
-        }
-        else
-        {
-            
-        }
-    }
-    return FALSE;
+    return 0;
 }

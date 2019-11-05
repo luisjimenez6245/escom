@@ -22,8 +22,6 @@ import javax.swing.JTextArea;
  */
 public class MainController extends iViewController implements ActionListener {
 
-    private int n = 3;
-
     private JTextArea input;
     private JTextArea output;
     private Controller control;

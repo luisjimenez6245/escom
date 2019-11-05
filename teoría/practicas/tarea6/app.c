@@ -28,7 +28,7 @@ int main(int argc, const char **argv)
 void fillContainer()
 {
     int i, j, counter = 0;
-    for (i (i = 0; i < 3; ++i)
+    for (i = 0; i < 3; ++i)
     {
         for (j = 0; j < 3; ++j)
         {
