@@ -1,72 +1,132 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include "TADColaDin.h"
 
-#define TRUE 1
-#define FALSE 0
+/*
+01
+*/
 
-typedef unsigned char boolean;
+char getChar();
+void isValidProcess(char initialChar);
+elemento createElemento(int state);
+int manageProcess(cola *porHacer, elemento e, char toEval);
+void moveToAnswer();
 
-typedef struct object
-{
-    boolean shouldContinue;
-    boolean isValid;
-    int state;
-} object;
+FILE *fp;
+FILE *fhelper;
+FILE *fanswer;
 
-void manageProcess(char *fileName);
-object manageObject(object *obj);
-boolean isValidWord(char c, object *process0, object *process1);
+int lengthProcArr;
 
 int main(int argc, const char **argv)
 {
-    char *fileName = "./file.txt";
-    if (argc == 2)
+    fp = fopen("./file.txt", "r");
+    fanswer = fopen("./answer.txt", "w");
+    char toWork = (char)fgetc(fp);
+    while (toWork != EOF)
     {
-        fileName = argv[1];
+        isValidProcess(toWork);
+        toWork = (char)fgetc(fp);
     }
+    fclose(fp);
+    fclose(fanswer);
+    return 0;
 }
 
-void manageProcess(char *fileName, char *resFileName)
+char getChar()
 {
-    FILE *file;
-    FILE *res;
-    FILE *aux;
-    file = fopen(fileName, "r");
-    char toWork;
-    do
-    {
-        toWork = (char)fgetc(file);
-        if (isValidWord(toWork, &process0, &process1))
-        {
-        }
-        else
-        {
-
-        }
-    } while (toWork != EOF);
-    return code;
+    return (char)fgetc(fp);
 }
 
-boolean isValidWord(char c, object *process[], int process number)
+void isValidProcess(char initialChar)
 {
-    int i;
-    for (i = 0; i < number; ++i)
+    cola listos, porHacer;
+    Initialize(&listos);
+    Initialize(&porHacer);
+    manageProcess(&listos, createElemento(0), initialChar);
+    fhelper = fopen("./helper.txt", "w+");
+    while (!Empty(&listos))
     {
-        evalObject(process[i], c);
+        while (!Empty(&listos))
+        {
+            int helper = manageProcess(&porHacer, Dequeue(&listos), initialChar);
+            if (helper == 1)
+            {
+                Destroy(&porHacer);
+                Destroy(&listos);
+                moveToAnswer();
+                return;
+            }
+            else
+            {
+                if (helper == -1)
+                {
+                    Destroy(&porHacer);
+                    Destroy(&listos);
+                    fclose(fhelper);
+                    remove("./helper.txt");
+                    return;
+                }
+            }
+        }
+
+        while (!Empty(&porHacer))
+        {
+            Queue(&listos, Dequeue(&porHacer));
+        }
+        fputc(initialChar, fhelper);
+        initialChar = getChar();
     }
+    Destroy(&porHacer);
+    Destroy(&listos);
+    fclose(fhelper);
+    remove("./helper.txt");
 }
 
-object evalObject(object *obj, char c)
+void moveToAnswer()
 {
-    if (obj->shouldContinue)
+    rewind(fhelper);
+    char toWork = (char)fgetc(fhelper);
+    while (toWork != EOF)
     {
-        if (c == "0" && obj->state == 1)
+        fputc(toWork, fanswer);
+        toWork = (char)fgetc(fhelper);
+    }
+    fclose(fhelper);
+    remove("./helper.txt");
+    fputc('\n', fanswer);
+}
+
+elemento createElemento(int state)
+{
+    elemento e;
+    e.state = state;
+    return e;
+}
+
+int manageProcess(cola *porHacer, elemento e, char toEval)
+{
+    if (e.state == 0)
+    {
+        if (toEval == '1' || toEval == '0')
         {
+            Queue(porHacer, createElemento(0));
+            if(toEval == '0'){
+                Queue(porHacer, createElemento(1));
+            }
         }
     }
-    else
-    {
-
+    else if(e.state ==1){
+        if (toEval == '1')
+        {
+                        Queue(porHacer, createElemento(2));
+        }
     }
+    else if (e.state == 2)
+    {
+        if (toEval == ' ' || toEval == '\n'){
+            return 1;
+        }
+    }
+    return 0;
 }
