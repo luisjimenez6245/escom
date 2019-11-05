@@ -6,8 +6,6 @@
 package matrix_solver;
 
 import UI.MainController;
-import controllers.Controller;
-import controllers.MatrixController;
 
 /**
  *
@@ -19,9 +17,7 @@ public class Matrix_solver {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
-        Controller c = new Controller();
-        System.out.println(c.decryptString(c.encryptString("fab iola")));
-        
+    public static void main(String[] args){
+        new MainController();
     }
 }

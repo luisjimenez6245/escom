@@ -25,8 +25,50 @@ public class Controller {
         this.INVERSEMATRIX = control.getInverseMatrix(MAINMATRIX);
     }
 
-    public double[][] encryptString(String toEncrypt) {
-        String[] stringArr = splitString(toEncrypt);
+    public String encrypt(String toEncrypt){
+        return matrixToString(encryptString(toEncrypt));
+    }
+    
+    public String decrypt(String toDecrypt){
+        return decryptString(stringToMatrix(toDecrypt));
+    }
+    
+    private String matrixToString(double[][] arrDouble) {
+        String res = "";
+        for (double[] arr : arrDouble) {
+            res += "(";
+            for (double d : arr) {
+                res += d + ",";
+            }
+            res = res.substring(0, res.length() - 1) + "),";
+        }
+        res = res.substring(0, res.length() - 1);
+        return res;
+    }
+
+    private double[][] stringToMatrix(String st) {
+        st = st.replace("(", "");
+        st = st.replace("),", "&&");
+        String [] aux = st.split("&&");
+        double[][] res = new double[aux.length][];
+        int j = 0;
+        for(String item: aux){
+            item = item.replace(")", "");
+            String [] auxItem = item.split(",");
+            double[] auxRes = new double[auxItem.length];
+            int i = 0;
+            for(String s : auxItem){
+                auxRes[i] = Double.parseDouble(s);
+                ++i;
+            }
+            res[j] = (auxRes);
+            ++j;
+        }
+        return res;
+    }
+
+    private double[][] encryptString(String toEncrypt) {
+        String[] stringArr = splitString(toEncrypt.toLowerCase());
         double[][] matrixArr = new double[stringArr.length][6];
         int i = 0;
         for (String s : stringArr) {
@@ -37,7 +79,7 @@ public class Controller {
         return matrixArr;
     }
 
-    public String decryptString(double[][] arrDouble) {
+    private String decryptString(double[][] arrDouble) {
         String res = "";
         for (double[] a : arrDouble) {
             res += decryptMatrix(control.dotMatrix(INVERSEMATRIX, a));
@@ -62,10 +104,11 @@ public class Controller {
         int i = 0;
         for (char c : toEncrypt.toCharArray()) {
             int aux_c = (int) c;
-            if(aux_c ==32){
+            if (aux_c == 32) {
                 res[i] = 27;
+            } else {
+                res[i] = NUMBERDIC[(int) c - 97];
             }
-            else{res[i] = NUMBERDIC[(int) c - 97];}
             ++i;
         }
         return res;
