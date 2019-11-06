@@ -28,13 +28,23 @@ void generateString()
         {
             if (getBool())
             {
-                fputc('0', fanswer);
+                if (getBool())
+                {
+                    fputc('0', fanswer);
+                }
+                else
+                {
+                    fputc('0', fanswer);
+                    fputc('1', fanswer);
+                    length = length - 1;
+                }
             }
             else
             {
                 fputc('0', fanswer);
                 fputc('1', fanswer);
-                length = length - 1;
+                fputc('0', fanswer);
+                length = length - 2;
             }
             length = length - 1;
         }
@@ -54,7 +64,5 @@ int getRandomNumber(int number)
     int res = rand();
     if (number > 0)
         res = rand() % number;
-    if (res > 1)
-        printf("%i\n", res);
     return res;
 }
