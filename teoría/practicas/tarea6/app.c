@@ -11,12 +11,19 @@ void fillContainer();
 void isValidProcess(char initialChar);
 void destroyProcess(cola *porHacer, cola *listos);
 elemento createElemento(int x, int y);
-int manageProcess(cola *porHacer, elemento e, char toEval);
+void manageProcess(cola *porHacer, elemento e, char toEval);
 void moveToAnswer(elemento e);
-elemento getEntity(int startX, int startY, int evitX, int evitY, char toSearch);
+elemento fixElement(elemento toFix);
+elemento getEntity(elemento reference, elemento lastFound, char toSearch);
+int coordToInt(int x, int y);
+
+void shouldAccept(cola *porHacer, elemento e);
+
 FILE *fp;
-FILE *fhelper;
 FILE *fanswer;
+int line = 0;
+int turn = 0;
+
 char matrixContainer[3][3];
 
 int main(int argc, const char **argv)
@@ -50,7 +57,7 @@ void fillContainer()
             {
                 matrixContainer[i][j] = 'b';
             }
-                    printf("%c \t",matrixContainer[i][j] );
+            printf("%c \t", matrixContainer[i][j]);
             ++counter;
         }
         printf("\n");
@@ -59,46 +66,200 @@ void fillContainer()
 
 char getChar()
 {
+    line = 0;
+    turn = (turn +1) %2;
     return (char)fgetc(fp);
 }
 
 void isValidProcess(char initialChar)
 {
-    cola listos, porHacer;
-    Initialize(&listos);
-    Initialize(&porHacer);
-    manageProcess(&listos, createElemento(0, 0), initialChar);
-    fhelper = fopen("./helper.txt", "w+");
-    while (!Empty(&listos))
+    cola listosP1, porHacerP1;
+    cola listosP2, porHacerP2;
+    Initialize(&listosP1);
+    Initialize(&porHacerP1);
+    Initialize(&listosP2);
+    Initialize(&porHacerP2);
+    manageProcess(&listosP1, createElemento(0, 0), initialChar);
+    manageProcess(&listosP2, createElemento(2, 2), initialChar);
+    while (!Empty(&listosP1)  && !Empty(&listosP2))
     {
-        printf("%c \n", initialChar);
-        while (!Empty(&listos))
+        if (initialChar == '\n' || initialChar == ' ' || initialChar == '\0')
         {
-            manageProcess(&porHacer, Dequeue(&listos), initialChar);
-        }
-        if (initialChar == ' ' || initialChar == '\n' || initialChar == EOF)
-        {
-            while (!Empty(&porHacer))
+            while (!Empty(&listosP1))
             {
-                elemento e = Dequeue(&porHacer);
-                printf("x = %i , y = %i\n", e.x, e.y);
-                if (e.x == 2 && e.y == 2)
-                {
-                    moveToAnswer(e);
-                }
+              elemento e = Dequeue(&listosP1);
+              printf("%i \n", coordToInt(e.x, e.y) );
+              if(coordToInt(e.x, e.y) == 9)
+              {
+                printf("parent = %i line = %i \n", e.line, e.parent);
+              } 
             }
-            destroyProcess(&porHacer, &listos);
+            destroyProcess(&porHacerP1, &listosP1);
+
+            while (!Empty(&listosP2))
+            {
+              elemento e = Dequeue(&listosP2);
+              printf("%i \n", coordToInt(e.x, e.y) );
+              if(coordToInt(e.x, e.y) == 9)
+              {
+                printf("parent = %i line = %i \n", e.line, e.parent);
+              } 
+            }
+            destroyProcess(&porHacerP2, &listosP2);
             return;
         }
-        while (!Empty(&porHacer))
+        while (!Empty(&listosP1))
         {
-            Queue(&listos, Dequeue(&porHacer));
+            manageProcess(&porHacerP1, Dequeue(&listosP1), initialChar);
+        }
+        while (!Empty(&listosP2))
+        {
+            manageProcess(&porHacerP2, Dequeue(&listosP2), initialChar);
+        }
+        while (!Empty(&porHacerP1))
+        {
+            Queue(&listosP1, Dequeue(&porHacerP1));
+        }
+        while (!Empty(&porHacerP2))
+        {
+            Queue(&listosP1, Dequeue(&porHacerP2));
         }
         initialChar = getChar();
     }
-    printf("aaaaalc\n");
-    destroyProcess(&porHacer, &listos);
+    destroyProcess(&porHacerP2, &listosP2);
+    destroyProcess(&porHacerP1, &listosP1);
     return;
+}
+
+void manageProcess(cola *porHacer, elemento e, char toEval)
+{
+    elemento aux = e;
+    aux.x = aux.x - 1;
+    aux.y = aux.y - 1;
+    while (aux.x != -3 && aux.y != -3)
+    {
+        aux = getEntity(e, aux, toEval);
+        if(aux.x != -3 && aux.y != -3){
+            
+            aux.line = line;
+            aux.parent = e.line;
+            shouldAccept(porHacer, aux);
+            ++line;
+        }
+    }
+}
+
+void shouldAccept(cola *porHacer, elemento e)
+{
+    cola helper;
+    boolean valid = TRUE;
+    Initialize(&helper);
+    while (!Empty(porHacer))
+    {
+        elemento el =  Dequeue(porHacer);
+        
+        if (e.x == el.x && e.y == el.y)
+        {
+            valid = FALSE;
+        }
+
+        Queue(&helper, el);
+    }
+    if(valid)
+    {
+        Queue(&helper, e);
+    }
+    while (!Empty(&helper))
+    {
+        
+        elemento el =  Dequeue(&helper);
+                Queue(porHacer, el);
+    }
+    Destroy(&helper);
+}
+
+elemento getEntity(elemento reference, elemento lastFound, char toSearch)
+{
+    elemento e = fixElement(lastFound);
+    int startX = e.x;
+    int startY = e.y;
+    int i, j;
+    for (i = startY; i < 3; ++i)
+    {
+        if (i > reference.y + 1)
+            break;
+        if (i < reference.y - 1)
+            break;
+        for (j = startX; j < 3; ++j)
+        {
+            if (j > reference.x + 1)
+                break;
+            if (j < reference.x - 1)
+                break;
+            if (matrixContainer[i][j] == toSearch && ((i != startY) || (j != e.x)))
+            {
+                return createElemento(j, i);
+            }
+        }
+        startX = 0;
+    }
+    return createElemento(-3, -3);
+}
+
+elemento fixElement(elemento toFix)
+{
+    elemento e;
+    e.x = toFix.x;
+    e.y = toFix.y;
+    e.line = toFix.line;
+    e.parent = toFix.parent;
+    if (toFix.x < 0)
+        e.x = 0;
+    if (toFix.y < 0)
+        e.y = 0;
+    else
+    {
+        if (toFix.x > 2)
+        {
+            e.x = 0;
+            e.y = e.y + 1;
+        }
+    }
+    return e;
+}
+
+void destroyProcess(cola *porHacer, cola *listos)
+{
+    Destroy(porHacer);
+    Destroy(listos);
+}
+
+int coordToInt(int x, int y)
+{
+    int i, j, counter = 0;
+    printf("x = %i y = %i\n", x, y);
+    for (i = 0; i < 3; ++i)
+    {
+        for (j = 0; j < 3; ++j)
+        {
+            if (i == y && j == x)
+            {
+                return counter;
+            }
+            ++ counter;
+        }
+    }
+    return 0;
+}
+
+elemento createElemento(int x, int y)
+{
+    elemento e;
+    e.x = x;
+    e.y = y;
+    e.parent = 0;
+    e.line = 0;
+    return e;
 }
 
 void moveToAnswer(elemento e)
@@ -112,77 +273,4 @@ void moveToAnswer(elemento e)
         toWork = (char)fgetc(fhelper);
     }
     fputc('\n', fanswer);*/
-}
-
-void destroyProcess(cola *porHacer, cola *listos)
-{
-    Destroy(porHacer);
-    Destroy(listos);
-    fclose(fhelper);
-    remove("./helper.txt");
-}
-
-elemento createElemento(int x, int y)
-{
-    elemento e;
-    e.x = x;
-    e.y = y;
-    return e;
-}
-
-int manageProcess(cola *porHacer, elemento e, char toEval)
-{
-    elemento elaux = e;
-    elaux.x = elaux.x -2;
-    elaux.y = elaux.y -2;
-    int parent = e.parent, i = 0;
-    while (elaux.x != -3 && elaux.y != -3)
-    {
-        printf("--> x = %i , y = %i\n", elaux.x, elaux.y);
-        elaux = getEntity(elaux.x + 1, elaux.y, e.x, e.y, toEval);
-        if ( elaux.x != -3 && elaux.y != -3)
-        {
-            printf("x = %i , y = %i\n", elaux.x, elaux.y);
-            elaux.parent = parent;
-            elaux.line = i;
-            Queue(porHacer, elaux);
-            ++i;
-        }
-    }
-    return 0;
-}
-
-elemento getEntity(int startX, int startY, int evitX, int evitY, char toSearch)
-{
-    int i, j;
-    if (startX < 0)
-    {
-        startX = 0;
-    }
-    if (startX > 3)
-    {
-        startX = 0;
-        startX = startY + 1;
-    }
-    if (startY < 0)
-    {
-        startY = 0;
-    }
-    for (i = startY; i < 3; ++i)
-    {
-        for (j = startX; j < 3; ++j)
-        {
-            if(j >= (evitY + 1))
-                break;
-            if(j <= (evitY - 1))
-                break;
-            if (matrixContainer[i][j] == toSearch && i != evitY && j != evitX){
-                return createElemento(i, j);
-            }
-            
-        }
-        if(i > evitX + 1)
-            break;
-    }
-    return createElemento(-3, -3);
 }

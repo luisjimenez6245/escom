@@ -13,6 +13,9 @@ cuando se le asigna memoria a medida que es necesitada,
 durante la ejecución del programa.  
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 //DEFINICIONES DE CONSTANTES
 #define TRUE	1
 #define FALSE	0
@@ -29,6 +32,8 @@ typedef struct elemento
 	int y;
 	int line;
 	int parent;
+	FILE *f;
+	char *name;
 } elemento;
 
 //Definir un nodo que será utilizado para almacenar una posición de la cola (Nodo), lo que incluira a un elemento y a un apuntador al siguiente nodo

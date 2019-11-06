@@ -1,0 +1,38 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {spanish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Aut\IeC {\'o}mata de cadena con terminaci\IeC {\'o}n 01}{2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Diagrama}{2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}C\IeC {\'o}digo}{2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Idetificador de palabras reservadas en el lenguaje C}{6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n}{6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Diagrama}{6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Output}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}C\IeC {\'o}digo}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Aut\IeC {\'o}mata de movimientos en un tablero de ajedrez (chessboard)}{14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Diagrama}{14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}C\IeC {\'o}digo}{14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Generador de expresiones regulares}{21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Descripci\IeC {\'o}n}{21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Diagrama}{21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}C\IeC {\'o}digo}{21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Ecuaciones}{24}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Diagrama}{24}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Ecuaciones}{24}% 
