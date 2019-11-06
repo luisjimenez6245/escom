@@ -88,7 +88,6 @@ void moveToAnswer()
         fputc(toWork, fanswer);
         toWork = (char)fgetc(fhelper);
     }
-
     fputc('\n', fanswer);
 }
 
