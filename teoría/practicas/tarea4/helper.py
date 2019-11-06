@@ -58,7 +58,6 @@ if __name__ == "__main__":
         result = ""
         for item in res:
             result += ("\nint manage_" + item +  "()\n{\n char c = get_char();\n " + get_selector (item, i + 1)+" \n}\n")
-            #result += "\n else if (c == '" + item + "'){\n return manage_" +item + "();\n}"
         final += (result)
     res_aux = ""
     for item in methods:
