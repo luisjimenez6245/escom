@@ -125,18 +125,20 @@ FILE *output;
 int main(int argc, const char **argv)
 {
     int res = 0;
-    file = fopen("app.c", "r");
+    file = fopen("./app.c", "r");
+    output = fopen("./answer.txt", "w");
     while(res != -1)
     {
         res = manage_();
     }
     fclose(file);
+    fclose(output);
     return 0;
 }
 
-int register_word(char word[])
+int register_word(char *word)
 {
-    printf("\n%s line:%i char:%i", word, lines, char_count - (int) (sizeof(word) / 4));
+    fprintf(output, "word:%s line:%i char:%i \n", word, lines, char_count - (int) (sizeof(word) / 4)) ;
     return 1;
 }
 

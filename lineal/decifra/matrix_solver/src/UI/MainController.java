@@ -53,8 +53,6 @@ public class MainController extends iViewController implements ActionListener {
         output = new JTextArea("");
         input = new JTextArea("");
 
-        n = 3;
-
         label.setBounds(40, 10, 80, 30);
         buttonCalc.setBounds(40, 350, 100, 30);
         buttonCalcInver.setBounds(150, 350, 100, 30);
@@ -65,7 +63,7 @@ public class MainController extends iViewController implements ActionListener {
         input.setWrapStyleWord(true);
 
         output.setBounds(420, 0, 320, 420);
-      output.setLineWrap(true);
+        output.setLineWrap(true);
         output.setWrapStyleWord(true);
         buttonCalc.addActionListener(this);
         buttonCalcInver.addActionListener(this);
@@ -104,7 +102,6 @@ public class MainController extends iViewController implements ActionListener {
         }
         output.setLineWrap(true);
         output.setWrapStyleWord(true);
-
     }
 
 }

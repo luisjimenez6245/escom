@@ -4,6 +4,7 @@
 <head>
     <title>Examples</title>
     <meta charset="UTF-8" />
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -12,13 +13,13 @@
             <fieldset>
                 <legend>Datos personales</legend>
                 Nombre:
-                <input type="text" value="" /><br />
+                <input type="text" value="" id="txt_nombre"/><br />
                 Ap. Paterno:
-                <input type="text" value="" /><br />
+                <input type="text" value="" id="txt_paterno"/><br />
                 Ap. Materno:
-                <input type="text" value="" /><br />
+                <input type="text" value="" id="txt_materno"/><br />
                 Fecha de nacimiento:
-                <select>
+                <select id="select_dia">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -51,7 +52,7 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select>
-                <select>
+                <select id="select_mes">
                     <option value="Enero">Enero</option>
                     <option value="Febrero">Febrero</option>
                     <option value="Marzo">Marzo</option>
@@ -65,7 +66,7 @@
                     <option value="Noviembre">Noviembre</option>
                     <option value="Diciembre">Diciembre</option>
                 </select>
-                <select>
+                <select id="select_ano">
                     <option value="1990">1990</option>
                     <option value="1991">1991</option>
                     <option value="1992">1992</option>
@@ -99,7 +100,7 @@
                 </select>
                 <br />
                 Signo Zodiacal:
-                <select>
+                <select id="select_signo">
                     <option value="Aries">Aries</option>
                     <option value="Tauro">Tauro</option>
                     <option value="Géminis">Géminis</option>
@@ -115,29 +116,29 @@
                 </select>
                 <br />
                 Sexo:
-                <input type="radio" name="sexo" value="Femenino"> Femenino
-                <input type="radio" name="sexo" value="Masculino"> Masculino
+                <input type="radio" name="sexo" id="rd_sexo" value="Femenino"> Femenino
+                <input type="radio" name="sexo" id="rd_sexo" value="Masculino"> Masculino
                 <br />
                 Correo:
-                <input type="text" value="" /><br />
+                <input type="text" value="" id="txt_email" /><br />
             </fieldset>
             <fieldset>
                 <legend>Direccion:</legend>
                 <span>
                     Calle:
-                    <input type="text" value="" />
+                    <input type="text" value=""  id="txt_calle"/>
                 </span>
                 <span>
                     Numero:
-                    <input type="text" value="" />
+                    <input type="text" value=""  id="txt_calle_num" />
                 </span>
                 <span>
                     CP:
-                    <input type="text" value="" />
+                    <input type="text" value="" id="txt_calle_cp"/>
                 </span>
                 <div>
                     Delegación:
-                    <select>
+                    <select id = "select_delegacion">
                         <option value="ÁlvaroObregón">Álvaro Obregón</option>
                         <option value="Azcapotzalco">Azcapotzalco</option>
                         <option value="BenitoJuárez">Benito Juárez</option>
@@ -162,49 +163,47 @@
                 <div>Lenguaje de Programación Favorito:</div>
                 <div>
                     <span>
-                        <input type="checkbox" value="C" />C
+                        <input type="checkbox" value="C" id="chb_lenjuage"/>C
                     </span>
                     <span>
-                        <input type="checkbox" value="C++" />C++
+                        <input type="checkbox" value="C++" id="chb_lenjuage" />C++
                     </span>
                     <span>
-                        <input type="checkbox" value="Java" />Java
+                        <input type="checkbox" value="Java" id="chb_lenjuage"/>Java
                     </span>
                     <span>
-                        <input type="checkbox" value="JS" />JS
+                        <input type="checkbox" value="JS" id="chb_lenjuage" />JS
                     </span>
                     <span>
-                        <input type="checkbox" value="Python" />Python
+                        <input type="checkbox" value="Python" id="chb_lenjuage" />Python
                     </span>
                     <span>
-                        <input type="checkbox" value="Ruby" />Ruby
+                        <input type="checkbox" value="Ruby" id="chb_lenjuage"/>Ruby
                     </span>
                     <span>
-                        <input type="checkbox" value="Otro" />Otro
+                        <input type="checkbox" value="Otro" id="chb_lenjuage" />Otro
                     </span>
                 </div>
                 <div>
                     Pasatiempos:
-                    <select multiple>
+                    <select id= "select_pasatiempos" multiple>
                         <option value="Escuchar">Escuchar Música</option>
                         <option value="Jugar">Jugar</option>
                         <option value="Leer">Leer</option>
                         <option value="Prohgramar">Prohgramar</option>
                         <option value="Ver">Ver youtube</option>
                         <option value="Otro">Otro</option>
-
-
                     </select>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Datos Escolares:</legend>
                 <div>
-                    Promedio: <input type="number" />
+                    Promedio: <input  id="num_promedio"type="number" />
                 </div>
                 <div>
                     Semestre:
-                    <select>
+                    <select id="select_semestre">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -222,26 +221,26 @@
                 <div>
                     ¿Debes Materias?
                     <span>
-                        <input type="radio" name="materias" /> Si
+                        <input type="radio" name="materias" id="rd_materias"/> Si
                     </span>
                     <span>
-                        <input type="radio" name="materias" /> No
+                        <input type="radio" name="materias" id="rd_materias"/> No
                     </span>
                 </div>
                 <div>
-                    Comentarios <input type="Text" />
+                    Comentarios <input type="Text" id="txt_comentarios" />
                 </div>
             </fieldset>
             <fieldset>
                 <legend> Informacion de la cuenta</legend>
                 <div>
-                    Nombre de Usuario: <input type="text">
+                    Nombre de Usuario: <input type="text" id="txt_cuenta_nombre">
                 </div>
                 <div>
-                    Password: <input type="password">
+                    Password: <input type="password" id="txt_cuenta_psw">
                 </div>
                 <div>
-                    Confirmación password: <input type="password">
+                    Confirmación password: <input type="password" id="txt_cuenta_psw_con">
                 </div>
             </fieldset>
             <div>
@@ -263,61 +262,4 @@
         </div>
     </div>
 </body>
-<script>
-    function getValFromPromt(title, def){
-        var res = prompt(title, def);
-        return res;
-    }
-    function onClickGetItemCount(){
-        let val = getValFromPromt("Agrega el item", "0");
-        let content = document.getElementsByTagName(val);
-        if (content !== undefined){
-            alert("Se tiene " + content.length + " de estos elementos " + val +". ");
-        }else{
-            alert("Se tiene 0 de estos elementos " + val +". ");
-        }
-    }
-    function onClickFirstChild(){
-        let root = document.getElementsByTagName("BODY")[0];
-        alert ( root.firstChild.nodeName);
-    }
-    function onClickLastChild(){
-        let root = document.getElementsByTagName("BODY")[0];
-        alert (root.lastChild.nodeName);
-    }
-    function getNodeInfo(node){
-        var res;
-        if(node.childNodes !==  undefined && node.childNodes.length > 0){
-            res = {
-                "nodeName" : node.nodeName,
-                "nodeType" : node.nodeType,
-                "nodeValue" : node.nodeValue,
-                "childs" : []
-            }
-        }
-        else{
-            res = {
-                "nodeName" : node.nodeName,
-                "nodeType" : node.nodeType,
-                "nodeValue" : node.nodeValue            
-            }
-        }
-        return res;
-    }
-    function getChildsInfo(parent, infoParent){
-        parent.childNodes.forEach((element)=> {
-            var info = getNodeInfo(element);
-            if (element.childNodes.length > 0){
-                getChildsInfo(element, info);
-            }
-            infoParent.childs.push(info);
-        });
-        return infoParent;
-    }
-    function onClickNodeInfo(){
-        let root = document.getRootNode();
-        let info = getChildsInfo(root, getNodeInfo(root));
-        alert(JSON.stringify(info));
-    }
-</script>
 </html>

@@ -209,7 +209,6 @@ elemento Element(cola * c, int i)
 	else
 	{
 		//AQUÍ SE MODIFICÓ
-		r.n=0;
 	}
 	return r;
 }

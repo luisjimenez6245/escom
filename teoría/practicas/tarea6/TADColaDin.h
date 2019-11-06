@@ -27,6 +27,8 @@ typedef struct elemento
 	//Variables de la estructura "elemento" (El usuario puede modificar)
 	int x;
 	int y;
+	int line;
+	int parent;
 } elemento;
 
 //Definir un nodo que será utilizado para almacenar una posición de la cola (Nodo), lo que incluira a un elemento y a un apuntador al siguiente nodo

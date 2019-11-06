@@ -8,6 +8,7 @@
 
 char getChar();
 void isValidProcess(char initialChar);
+void destroyProcess(cola *porHacer, cola *listos);
 elemento createElemento(int state);
 int manageProcess(cola *porHacer, elemento e, char toEval);
 void moveToAnswer();
@@ -15,8 +16,6 @@ void moveToAnswer();
 FILE *fp;
 FILE *fhelper;
 FILE *fanswer;
-
-int lengthProcArr;
 
 int main(int argc, const char **argv)
 {
@@ -52,24 +51,23 @@ void isValidProcess(char initialChar)
             int helper = manageProcess(&porHacer, Dequeue(&listos), initialChar);
             if (helper == 1)
             {
-                Destroy(&porHacer);
-                Destroy(&listos);
                 moveToAnswer();
-                return;
+                destroyProcess(&porHacer,&listos);
+                return;            
             }
             else
             {
                 if (helper == -1)
                 {
-                    Destroy(&porHacer);
-                    Destroy(&listos);
-                    fclose(fhelper);
-                    remove("./helper.txt");
-                    return;
+                    destroyProcess(&porHacer,&listos);
+                    return;               
                 }
             }
         }
-
+        if (toEval == ' ' || toEval == '\n' || toWork == EOF){
+            destroyProcess(&porHacer,&listos);
+            return;
+        }
         while (!Empty(&porHacer))
         {
             Queue(&listos, Dequeue(&porHacer));
@@ -77,10 +75,8 @@ void isValidProcess(char initialChar)
         fputc(initialChar, fhelper);
         initialChar = getChar();
     }
-    Destroy(&porHacer);
-    Destroy(&listos);
-    fclose(fhelper);
-    remove("./helper.txt");
+    destroyProcess(&porHacer,&listos);
+    return;
 }
 
 void moveToAnswer()
@@ -92,9 +88,15 @@ void moveToAnswer()
         fputc(toWork, fanswer);
         toWork = (char)fgetc(fhelper);
     }
+
+    fputc('\n', fanswer);
+}
+
+void destroyProcess(cola *porHacer, cola *listos){
+    Destroy(porHacer);
+    Destroy(listos);
     fclose(fhelper);
     remove("./helper.txt");
-    fputc('\n', fanswer);
 }
 
 elemento createElemento(int state)
