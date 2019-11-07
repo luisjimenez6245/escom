@@ -119,8 +119,8 @@ public class Controller {
         int i = 0;
         while (!toSplit.equals("")) {
             if (toSplit.length() > 5) {
-                res.add(toSplit.substring(6 * i, 6 * (i + 1)));
-                toSplit = toSplit.substring(6 * (i + 1), toSplit.length());
+                res.add(toSplit.substring(0 , 6 ));
+                toSplit = toSplit.substring(6, toSplit.length());
             } else {
                 res.add(toSplit);
                 toSplit = "";

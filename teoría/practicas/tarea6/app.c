@@ -51,11 +51,11 @@ void fillContainer()
         {
             if (counter % 2 == 0)
             {
-                matrixContainer[i][j] = 'r';
+                matrixContainer[i][j] = 'b';
             }
             else
             {
-                matrixContainer[i][j] = 'b';
+                matrixContainer[i][j] = 'r';
             }
             printf("%c \t", matrixContainer[i][j]);
             ++counter;
@@ -74,14 +74,10 @@ char getChar()
 void isValidProcess(char initialChar)
 {
     cola listosP1, porHacerP1;
-    cola listosP2, porHacerP2;
     Initialize(&listosP1);
     Initialize(&porHacerP1);
-    Initialize(&listosP2);
-    Initialize(&porHacerP2);
     manageProcess(&listosP1, createElemento(0, 0), initialChar);
-    manageProcess(&listosP2, createElemento(2, 2), initialChar);
-    while (!Empty(&listosP1)  && !Empty(&listosP2))
+    while (!Empty(&listosP1))
     {
         if (initialChar == '\n' || initialChar == ' ' || initialChar == '\0')
         {
@@ -95,38 +91,19 @@ void isValidProcess(char initialChar)
               } 
             }
             destroyProcess(&porHacerP1, &listosP1);
-
-            while (!Empty(&listosP2))
-            {
-              elemento e = Dequeue(&listosP2);
-              printf("%i \n", coordToInt(e.x, e.y) );
-              if(coordToInt(e.x, e.y) == 9)
-              {
-                printf("parent = %i line = %i \n", e.line, e.parent);
-              } 
-            }
-            destroyProcess(&porHacerP2, &listosP2);
             return;
         }
         while (!Empty(&listosP1))
         {
             manageProcess(&porHacerP1, Dequeue(&listosP1), initialChar);
         }
-        while (!Empty(&listosP2))
-        {
-            manageProcess(&porHacerP2, Dequeue(&listosP2), initialChar);
-        }
         while (!Empty(&porHacerP1))
         {
             Queue(&listosP1, Dequeue(&porHacerP1));
         }
-        while (!Empty(&porHacerP2))
-        {
-            Queue(&listosP1, Dequeue(&porHacerP2));
-        }
+
         initialChar = getChar();
     }
-    destroyProcess(&porHacerP2, &listosP2);
     destroyProcess(&porHacerP1, &listosP1);
     return;
 }
@@ -140,7 +117,6 @@ void manageProcess(cola *porHacer, elemento e, char toEval)
     {
         aux = getEntity(e, aux, toEval);
         if(aux.x != -3 && aux.y != -3){
-            
             aux.line = line;
             aux.parent = e.line;
             shouldAccept(porHacer, aux);
@@ -157,12 +133,10 @@ void shouldAccept(cola *porHacer, elemento e)
     while (!Empty(porHacer))
     {
         elemento el =  Dequeue(porHacer);
-        
         if (e.x == el.x && e.y == el.y)
         {
             valid = FALSE;
         }
-
         Queue(&helper, el);
     }
     if(valid)
@@ -171,9 +145,8 @@ void shouldAccept(cola *porHacer, elemento e)
     }
     while (!Empty(&helper))
     {
-        
         elemento el =  Dequeue(&helper);
-                Queue(porHacer, el);
+        Queue(porHacer, el);
     }
     Destroy(&helper);
 }
@@ -186,15 +159,15 @@ elemento getEntity(elemento reference, elemento lastFound, char toSearch)
     int i, j;
     for (i = startY; i < 3; ++i)
     {
-        if (i > reference.y + 1)
+        if (i > (reference.y + 1))
             break;
-        if (i < reference.y - 1)
+        if (i < (reference.y - 1))
             break;
         for (j = startX; j < 3; ++j)
         {
-            if (j > reference.x + 1)
+            if (j > (reference.x + 1))
                 break;
-            if (j < reference.x - 1)
+            if (j < (reference.x - 1))
                 break;
             if (matrixContainer[i][j] == toSearch && ((i != startY) || (j != e.x)))
             {
@@ -236,7 +209,7 @@ void destroyProcess(cola *porHacer, cola *listos)
 
 int coordToInt(int x, int y)
 {
-    int i, j, counter = 0;
+    int i, j, counter = 1;
     printf("x = %i y = %i\n", x, y);
     for (i = 0; i < 3; ++i)
     {
