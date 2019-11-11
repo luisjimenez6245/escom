@@ -53,3 +53,42 @@ function onClickNodeInfo(){
     let info = getChildsInfo(root, getNodeInfo(root));
     alert(JSON.stringify(info));
 }
+
+function onClickGetValues(){
+    let answer = {
+        'Nombre': getTxtFromInput('nombre'),
+        'Ap. Paterno': getTxtFromInput('paterno'),
+        'Ap. Materno': getTxtFromInput('materno'),
+        'Fecha de nacimiento Dia': getSelectedFromSelect('dia'),
+        'Fecha de nacimiento Mes': getSelectedFromSelect('Mes'),
+        'Fecha de nacimiento Año': getSelectedFromSelect('ano'),
+        'Signo Zodiacal': getSelectedFromSelect('signo'),
+        'Sexo': getSelectedFromRadio('sexo'),
+        'Correo': getTxtFromInput('email'),
+        'Calle': getTxtFromInput('calle'),
+        'Calle Numero': getTxtFromInput('calle_num'),
+        'Calle CP': getTxtFromInput('calle_num_cp'),
+        'Delegación': getSelectedFromSelect('delegacion'),
+
+    };
+    alert(JSON.stringify(answer));
+
+}
+
+
+function getTxtFromInput(id){
+    return document.getElementById("txt_" + id).value;
+}
+
+function getSelectedFromSelect(id){
+    var e = document.getElementById("select_" + id);
+    return e.options[e.selectedIndex].value;
+}
+
+function getSelectedFromRadio(id){
+    return document.getElementById("rd_" + id).value;
+} 
+
+function getCheckedFromCheckBox(id){
+    return document.getElementById("txt" + id).value;
+}

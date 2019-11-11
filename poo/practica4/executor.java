@@ -39,19 +39,14 @@ class Panel extends Controller {
     private JComboBox combo;
     private JPanel panelContainer;
     private String options[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-    private BufferedImage imgs[];
+    private String imgs[];
     private float time = 1;
+    private int counter = 0;
 
 
     public Panel() {
         super();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
-        imgs = new BufferedImage[4];
-        imgs[0] = Files.getImage("filename");
-        imgs[1] = Files.getImage("filename");
-        imgs[2] = Files.getImage("filename");
-        imgs[3] = Files.getImage("filename");
-
     }
 
     @Override
@@ -70,7 +65,11 @@ class Panel extends Controller {
 
     @Override
     protected void loadContent() {
-       
+        imgs = new BufferedImage[4];
+        imgs[0] = ("filename");
+        imgs[1] = ("filename");
+        imgs[2] = ("filename");
+        imgs[3] = ("filename");
     }
 
     @Override
@@ -84,16 +83,26 @@ class Panel extends Controller {
       
     }
 
+    private void changeContent(){
+        Image background = Toolkit.getDefaultToolkit().createImage(imgs[counter]);
+        this.drawImage(background, 0, 0, null);
+    }
+
     private void manageClock() {
         new Thread() {
             public void run() {
                 while (true) {
-                    changeHour(new Date());
+                    changeContent();
+                    if (counter >= imgs.length)
+                    {
+                        counter = 0;
+                    }
                     try {
-                        sleep(1000);
+                        sleep(time  * 1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    ++counter;
                 }
             }
         }.start();
