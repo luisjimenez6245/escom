@@ -194,3 +194,4 @@ hs_err_pid*
 *.out
 *.app
 /lineal/calculadora_matrices/matrix_solver/nbproject/private/
+/poo/proyecto/microTwitterUI/nbproject/private/
