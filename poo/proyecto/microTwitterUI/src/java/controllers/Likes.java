@@ -1,12 +1,12 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers;
 
 import controllers.utils.iController;
 import models.Like;
-import sources.mysql.repositoryMysql;
+import sources.api.sourceApi;
 
 /**
  *
@@ -15,7 +15,7 @@ import sources.mysql.repositoryMysql;
 
 public class Likes extends iController<Like>{
 
-    public Likes(repositoryMysql source){
+    public Likes(sourceApi source){
         super(source);
     }
 

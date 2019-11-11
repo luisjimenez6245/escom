@@ -1,12 +1,12 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers;
 
 import controllers.utils.iController;
 import models.File;
-import sources.mysql.repositoryMysql;
+import sources.api.sourceApi;
 
 /**
  *
@@ -15,7 +15,7 @@ import sources.mysql.repositoryMysql;
 
 public class Files extends iController<File>{
 
-    public Files(repositoryMysql source){
+    public Files(sourceApi source){
         super(source);
     }
 

@@ -1,12 +1,12 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers;
 
 import controllers.utils.iController;
 import models.Dictonary;
-import sources.mysql.repositoryMysql;
+import sources.api.sourceApi;
 
 /**
  *
@@ -15,7 +15,7 @@ import sources.mysql.repositoryMysql;
 
 public class Dictonaries extends iController<Dictonary>{
 
-    public Dictonaries(repositoryMysql source){
+    public Dictonaries(sourceApi source){
         super(source);
     }
 

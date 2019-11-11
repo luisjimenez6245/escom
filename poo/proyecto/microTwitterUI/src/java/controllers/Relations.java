@@ -1,12 +1,12 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers;
 
 import controllers.utils.iController;
 import models.Relation;
-import sources.mysql.repositoryMysql;
+import sources.api.sourceApi;
 
 /**
  *
@@ -15,7 +15,7 @@ import sources.mysql.repositoryMysql;
 
 public class Relations extends iController<Relation>{
 
-    public Relations(repositoryMysql source){
+    public Relations(sourceApi source){
         super(source);
     }
 

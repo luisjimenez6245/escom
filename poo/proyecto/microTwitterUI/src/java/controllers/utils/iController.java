@@ -1,12 +1,12 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers.utils;
 
 import com.google.gson.Gson;
 import controllers.security.logger;
-import sources.mysql.repositoryMysql;
+import sources.api.repositoryApi;
 
 /**
  *
@@ -18,9 +18,9 @@ public abstract class iController <T> {
     public final Gson JSON = new Gson();
     public final logger ERRORES = new logger();
     protected String res = "";
-    public repositoryMysql source;
+    public repositoryApi source;
     
-    protected iController(repositoryMysql source){
+    protected iController(repositoryApi source){
         this.source = source;
     }
     

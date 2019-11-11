@@ -1,5 +1,5 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package routes.utils;
@@ -31,11 +31,12 @@ public abstract class iServlet extends HttpServlet {
     protected short slashNumbers = 0;
     protected int resStatus = 0;
 
-    protected final manager MAN;
+    protected final manager MAN = new manager();
     protected final logger ERRORES = new logger();
     protected repositoryRequests repository;
 
     public iServlet() {
+
     }
 
     protected void envia(HttpServletResponse response) throws IOException, ServletException {
@@ -110,7 +111,11 @@ public abstract class iServlet extends HttpServlet {
         return resultado;
     }
 
-    
+    protected User getUser(HttpServletRequest request) {
+        manager man = new manager();
+        return man.getUser(request);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -1,10 +1,10 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
 */
 
 package controllers.security;
 
-import sources.mysql.sourceMysql;
+import sources.api.sourceApi;
 import controllers.Languages;
 import controllers.Countries;
 import controllers.Files;
@@ -27,7 +27,7 @@ import controllers.Notifications;
 
 public class Factory{
 
-    private static sourceMysql source = new sourceMysql();
+    private static sourceApi source = new sourceApi();
 
     public static Languages createLanguages(){
 return new Languages(source);
