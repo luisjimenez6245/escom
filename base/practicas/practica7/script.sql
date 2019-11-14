@@ -9,9 +9,14 @@ select COUNT(*) , m.nomm from hsim as h inner join mujer as m on m.nomm = h.nomm
 
 SELECT ma.nomm from mujer as ma inner join hsim as ms on  ms.nomm = ma.nomm group by ma.nomm HAVING count(*) = (SELECT count(*) from hombre);
 
-
 SELECT ma.nomm from mujer as ma inner join hsim as ms on  ms.nomm = ma.nomm  where ((ma.nomm, (select count(*)  from hombre)) in (select DISTINCT nomm , count(*) from hsim group by nomm)) group by ma.nomm;
 
-SELECT ma.nomh from hombre as ma inner join msim as ms on  ms.nomh = ma.nomh group by ma.nomh HAVING count(*) = (SELECT count(*) from mujer); 
+SELECT ma.nomh from hombre as ma inner join hsim as ms on  ms.nomh = ma.nomh group by ma.nomh HAVING count(*) = (SELECT count(*) from mujer); 
+
+SELECT ma.nomh from hombre as ma inner join hsim as ms on  ms.nomh = ma.nomh  where ((ma.nomh, (select count(*)  from mujer)) in (select DISTINCT nomh , count(*) from msim group by nomh)) group by ma.nomh;
+
 SELECT ma.nomh from matrim as ma inner join msim as ms on  ms.nomm = ma.nomm group by ma.nomh HAVING count(*) = (SELECT count(*) from mujer); 
+
+SELECT ma.nomh from matrim as ma inner join msim as ms on  ms.nomm = ma.nomh  where ((ma.nomh, (select count(*)  from mujer)) in (select DISTINCT nomh , count(*) from msim group by nomh)) group by ma.nomh;
+
 SELECT nomh from hombre where nomh not in (SELECT nomh from msim) and nomh not in (select nomh from matrim);
