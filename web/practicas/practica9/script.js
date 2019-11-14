@@ -75,7 +75,7 @@ function onClickGetValues() {
         'Materias': getSelectedFromRadio('materias'),
         'Comentarios': getTxtFromInput('comentarios'),
         'Cuenta nombre': getTxtFromInput('cuenta_nombre'),
-        'Cuenta psw': getTxtFromInput('cuenta_psw'),
+        'cuenta psw': getTxtFromInput('cuenta_psw'),
     };
     alert(JSON.stringify(answer));
 
