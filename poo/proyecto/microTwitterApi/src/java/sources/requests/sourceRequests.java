@@ -4,7 +4,7 @@
 package sources.requests;
 
 import controllers.security.logger;
-
+import javax.servlet.http.HttpServletRequest;
 
 import models.Language;
 import models.Country;
@@ -28,6 +28,10 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     private final mapperRequests MAPPER = new mapperRequests();
     private final logger LOGGER = new logger();
+
+    public sourceRequests(HttpServletRequest request) {
+        super(request);
+    }
 
     @Override
     public Language getLanguage() {

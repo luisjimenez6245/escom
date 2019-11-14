@@ -36,6 +36,7 @@ public abstract class iServlet extends HttpServlet {
     protected repositoryRequests repository;
 
     public iServlet() {
+        MAN = manager.getInstance();
     }
 
     protected void envia(HttpServletResponse response) throws IOException, ServletException {

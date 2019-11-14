@@ -74,8 +74,8 @@ function onClickGetValues() {
         'Semestre': getSelectedFromSelect('semestre'),
         'Materias': getSelectedFromRadio('materias'),
         'Comentarios': getTxtFromInput('comentarios'),
-        'cuenta_nombre': getTxtFromInput('cuenta_nombre'),
-        'cuenta_psw': getTxtFromInput('cuenta_psw'),
+        'Cuenta nombre': getTxtFromInput('cuenta_nombre'),
+        'Cuenta psw': getTxtFromInput('cuenta_psw'),
     };
     alert(JSON.stringify(answer));
 
