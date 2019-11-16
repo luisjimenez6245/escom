@@ -46,13 +46,14 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Language setLanguage(Language object) {
         String query = "update language set ";
-        HashMap<String, Object> lista = new HashMap<>();
-        lista.put("language_id", object.languageId);
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("language_id", object.languageId);
         if (object.name != null) {
-            lista.put("name", object.name);
+            params.put("name", object.name);
         }
-        lista.put("is_active", object.isActive);
-        object = MAPPER.language(this.set(query, lista));
+        params.put("is_active", object.isActive);
+        object = MAPPER.language(this.set(query, params, conditions));
         return object;
     }
 
@@ -88,9 +89,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteLanguage(int key) {
-        String query = "select l.* from language l";
+        String query = "language";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("language.id", "" + key);
+        lista.put("language_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -116,8 +117,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Country setCountry(Country object) {
         String query = "update country set ";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.country(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("country_id", object.countryId);
+        object = MAPPER.country(this.set(query, params, conditions));
         return (object);
     }
 
@@ -141,9 +144,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteCountry(int key) {
-        String query = "select c.* from country c";
+        String query = "country";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("country.id", "" + key);
+        lista.put("country_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -159,8 +162,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public File setFile(File object) {
         String query = "file";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.file(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("file_id", object.fileId);
+        object = MAPPER.file(this.set(query, params, conditions));
         return (object);
     }
 
@@ -184,9 +189,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteFile(int key) {
-        String query = "select f.* from file f";
+        String query = "file";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("file.id", "" + key);
+        lista.put("file_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -202,8 +207,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Email setEmail(Email object) {
         String query = "email";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.email(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("email_id", object.emailId);
+        object = MAPPER.email(this.set(query, params, conditions));
         return (object);
     }
 
@@ -227,9 +234,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteEmail(int key) {
-        String query = "select e.* from email e";
+        String query = "email";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("email.id", "" + key);
+        lista.put("email_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -245,8 +252,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Phone setPhone(Phone object) {
         String query = "phone";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.phone(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("language_id", object.phoneId);
+        object = MAPPER.phone(this.set(query, params, conditions));
         return (object);
     }
 
@@ -270,9 +279,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deletePhone(int key) {
-        String query = "select p.* from phone p";
+        String query = "phone";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("phone.id", "" + key);
+        lista.put("phone_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -288,8 +297,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Word setWord(Word object) {
         String query = "word";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.word(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("word_id", object.wordId);
+        object = MAPPER.word(this.set(query, params, conditions));
         return (object);
     }
 
@@ -313,9 +324,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteWord(int key) {
-        String query = "select w.* from word w";
+        String query = "word";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("word.id", "" + key);
+        lista.put("word_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -331,8 +342,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Dictonary setDictonary(Dictonary object) {
         String query = "dictonary";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.dictonary(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("dictonary_id", object.dictonaryId);
+        object = MAPPER.dictonary(this.set(query, params, conditions));
         return (object);
     }
 
@@ -356,9 +369,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteDictonary(int key) {
-        String query = "select d.* from dictonary d";
+        String query = "dictonary";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("dictonary.id", "" + key);
+        lista.put("dictonary_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -374,8 +387,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Region setRegion(Region object) {
         String query = "region";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.region(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("reegion_id", object.regionId);
+        object = MAPPER.region(this.set(query, params, conditions));
         return (object);
     }
 
@@ -399,9 +414,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteRegion(int key) {
-        String query = "select r.* from region r";
+        String query = "region";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("region.id", "" + key);
+        lista.put("region_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -417,8 +432,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public User setUser(User object) {
         String query = "user";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.user(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("user_id", object.userId);
+        object = MAPPER.user(this.set(query, params, conditions));
         return this.getUser(object);
     }
 
@@ -442,9 +459,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteUser(int key) {
-        String query = "select u.* from user u";
+        String query = "user";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("user.id", "" + key);
+        lista.put("user_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -460,8 +477,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Tweet setTweet(Tweet object) {
         String query = "tweet";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.tweet(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("tweet_id", object.tweetId);
+        object = MAPPER.tweet(this.set(query, params, conditions));
         return this.getTweet(object);
     }
 
@@ -485,9 +504,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteTweet(int key) {
-        String query = "select t.* from tweet t";
+        String query = "tweet";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("tweet.id", "" + key);
+        lista.put("tweet_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -503,8 +522,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Like setLike(Like object) {
         String query = "like";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.like(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("like_id", object.likeId);
+        object = MAPPER.like(this.set(query, params, conditions));
         return (object);
     }
 
@@ -528,9 +549,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteLike(int key) {
-        String query = "select l.* from like l";
+        String query = "like";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("like.id", "" + key);
+        lista.put("like_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -546,8 +567,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Relation setRelation(Relation object) {
         String query = "relation";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.relation(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("relation_id", object.relationId);
+        object = MAPPER.relation(this.set(query, params, conditions));
         return (object);
     }
 
@@ -571,9 +594,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteRelation(int key) {
-        String query = "select r.* from relation r";
+        String query = "relation";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("relation.id", "" + key);
+        lista.put("relation_id", "" + key);
         this.delete(query, lista);
         return key;
     }
@@ -589,8 +612,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     @Override
     public Notification setNotification(Notification object) {
         String query = "notification";
-        HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.notification(this.set(query, lista));
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> conditions = new HashMap<>();
+        conditions.put("notification_id", object.notificationId);
+        object = MAPPER.notification(this.set(query, params, conditions));
         return (object);
     }
 
@@ -614,9 +639,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteNotification(int key) {
-        String query = "select n.* from notification n";
+        String query = "notification";
         HashMap<String, Object> lista = new HashMap<>();
-        lista.put("notification.id", "" + key);
+        lista.put("notification_id", "" + key);
         this.delete(query, lista);
         return key;
     }

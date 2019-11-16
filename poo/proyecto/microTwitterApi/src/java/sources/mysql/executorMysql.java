@@ -1,5 +1,5 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* MySQL executor
  */
 package sources.mysql;
 
@@ -52,12 +52,12 @@ public class executorMysql {
         return connection != null;
     }
 
-    private ResultSet executeQuery(String query, Object[] parametros) throws SQLException {
+    private ResultSet executeQuery(String query, Object[] parameters) throws SQLException {
         if (verifyConnection()) {
             PreparedStatement state = this.connection.prepareStatement(query);
-            if (parametros != null) {
-                for (int i = 0; i < parametros.length; ++i) {
-                    state.setObject(i + 1, parametros[i]);
+            if (parameters != null) {
+                for (int i = 0; i < parameters.length; ++i) {
+                    state.setObject(i + 1, parameters[i]);
                 }
             }
             return state.executeQuery();
@@ -65,7 +65,7 @@ public class executorMysql {
         return null;
     }
 
-    private int executeUpdate(String query, Object[] parametros) throws SQLException {
+    private int executeUpdate(String query, Object[] parameters) throws SQLException {
         if (verifyConnection()) {
             PreparedStatement state;
             if (query.toLowerCase().contains("insert")) {
@@ -73,9 +73,9 @@ public class executorMysql {
             } else {
                 state = this.connection.prepareStatement(query);
             }
-            if (parametros != null) {
-                for (int i = 0; i < parametros.length; ++i) {
-                    state.setObject(i + 1, parametros[i]);
+            if (parameters != null) {
+                for (int i = 0; i < parameters.length; ++i) {
+                    state.setObject(i + 1, parameters[i]);
                 }
             }
             state.execute();
@@ -88,13 +88,13 @@ public class executorMysql {
         return 0;
     }
 
-    public ResultSet save(String tableName, Map<String, Object> parametros) {
+    public ResultSet save(String tableName, Map<String, Object> parameters) {
         tableName = tableName.toLowerCase();
-        String query = "Insert into " + tableName + " ";
-        if (parametros != null) {
+        String query = "INSERT INTO " + tableName + " ";
+        if (parameters != null) {
             String keys = "(";
             String valores = "(";
-            for (Map.Entry<String, Object> param : parametros.entrySet()) {
+            for (Map.Entry<String, Object> param : parameters.entrySet()) {
                 keys += "" + param.getKey() + ", ";
                 valores += "?,";
             }
@@ -104,29 +104,29 @@ public class executorMysql {
         }
         int id;
         try {
-            id = this.executeUpdate(query, mapToArray(parametros));
+            id = this.executeUpdate(query, mapToArray(parameters));
             HashMap<String, Object> param = new HashMap<>();
             param.put(tableName + "_id", id);
-            return this.get("select * from " + tableName + " ", param);
+            return this.get("SELECT * FROM " + tableName + " ", param);
         } catch (SQLException ex) {
             Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public ResultSet get(String query, Map<String, Object> parametros) {
-        return getList(query, parametros);
+    public ResultSet get(String query, Map<String, Object> parameters) {
+        return getList(query, parameters);
     }
 
-    public ResultSet getList(String query, Map<String, Object> parametros) {
-        if (parametros != null && parametros.size() > 0) {
-            String valores = " where ";
-            valores = parametros.entrySet().stream().map((param) -> param.getKey() + " = ? AND ").reduce(valores, String::concat);
+    public ResultSet getList(String query, Map<String, Object> parameters) {
+        if (parameters != null && parameters.size() > 0) {
+            String valores = " WHERE ";
+            valores = parameters.entrySet().stream().map((param) -> param.getKey() + " = ? AND ").reduce(valores, String::concat);
             valores = valores.substring(0, valores.length() - 5);
             query += valores + ";";
         }
         try {
-            ResultSet r = executeQuery(query, mapToArray(parametros));
+            ResultSet r = executeQuery(query, mapToArray(parameters));
             return r;
         } catch (SQLException ex) {
             Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,17 +134,48 @@ public class executorMysql {
         return null;
     }
 
-    public ResultSet set(String query, Map<String, Object> parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ResultSet set(String query, Map<String, Object> parameters, Map<String, Object> conditions) {
+        if (parameters != null && parameters.size() > 0) {
+            String valores = " SET ";
+            valores = parameters.entrySet().stream().map((param) -> param.getKey() + " = ?, ").reduce(valores, String::concat);
+            valores = valores.substring(0, valores.length() - 3);
+            query += valores + " ";
+        }
+        if (conditions != null && conditions.size() > 0) {
+            String valores = " WHERE ";
+            valores = conditions.entrySet().stream().map((param) -> param.getKey() + " = ? AND ").reduce(valores, String::concat);
+            valores = valores.substring(0, valores.length() - 5);
+            query += valores + ";";
+        }
+        try {
+            ResultSet r = executeQuery(query, mapToArray(parameters));
+            return r;
+        } catch (SQLException ex) {
+            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
-    public Long delete(String query, Map<String, Object> parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Long delete(String tableName, Map<String, Object> parameters) {
+        String query = "DELETE FROM " + tableName + " ";
+        if (parameters != null && parameters.size() > 0) {
+            String valores = "WHERE ";
+            valores = parameters.entrySet().stream().map((param) -> param.getKey() + " = ? AND ").reduce(valores, String::concat);
+            valores = valores.substring(0, valores.length() - 5);
+            query += valores + ";";
+        }
+        try {
+            this.executeUpdate(query, mapToArray(parameters));
+            return 0L;
+        } catch (SQLException ex) {
+            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
-    public Object[] mapToArray(Map<String, Object> parametros) {
+    public Object[] mapToArray(Map<String, Object> parameters) {
         ArrayList<Object> helper = new ArrayList<>();
-        parametros.entrySet().forEach((r) -> {
+        parameters.entrySet().forEach((r) -> {
             helper.add(r.getValue());
         });
         return helper.toArray(new Object[helper.size()]);
