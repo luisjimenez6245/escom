@@ -5,6 +5,8 @@ package sources.mysql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Like;
@@ -21,293 +23,283 @@ import models.Region;
 import models.Tweet;
 import models.Relation;
 import models.Notification;
+import models.enums.FileType;
+import models.enums.UserType;
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
 public class mapperMysql {
-
+    
     public Language language(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Language[] l = languageList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Language(0);
     }
-
-    public Language[] languageList(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
+    
     public Country country(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Country[] l = countryList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Country(0);
     }
-
-    public Country[] countryList(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
+    
     public File file(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        File[] l = fileList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new File(0);
     }
-
+    
     public Email email(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Email[] l = emailList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Email(0);
     }
-
+    
     public Phone phone(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Phone[] l = phoneList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Phone(0);
     }
-
+    
     public Word word(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Word[] l = wordList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Word(0);
     }
-
+    
     public Dictonary dictonary(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Dictonary[] l = dictonaryList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Dictonary(0);
     }
-
+    
     public Region region(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Region[] l = regionList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Region(0);
     }
-
-    public Tweet rweet(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+    
+    public Tweet tweet(ResultSet res) {
+        Tweet[] l = tweetList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Tweet(0);
     }
-
+    
     public Relation relation(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Relation[] l = relationList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Relation(0);
     }
-
+    
     public Notification notification(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Notification[] l = notificationList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Notification(0);
     }
-
+    
     public User user(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        User[] l = userList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new User(0);
     }
-
+    
     public Like like(ResultSet res) {
-        try {
-            if (res.next()) {
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        Like[] l = likeList(res);
+        if (l != null && l.length > 0) {
+            return l[0];
         }
-        return null;
+        return new Like(0);
     }
-
+    
     public File[] fileList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<File> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new File(res.getInt("file_id")).build(res.getString("name"), FileType.valueOf(res.getString("file_type")), res.getString("extension")));
             }
+            return (li.size() >= 1) ? li.toArray(new File[li.size()]) : new File[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Email[] emailList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Email> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Email(res.getInt("email_id")).build(res.getBoolean("is_valid"), res.getBoolean("is_principal"), res.getBoolean("is_active"), res.getString("email")));
             }
+            return (li.size() >= 1) ? li.toArray(new Email[li.size()]) : new Email[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Phone[] phoneList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Phone> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Phone(res.getInt("phone_id")).build(res.getBoolean("is_valid"),res.getString("email"), res.getBoolean("is_principal"), res.getBoolean("is_active"), null));
             }
+            return (li.size() >= 1) ? li.toArray(new Phone[li.size()]) : new Phone[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Word[] wordList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Word> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Word(res.getInt("word_id")).build(res.getString("name")));
             }
+            return (li.size() >= 1) ? li.toArray(new Word[li.size()]) : new Word[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Dictonary[] dictonaryList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Dictonary> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Dictonary(res.getInt("dictonary_id")).build(res.getString("translate"), null, null));
             }
+            return (li.size() >= 1) ? li.toArray(new Dictonary[li.size()]) : new Dictonary[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Region[] regionList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Region> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Region(res.getInt("region_id")));
             }
+            return (li.size() >= 1) ? li.toArray(new Region[li.size()]) : new Region[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Tweet[] tweetList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Tweet> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Tweet(res.getInt("tweet_id")));
             }
+            return (li.size() >= 1) ? li.toArray(new Tweet[li.size()]) : new Tweet[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Relation[] relationList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Relation> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Relation(res.getInt("relation_id")));
             }
+            return (li.size() >= 1) ? li.toArray(new Relation[li.size()]) : new Relation[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Notification[] notificationList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Notification> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Notification(res.getInt("notification_id")));
             }
+            return (li.size() >= 1) ? li.toArray(new Notification[li.size()]) : new Notification[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public User[] userList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<User> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new User(res.getInt("user_id")).build(UserType.valueOf(res.getString("user_type")), res.getDate("creation_date"), null, null, res.getBoolean("is_active"), null, res.getString("password"), res.getString("surname"), res.getString("name"), null));
             }
+            return (li.size() >= 1) ? li.toArray(new User[li.size()]) : new User[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    
     public Like[] likeList(ResultSet res) {
         try {
-            if (res.next()) {
-
+            List<Like> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Like(res.getInt("like_id")));
             }
+            return (li.size() >= 1) ? li.toArray(new Like[li.size()]) : new Like[0];
+        } catch (SQLException ex) {
+            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Language[] languageList(ResultSet res) {
+        try {
+            List<Language> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Language(res.getInt("language_id")).build(res.getBoolean("is_active"), res.getString("name")));
+            }
+            return (li.size() >= 1) ? li.toArray(new Language[li.size()]) : new Language[0];
+        } catch (SQLException ex) {
+            Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+    
+    public Country[] countryList(ResultSet res) {
+        try {
+            List<Country> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Country(res.getInt("country_id")));
+            }
+            return (li.size() >= 1) ? li.toArray(new Country[li.size()]) : new Country[0];
         } catch (SQLException ex) {
             Logger.getLogger(mapperMysql.class.getName()).log(Level.SEVERE, null, ex);
         }

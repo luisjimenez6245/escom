@@ -1,7 +1,6 @@
 /*
 * Contenido de microTwitterApi generado por $author$
-*/
-
+ */
 package routes;
 
 import javax.servlet.annotation.WebServlet;
@@ -13,36 +12,35 @@ import routes.utils.iServlet;
  *
  * @author Luis Diego Jiménez Delgado
  */
-
 @WebServlet(name = "words", urlPatterns = {"/words/*"})
 public class words extends iServlet {
 
-    private Words control;
+    private final Words control = Factory.createWords();
 
     @Override
     protected void get() throws Exception {
-        control = Factory.createWords();
-        control.get(repository.getWord());
+        if (page.equals("list")) {
+            control.getList(repository.getWord());
+        } else {
+            control.get(repository.getWord());
+        }
         result = control.getContent();
     }
 
     @Override
     protected void post() throws Exception {
-        control = Factory.createWords();
         control.save(repository.getWord());
         result = control.getContent();
     }
 
     @Override
     protected void put() throws Exception {
-        control = Factory.createWords();
         control.update(repository.getWord());
         result = control.getContent();
     }
 
     @Override
     protected void delete() throws Exception {
-        control = Factory.createWords();
         control.delete(repository.getWord());
         result = control.getContent();
     }

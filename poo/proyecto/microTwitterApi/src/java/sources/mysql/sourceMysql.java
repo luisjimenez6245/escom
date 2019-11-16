@@ -4,7 +4,6 @@
 package sources.mysql;
 
 import controllers.security.logger;
-import java.util.List;
 import java.util.HashMap;
 
 import models.Language;
@@ -30,27 +29,49 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     private final mapperMysql MAPPER = new mapperMysql();
     private final logger LOGGER = new logger();
 
+    public sourceMysql(String user, String password, String dbName, String url, String port) {
+        super(user, password, dbName, url, port);
+    }
+
     @Override
     public Language saveLanguage(Language object) {
-        String query = "insert into language ";
+        String query = "language";
         HashMap<String, Object> lista = new HashMap<>();
-        object.languageId = this.save(query, lista);
-        return this.getLanguage(object);
+        if (object.name != null) {
+            lista.put("name", object.name);
+        }
+        lista.put("is_active", object.isActive);
+        object = MAPPER.language(this.save(query, lista));
+        return object;
     }
 
     @Override
     public Language setLanguage(Language object) {
-        String query = "insert into language ";
+        String query = "update language set ";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getLanguage(object);
+        lista.put("language_id", object.languageId);
+        if (object.name != null) {
+            lista.put("name", object.name);
+        }
+        lista.put("is_active", object.isActive);
+        object = MAPPER.language(this.set(query, lista));
+        return object;
     }
 
     @Override
     public Language getLanguage(Language object) {
         String query = "select l.* from language l";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.language(this.get(query, lista))
+        if (object != null) {
+            if (object.languageId != 0) {
+                lista.put("language_id", object.languageId);
+            }
+            if (object.name != null) {
+                lista.put("name", object.name);
+            }
+            lista.put("is_active", object.isActive);
+        }
+        object = MAPPER.language(this.get(query, lista));
         return object;
     }
 
@@ -59,10 +80,12 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "select l.* from language l";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
-
+            if (object.name != null) {
+                lista.put("name", object.name);
+            }
+            lista.put("is_active", object.isActive);
         }
-        List<Language> res = MAPPER.languageList(this.get(query, lista));
-        return res.toArray(new Language[res.size()]);
+        return MAPPER.languageList(this.get(query, lista));
     }
 
     @Override
@@ -76,25 +99,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Country saveCountry(Country object) {
-        String query = "insert into country ";
+        String query = "country";
         HashMap<String, Object> lista = new HashMap<>();
-        object.countryId = this.save(query, lista);
-        return this.getCountry(object);
+        object = MAPPER.country(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Country setCountry(Country object) {
-        String query = "insert into country ";
+        String query = "update country set ";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getCountry(object);
+        object = MAPPER.country(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Country getCountry(Country object) {
         String query = "select c.* from country c";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.country(this.get(query, lista))
+        object = MAPPER.country(this.get(query, lista));
         return object;
     }
 
@@ -105,8 +128,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Country> res = MAPPER.countryList(this.get(query, lista));
-        return res.toArray(new Country[res.size()]);
+        return MAPPER.countryList(this.get(query, lista));
     }
 
     @Override
@@ -120,25 +142,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public File saveFile(File object) {
-        String query = "insert into file ";
+        String query = "file";
         HashMap<String, Object> lista = new HashMap<>();
-        object.fileId = this.save(query, lista);
-        return this.getFile(object);
+        object = MAPPER.file(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public File setFile(File object) {
-        String query = "insert into file ";
+        String query = "file";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getFile(object);
+        object = MAPPER.file(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public File getFile(File object) {
         String query = "select f.* from file f";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.file(this.get(query, lista))
+        object = MAPPER.file(this.get(query, lista));
         return object;
     }
 
@@ -149,8 +171,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<File> res = MAPPER.fileList(this.get(query, lista));
-        return res.toArray(new File[res.size()]);
+        return MAPPER.fileList(this.get(query, lista));
     }
 
     @Override
@@ -164,25 +185,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Email saveEmail(Email object) {
-        String query = "insert into email ";
+        String query = "email";
         HashMap<String, Object> lista = new HashMap<>();
-        object.emailId = this.save(query, lista);
-        return this.getEmail(object);
+        object = MAPPER.email(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Email setEmail(Email object) {
-        String query = "insert into email ";
+        String query = "email";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getEmail(object);
+        object = MAPPER.email(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Email getEmail(Email object) {
         String query = "select e.* from email e";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.email(this.get(query, lista))
+        object = MAPPER.email(this.get(query, lista));
         return object;
     }
 
@@ -193,8 +214,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Email> res = MAPPER.emailList(this.get(query, lista));
-        return res.toArray(new Email[res.size()]);
+        return MAPPER.emailList(this.get(query, lista));
     }
 
     @Override
@@ -208,25 +228,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Phone savePhone(Phone object) {
-        String query = "insert into phone ";
+        String query = "phone";
         HashMap<String, Object> lista = new HashMap<>();
-        object.phoneId = this.save(query, lista);
-        return this.getPhone(object);
+        object = MAPPER.phone(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Phone setPhone(Phone object) {
-        String query = "insert into phone ";
+        String query = "phone";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getPhone(object);
+        object = MAPPER.phone(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Phone getPhone(Phone object) {
         String query = "select p.* from phone p";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.phone(this.get(query, lista))
+        object = MAPPER.phone(this.get(query, lista));
         return object;
     }
 
@@ -237,8 +257,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Phone> res = MAPPER.phoneList(this.get(query, lista));
-        return res.toArray(new Phone[res.size()]);
+        return MAPPER.phoneList(this.get(query, lista));
     }
 
     @Override
@@ -252,25 +271,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Word saveWord(Word object) {
-        String query = "insert into word ";
+        String query = "word";
         HashMap<String, Object> lista = new HashMap<>();
-        object.wordId = this.save(query, lista);
-        return this.getWord(object);
+        object = MAPPER.word(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Word setWord(Word object) {
-        String query = "insert into word ";
+        String query = "word";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getWord(object);
+        object = MAPPER.word(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Word getWord(Word object) {
         String query = "select w.* from word w";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.word(this.get(query, lista))
+        object = MAPPER.word(this.get(query, lista));
         return object;
     }
 
@@ -281,8 +300,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Word> res = MAPPER.wordList(this.get(query, lista));
-        return res.toArray(new Word[res.size()]);
+        return MAPPER.wordList(this.get(query, lista));
     }
 
     @Override
@@ -296,25 +314,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Dictonary saveDictonary(Dictonary object) {
-        String query = "insert into dictonary ";
+        String query = "dictonary";
         HashMap<String, Object> lista = new HashMap<>();
-        object.dictonaryId = this.save(query, lista);
-        return this.getDictonary(object);
+        object = MAPPER.dictonary(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Dictonary setDictonary(Dictonary object) {
-        String query = "insert into dictonary ";
+        String query = "dictonary";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getDictonary(object);
+        object = MAPPER.dictonary(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Dictonary getDictonary(Dictonary object) {
         String query = "select d.* from dictonary d";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.dictonary(this.get(query, lista))
+        object = MAPPER.dictonary(this.get(query, lista));
         return object;
     }
 
@@ -325,8 +343,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Dictonary> res = MAPPER.dictonaryList(this.get(query, lista));
-        return res.toArray(new Dictonary[res.size()]);
+        return MAPPER.dictonaryList(this.get(query, lista));
     }
 
     @Override
@@ -340,25 +357,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Region saveRegion(Region object) {
-        String query = "insert into region ";
+        String query = "region";
         HashMap<String, Object> lista = new HashMap<>();
-        object.regionId = this.save(query, lista);
-        return this.getRegion(object);
+        object = MAPPER.region(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Region setRegion(Region object) {
-        String query = "insert into region ";
+        String query = "region";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getRegion(object);
+        object = MAPPER.region(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Region getRegion(Region object) {
         String query = "select r.* from region r";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.region(this.get(query, lista))
+        object = MAPPER.region(this.get(query, lista));
         return object;
     }
 
@@ -369,8 +386,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Region> res = MAPPER.regionList(this.get(query, lista));
-        return res.toArray(new Region[res.size()]);
+        return MAPPER.regionList(this.get(query, lista));
     }
 
     @Override
@@ -384,17 +400,17 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public User saveUser(User object) {
-        String query = "insert into user ";
+        String query = "user";
         HashMap<String, Object> lista = new HashMap<>();
-        object.userId = this.save(query, lista);
-        return this.getUser(object);
+        object = MAPPER.user(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public User setUser(User object) {
-        String query = "insert into user ";
+        String query = "user";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
+        object = MAPPER.user(this.set(query, lista));
         return this.getUser(object);
     }
 
@@ -402,7 +418,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     public User getUser(User object) {
         String query = "select u.* from user u";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.user(this.get(query, lista))
+        object = MAPPER.user(this.get(query, lista));
         return object;
     }
 
@@ -413,8 +429,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<User> res = MAPPER.userList(this.get(query, lista));
-        return res.toArray(new User[res.size()]);
+        return MAPPER.userList(this.get(query, lista));
     }
 
     @Override
@@ -428,17 +443,17 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Tweet saveTweet(Tweet object) {
-        String query = "insert into tweet ";
+        String query = "tweet";
         HashMap<String, Object> lista = new HashMap<>();
-        object.tweetId = this.save(query, lista);
-        return this.getTweet(object);
+        object = MAPPER.tweet(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Tweet setTweet(Tweet object) {
-        String query = "insert into tweet ";
+        String query = "tweet";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
+        object = MAPPER.tweet(this.set(query, lista));
         return this.getTweet(object);
     }
 
@@ -446,7 +461,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     public Tweet getTweet(Tweet object) {
         String query = "select t.* from tweet t";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.tweet(this.get(query, lista))
+        object = MAPPER.tweet(this.get(query, lista));
         return object;
     }
 
@@ -457,8 +472,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Tweet> res = MAPPER.tweetList(this.get(query, lista));
-        return res.toArray(new Tweet[res.size()]);
+        return MAPPER.tweetList(this.get(query, lista));
     }
 
     @Override
@@ -472,25 +486,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Like saveLike(Like object) {
-        String query = "insert into like ";
+        String query = "like";
         HashMap<String, Object> lista = new HashMap<>();
-        object.likeId = this.save(query, lista);
-        return this.getLike(object);
+        object = MAPPER.like(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Like setLike(Like object) {
-        String query = "insert into like ";
+        String query = "like";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getLike(object);
+        object = MAPPER.like(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Like getLike(Like object) {
         String query = "select l.* from like l";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.like(this.get(query, lista))
+        object = MAPPER.like(this.get(query, lista));
         return object;
     }
 
@@ -501,8 +515,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Like> res = MAPPER.likeList(this.get(query, lista));
-        return res.toArray(new Like[res.size()]);
+        return MAPPER.likeList(this.get(query, lista));
     }
 
     @Override
@@ -516,25 +529,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Relation saveRelation(Relation object) {
-        String query = "insert into relation ";
+        String query = "relation";
         HashMap<String, Object> lista = new HashMap<>();
-        object.relationId = this.save(query, lista);
-        return this.getRelation(object);
+        object = MAPPER.relation(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Relation setRelation(Relation object) {
-        String query = "insert into relation ";
+        String query = "relation";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getRelation(object);
+        object = MAPPER.relation(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Relation getRelation(Relation object) {
         String query = "select r.* from relation r";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.relation(this.get(query, lista))
+        object = MAPPER.relation(this.get(query, lista));
         return object;
     }
 
@@ -545,8 +558,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Relation> res = MAPPER.relationList(this.get(query, lista));
-        return res.toArray(new Relation[res.size()]);
+        return MAPPER.relationList(this.get(query, lista));
     }
 
     @Override
@@ -560,25 +572,25 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Notification saveNotification(Notification object) {
-        String query = "insert into notification ";
+        String query = "notification";
         HashMap<String, Object> lista = new HashMap<>();
-        object.notificationId = this.save(query, lista);
-        return this.getNotification(object);
+        object = MAPPER.notification(this.save(query, lista));
+        return (object);
     }
 
     @Override
     public Notification setNotification(Notification object) {
-        String query = "insert into notification ";
+        String query = "notification";
         HashMap<String, Object> lista = new HashMap<>();
-        object = this.set(query, lista);
-        return this.getNotification(object);
+        object = MAPPER.notification(this.set(query, lista));
+        return (object);
     }
 
     @Override
     public Notification getNotification(Notification object) {
         String query = "select n.* from notification n";
         HashMap<String, Object> lista = new HashMap<>();
-        object = MAPPER.notification(this.get(query, lista))
+        object = MAPPER.notification(this.get(query, lista));
         return object;
     }
 
@@ -589,8 +601,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         if (object != null) {
 
         }
-        List<Notification> res = MAPPER.notificationList(this.get(query, lista));
-        return res.toArray(new Notification[res.size()]);
+        return MAPPER.notificationList(this.get(query, lista));
     }
 
     @Override

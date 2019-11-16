@@ -31,7 +31,7 @@ public class Languages extends iController<Language>{
 
     @Override
     public void save(Language object) {
-        res = JSON.toJson(source.getLanguage(object));
+        res = JSON.toJson(source.saveLanguage(object));
     }
 
     @Override

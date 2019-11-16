@@ -1,10 +1,11 @@
-drop database if exists  microTwitterApi;
-create database  microTwitterApi;
-
-use microTwitterApi;
+DROP database if exists Microtwitter;
+CREATE database  Microtwitter;
+use Microtwitter;
 
 create table language(
-language_id int not null primary key auto_increment,
+	language_id int not null primary key auto_increment,
+	is_active boolean,
+	name nvarchar(254)
 );
 create table country(
 country_id int not null primary key auto_increment,

@@ -21,6 +21,7 @@ public class languages extends iServlet {
 
     @Override
     protected void get() throws Exception {
+        System.out.println("assj");
         control = Factory.createLanguages();
         control.get(repository.getLanguage());
         result = control.getContent();

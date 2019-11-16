@@ -1,7 +1,6 @@
 /*
 * Contenido de microTwitterApi generado por $author$
-*/
-
+ */
 package routes;
 
 import javax.servlet.annotation.WebServlet;
@@ -13,36 +12,35 @@ import routes.utils.iServlet;
  *
  * @author Luis Diego Jiménez Delgado
  */
-
 @WebServlet(name = "dictonaries", urlPatterns = {"/dictonaries/*"})
 public class dictonaries extends iServlet {
 
-    private Dictonaries control;
+    private final Dictonaries control = Factory.createDictonaries();
 
     @Override
     protected void get() throws Exception {
-        control = Factory.createDictonaries();
-        control.get(repository.getDictonary());
+        if (page.equals("list")) {
+            control.getList(repository.getDictonary());
+        } else {
+            control.get(repository.getDictonary());
+        }
         result = control.getContent();
     }
 
     @Override
     protected void post() throws Exception {
-        control = Factory.createDictonaries();
         control.save(repository.getDictonary());
         result = control.getContent();
     }
 
     @Override
     protected void put() throws Exception {
-        control = Factory.createDictonaries();
         control.update(repository.getDictonary());
         result = control.getContent();
     }
 
     @Override
     protected void delete() throws Exception {
-        control = Factory.createDictonaries();
         control.delete(repository.getDictonary());
         result = control.getContent();
     }

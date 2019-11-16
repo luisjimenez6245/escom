@@ -1,7 +1,6 @@
 /*
 * Contenido de microTwitterApi generado por $author$
-*/
-
+ */
 package controllers.security;
 
 import sources.mysql.sourceMysql;
@@ -19,67 +18,65 @@ import controllers.Likes;
 import controllers.Relations;
 import controllers.Notifications;
 
-
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
+public class Factory {
 
-public class Factory{
+    private static final manager MAN = manager.getInstance();
+    private static final sourceMysql SOURCE = new sourceMysql(MAN.getProperty("dbUser"),MAN.getProperty("dbPassword"), MAN.getProperty("dbName"), MAN.getProperty("dbUrl"), MAN.getProperty("dbPort"));
 
-    private static sourceMysql source = new sourceMysql();
+    public static Languages createLanguages() {
+        return new Languages(SOURCE);
+    }
 
-    public static Languages createLanguages(){
-return new Languages(source);
-}
+    public static Countries createCountries() {
+        return new Countries(SOURCE);
+    }
 
-public static Countries createCountries(){
-return new Countries(source);
-}
+    public static Files createFiles() {
+        return new Files(SOURCE);
+    }
 
-public static Files createFiles(){
-return new Files(source);
-}
+    public static Emails createEmails() {
+        return new Emails(SOURCE);
+    }
 
-public static Emails createEmails(){
-return new Emails(source);
-}
+    public static Phones createPhones() {
+        return new Phones(SOURCE);
+    }
 
-public static Phones createPhones(){
-return new Phones(source);
-}
+    public static Words createWords() {
+        return new Words(SOURCE);
+    }
 
-public static Words createWords(){
-return new Words(source);
-}
+    public static Dictonaries createDictonaries() {
+        return new Dictonaries(SOURCE);
+    }
 
-public static Dictonaries createDictonaries(){
-return new Dictonaries(source);
-}
+    public static Regions createRegions() {
+        return new Regions(SOURCE);
+    }
 
-public static Regions createRegions(){
-return new Regions(source);
-}
+    public static Users createUsers() {
+        return new Users(SOURCE);
+    }
 
-public static Users createUsers(){
-return new Users(source);
-}
+    public static Tweets createTweets() {
+        return new Tweets(SOURCE);
+    }
 
-public static Tweets createTweets(){
-return new Tweets(source);
-}
+    public static Likes createLikes() {
+        return new Likes(SOURCE);
+    }
 
-public static Likes createLikes(){
-return new Likes(source);
-}
+    public static Relations createRelations() {
+        return new Relations(SOURCE);
+    }
 
-public static Relations createRelations(){
-return new Relations(source);
-}
-
-public static Notifications createNotifications(){
-return new Notifications(source);
-}
-
+    public static Notifications createNotifications() {
+        return new Notifications(SOURCE);
+    }
 
 }

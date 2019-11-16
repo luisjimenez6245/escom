@@ -26,7 +26,6 @@ import models.Notification;
  */
 public class sourceRequests extends executorRequests implements sources.requests.repositoryRequests {
 
-    private final mapperRequests MAPPER = new mapperRequests();
     private final logger LOGGER = new logger();
 
     public sourceRequests(HttpServletRequest request) {
@@ -35,7 +34,14 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Language getLanguage() {
-        return new Language(Integer.parseInt(request.getParameter("languageId") == null ? "0" : request.getParameter("languageId")));
+        Language l = new Language(Integer.parseInt(request.getParameter("languageId") == null ? "0" : request.getParameter("languageId"))).build(true, null);
+        if (request.getParameter("name") != null) {
+            l.name = request.getParameter("name");
+        }
+        if (request.getParameter("isActive") != null) {
+            l.isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+        }
+        return l;
     }
 
     @Override
@@ -45,7 +51,18 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Country getCountry() {
-        return new Country(Integer.parseInt(request.getParameter("countryId") == null ? "0" : request.getParameter("countryId")));
+        Country c = new Country(Integer.parseInt(request.getParameter("countryId") == null ? "0" : request.getParameter("countryId")));
+        if (request.getParameter("name") != null) {
+            c.name = request.getParameter("name");
+        }
+        if (request.getParameter("isActive") != null) {
+            c.isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+        }
+        c.language = getLanguage();
+        if (request.getParameter("extension") != null) {
+            c.extension = request.getParameter("extension");
+        }
+        return c;
     }
 
     @Override
