@@ -3,7 +3,6 @@
  */
 package sources.mysql;
 
-import controllers.security.logger;
 import java.util.HashMap;
 
 import models.Language;
@@ -27,7 +26,6 @@ import models.Notification;
 public class sourceMysql extends executorMysql implements sources.mysql.repositoryMysql {
 
     private final mapperMysql MAPPER = new mapperMysql();
-    private final logger LOGGER = new logger();
 
     public sourceMysql(String user, String password, String dbName, String url, String port) {
         super(user, password, dbName, url, port);
@@ -101,7 +99,17 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
     public Country saveCountry(Country object) {
         String query = "country";
         HashMap<String, Object> lista = new HashMap<>();
+        if (object.name != null) {
+            lista.put("name", object.name);
+        }
+        if (object.extension != null) {
+            lista.put("extension", object.extension);
+        }
+        lista.put("is_active", object.isActive);
         object = MAPPER.country(this.save(query, lista));
+        if (object.language != null) {
+            object.language = saveLanguage(object.language);
+        }
         return (object);
     }
 

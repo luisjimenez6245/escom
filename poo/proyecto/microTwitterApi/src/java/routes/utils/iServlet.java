@@ -175,17 +175,16 @@ public abstract class iServlet extends HttpServlet {
     // </editor-fold>
 
     private void selector(HttpServletRequest request, HttpServletResponse response, int numero) throws ServletException, IOException {
-       this.repository = new sources.requests.sourceRequests(request);
+        this.repository = new sources.requests.sourceRequests(request);
         try {
             request.setCharacterEncoding("UTF-8");
             obtenDireccion(request.getRequestURI() == null ? "" : request.getRequestURI());
+            response.setContentType("application/json;charset=UTF-8");
             switch (numero) {
                 case 1:
-                    response.setContentType("text/html;charset=UTF-8");
                     get();
                     break;
                 case 2:
-                    response.setContentType("application/json;charset=UTF-8");
                     post();
                     break;
                 case 3:

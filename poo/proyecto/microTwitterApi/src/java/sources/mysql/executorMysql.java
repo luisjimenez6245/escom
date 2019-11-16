@@ -23,7 +23,7 @@ public class executorMysql {
     private final String DRIVERCLASSNAME = "com.mysql.jdbc.Driver";
     private final String BASEURL = "jdbc:mysql://$url$:$port$/dbName?allowPublicKeyRetrieval=true&useSSL=false&useServerPrepStmts=true";
     private Connection connection = null;
-    private boolean debug = false;
+    private final boolean debug = false;
 
     public executorMysql(String user, String password, String dbName, String url, String port) {
         if (debug) {
