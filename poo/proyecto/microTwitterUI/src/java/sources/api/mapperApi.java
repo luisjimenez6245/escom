@@ -1,32 +1,30 @@
 /*
-* Contenido de microTwitterApi generado por $author$
-*/
-
-package sources.requests;
+* Contenido de microTwitterUI generado por $author$
+ */
+package sources.api;
 
 import com.google.gson.Gson;
-import models.Country;
-import models.Dictonary;
-import models.Email;
-import models.File;
-import models.Language;
-import models.Like;
-import models.Notification;
-import models.Phone;
-import models.Region;
-import models.Relation;
-import models.Tweet;
-import models.User;
-import models.Word;
 
+import models.Language;
+import models.Country;
+import models.File;
+import models.Email;
+import models.Phone;
+import models.Word;
+import models.Dictonary;
+import models.Region;
+import models.User;
+import models.Tweet;
+import models.Like;
+import models.Relation;
+import models.Notification;
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
+public class mapperApi {
 
-public class mapperRequests {
-    
     private final Gson JSON = new Gson();
 
     public Language getLanguage(String json) {
@@ -210,4 +208,5 @@ public class mapperRequests {
         }
         return null;
     }
+
 }

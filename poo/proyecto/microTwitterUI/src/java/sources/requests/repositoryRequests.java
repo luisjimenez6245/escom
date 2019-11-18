@@ -1,71 +1,78 @@
 /*
-* Contenido de microTwitterUI generado por $author$
-*/
-
+* Contenido de microTwitterApi generado por $author$
+ */
 package sources.requests;
 
-import objects.Language;
-import objects.Country;
-import objects.File;
-import objects.Email;
-import objects.Phone;
-import objects.Word;
-import objects.Dictonary;
-import objects.Region;
-import objects.User;
-import objects.Tweet;
-import objects.Like;
-import objects.Relation;
-import objects.Notification;
-
-
+import models.Language;
+import models.Country;
+import models.File;
+import models.Email;
+import models.Phone;
+import models.Word;
+import models.Dictonary;
+import models.Region;
+import models.User;
+import models.Tweet;
+import models.Like;
+import models.Relation;
+import models.Notification;
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
-
 public interface repositoryRequests {
 
     public Language getLanguage();
-public Language[] getLanguageList();
 
-public Country getCountry();
-public Country[] getCountryList();
+    public Language[] getLanguageList();
 
-public File getFile();
-public File[] getFileList();
+    public Country getCountry();
 
-public Email getEmail();
-public Email[] getEmailList();
+    public Country[] getCountryList();
 
-public Phone getPhone();
-public Phone[] getPhoneList();
+    public File getFile();
 
-public Word getWord();
-public Word[] getWordList();
+    public File[] getFileList();
 
-public Dictonary getDictonary();
-public Dictonary[] getDictonaryList();
+    public Email getEmail();
 
-public Region getRegion();
-public Region[] getRegionList();
+    public Email[] getEmailList();
 
-public User getUser();
-public User[] getUserList();
+    public Phone getPhone();
 
-public Tweet getTweet();
-public Tweet[] getTweetList();
+    public Phone[] getPhoneList();
 
-public Like getLike();
-public Like[] getLikeList();
+    public Word getWord();
 
-public Relation getRelation();
-public Relation[] getRelationList();
+    public Word[] getWordList();
 
-public Notification getNotification();
-public Notification[] getNotificationList();
+    public Dictonary getDictonary();
 
+    public Dictonary[] getDictonaryList();
 
-   
+    public Region getRegion();
+
+    public Region[] getRegionList();
+
+    public User getUser();
+
+    public User[] getUserList();
+
+    public Tweet getTweet();
+
+    public Tweet[] getTweetList();
+
+    public Like getLike();
+
+    public Like[] getLikeList();
+
+    public Relation getRelation();
+
+    public Relation[] getRelationList();
+
+    public Notification getNotification();
+
+    public Notification[] getNotificationList();
+
 }

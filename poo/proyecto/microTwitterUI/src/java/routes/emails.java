@@ -1,7 +1,6 @@
 /*
-* Contenido de microTwitterUI generado por $author$
-*/
-
+* Contenido de microTwitterApi generado por $author$
+ */
 package routes;
 
 import javax.servlet.annotation.WebServlet;
@@ -13,36 +12,35 @@ import routes.utils.iServlet;
  *
  * @author Luis Diego Jiménez Delgado
  */
-
 @WebServlet(name = "emails", urlPatterns = {"/emails/*"})
 public class emails extends iServlet {
 
-    private Emails control;
+    private final Emails control = Factory.createEmails();
 
     @Override
     protected void get() throws Exception {
-        control = Factory.createEmails();
-        control.get(repository.getEmail());
+        if (page.equals("list")) {
+            control.getList(repository.getEmail());
+        } else {
+            control.get(repository.getEmail());
+        }
         result = control.getContent();
     }
 
     @Override
     protected void post() throws Exception {
-        control = Factory.createEmails();
         control.save(repository.getEmail());
         result = control.getContent();
     }
 
     @Override
     protected void put() throws Exception {
-        control = Factory.createEmails();
         control.update(repository.getEmail());
         result = control.getContent();
     }
 
     @Override
     protected void delete() throws Exception {
-        control = Factory.createEmails();
         control.delete(repository.getEmail());
         result = control.getContent();
     }

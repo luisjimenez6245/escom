@@ -1,7 +1,6 @@
 /*
-* Contenido de microTwitterUI generado por $author$
-*/
-
+* Contenido de microTwitterApi generado por $author$
+ */
 package routes;
 
 import javax.servlet.annotation.WebServlet;
@@ -13,37 +12,35 @@ import routes.utils.iServlet;
  *
  * @author Luis Diego Jiménez Delgado
  */
-
 @WebServlet(name = "languages", urlPatterns = {"/languages/*"})
 public class languages extends iServlet {
 
-    private Languages control;
+    private final Languages control = Factory.createLanguages();
 
     @Override
     protected void get() throws Exception {
-        System.out.println("assj");
-        control = Factory.createLanguages();
-        control.get(repository.getLanguage());
+        if (page.equals("list")) {
+            control.getList(repository.getLanguage());
+        } else {
+            control.get(repository.getLanguage());
+        }
         result = control.getContent();
     }
 
     @Override
     protected void post() throws Exception {
-        control = Factory.createLanguages();
         control.save(repository.getLanguage());
         result = control.getContent();
     }
 
     @Override
     protected void put() throws Exception {
-        control = Factory.createLanguages();
         control.update(repository.getLanguage());
         result = control.getContent();
     }
 
     @Override
     protected void delete() throws Exception {
-        control = Factory.createLanguages();
         control.delete(repository.getLanguage());
         result = control.getContent();
     }

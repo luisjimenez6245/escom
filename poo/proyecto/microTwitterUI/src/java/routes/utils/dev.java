@@ -1,7 +1,10 @@
 /*
-* Contenido de microTwitterUI generado por $author$
+* Contenido de microTwitterApi generado por $author$
 */
 package routes.utils;
+
+import controllers.security.manager;
+import javax.servlet.annotation.WebServlet;
 
 
 /**
@@ -9,12 +12,12 @@ package routes.utils;
  * @author Luis Diego Jiménez Delgado
  */
 
-
+@WebServlet(name = "dev", urlPatterns = {"/dev/*"})
 public class dev extends iServlet {
 
     @Override
     protected void get() throws Exception {
-      
+      result =  manager.getInstance().getProperty("dbName");
     }
 
     @Override

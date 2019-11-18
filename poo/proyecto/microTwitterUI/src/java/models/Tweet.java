@@ -18,14 +18,14 @@ public class Tweet extends Model {
     public int tweetId;
     public boolean isRetweet;
     public String content;
-    public Long parent;
+    public int parent;
     public boolean isComent;
 
     public Tweet(int tweetId) {
         this.tweetId = tweetId;
     }
 
-    public Tweet build(File media, User user, Date creationDate, boolean isRetweet, String content, Long parent, boolean isComent) {
+    public Tweet build(File media, User user, Date creationDate, boolean isRetweet, String content, int parent, boolean isComent) {
         this.media = media;
         this.user = user;
         this.creationDate = creationDate;

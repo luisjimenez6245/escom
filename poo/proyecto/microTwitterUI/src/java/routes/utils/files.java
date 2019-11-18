@@ -1,5 +1,5 @@
 /*
-* Contenido de microTwitterUI generado por $author$
+* Contenido de microTwitterApi generado por $author$
 */
 
 package routes.utils;
