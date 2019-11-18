@@ -1,12 +1,14 @@
 
 package routes;
 
+import javax.servlet.annotation.WebServlet;
 import routes.utils.iServlet;
 
 /**
  *
  * @author luis
  */
+@WebServlet(name = "index", urlPatterns = {"/index/*"})
 public class index extends iServlet{
 
     

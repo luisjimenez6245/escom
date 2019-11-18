@@ -1,12 +1,14 @@
 package routes;
 
 import controllers.LoginController;
+import javax.servlet.annotation.WebServlet;
 import routes.utils.iServlet;
 
 /**
  *
  * @author luis
  */
+@WebServlet(name = "login", urlPatterns = {"/login/*"})
 public class login extends iServlet {
 
     private LoginController control;
