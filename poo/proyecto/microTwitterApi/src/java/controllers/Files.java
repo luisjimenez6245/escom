@@ -31,7 +31,7 @@ public class Files extends iController<File>{
 
     @Override
     public void save(File object) {
-        res = JSON.toJson(source.getFile(object));
+        res = JSON.toJson(source.saveFile(object));
     }
 
     @Override

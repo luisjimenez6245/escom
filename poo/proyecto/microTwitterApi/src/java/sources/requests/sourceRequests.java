@@ -3,7 +3,7 @@
  */
 package sources.requests;
 
-import controllers.security.logger;
+import com.google.gson.Gson;
 import javax.servlet.http.HttpServletRequest;
 
 import models.Language;
@@ -19,6 +19,7 @@ import models.Tweet;
 import models.Like;
 import models.Relation;
 import models.Notification;
+import models.enums.FileType;
 
 /**
  *
@@ -26,7 +27,7 @@ import models.Notification;
  */
 public class sourceRequests extends executorRequests implements sources.requests.repositoryRequests {
 
-    private final logger LOGGER = new logger();
+    private final Gson JSON = new Gson();
 
     public sourceRequests(HttpServletRequest request) {
         super(request);
@@ -34,7 +35,7 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Language getLanguage() {
-        Language l = new Language(Integer.parseInt(request.getParameter("languageId") == null ? "0" : request.getParameter("languageId"))).build(true, null);
+        Language l = new Language(Integer.parseInt(request.getParameter("languageId") == null ? "0" : request.getParameter("languageId")));
         if (request.getParameter("name") != null) {
             l.name = request.getParameter("name");
         }
@@ -72,7 +73,17 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public File getFile() {
-        return new File(Integer.parseInt(request.getParameter("fileId") == null ? "0" : request.getParameter("fileId")));
+        File f = new File(Integer.parseInt(request.getParameter("fileId") == null ? "0" : request.getParameter("fileId")));
+        if (request.getParameter("name") != null) {
+            f.name = request.getParameter("name");
+        }
+        if (request.getParameter("fileType") != null) {
+            f.fileType = FileType.valueOf(request.getParameter("fileType"));
+        }
+        if (request.getParameter("extension") != null) {
+            f.extension = request.getParameter("extension");
+        }
+        return f;
     }
 
     @Override
@@ -87,7 +98,10 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Email[] getEmailList() {
-        return null;
+        if (request.getParameter("emails") != null) {
+            return JSON.fromJson(request.getParameter("emails"), Email[].class);
+        }
+        return new Email[0];
     }
 
     @Override
@@ -97,12 +111,19 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Phone[] getPhoneList() {
-        return null;
+        if (request.getParameter("phones") != null) {
+            return JSON.fromJson(request.getParameter("phones"), Phone[].class);
+        }
+        return new Phone[0];
     }
 
     @Override
     public Word getWord() {
-        return new Word(Integer.parseInt(request.getParameter("wordId") == null ? "0" : request.getParameter("wordId")));
+        Word w = new Word(Integer.parseInt(request.getParameter("wordId") == null ? "0" : request.getParameter("wordId")));
+        if (request.getParameter("name") != null) {
+            w.name = request.getParameter("name");
+        }
+        return w;
     }
 
     @Override
@@ -112,7 +133,13 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Dictonary getDictonary() {
-        return new Dictonary(Integer.parseInt(request.getParameter("dictonaryId") == null ? "0" : request.getParameter("dictonaryId")));
+        Dictonary d = new Dictonary(Integer.parseInt(request.getParameter("dictonaryId") == null ? "0" : request.getParameter("dictonaryId")));
+        if (request.getParameter("translate") != null) {
+            d.translate = request.getParameter("translate");
+        }
+        d.language = getLanguage();
+        d.word = getWord();
+        return d;
     }
 
     @Override
@@ -122,7 +149,15 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Region getRegion() {
-        return new Region(Integer.parseInt(request.getParameter("regionId") == null ? "0" : request.getParameter("regionId")));
+        Region r = new Region(Integer.parseInt(request.getParameter("regionId") == null ? "0" : request.getParameter("regionId")));
+        if (request.getParameter("name") != null) {
+            r.name = request.getParameter("name");
+        }
+        if (request.getParameter("isActive") != null) {
+            r.isActive = Boolean.parseBoolean(request.getParameter("isActive"));
+        }
+        r.country = getCountry();
+        return r;
     }
 
     @Override

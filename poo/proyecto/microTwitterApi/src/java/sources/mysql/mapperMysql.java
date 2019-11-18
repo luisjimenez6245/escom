@@ -153,7 +153,7 @@ public class mapperMysql {
         try {
             List<Email> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new Email(res.getInt("email_id")).build(res.getBoolean("is_valid"), res.getBoolean("is_principal"), res.getBoolean("is_active"), res.getString("email")));
+                li.add(new Email(res.getInt("email_id")).build(res.getInt("user_id"),res.getBoolean("is_valid"), res.getBoolean("is_principal"), res.getBoolean("is_active"), res.getString("email")));
             }
             return (li.size() >= 1) ? li.toArray(new Email[li.size()]) : new Email[0];
         } catch (SQLException ex) {
@@ -166,7 +166,7 @@ public class mapperMysql {
         try {
             List<Phone> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new Phone(res.getInt("phone_id")).build(res.getBoolean("is_valid"),res.getString("email"), res.getBoolean("is_principal"), res.getBoolean("is_active"), null));
+                li.add(new Phone(res.getInt("phone_id")).build(res.getInt("user_id"),res.getBoolean("is_valid"),res.getString("email"), res.getBoolean("is_principal"), res.getBoolean("is_active"), new Country(res.getInt("country_id"))));
             }
             return (li.size() >= 1) ? li.toArray(new Phone[li.size()]) : new Phone[0];
         } catch (SQLException ex) {
@@ -192,7 +192,8 @@ public class mapperMysql {
         try {
             List<Dictonary> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new Dictonary(res.getInt("dictonary_id")).build(res.getString("translate"), null, null));
+                li.add(new Dictonary(res.getInt("dictonary_id"))
+                        .build(res.getString("translate"), new Language(res.getInt("language_id")), new Word(res.getInt("word_id"))));
             }
             return (li.size() >= 1) ? li.toArray(new Dictonary[li.size()]) : new Dictonary[0];
         } catch (SQLException ex) {
@@ -257,7 +258,8 @@ public class mapperMysql {
         try {
             List<User> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new User(res.getInt("user_id")).build(UserType.valueOf(res.getString("user_type")), res.getDate("creation_date"), null, null, res.getBoolean("is_active"), null, res.getString("password"), res.getString("surname"), res.getString("name"), null));
+                li.add(new User(res.getInt("user_id"))
+                        .build(UserType.valueOf(res.getString("user_type")), res.getDate("creation_date"), new Language(res.getInt("language_id")), null , res.getBoolean("is_active"),new File(res.getInt("photo")), res.getString("password"), res.getString("surname"), res.getString("name"), null));
             }
             return (li.size() >= 1) ? li.toArray(new User[li.size()]) : new User[0];
         } catch (SQLException ex) {
@@ -297,7 +299,7 @@ public class mapperMysql {
         try {
             List<Country> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new Country(res.getInt("country_id")));
+                li.add(new Country(res.getInt("country_id")).build(new Language(res.getInt("language_id")), res.getBoolean("is_active"), res.getString("extension"), res.getString("name")));
             }
             return (li.size() >= 1) ? li.toArray(new Country[li.size()]) : new Country[0];
         } catch (SQLException ex) {

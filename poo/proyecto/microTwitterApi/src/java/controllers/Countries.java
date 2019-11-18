@@ -31,7 +31,7 @@ public class Countries extends iController<Country>{
 
     @Override
     public void save(Country object) {
-        res = JSON.toJson(source.getCountry(object));
+        res = JSON.toJson(source.saveCountry(object));
     }
 
     @Override

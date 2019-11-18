@@ -31,7 +31,7 @@ public class Notifications extends iController<Notification>{
 
     @Override
     public void save(Notification object) {
-        res = JSON.toJson(source.getNotification(object));
+        res = JSON.toJson(source.saveNotification(object));
     }
 
     @Override

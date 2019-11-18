@@ -31,7 +31,7 @@ public class Dictonaries extends iController<Dictonary>{
 
     @Override
     public void save(Dictonary object) {
-        res = JSON.toJson(source.getDictonary(object));
+        res = JSON.toJson(source.saveDictonary(object));
     }
 
     @Override

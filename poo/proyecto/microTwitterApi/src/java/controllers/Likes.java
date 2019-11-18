@@ -31,7 +31,7 @@ public class Likes extends iController<Like>{
 
     @Override
     public void save(Like object) {
-        res = JSON.toJson(source.getLike(object));
+        res = JSON.toJson(source.saveLike(object));
     }
 
     @Override

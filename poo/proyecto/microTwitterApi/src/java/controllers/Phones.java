@@ -31,7 +31,7 @@ public class Phones extends iController<Phone>{
 
     @Override
     public void save(Phone object) {
-        res = JSON.toJson(source.getPhone(object));
+        res = JSON.toJson(source.savePhone(object));
     }
 
     @Override

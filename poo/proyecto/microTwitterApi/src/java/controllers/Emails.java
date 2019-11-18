@@ -31,7 +31,7 @@ public class Emails extends iController<Email>{
 
     @Override
     public void save(Email object) {
-        res = JSON.toJson(source.getEmail(object));
+        res = JSON.toJson(source.saveEmail(object));
     }
 
     @Override

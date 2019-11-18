@@ -31,7 +31,7 @@ public class Regions extends iController<Region>{
 
     @Override
     public void save(Region object) {
-        res = JSON.toJson(source.getRegion(object));
+        res = JSON.toJson(source.saveRegion(object));
     }
 
     @Override

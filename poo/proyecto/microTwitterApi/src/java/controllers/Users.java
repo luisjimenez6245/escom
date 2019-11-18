@@ -31,7 +31,7 @@ public class Users extends iController<User>{
 
     @Override
     public void save(User object) {
-        res = JSON.toJson(source.getUser(object));
+        res = JSON.toJson(source.saveUser(object));
     }
 
     @Override

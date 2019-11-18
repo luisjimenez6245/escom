@@ -31,7 +31,7 @@ public class Words extends iController<Word>{
 
     @Override
     public void save(Word object) {
-        res = JSON.toJson(source.getWord(object));
+        res = JSON.toJson(source.saveWord(object));
     }
 
     @Override

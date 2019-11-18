@@ -31,7 +31,7 @@ public class Relations extends iController<Relation>{
 
     @Override
     public void save(Relation object) {
-        res = JSON.toJson(source.getRelation(object));
+        res = JSON.toJson(source.saveRelation(object));
     }
 
     @Override

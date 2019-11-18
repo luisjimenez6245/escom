@@ -31,7 +31,7 @@ public class Tweets extends iController<Tweet>{
 
     @Override
     public void save(Tweet object) {
-        res = JSON.toJson(source.getTweet(object));
+        res = JSON.toJson(source.saveTweet(object));
     }
 
     @Override
