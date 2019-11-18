@@ -29,7 +29,7 @@
             120
         </session-timeout>
     </session-config>
-    <display-name>grapher</display-name>
+    <display-name>microTwitterUI</display-name>
     <welcome-file-list>
         <welcome-file>dev</welcome-file>
     </welcome-file-list>

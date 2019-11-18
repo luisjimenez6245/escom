@@ -1034,7 +1034,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "language";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("languageId", key);
+            lista.put("language_id", key);
         }
         this.delete(query, lista);
         Language helper = getLanguage(new Language(key));
@@ -1049,7 +1049,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "country";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("countryId", key);
+            lista.put("country_id", key);
         }
         this.delete(query, lista);
         Country helper = getCountry(new Country(key));
@@ -1064,7 +1064,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "file";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("fileId", key);
+            lista.put("file_id", key);
         }
         this.delete(query, lista);
         File helper = getFile(new File(key));
@@ -1079,10 +1079,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "email";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("emailId", key);
-        }
-        if (key != 0) {
-            lista.put("emailId", key);
+            lista.put("email_id", key);
         }
         this.delete(query, lista);
         Email helper = getEmail(new Email(key));
@@ -1097,10 +1094,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "phone";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("phoneId", key);
-        }
-        if (key != 0) {
-            lista.put("phoneId", key);
+            lista.put("phone_id", key);
         }
         this.delete(query, lista);
         Phone helper = getPhone(new Phone(key));
@@ -1115,7 +1109,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "word";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("wordId", key);
+            lista.put("word_id", key);
         }
         this.delete(query, lista);
         Word helper = getWord(new Word(key));
@@ -1130,7 +1124,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "dictonary";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("dictonaryId", key);
+            lista.put("dictonary_id", key);
         }
         this.delete(query, lista);
         Dictonary helper = getDictonary(new Dictonary(key));
@@ -1145,7 +1139,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "region";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("regionId", key);
+            lista.put("region_id", key);
         }
         this.delete(query, lista);
         Region helper = getRegion(new Region(key));
@@ -1160,7 +1154,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "user";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("userId", key);
+            lista.put("user_id", key);
         }
         this.delete(query, lista);
         User helper = getUser(new User(key));
@@ -1175,7 +1169,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "tweet";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("tweetId", key);
+            lista.put("tweet_id", key);
         }
         this.delete(query, lista);
         Tweet helper = getTweet(new Tweet(key));
@@ -1190,7 +1184,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "_like";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("likeId", key);
+            lista.put("like_id", key);
         }
         this.delete(query, lista);
         Like helper = getLike(new Like(key));
@@ -1205,7 +1199,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "relation";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("relationId", key);
+            lista.put("relation_id", key);
         }
         this.delete(query, lista);
         Relation helper = getRelation(new Relation(key));
@@ -1220,7 +1214,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = "notification";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
-            lista.put("notificationId", key);
+            lista.put("notification_id", key);
         }
         this.delete(query, lista);
         Notification helper = getNotification(new Notification(key));

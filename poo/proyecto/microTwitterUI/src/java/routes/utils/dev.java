@@ -24,15 +24,5 @@ public class dev extends iServlet {
     protected void post() throws Exception {
         
     }
-
-    @Override
-    protected void put() throws Exception {
-        
-    }
-
-    @Override
-    protected void delete() throws Exception {
-        
-    }
-
+    
 }

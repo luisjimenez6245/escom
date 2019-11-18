@@ -84,7 +84,7 @@ public class executorApi {
             while (iter.hasNext()) {
                 Map.Entry<String, String> entry = (Map.Entry) iter.next();
                 String key = entry.getKey();
-                String value = entry.getValue();
+                String value = String.valueOf(entry.getValue());
                 query += key + "=" + value + "&";
             }
             query = query.substring(0, query.length() - 1);
@@ -104,10 +104,9 @@ public class executorApi {
             while (iter.hasNext()) {
                 Map.Entry<String, String> entry = (Map.Entry) iter.next();
                 String key = entry.getKey();
-                String value = entry.getValue();
-                obos.writeBytes("--" + BOUNDARY_STRING + "\r\n");
-                obos.writeBytes("Content-Disposition: form-data; name=\"" + key
-                        + "\"\r\n");
+                String value = String.valueOf(entry.getValue());
+                obos.writeBytes("--" + BOUNDARY_STRING + "\n");
+                obos.writeBytes("Content-Disposition: form-data; name=\"" + key + "\"\r\n");
                 obos.writeBytes("\r\n");
                 obos.writeBytes(value + "\r\n");
             }
@@ -155,7 +154,7 @@ public class executorApi {
         conne.setRequestMethod(method);
         conne.setConnectTimeout(CONNECT_TIME_OUT);
         conne.setReadTimeout(READ_OUT_TIME);
-        conne.setRequestProperty("accept", "*/*");
+        conne.setRequestProperty("Accept", "*/*");
         conne.setRequestProperty("Content-Type", dataType + "; boundary=" + BOUNDARY_STRING);
         conne.setRequestProperty("connection", "Keep-Alive");
         conne.setRequestProperty("user-agent", "Mozilla/4.0 (compatible;MSIE 6.0;Windows NT 5.1;SV1)");

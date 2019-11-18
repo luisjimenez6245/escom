@@ -28,6 +28,7 @@ public class mapperApi {
     private final Gson JSON = new Gson();
 
     public Language getLanguage(String json) {
+        System.out.println(json);
         if (json != null) {
             return JSON.fromJson(json, Language.class);
         }

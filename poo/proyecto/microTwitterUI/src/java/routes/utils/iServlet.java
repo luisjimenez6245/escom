@@ -1,17 +1,18 @@
 /*
-* Contenido de microTwitterApi generado por $author$
+* Contenido de microTwitterUI generado por $author$
  */
 package routes.utils;
 
 import controllers.security.logger;
+import controllers.security.manager;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.User;
 import sources.requests.repositoryRequests;
 
 /**
@@ -24,11 +25,11 @@ public abstract class iServlet extends HttpServlet {
     protected String url;
     protected String result;
     protected String page;
-
-    protected short slashNumbers = 0;
     protected int resStatus = 0;
+    private short slashNumbers = 0;
+    protected User user;
 
-    protected final logger ERRORES = new logger();
+    private final logger ERRORES = new logger();
     protected repositoryRequests repository;
 
     public iServlet() {
@@ -37,6 +38,7 @@ public abstract class iServlet extends HttpServlet {
     protected void envia(HttpServletResponse response) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        result = result == null ? "" : result;
         resStatus = resStatus != 0 ? resStatus : result.equals("") ? 400 : 0;
         if (result != null && resStatus == 0) {
             if (!result.equals("null")) {
@@ -45,7 +47,15 @@ public abstract class iServlet extends HttpServlet {
                 response.sendError(400);
             }
         } else {
-            response.sendError(resStatus);
+            if (resStatus == 401) {
+                response.sendRedirect(manager.getInstance().getProperty("URL") + "/login/");
+            } else {
+                if (resStatus == -2) {
+                    response.sendRedirect(manager.getInstance().getProperty("URL") + "/log.jsp");
+                } else {
+                    response.sendError(resStatus);
+                }
+            }
         }
     }
 
@@ -95,6 +105,10 @@ public abstract class iServlet extends HttpServlet {
             }
         }
         return resultado;
+    }
+
+    private User getUser(HttpServletRequest request) {
+        return null;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -168,13 +182,11 @@ public abstract class iServlet extends HttpServlet {
 
     protected abstract void post() throws Exception;
 
-    protected abstract void put() throws Exception;
-
-    protected abstract void delete() throws Exception;
     // </editor-fold>
 
     private void selector(HttpServletRequest request, HttpServletResponse response, int numero) throws ServletException, IOException {
         this.repository = new sources.requests.sourceRequests(request);
+        this.user = this.getUser(request);
         try {
             request.setCharacterEncoding("UTF-8");
             obtenDireccion(request.getRequestURI() == null ? "" : request.getRequestURI());
@@ -187,18 +199,17 @@ public abstract class iServlet extends HttpServlet {
                     post();
                     break;
                 case 3:
-                    put();
+                    resStatus = 400;
                     break;
                 case 4:
-                    delete();
+                    resStatus = 400;
                     break;
                 default:
                     break;
             }
         } catch (Exception ex) {
             resStatus = 400;
-            result = ex.getMessage();
-            System.out.println(Arrays.toString(ex.getStackTrace()));
+            ERRORES.error(ex);
         }
         envia(response);
     }

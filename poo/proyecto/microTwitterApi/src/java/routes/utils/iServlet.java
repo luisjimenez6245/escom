@@ -38,6 +38,7 @@ public abstract class iServlet extends HttpServlet {
     protected void envia(HttpServletResponse response) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        result = result == null ? "" : result;
         resStatus = resStatus != 0 ? resStatus : result.equals("") ? 400 : 0;
         if (result != null && resStatus == 0) {
             if (!result.equals("null")) {

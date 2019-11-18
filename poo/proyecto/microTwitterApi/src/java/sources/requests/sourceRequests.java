@@ -167,7 +167,8 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public User getUser() {
-        return new User(Integer.parseInt(request.getParameter("userId") == null ? "0" : request.getParameter("userId")));
+        User u =  new User(Integer.parseInt(request.getParameter("userId") == null ? "0" : request.getParameter("userId")));
+        return u ;
     }
 
     @Override

@@ -29,6 +29,7 @@ public class languages extends iServlet {
 
     @Override
     protected void post() throws Exception {
+        System.out.println("fui");
         control.save(repository.getLanguage());
         result = control.getContent();
     }
