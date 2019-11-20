@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <title> Cola </title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script lenguaje="javascript" src="js/proyecto.js"></script>
+  </head>
+
+  <body id="body">
+    <header>
+      <h2> Cola </h2>
+    </header>
+
+    <form id="form1" runat="server">
+      <div class="Table">
+        <div class="Title">
+          <label>Numero:</label></td>
+          <input type="text" name="elem" id="elem"/>
+        </div>
+      </div>
+    </form>
+
+
+    <footer class="Table wrapper">
+      <Button id="push" value="PUSH" onclick="meterC()"> Encolar </Button>
+      <Button  id="pop" value="Pop" onclick="sacarC()"> Desencolar </Button>
+    </footer>
+
+
+
+    <div align="center">
+      <pre>
+
+      </pre>
+      - E J E M P L O -
+
+      <table><p><div id="result"></div></p></table>
+
+    </div>
+
+    <div align="left" id="Layer1" style="width:780px; height:315px; overflow: scroll;">
+
+      <pre>
+#include < stdio.h >
+#include < conio.h >
+#include < stdlib.h >
+#include < string.h >
+#define TAM 10
+
+int menu (void);
+void insertar (int num);
+void despachar (void);
+int cola[10];
+int final = 0;
+
+int main(){
+	int opc=0;
+	int num=0;
+	opc=menu();
+
+	while (opc != 5){
+		switch (opc){
+			case 1:
+				gotoxy(39,10);
+				printf("Ingrese un numero: ");
+				scanf("%d", &num);
+				insertar( num );
+				getch();
+				opc = menu();
+				break;
+			case 2:
+				despachar();
+				getch();
+				opc = menu();
+				break;
+			case 3:
+				if(final == 0){
+					gotoxy(39,10);
+					printf("Cola VACIA!         ");
+				} else{
+					gotoxy(39,10);
+					printf("Cola OCUPADA!         ");
+				}
+				getch();
+				opc = menu();
+				break;
+			case 4:
+				if(final == 10){
+					gotoxy(39,10);
+					printf("Cola LLENA!         ");
+				} else{
+					gotoxy(39,10);
+					printf("Cola NO LLENA!         ");
+				}
+				getch();
+				opc = menu();
+				break;
+			default:
+				gotoxy(7,18);
+				printf("Opcion Invalida!");
+				getch();
+				opc = menu();
+				break;
+		}
+	}
+
+	return 0;
+}
+
+int menu (void)
+{
+	int opc2, i;
+	int x = 7, y = 20;
+	int n = 8, m = 22;
+
+	clrscr();
+	gotoxy(7,18);
+	printf("Cola de Numeros");
+	gotoxy(x,y);
+	for ( i = 0; i < 10; i++ ){
+		gotoxy(x,y);
+		printf("[%d]", i);
+		x += 4;
+	}
+	gotoxy(n,m);
+	for ( i = 0; i < 10; i++ ){
+		gotoxy(n,m);
+		printf("%i", cola[i]);
+		n += 4;
+	}
+	gotoxy(5,3);
+	printf("\n\tCola con Arreglos Estatico!\n");
+	gotoxy(8,5);
+	printf("\n\tMenu\n\n");
+	gotoxy(5,6);
+	printf("[1] Ingresar.");
+	gotoxy(5,8);
+	printf("[2] Despachar.");
+	gotoxy(5,10);
+	printf("[3] Verificar si esta vacio.");
+	gotoxy(5,12);
+	printf("[4] Verificar si esta lleno.");
+	gotoxy(5,14);
+	printf("[5] Salir del Programa.");
+	gotoxy(7,16);
+	printf("Ingrese la opcion deseada: ");
+	scanf("%d", &opc2);
+	gotoxy(34,16);
+
+	return opc2;
+}
+
+void insertar (int num){
+	if (final > 9){
+		gotoxy(39,10);
+		printf("La Cola esta LLENA!              ");
+	} else if ( final <= 9 ){
+		cola[final] = num;
+		final++;
+	}
+}
+
+void despachar (void){
+	int j;
+	if ( final <= 0 ){
+		gotoxy(39,10);
+		printf("La Cola esta VACIA!              ");
+	} else if ((final > 0) && (final <= 10)){
+		gotoxy(39,10);
+		printf("DESPACHAR NUMERO!              ");
+		for( j = 0; j < 10; j++ ){
+			cola[j] = cola[j+1];
+			cola[j+1] = 0;
+		}
+	}
+	final--;
+} </pre>
+    </div>
+
+  </body>
+</html>

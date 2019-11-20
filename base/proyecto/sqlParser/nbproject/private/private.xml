@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/sources/mysql/mapperMysql.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/User.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/AttributesKind.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Emails.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Phones.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/routes/attributes.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Tables.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/sources/mysql/repositoryMysql.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Attribute.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Email.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Database.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Phone.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/sources/mysql/sourceMysql.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Attributes.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/AttributeKind.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Table.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Users.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Databases.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Query.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/security/Factory.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Levels.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/controllers/Queries.java</file>
+            <file>file:/Users/luis/Documents/GitHub/escom/base/proyecto/sqlParser/src/java/models/Level.java</file>
+        </group>
+    </open-files>
+</project-private>

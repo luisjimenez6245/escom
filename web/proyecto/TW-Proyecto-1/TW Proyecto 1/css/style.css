@@ -1,0 +1,91 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: #ecf0f1;
+  font-size: 16px;
+}
+button {
+  color: #ecf0f1;
+  background: #23a799;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  font-size: 1.3rem;
+  border: 0;
+}
+button:hover {
+  background: #dd6f4e;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+button:nth-child(2) {
+  margin: 0 1rem;
+}
+footer {
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+header {
+  background: #23a799;
+  color: #ecf0f1;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.Cell {
+  width: 50%;
+  text-align: center;
+  color: white;
+  padding: 0.5rem 0;
+}
+.flex {
+  display: flex;
+}
+.Row .Cell:nth-child(1) {
+  background: #3498db;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.Row .Cell:nth-child(2) {
+  background: #2980b9;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.Title {
+  text-align: center;
+  background: #465a61;
+  color: #ecf0f1;
+  padding: 0.5rem;
+}
+.wrapper {
+  max-width: 1080px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0 0 0;
+}
+p {
+  margin: 0;
+}
+
+div {
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

@@ -16,10 +16,10 @@ import java.util.Set;
 
 public class manager {
 
-    public static String APPNAME =  "grapher";
+    public static String APPNAME =  "microTwitterApi";
     public static String DOMAIN = "http://localhost";
    // public static String DOMAIN = "http://192.168.1.72";
-    public static String URL = DOMAIN + ":8080/grapher";
+    public static String URL = DOMAIN + ":8080/microTwitterApi";
     private final Properties configProp = new Properties();
     
     private manager() {
