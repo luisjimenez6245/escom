@@ -1,113 +1,128 @@
 import java.awt.*;
-import java.awt.Event;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
-public class Practica4 extends JFrame implements ActionListener, Runnable{
-	Thread hilo;
-	int index;
-	JLabel pregunta, resultado;
-	String[] preguntas, respuestasUsuario;
-	String[][] respuestas;
-	JRadioButton[] respuestasBotones;
-	
-	
-	public Practica4{
-		index = -1;
-		preguntas = new String[2];
-		respuestas = new String[2][2];
-		respuestasUsuario = new String[2];
-		respuestasBotones = new JRadioButton[2];
-		hilo = new Thread(this);
-		
-		preguntas[0] = "¿2 + 2 es igual a?";
-		preguntas[1] = "¿3 + 3 es igual a?";
-		respuestas[0][0] = "4";
-		respuestas[0][1] = "5";
-		respuestas[1][0] = "6";
-		respuestas[1][1] = "10";
-		respuestasBotones[0] = new JRadioButton("");
-		respuestasBotones[1] = new JRadioButton("");
-		pregunta = new JLabel("");
-		resultado = new JLabel("");
-		
-		respuestasBotones[0].addActionListener(this);
-		respuestasBotones[1].addActionListener(this);
+public class executor {
 
-		getContentPane().add("North",pregunta);
-		getContentPane().add("East", respuestasBotones[0]);
-		getContentPane().add("West", respuestasBotones[1]);
-		getContentPane().add("South", resultado);
-		setSize(500, 500);
-		setVisible(true);		
+    public static void main(String[] args) {
+        new Panel();
+    }
 
-		hilo.start();
-	}
-	
-	private void cambiarPregunta(){
-		index++;
-		pregunta.setText(preguntas[index]);
+}
 
-		if (((int)Math.random() * 1.9) == 0){
-			respuestasBotones[0].setText(preguntas[index][0]);
-			respuestasBotones[1].setText(preguntas[index][1]);
-		} else {
-			respuestasBotones[0].setText(preguntas[index][1]);
-			respuestasBotones[1].setText(preguntas[index][0]);
-		}
-		
-	}
+class Panel extends JFrame implements ActionListener, Runnable {
 
-	private void guardarRespuesta(){
-		if (respuestasBotones[0].isSelected()){
-			respuestasUsuario[index] = respuestasBotones[0].getText();
-		} else if (respuestasBotones[0].isSelected()) {
-			respuestasUsuario[index] = respuestasBotones[1].getText();
-		} else {
-			respuestasUsuario[index] = "";
-		}
-	}
+    private JPanel panel;
+    private JButton botones[], iniciar;
+    private JLabel marcador;
+    private ImageIcon imagenes[];
+    private int topos;
+    private Thread cambio;
 
-	private void terminarCuestionario(){
-		int correctas = contarRespuestas();
-		
-		resultado.setText("Tuviste " + correctas + " respuestas correctas.");
-	}
+    public Panel() {
+        topos = 0;
 
-	private int contarRespuestas(){
-		int contadorCorrectas = 0;
+        cambio = new Thread(this);
 
-		for (int i = 0; i <= index; i++){
-			if (respuestas[i][0].equals(respuestasUsuario[i])){
-				contadorCorrectas++;
-			}
-		}
+        cambio.start();
 
-		return contadorRespuestas;
-	}
-	
-	public void run(){
-		if (index < preguntas.length){
-			guardarRespuesta();
-			cambiarPregunta();
-		} else {
-			terminarCuestionario();
-		}
+        this.setTitle("Pegale al Topo");
 
-		try{
-			hilo.sleep(5000);
-		} catch (Exception e){
-			
-		}
-	}
+        setLayout(new GridLayout(5, 4));
 
-	public void ActionListener(Event e){
-		if (((RadioButton) e.getSource).equals(respuestasBotones[0])){
-			respuestasBotones[1].setSelected(false);
-		} else {
-			respuestasBotones[0].setSelected(false);
-		}
-	}
-	
-	public static void main(String args[]){
-		new Practiac4();
-	}
+        botones = new JButton[20];
+
+        imagenes = new ImageIcon[2];
+        imagenes[0] = new ImageIcon("2.jpg");
+        imagenes[1] = new ImageIcon("1.jpg");
+
+        iniciar = new JButton("Reiniciar");
+        marcador = new JLabel("Puntaje: 0 ");
+
+        crear();
+
+        this.add(iniciar);
+        this.add(marcador);
+        this.setVisible(true);
+
+        int i;
+
+        iniciar.addActionListener(this);
+
+        for (i = 0; i < 20; i++)
+            botones[i].addActionListener(this);
+
+        setSize(450, 350);
+        setVisible(true);
+    }
+
+    public void crear() {
+        Random r = new Random();
+        int i, x1;
+
+        for (i = 0; i < 20; i++) {
+            x1 = Math.abs(r.nextInt() % 5);
+
+            if (x1 == 0)
+                botones[i] = new JButton((imagenes[0]));
+            else
+                botones[i] = new JButton((imagenes[1]));
+            botones[i].setBackground(java.awt.Color.white);
+            add(botones[i]);
+        }
+
+    }
+
+    public void reiniciar() {
+        Random r = new Random();
+        int i, x1;
+
+        for (i = 0; i < 20; i++) {
+            botones[i].setEnabled(true);
+            x1 = Math.abs(r.nextInt() % 5);
+
+            if (x1 == 0)
+                botones[i].setIcon(imagenes[0]);
+            else
+                botones[i].setIcon(imagenes[1]);
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        JButton btn = (JButton) e.getSource();
+
+        if (btn.getIcon() == imagenes[0]) {
+            btn.setIcon(imagenes[1]);
+            btn.setEnabled(false);
+            topos++;
+        } else if (btn == iniciar) {
+            topos = 0;
+            reiniciar();
+        }
+
+        marcador.setText("Puntaje: " + topos);
+    }
+
+    public void run() {
+        int t;
+        Random r = new Random();
+
+        t = Math.abs(r.nextInt() % 5) + 1;
+        while (true) {
+            try {
+                cambio.sleep(t * 1000);
+                reiniciar();
+                cambio.start();
+            } catch (Exception e) {
+                e.getMessage();
+            }
+
+        }
+    }
+
+    public static void main(String argv[]) {
+        new topo();
+    }
 }

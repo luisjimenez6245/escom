@@ -173,7 +173,7 @@ public class executorMysql {
         return null;
     }
 
-    public Object[] mapToArray(Map<String, Object> parameters) {
+    private  Object[] mapToArray(Map<String, Object> parameters) {
         ArrayList<Object> helper = new ArrayList<>();
         parameters.entrySet().forEach((r) -> {
             helper.add(r.getValue());
