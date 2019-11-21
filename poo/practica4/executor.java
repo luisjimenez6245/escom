@@ -1,162 +1,113 @@
+import java.awt.*;
+import java.awt.Event;
 
-import java.awt.Color;
-import java.awt.Font;
+public class Practica4 extends JFrame implements ActionListener, Runnable{
+	Thread hilo;
+	int index;
+	JLabel pregunta, resultado;
+	String[] preguntas, respuestasUsuario;
+	String[][] respuestas;
+	JRadioButton[] respuestasBotones;
+	
+	
+	public Practica4{
+		index = -1;
+		preguntas = new String[2];
+		respuestas = new String[2][2];
+		respuestasUsuario = new String[2];
+		respuestasBotones = new JRadioButton[2];
+		hilo = new Thread(this);
+		
+		preguntas[0] = "¿2 + 2 es igual a?";
+		preguntas[1] = "¿3 + 3 es igual a?";
+		respuestas[0][0] = "4";
+		respuestas[0][1] = "5";
+		respuestas[1][0] = "6";
+		respuestas[1][1] = "10";
+		respuestasBotones[0] = new JRadioButton("");
+		respuestasBotones[1] = new JRadioButton("");
+		pregunta = new JLabel("");
+		resultado = new JLabel("");
+		
+		respuestasBotones[0].addActionListener(this);
+		respuestasBotones[1].addActionListener(this);
 
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import java.awt.event.MouseEvent;
+		getContentPane().add("North",pregunta);
+		getContentPane().add("East", respuestasBotones[0]);
+		getContentPane().add("West", respuestasBotones[1]);
+		getContentPane().add("South", resultado);
+		setSize(500, 500);
+		setVisible(true);		
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+		hilo.start();
+	}
+	
+	private void cambiarPregunta(){
+		index++;
+		pregunta.setText(preguntas[index]);
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.event.MouseInputAdapter;
+		if (((int)Math.random() * 1.9) == 0){
+			respuestasBotones[0].setText(preguntas[index][0]);
+			respuestasBotones[1].setText(preguntas[index][1]);
+		} else {
+			respuestasBotones[0].setText(preguntas[index][1]);
+			respuestasBotones[1].setText(preguntas[index][0]);
+		}
+		
+	}
 
+	private void guardarRespuesta(){
+		if (respuestasBotones[0].isSelected()){
+			respuestasUsuario[index] = respuestasBotones[0].getText();
+		} else if (respuestasBotones[0].isSelected()) {
+			respuestasUsuario[index] = respuestasBotones[1].getText();
+		} else {
+			respuestasUsuario[index] = "";
+		}
+	}
 
-public class executor {
+	private void terminarCuestionario(){
+		int correctas = contarRespuestas();
+		
+		resultado.setText("Tuviste " + correctas + " respuestas correctas.");
+	}
 
-    public static void main(String[] args) {
-        new Panel();
-    }
+	private int contarRespuestas(){
+		int contadorCorrectas = 0;
 
-}
+		for (int i = 0; i <= index; i++){
+			if (respuestas[i][0].equals(respuestasUsuario[i])){
+				contadorCorrectas++;
+			}
+		}
 
-class Panel extends Controller {
+		return contadorRespuestas;
+	}
+	
+	public void run(){
+		if (index < preguntas.length){
+			guardarRespuesta();
+			cambiarPregunta();
+		} else {
+			terminarCuestionario();
+		}
 
-    private static final String FILE = "/Users/luis/Documents/GitHub/escom/poo/practica2/remainder.txt";
-    private static final long serialVersionUID = 1L;
-    private JComboBox combo;
-    private JPanel panelContainer;
-    private String options[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-    private String imgs[];
-    private float time = 1;
-    private int counter = 0;
+		try{
+			hilo.sleep(5000);
+		} catch (Exception e){
+			
+		}
+	}
 
-
-    public Panel() {
-        super();
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); 
-    }
-
-    @Override
-    protected void loadView() {
-        setTitle("Reloj");
-        setVisible(true);
-        setLayout(null);
-        setSize(320, 320);
-        combo = new JComboBox(options);
-        panelContainer = new JPanel();
-        combo.setBounds(20, 0, 80, 30);
-        panelContainer.setBounds(20, 40, 300, 250);
-        add(combo);
-        add(panelContainer);
-    }
-
-    @Override
-    protected void loadContent() {
-        imgs = new BufferedImage[4];
-        imgs[0] = ("filename");
-        imgs[1] = ("filename");
-        imgs[2] = ("filename");
-        imgs[3] = ("filename");
-    }
-
-    @Override
-    protected void loadActions() {
-        combo.addActionListener((ActionEvent e) -> {
-            n = Integer.parseInt(combo.getSelectedItem().toString());
-            this.invalidate();
-            this.validate();
-            this.repaint();
-        });
-      
-    }
-
-    private void changeContent(){
-        Image background = Toolkit.getDefaultToolkit().createImage(imgs[counter]);
-        this.drawImage(background, 0, 0, null);
-    }
-
-    private void manageClock() {
-        new Thread() {
-            public void run() {
-                while (true) {
-                    changeContent();
-                    if (counter >= imgs.length)
-                    {
-                        counter = 0;
-                    }
-                    try {
-                        sleep(time  * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    ++counter;
-                }
-            }
-        }.start();
-    }
-
-}
-
-abstract class Controller extends JFrame {
-
-    private static final long serialVersionUID = -6691512838218834379L;
-
-    public Controller() {
-        loadView();
-        loadContent();
-        loadActions();
-        this.invalidate();
-        this.validate();
-        this.repaint();
-    }
-
-    protected abstract void loadView();
-
-    protected abstract void loadContent();
-
-    protected abstract void loadActions();
-
-}
-
-class Files {
-
-    public static String getFile(String path) {
-        try {
-            String res = "";
-            String helper = "";
-            try (BufferedReader stdInput = new BufferedReader(new FileReader(path))) {
-                while ((helper = stdInput.readLine()) != null) {
-                    res += helper + "\n";
-                }
-            }
-            return res;
-        } catch (IOException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
-        return null;
-    }
-
-    public static BufferedImage getImage(String filename) {
-        try {
-            InputStream in = getResourceAsStream(filename);
-            return ImageIO.read(in);
-        } catch (IOException e) {
-            System.out.println("The image was not loaded.");
-        }
-        return null;
-    }
-
+	public void ActionListener(Event e){
+		if (((RadioButton) e.getSource).equals(respuestasBotones[0])){
+			respuestasBotones[1].setSelected(false);
+		} else {
+			respuestasBotones[0].setSelected(false);
+		}
+	}
+	
+	public static void main(String args[]){
+		new Practiac4();
+	}
 }
