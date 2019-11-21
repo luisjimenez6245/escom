@@ -17,8 +17,8 @@ import java.math.*;
 
 public class executor {
 
-    //compile: javac -cp "./mysql.jar" executor.java
-    //excecute: java -cp ".:./mysql.jar" executor 
+    // compile: javac -cp "./mysql.jar" executor.java
+    // excecute: java -cp ".:./mysql.jar" executor
     public static void main(String[] args) {
         new Formulario();
     }
@@ -85,8 +85,7 @@ class Formulario implements ActionListener {
                 parameters.put("edad", edad);
                 parameters.put("genero", genero);
                 exec.save("tableName", parameters);
-            }
-            else{
+            } else {
 
             }
         }

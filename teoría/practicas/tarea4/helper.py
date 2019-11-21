@@ -1,5 +1,10 @@
 import os
 from os.path import isfile, join
+
+
+item_list = dict()
+
+
 def read_file(path):
     res = ""
     with open(path) as fp:
@@ -24,7 +29,7 @@ def get_selector(item, count):
         if item+it in dictio:
             resa += "else if(c == '"+ it + "'){\n return register_word(\""+ item+it +"\");\n}\n"
         elif it is not "":
-            methods.append(")
+            methods.append("")
             resa += "else if(c == '"+ it + "'){\n return manage_" + item+ it+ "();\n}\n"
     resa = resa[4:]
     if(item is ""):
@@ -55,6 +60,7 @@ if __name__ == "__main__":
                 h = item[0:i]
                 if h not in res:
                     res.append(h)
+
         result = ""
         for item in res:
             result += ("\nint manage_" + item +  "()\n{\n char c = get_char();\n " + get_selector (item, i + 1)+" \n}\n")

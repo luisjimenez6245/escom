@@ -10,7 +10,7 @@ int getRandomNumber(int number);
 int main()
 {
     fanswer = fopen("./answer.txt", "w");
-    int i = 20;
+    int i = 10;
     while (i != 0)
     {
         generateString();
@@ -21,7 +21,7 @@ int main()
 
 void generateString()
 {
-    int length = getRandomNumber(100000);
+    int length = getRandomNumber(5);
     while (length >= 0)
     {
         if (getBool())

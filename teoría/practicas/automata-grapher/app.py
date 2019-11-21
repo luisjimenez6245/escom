@@ -16,13 +16,11 @@ def main():
     heigth = 420 
     parent = create_main_node(panel, Coordinate(x = 0, y = 0), "i", heigth)
     r = parent
-    dic = {("in", "c"), ("inc","l"), ("incl", "u"), ("inclu", "d"), ("includ", "e"), ("include", "")}
+    dic = {("1", "1"), ("1","0"), ("1", "0"), }
     for x in range(2, len(dic) + 1):
-        item = "include"
+        item = "111"
         r = create_node(panel, r, item[:x], (list(item[x-1:]))[0])
-
-
-    final = create_main_node(panel, r, "include", heigth, "")
+    final = create_main_node(panel, r, "111", heigth, "")
     #node_to_node(panel, final, parent, 1)
     width = final.x
     width += 50
