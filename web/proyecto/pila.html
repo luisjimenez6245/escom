@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script lenguaje="javascript" src="js/proyecto.js"></script>
+  <script lenguaje="javascript" src="js/pila.js"></script>
+  
   </head>
 
   <body id="body" onLoad="iniciar();">
@@ -31,19 +33,14 @@
 
     <div align="center">
       <pre>
-
       </pre>
       - E J E M P L O -
-            <div id="result"></div>
+      <div id="result">
+        <canvas id="canvas_pila">
+        </canvas>
+      </div>
     </div>
-
-
-
-
-
-
-
-    <div align="left" id="Layer1" style="width:780px; height:315px; overflow: scroll;">
+    <div align="left" id="Layer1" style="width:90%; height:315px; overflow: scroll;">
       <pre>
 #include < iostream >
 using namespace std;
@@ -145,4 +142,7 @@ int main(){
     </div>
 
   </body>
+  <script>
+    startGame();
+  </script>
 </html>

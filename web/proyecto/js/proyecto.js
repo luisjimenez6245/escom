@@ -1,27 +1,35 @@
 var pila = new Array();
-
+var counter = -1;
 function iniciar() {
 	nodoTabla = document.getElementById("tabla");
 }
 
-
 function meterP() {
 	var elem = document.getElementById("elem").value;
-
-	if (elem == "") {
+	if (elem == "" && elem != undefined) {
 		alert("Introduce un elemento");
 	}
 	else {
-
+		addToGame(elem);
 		pila.unshift(parseInt(document.querySelector("#elem").value));
-		printP();
-
 	}
 }
 
 function sacarP() {
 	pila.shift();
-	printP();
+	itemsInGame.pop();
+	--counter;
+
+}
+
+function addToGame(elem){
+	if (counter > -1) {
+		itemsInGame.push(new component(50, 50, colors[1], 20, 75, elem, itemsInGame[counter]));
+	}
+	else{
+		itemsInGame.push(new component(50, 50, colors[counter % colors.length], 20, 75, elem));
+	}
+	++counter;
 }
 
 function meterC() {
@@ -32,15 +40,15 @@ function meterC() {
 	}
 	else {
 		pila.push(parseInt(document.querySelector("#elem").value));
-
-		printC();
+		addToGame(elem);
 	}
 }
 
 
 function sacarC() {
 	pila.shift();
-	printC();
+	itemsInGame.shift();
+	--counter;
 }
 
 

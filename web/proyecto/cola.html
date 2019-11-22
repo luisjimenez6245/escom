@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-  <meta charset="utf-8">
-  <title> Cola </title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <script lenguaje="javascript" src="js/proyecto.js"></script>
-  </head>
+<head>
+	<meta charset="utf-8">
+	<title> Cola </title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script lenguaje="javascript" src="js/proyecto.js"></script>
+	<script lenguaje="javascript" src="js/cola.js"></script>
+</head>
 
-  <body id="body">
-    <header>
-      <h2> Cola </h2>
-    </header>
+<body id="body">
+	<header>
+		<h2> Cola </h2>
+	</header>
 
-    <form id="form1" runat="server">
-      <div class="Table">
-        <div class="Title">
-          <label>Numero:</label></td>
-          <input type="text" name="elem" id="elem"/>
-        </div>
-      </div>
-    </form>
-
-
-    <footer class="Table wrapper">
-      <Button id="push" value="PUSH" onclick="meterC()"> Encolar </Button>
-      <Button  id="pop" value="Pop" onclick="sacarC()"> Desencolar </Button>
-    </footer>
-
-
-
-    <div align="center">
-      <pre>
+	<form id="form1" runat="server">
+		<div class="Table">
+			<div class="Title">
+				<label>Numero:</label></td>
+				<input type="text" name="elem" id="elem" />
+			</div>
+		</div>
+	</form>
+	<footer class="Table wrapper">
+		<Button id="push" value="PUSH" onclick="meterC()"> Encolar </Button>
+		<Button id="pop" value="Pop" onclick="sacarC()"> Desencolar </Button>
+	</footer>
+	<div align="center">
+		<pre>
 
       </pre>
-      - E J E M P L O -
+		- E J E M P L O -
 
-      <table><p><div id="result"></div></p></table>
+			<p>
+				<div id="result">
+					<canvas id="canvas_cola">
+					</canvas>
+				</div>
+			</p>
 
-    </div>
+	</div>
 
-    <div align="left" id="Layer1" style="width:780px; height:315px; overflow: scroll;">
+	<div align="left" id="Layer1" style="width:780px; height:315px; overflow: scroll;">
 
-      <pre>
+		<pre>
 #include < stdio.h >
 #include < conio.h >
 #include < stdlib.h >
@@ -179,7 +180,11 @@ void despachar (void){
 	}
 	final--;
 } </pre>
-    </div>
+	</div>
 
-  </body>
+</body>
+<script>
+	startGame();
+</script>
+
 </html>
