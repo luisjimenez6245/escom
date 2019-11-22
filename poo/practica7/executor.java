@@ -25,8 +25,8 @@ public class executor {
 
 }
 
-class Formulario implements ActionListener {
-    private JFrame principal;
+class Formulario extends Controller implements ActionListener {
+
     private JLabel LNombre;
     private JLabel LRaza;
     private JLabel LEdad;
@@ -40,8 +40,14 @@ class Formulario implements ActionListener {
     private executorMysql exec;
 
     public Formulario() {
+        super();
+    }
 
-        principal = new JFrame("Perros");
+    @Override
+    protected void loadView() {
+        setVisible(true);
+        setTitle("Perros");
+        setSize(500, 500);
         LNombre = new JLabel("Nombre: ");
         LRaza = new JLabel("Raza: ");
         LEdad = new JLabel("Edad: ");
@@ -51,46 +57,90 @@ class Formulario implements ActionListener {
         TEdad = new JTextField();
         TGenero = new JTextField();
         insertar = new JButton("Enviar");
-        insertar.addActionListener(this);
         conect = new JButton("Conectar");
+    }
+
+    @Override
+    protected void loadContent() {
+        this.setLayout(new GridLayout(5, 2));
+        this.add(LNombre);
+        this.add(TNombre);
+        this.add(LRaza);
+        this.add(TRaza);
+        this.add(LEdad);
+        this.add(TEdad);
+        this.add(LGenero);
+        this.add(TGenero);
+        this.add(conect);
+        this.add(insertar);
+    }
+
+    @Override
+    protected void loadActions() {
+        insertar.addActionListener(this);
         conect.addActionListener(this);
-        principal.setLayout(new GridLayout(5, 2));
-        principal.add(LNombre);
-        principal.add(TNombre);
-        principal.add(LRaza);
-        principal.add(TRaza);
-        principal.add(LEdad);
-        principal.add(TEdad);
-        principal.add(LGenero);
-        principal.add(TGenero);
-        principal.add(conect);
-        principal.add(insertar);
-        principal.setSize(500, 500);
-        principal.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
         JButton b = (JButton) e.getSource();
         if (b.getText().equals("Conectar")) {
-            exec = new executorMysql("root", "Siul6245", "Perros", "localhost", "3306");
+            checkConection();
         } else {
-            if (exec != null) {
+            try {
                 String nombre = (String) TNombre.getText();
                 String raza = (String) TRaza.getText();
                 int edad = Integer.parseInt(TEdad.getText());
                 String genero = (String) TGenero.getText();
-                HashMap<String, Object> parameters = new HashMap<>();
-                parameters.put("nombre", nombre);
-                parameters.put("raza", raza);
-                parameters.put("edad", edad);
-                parameters.put("genero", genero);
-                exec.save("tableName", parameters);
-            } else {
-
+                register(nombre, raza, edad, genero);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(rootPane, "La edad no es valida");
             }
-        }
 
+        }
     }
+
+    private void checkConection() {
+        if (exec == null) {
+            exec = new executorMysql("root", "Siul6245", "Perros", "localhost", "3306");
+            JOptionPane.showMessageDialog(rootPane, "Conectado Exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Ya estabas conectado.");
+        }
+    }
+
+    private void register(String nombre, String raza, int edad, String genero) {
+        if (exec != null) {
+            HashMap<String, Object> parameters = new HashMap<>();
+            parameters.put("nombre", nombre);
+            parameters.put("raza", raza);
+            parameters.put("edad", edad);
+            parameters.put("genero", genero);
+            exec.save("tableName", parameters);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No te haz conecatdo. :(");
+        }
+    }
+}
+
+abstract class Controller extends JFrame {
+
+    private static final long serialVersionUID = -6691512838218834379L;
+
+    public Controller() {
+        loadView();
+        loadContent();
+        loadActions();
+        this.invalidate();
+        this.validate();
+        this.repaint();
+    }
+
+    protected abstract void loadView();
+
+    protected abstract void loadContent();
+
+    protected abstract void loadActions();
+
 }
 
 class executorMysql {

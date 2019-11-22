@@ -11,7 +11,7 @@ public class executor {
 
 }
 
-class Panel extends JFrame implements ActionListener, Runnable {
+class Panel extends Controller implements ActionListener, Runnable {
 
     private JPanel panel;
     private JButton botones[], iniciar;
@@ -21,49 +21,49 @@ class Panel extends JFrame implements ActionListener, Runnable {
     private Thread cambio;
 
     public Panel() {
-        topos = 0;
-
-        cambio = new Thread(this);
-
-        cambio.start();
-
-        this.setTitle("Pegale al Topo");
-
-        setLayout(new GridLayout(5, 4));
-
-        botones = new JButton[20];
-
-        imagenes = new ImageIcon[2];
-        imagenes[0] = new ImageIcon("2.jpg");
-        imagenes[1] = new ImageIcon("1.jpg");
-
-        iniciar = new JButton("Reiniciar");
-        marcador = new JLabel("Puntaje: 0 ");
-
-        crear();
-
-        this.add(iniciar);
-        this.add(marcador);
-        this.setVisible(true);
-
-        int i;
-
-        iniciar.addActionListener(this);
-
-        for (i = 0; i < 20; i++)
-            botones[i].addActionListener(this);
-
+        super();
         setSize(450, 350);
         setVisible(true);
     }
 
+    @Override
+    protected void loadView() {
+        topos = 0;
+        cambio = new Thread(this);
+        cambio.start();
+        this.setTitle("Pegale al Topo");
+        setLayout(new GridLayout(5, 4));
+        botones = new JButton[20];
+        imagenes = new ImageIcon[2];
+        imagenes[0] = new ImageIcon("2.jpg");
+        imagenes[1] = new ImageIcon("1.jpg");
+        iniciar = new JButton("Reiniciar");
+        marcador = new JLabel("Puntaje: 0 ");
+
+    }
+
+    @Override
+    protected void loadContent() {
+        crear();
+        this.add(iniciar);
+        this.add(marcador);
+        this.setVisible(true);
+
+    }
+
+    @Override
+    protected void loadActions() {
+        iniciar.addActionListener(this);
+        for (int i = 0; i < 20; i++) {
+            botones[i].addActionListener(this);
+        }
+
+    }
+
     public void crear() {
         Random r = new Random();
-        int i, x1;
-
-        for (i = 0; i < 20; i++) {
-            x1 = Math.abs(r.nextInt() % 5);
-
+        for (int i = 0; i < 20; i++) {
+            int x1 = Math.abs(r.nextInt() % 5);
             if (x1 == 0)
                 botones[i] = new JButton((imagenes[0]));
             else
@@ -76,12 +76,9 @@ class Panel extends JFrame implements ActionListener, Runnable {
 
     public void reiniciar() {
         Random r = new Random();
-        int i, x1;
-
-        for (i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             botones[i].setEnabled(true);
-            x1 = Math.abs(r.nextInt() % 5);
-
+            int x1 = Math.abs(r.nextInt() % 5);
             if (x1 == 0)
                 botones[i].setIcon(imagenes[0]);
             else
@@ -90,9 +87,7 @@ class Panel extends JFrame implements ActionListener, Runnable {
     }
 
     public void actionPerformed(ActionEvent e) {
-
         JButton btn = (JButton) e.getSource();
-
         if (btn.getIcon() == imagenes[0]) {
             btn.setIcon(imagenes[1]);
             btn.setEnabled(false);
@@ -101,7 +96,6 @@ class Panel extends JFrame implements ActionListener, Runnable {
             topos = 0;
             reiniciar();
         }
-
         marcador.setText("Puntaje: " + topos);
     }
 
@@ -121,8 +115,25 @@ class Panel extends JFrame implements ActionListener, Runnable {
 
         }
     }
+}
 
-    public static void main(String argv[]) {
-        new topo();
+abstract class Controller extends JFrame {
+
+    private static final long serialVersionUID = -6691512838218834379L;
+
+    public Controller() {
+        loadView();
+        loadContent();
+        loadActions();
+        this.invalidate();
+        this.validate();
+        this.repaint();
     }
+
+    protected abstract void loadView();
+
+    protected abstract void loadContent();
+
+    protected abstract void loadActions();
+
 }
