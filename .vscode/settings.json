@@ -5,7 +5,9 @@
         "string": "c",
         "string_view": "c",
         "string.h": "c",
-        "locale": "c"
+        "locale": "c",
+        "algorithm": "c",
+        "iterator": "c"
     },
     "python.pythonPath": "/usr/local/bin/python3"
 }

@@ -1,5 +1,9 @@
+import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 public class Client extends Controller implements ActionListener {
@@ -21,7 +28,7 @@ public class Client extends Controller implements ActionListener {
 
     public Client() {
         super();
-        this.title = "ChatBot";
+        setTitle("ChatBot");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -51,8 +58,8 @@ public class Client extends Controller implements ActionListener {
         String preg = (String) pregunta.getText();
         String resp;
         try {
-            Registry registry = LocateRegistry.getRegistry(null);
-            Hello stub = (Hello) registry.lookup("Hello");
+            Registry registry = LocateRegistry.getRegistry();
+            iRemote stub = (iRemote) registry.lookup("iRemote");
             resp = stub.printMsg(preg);
             if (resp.equals(""))
                 respuesta.setText(":c");
@@ -61,12 +68,8 @@ public class Client extends Controller implements ActionListener {
             }
 
         } catch (Exception ex) {
-            System.out.println("Nope C");
+            System.out.println("Nope: " +  ex.getLocalizedMessage());
         }
-    }
-
-    public static void main(String[] args) {
-        new Client();
     }
 
 }
@@ -91,4 +94,7 @@ abstract class Controller extends JFrame {
 
     protected abstract void loadActions();
 
+}
+interface iRemote extends Remote {
+    String printMsg(String pregunta) throws RemoteException;
 }
