@@ -16,16 +16,18 @@ public class Phone extends Model {
     public boolean isActive;
     public boolean isPrincipal;
     public boolean isValid;
+    public int userId;
 
     public Phone(int phoneId) {
         this.phoneId = phoneId;
     }
 
-    public Phone build(String phone, boolean isActive, boolean isPrincipal, boolean isValid) {
+    public Phone build(String phone, boolean isActive, boolean isPrincipal, boolean isValid, int userId) {
         this.phone = phone;
         this.isActive = isActive;
         this.isPrincipal = isPrincipal;
         this.isValid = isValid;
+        this.userId = userId;
         return this;
     }
 

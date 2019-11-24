@@ -137,7 +137,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteTable(int key) {
-        String query = "table";
+        String query = "_table";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
             lista.put("tableId", key);
@@ -152,7 +152,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public int deleteDatabase(int key) {
-        String query = "database";
+        String query = "_database";
         HashMap<String, Object> lista = new HashMap<>();
         if (key != 0) {
             lista.put("databaseId", key);
@@ -334,7 +334,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Table[] getTableList(Table object) {
-        String query = "select t.* from table t";
+        String query = "select t.* from _table t";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.name != null) {
@@ -355,7 +355,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Database[] getDatabaseList(Database object) {
-        String query = "select d.* from database d";
+        String query = "select d.* from _database d";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.name != null) {
@@ -379,13 +379,14 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         String query = " email ";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
+            lista.put("is_valid", object.isValid);
             lista.put("is_active", object.isActive);
             lista.put("is_principal", object.isPrincipal);
             if (object.emailId != 0) {
                 lista.put("email_id", object.emailId);
             }
-            if (object.emailId != 0) {
-                lista.put("email_id", object.emailId);
+            if (object.userId != 0) {
+                lista.put("userId", object.userId);
             }
             if (object.email != null) {
                 lista.put("email", object.email);
@@ -411,6 +412,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             if (object.phone != null) {
                 lista.put("phone", object.phone);
             }
+            if (object.userId != 0) {
+                lista.put("userId", object.userId);
+            }
+            lista.put("is_valid", object.isValid);
             lista.put("is_principal", object.isPrincipal);
 
         }
@@ -560,7 +565,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Table saveTable(Table object) {
-        String query = " table ";
+        String query = " _table ";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.databaseId != 0) {
@@ -583,7 +588,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
 
     @Override
     public Database saveDatabase(Database object) {
-        String query = " database ";
+        String query = " _database ";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.databaseId != 0) {

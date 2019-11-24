@@ -1,0 +1,148 @@
+nav a:hover {
+    text-decoration: none;
+}
+
+.nav{
+    right: 0px;
+    left:0px;
+    top:0px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: white;
+    min-height: 10rem;
+    position: fixed;
+    @include card(1);
+    @media only screen and (min-width: 20px) {
+        min-height: 2.5rem;
+    }
+    @media only screen and (min-width: 768px) {
+        min-height: 2.5rem;
+    }
+    @include div-properties(100%, auto, null, table);
+    z-index: 100;
+    @include disable-selection;
+    ul {
+        margin: 0;
+        margin-top: .2rem;
+        padding: 0;
+        list-style-type: none;
+        float: right;
+        @media only screen and (max-width: 768px) {
+            display:none;
+        }
+    }
+    a, .container{
+        font-weight: 300;
+    }
+    a {
+        font-size: .8rem;
+        margin-right: .7rem;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $nav-font-color;
+        font-weight: 700;
+        border-bottom: 2px solid rgba(0,0,0,0);
+        &:hover{
+            opacity: .6;
+            border-bottom: 2px solid white;
+        }
+    }
+    &-color{
+        &-base{
+            background-color: $nav-background-color !important;
+        }
+    }
+    div {
+        text-transform: uppercase;
+        font-family: $font-family;
+        color: $nav-font-color;
+        font-weight: 700;
+        .nav-active {
+            border-bottom: 0rem solid white;
+            transition-duration: 0.2s;
+            transition-timing-function: ease;
+        }
+        .nav-toggle {
+            letter-spacing: -10px;
+            line-height: 50%;
+            font-weight: 600;
+            text-justify: distribute;
+            text-align: center;
+            padding-top: 0.4rem;
+            span {
+                position: relative;
+            }
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        .nav-logo {
+            margin-top: .8rem;
+            position: relative;
+            text-justify: distribute;
+            text-align: center;
+            z-index: 101;
+            font-size: 1rem;
+            font-weight: 700;
+            vertical-align:middle;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        @media only screen and (min-width: 20px) {
+            .nav-toggle {
+                @include div-properties(1rem, 1rem, null, table);
+            }
+            .nav-logo {
+                @include div-properties(0px, 0px, null, none);
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            .nav-toggle {
+                @include div-properties(0px, 0px, null, none);
+            }
+           
+        }
+        @media only screen and (min-width: 992px) {
+            .nav-logo {
+                padding-top: 0.3rem;
+                right: 0.5rem;
+            }
+        }
+    }
+
+    .container {
+        font-size: .95rem;
+        text-transform: capitalize;
+        display: inline-block;
+        float: left;
+        white-space: nowrap;
+        max-width: 100px;
+        text-overflow: ellipsis;
+        span{
+            margin-left: 1rem;
+        }
+        .image {
+            position: relative;
+            @include image-background;
+            margin-right: 1rem;
+            border-radius: 2.1rem;
+            vertical-align: center;
+            padding-bottom: 0rem;
+            justify-content: center;
+            line-height: 0.1rem;
+            right: 0px;
+            @media only screen and (min-width: 20px) {
+                @include div-properties(0rem, 0rem, null, none);
+            }
+            @media only screen and (min-width: 768px) {
+                @include div-properties(2rem, 2rem, null, inline-block);
+            }
+            @media only screen and (min-width: 992px) {
+                @include div-properties(1.2rem, 1.2rem, null, block);
+            }
+        }
+    }
+}

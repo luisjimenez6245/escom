@@ -3,13 +3,15 @@
 */
 package routes.utils;
 
+import javax.servlet.annotation.WebServlet;
+
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
 
-
+@WebServlet(name = "dev", urlPatterns = {"/dev/*"})
 public class dev extends iServlet {
 
     @Override
@@ -21,15 +23,4 @@ public class dev extends iServlet {
     protected void post() throws Exception {
         
     }
-
-    @Override
-    protected void put() throws Exception {
-        
-    }
-
-    @Override
-    protected void delete() throws Exception {
-        
-    }
-
 }

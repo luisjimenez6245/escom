@@ -1,13 +1,13 @@
 /*
 * Contenido de sqlParser generado por Luis Diego Jiménez Delgado en el 2019
-*/
-
+ */
 package routes.utils;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luis Diego Jiménez Delgado
  */
-
+@WebServlet(name = "files", urlPatterns = {"/files/*"})
 public class files extends iServlet {
 
     private String contentType;
@@ -52,22 +52,12 @@ public class files extends iServlet {
 
     @Override
     protected void get() throws Exception {
-        
+
     }
 
     @Override
     protected void post() throws Exception {
-        
-    }
 
-    @Override
-    protected void put() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void delete() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

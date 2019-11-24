@@ -117,4 +117,9 @@ public class sourceRequests extends executorRequests implements sources.requests
         return null;
     }
 
+    @Override
+    public String getAction() {
+        return request.getParameter("c_action") == null ? "" : request.getParameter("c_action");
+    }
+
 }

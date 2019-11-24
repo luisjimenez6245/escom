@@ -54,5 +54,7 @@ public interface repositoryRequests {
     public Database getDatabase();
 
     public Database[] getDatabaseList();
+    
+    public String getAction();
 
 }
