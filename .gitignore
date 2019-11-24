@@ -154,7 +154,6 @@ dmypy.json
 *.war
 *.nar
 *.ear
-*.zip
 *.tar.gz
 *.rar
 

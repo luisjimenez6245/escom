@@ -37,7 +37,7 @@
             right: 0px;
             float: right;
             label{
-                                text-align: right !important;
+                text-align: right !important;
 
             }
 
@@ -523,7 +523,6 @@
     }
     &_login{
         @include image-background;
-        background-image: url(../img/bg3.png);
         .button-middle{
             background-color: $button-middle-font-color;
         }
