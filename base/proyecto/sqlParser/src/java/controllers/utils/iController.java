@@ -5,18 +5,20 @@
 package controllers.utils;
 
 import com.google.gson.Gson;
-import controllers.security.logger;
+import controllers.security.Logger;
+import models.utils.Model;
 import sources.mysql.repositoryMysql;
+import sources.requests.repositoryRequests;
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
 
-public abstract class iController <T> {
+public abstract class iController{
     
     public final Gson JSON = new Gson();
-    public final logger ERRORES = new logger();
+    public final Logger ERRORES = new Logger();
     protected String res = "";
     public repositoryMysql source;
     
@@ -24,11 +26,11 @@ public abstract class iController <T> {
         this.source = source;
     }
     
-    public abstract void get(T object);
-    public abstract void getList(T object);
-    public abstract void save(T object);
-    public abstract void delete(T object);
-    public abstract void update(T object);
+    public abstract void get(String name, repositoryRequests repository);
+    public abstract void getList(String name, repositoryRequests repository);
+    public abstract void save(String name, repositoryRequests repository);
+    public abstract void delete(String name, repositoryRequests repository);
+    public abstract void update(String name, repositoryRequests repository);
     
     public String getContent(){
         return res;

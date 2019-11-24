@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Const.h"
-#include "TADPilaDin.h"
 #include "TADColaDin.h"
 
 /*
-Cadena 0000000000011111111111
-Compile: gcc app.c TADPilaDin.c TADColaDin.c Const.c -o a.out
+Cadena palindroma
+Compile: gcc app.c TADColaDin.c Const.c -o a.out
 */
 
 FILE *fp;
@@ -15,18 +14,14 @@ FILE *fstates;
 
 void generateString(char *, int);
 boolean isValidProcess();
-boolean checkProcess(stack *, char);
+boolean checkProcess(stack *pila, char toEval, cola* processManager);
 char getChar();
-stack* cloneStack(stack* , stack*);
+stack *cloneStack(stack *, stack );
+stack createStack();
 
 int main(int argc, const char **argv)
 {
     char *file_name = "./file.txt";
-    if (argc == 2)
-    {
-        int n = atoi(argv[1]);
-        generateString(file_name, n);
-    }
     fp = fopen(file_name, "r");
     if (isValidProcess())
     {
@@ -42,54 +37,91 @@ int main(int argc, const char **argv)
 
 boolean isValidProcess()
 {
-    stack container, container1, container2;
-    Initialize(&container);
+    cola processManager;
+    InitializeC(&processManager);
     char toWork = getChar();
+    elemento e;
+    stack s = createStack();
+    e.pila = &s;
+    element el;
+    el.c = toWork;
+    Push(e.pila, el);
+    QueueC(&processManager, e);
     while (toWork != EOF)
     {
+        if(toWork != ' ' && toWork != '\n'){
+            int counter = 0 ;
+            while (!EmptyC(&processManager))
+            {
+                printf("counter: %i", counter);
+                e = DequeueC(&processManager);
+                if(checkProcess(e.pila, toWork, &processManager))
+                {
+                                        el.c = toWork;
+                    Push(e.pila, el);
+                }
+                else
+                {
+                    Pop(e.pila);
+                }
+                ++counter;
+            }
+        }
         toWork = getChar();
     }
+    DestroyC(&processManager);
     return FALSE;
 }
-boolean checkProcess(stack* pila, char toEval){
-    if(Top(pila).c == toEval)
-    {
 
+stack createStack(){
+    stack s;
+    Initialize(&s);
+    return s;
+}
+
+boolean checkProcess(stack *pila, char toEval, cola* processManager)
+{
+    if (Top(pila).c != toEval)
+    {
+        stack* s = cloneStack(pila, createStack());
+        Pop(s);
+        elemento e;
+        e.pila = s;
+        QueueC(processManager, e);
+        return FALSE;
     }
     else
     {
-
+        return TRUE;
     }
 }
 
-stack* cloneStack(stack* , stack*)
+stack *cloneStack(stack * from, stack to)
 {
-
+    stack helper1, helper2;
+    Initialize(&helper1);
+    Initialize(&helper2);
+    while(!Empty(from))
+    {
+        Push(&helper1, Pop(from));
+    }
+    while(!Empty(&helper1))
+    {
+        Push(&helper2, Pop(&helper1));
+    }
+     while(!Empty(&helper2))
+    {
+        element el;
+        el =  Pop(&helper2);
+        Push(from, el);
+        Push(&to, el);
+    }
+    Destroy(&helper1);
+    Destroy(&helper2);
+    return &to;
 }
 
 char getChar()
 {
     return (char)fgetc(fp);
-}
-
-void generateString(char *fileName, int number)
-{
-    FILE *generate;
-    generate = fopen(fileName, "w");
-    int i;
-    printf("Generado cadena");
-    if (number % 2 == 1)
-        ++number;
-    for (i = 0; i < (number / 2); ++i)
-    {
-        fputc('0', generate);
-    }
-    if (number % 2 == 1)
-        ++number;
-    for (i = 0; i < (number / 2); ++i)
-    {
-        fputc('1', generate);
-    }
-    fputc('\n', generate);
-    fclose(generate);
 }

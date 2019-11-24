@@ -1,8 +1,10 @@
 package controllers;
 
+import com.google.gson.Gson;
 import controllers.utils.iViewController;
+import models.Level;
 import presenters.IndexPresenter;
-import presenters.security.Factory;
+import routes.utils.Factory;
 import sources.requests.repositoryRequests;
 import views.IndexView;
 
@@ -59,6 +61,11 @@ public class IndexController extends iViewController implements IndexView {
                 + "hideModal();"
                 + "showModal();"
                 + "</script>";
+    }
+
+    @Override
+    public void showLevels(Level[] levels) {
+        content = new Gson().toJson(levels);
     }
 
 }

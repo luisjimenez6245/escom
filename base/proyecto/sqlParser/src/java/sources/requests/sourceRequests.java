@@ -3,6 +3,7 @@
  */
 package sources.requests;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import models.Email;
@@ -14,6 +15,7 @@ import models.AttributeKind;
 import models.Attribute;
 import models.Table;
 import models.Database;
+import models.enums.UserType;
 
 /**
  *
@@ -29,7 +31,13 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Email getEmail() {
-        return new Email(Integer.parseInt(request.getParameter("email_id") == null ? "0" : request.getParameter("email_id")));
+        return new Email(Integer.parseInt(request.getParameter("email_id") == null ? "0" : request.getParameter("email_id"))).build(
+                request.getParameter("email") == null ? "0" : request.getParameter("email"),
+                true,
+                true,
+                true,
+                Integer.parseInt(request.getParameter("user_id") == null ? "0" : request.getParameter("user_id"))
+        );
     }
 
     @Override
@@ -39,7 +47,13 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Phone getPhone() {
-        return new Phone(Integer.parseInt(request.getParameter("phone_id") == null ? "0" : request.getParameter("phone_id")));
+        return new Phone(Integer.parseInt(request.getParameter("phone_id") == null ? "0" : request.getParameter("phone_id"))).build(
+                request.getParameter("phone") == null ? "0" : request.getParameter("phone"),
+                Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                Integer.parseInt(request.getParameter("user_id") == null ? "0" : request.getParameter("user_id"))
+        );
     }
 
     @Override
@@ -49,7 +63,17 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public User getUser() {
-        return new User(Integer.parseInt(request.getParameter("user_id") == null ? "0" : request.getParameter("user_id")));
+        return new User(Integer.parseInt(request.getParameter("user_id") == null ? "0" : request.getParameter("user_id")))
+                .build(
+                        null,
+                        request.getParameter("surname") == null ? "" : request.getParameter("surname"),
+                        new Date(),
+                        Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                        null,
+                        UserType.AVILABLE,
+                        request.getParameter("password") == null ? "" : request.getParameter("password"),
+                        request.getParameter("name") == null ? "" : request.getParameter("name")
+                );
     }
 
     @Override
@@ -59,7 +83,13 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Level getLevel() {
-        return new Level(Integer.parseInt(request.getParameter("level_id") == null ? "0" : request.getParameter("level_id")));
+        return new Level(Integer.parseInt(request.getParameter("level_id") == null ? "0" : request.getParameter("level_id"))).
+                build(
+                        Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                        Boolean.parseBoolean(request.getParameter("email") == null ? "0" : request.getParameter("email")),
+                        Integer.parseInt(request.getParameter("number") == null ? "0" : request.getParameter("number")),
+                        request.getParameter("name") == null ? "" : request.getParameter("name")
+                );
     }
 
     @Override

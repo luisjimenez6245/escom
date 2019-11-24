@@ -24,6 +24,8 @@ int main(int argc, const char **argv)
         generateString(file_name, n);
     }
     fp = fopen(file_name, "r");
+    fstates = fopen("states.txt", "r");
+    fanswer = fopen("answer.txt", "r");
     if (isValidProcess())
     {
         printf("Cadena valida\n");
@@ -32,6 +34,8 @@ int main(int argc, const char **argv)
     {
         printf("Cadena no valida\n");
     }
+    fclose(fanswer);
+    fclose(fstates);
     fclose(fp);
     return 0;
 }
@@ -87,7 +91,7 @@ void generateString(char *fileName, int number)
     FILE *generate;
     generate = fopen(fileName, "w");
     int i;
-    printf("Generado cadena");
+    printf("Generado cadena\n");
     if (number % 2 == 1)
         ++number;
     for (i = 0; i < (number / 2); ++i)

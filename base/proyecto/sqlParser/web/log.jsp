@@ -5,16 +5,17 @@
 --%>
 
 <%@page import="controllers.security.manager"%>
-<%@page import="objects.User"%>
+<%@page import="models.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    manager man = new manager();
+    manager man = manager.getInstance();
+    user
     User user;
     if (request.getParameter("ex") == null) {
         if (request.getParameter("aaa") != null) {
-            user = man.getEncryptedUser(request);
+           user = man.getEncryptedUser(request);
         } else {
-            user = man.getUser(request);
+           user = man.getUser(request);
         }
         if (user != null) {
             session.setAttribute("x", user.id);

@@ -18,7 +18,8 @@ public class IndexPresenter {
     }
 
     public void loadView() {
-        this.view.view();
+        this.view.showLevels(this.source.getLevelList(null));
     }
+   
 
 }

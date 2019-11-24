@@ -3,7 +3,7 @@
  */
 package routes.utils;
 
-import controllers.security.logger;
+import controllers.security.Logger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public abstract class iServlet extends HttpServlet {
     protected short slashNumbers = 0;
     protected int resStatus = 0;
 
-    protected final logger ERRORES = new logger();
+    protected final Logger ERRORES = new Logger();
     protected repositoryRequests repository;
 
     public iServlet() {
@@ -61,7 +61,10 @@ public abstract class iServlet extends HttpServlet {
             slashNumbers = getDiagonal(url);
             if (contenedor.length - 1 > 0) {
                 if (contenedor.length - 1 > 1) {
-                    page = contenedor[2];
+                    page = "";
+                    for (int i = 2; i < contenedor.length; ++i) {
+                        page += contenedor[i];
+                    }
                 } else {
                     page = contenedor[1];
                 }

@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author Luis Diego Jiménez Delgado
  */
 
-public class logger {
+public class Logger {
 
     private Exception ex;
 

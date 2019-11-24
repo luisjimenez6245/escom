@@ -16,13 +16,14 @@ durante la ejecución del programa.
 #include <stdio.h>
 #include <stdlib.h>
 #include "Const.h"
+#include "TADPilaDin.h"
 
 
 //Definir un elemento (Se modela con una estructura "elemento")
 typedef struct elemento
 {
 	//Variables de la estructura "elemento" (El usuario puede modificar)
-	char *name;
+	stack* pila;
 } elemento;
 
 //Definir un nodo que será utilizado para almacenar una posición de la cola (Nodo), lo que incluira a un elemento y a un apuntador al siguiente nodo

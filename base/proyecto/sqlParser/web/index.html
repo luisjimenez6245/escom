@@ -1,21 +1,53 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Plataforma</title> 
+        <link rel="stylesheet" href="CSS/general.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');
+        </script>
+        <script src="JS/requestHandler.js"></script>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class='bk'>
+        </div>
+        <div class='container-hidden' id='modal-loading'>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <div class='container-hidden' id='modal-container'></div>
+        <div id='js-handler' class='container-hidden'></div>
+        <div id='main-container'>
+            <div class="nav">
+
+                <div class=' nav-color-base nav'>
+                    <div class='wrapper'>
+                        <div class='container'>
+                            <div class='' style='padding-top:.3rem' onclick='viewDocuments()'>Trabajos Libres</div>
+                        </div>
+                        <nav>
+                            <ul>
+                                <li><a href='#' onclick="">Perfil</a></li>
+                                <li><a href='#' onclick='viewDocuments()'>Trabajos</a></li>
+                                <li><a href='#' onclick='exit()'>Salir</a></li>
+                                <li>
+                                    <div class='container'>
+                                        <span class='fas fa-user-circle'></span>
+                                        <label>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </body>
-    <form method="post" action="altas" enctype='multipart/form-data' accept-charset='UTF-8' >
-        <input type="text" name="nombre" palceholder="nombre archivo" id="nombre_archivo" />
-        <input type='file' name='archivo' id='archivo' onchange='' />
-        <input type="submit" text="ddddd">
-    </form>
+    <script></script>
 </html>

@@ -14,7 +14,6 @@ public class Level extends Model {
     public int levelId;
     public boolean isActive;
     public boolean isPrincipal;
-    public boolean isValid;
     public int number;
     public String name;
 
@@ -22,10 +21,9 @@ public class Level extends Model {
         this.levelId = levelId;
     }
 
-    public Level build(boolean isActive, boolean isPrincipal, boolean isValid, int number, String name) {
+    public Level build(boolean isActive, boolean isPrincipal, int number, String name) {
         this.isActive = isActive;
         this.isPrincipal = isPrincipal;
-        this.isValid = isValid;
         this.number = number;
         this.name = name;
         return this;

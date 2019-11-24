@@ -1,9 +1,10 @@
 /*
 * Contenido de sqlParser generado por $author$
  */
-package presenters.security;
+package routes.utils;
 
-import controllers.security.manager;
+import controllers.security.Manager;
+import controllers.utils.Devs;
 import presenters.IndexPresenter;
 import presenters.LoginPresenter;
 import sources.mysql.repositoryMysql;
@@ -17,8 +18,8 @@ import views.LoginView;
  */
 public class Factory {
 
-    private static final manager MAN = manager.getInstance();
-    private static final repositoryMysql SOURCE = new sourceMysql(MAN.getProperty("dbUser"),MAN.getProperty("dbPassword"), MAN.getProperty("dbName"), MAN.getProperty("dbUrl"), MAN.getProperty("dbPort"));
+    private static final Manager MAN = Manager.getInstance();
+    private static final repositoryMysql SOURCE = new sourceMysql(MAN.getProperty("dbUser"), MAN.getProperty("dbPassword"), MAN.getProperty("dbName"), MAN.getProperty("dbUrl"), MAN.getProperty("dbPort"));
 
     public static LoginPresenter createLoginPresenter(LoginView view) {
         return new LoginPresenter(view, SOURCE);
@@ -26,6 +27,10 @@ public class Factory {
 
     public static IndexPresenter createIndexPresenter(IndexView view) {
         return new IndexPresenter(view, SOURCE);
+    }
+
+    public static Devs createDev() {
+        return new Devs(SOURCE);
     }
 
 }

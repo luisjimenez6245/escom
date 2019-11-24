@@ -14,7 +14,7 @@ import java.util.Set;
  * @author Luis Diego Jiménez Delgado
  */
 
-public class manager {
+public class Manager {
 
     public static String APPNAME =  "sqlParser";
     public static String DOMAIN = "http://localhost";
@@ -22,7 +22,7 @@ public class manager {
     public static String URL = DOMAIN + ":8080/sqlParser";
     private final Properties configProp = new Properties();
     
-    private manager() {
+    private Manager() {
         InputStream in = this.getClass().getClassLoader().getResourceAsStream("app.properties");
         try {
             configProp.load(in);
@@ -32,10 +32,10 @@ public class manager {
 
     private static class LazyHolder {
 
-        private static final manager INSTANCE = new manager();
+        private static final Manager INSTANCE = new Manager();
     }
 
-    public static manager getInstance() {
+    public static Manager getInstance() {
         return LazyHolder.INSTANCE;
     }
 

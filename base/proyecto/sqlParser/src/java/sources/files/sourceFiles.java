@@ -4,7 +4,7 @@
 
 package sources.files;
 
-import controllers.security.logger;
+import controllers.security.Logger;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class sourceFiles extends executorFiles implements sources.files.repositoryFiles {
     
-    private final logger ERROR = new logger();
+    private final Logger ERROR = new Logger();
     private final mapperFiles MAPPER = new mapperFiles();
 
     @Override

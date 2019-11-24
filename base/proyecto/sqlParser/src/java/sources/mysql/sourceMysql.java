@@ -361,8 +361,8 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             if (object.name != null) {
                 lista.put("name", object.name);
             }
-            if (object.tables != null) {
-                lista.put("tables", object.tables);
+            if (object.table != null) {
+                lista.put("tables", object.table);
             }
             if (object.url != null) {
                 lista.put("url", object.url);
@@ -600,8 +600,8 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             if (object.name != null) {
                 lista.put("name", object.name);
             }
-            if (object.tables != null) {
-                lista.put("tables", object.tables);
+            if (object.table != null) {
+                lista.put("tables", object.table);
             }
         }
         object = MAPPER.database(this.save(query, lista));
@@ -806,8 +806,8 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             if (object.url != null) {
                 params.put("url", object.url);
             }
-            if (object.tables != null) {
-                params.put("tables", object.tables);
+            if (object.table != null) {
+                params.put("tables", object.table);
             }
             if (object.name != null) {
                 params.put("name", object.name);

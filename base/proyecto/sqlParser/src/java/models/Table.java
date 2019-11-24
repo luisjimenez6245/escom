@@ -11,7 +11,7 @@ import models.utils.Model;
  */
 public class Table extends Model {
 
-    public Attributes[] attributes;
+    public Attribute[] attributes;
     public int databaseId;
     public String name;
     public int tableId;
@@ -20,7 +20,7 @@ public class Table extends Model {
         this.tableId = tableId;
     }
 
-    public Table build(Attributes[] attributes, int databaseId, String name) {
+    public Table build(Attribute[] attributes, int databaseId, String name) {
         this.attributes = attributes;
         this.databaseId = databaseId;
         this.name = name;

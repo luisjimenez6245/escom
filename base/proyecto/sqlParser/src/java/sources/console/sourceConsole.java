@@ -4,7 +4,7 @@
 
 package sources.console;
 
-import controllers.security.logger;
+import controllers.security.Logger;
 
 
 /**
@@ -14,7 +14,7 @@ import controllers.security.logger;
 
 public class sourceConsole extends executorConsole implements sources.console.repositoryConsole {
 
-    public final logger ERROR = new logger();
+    public final Logger ERROR = new Logger();
     public final String FILELOCATION = "/Users/luis/Documents/GitHub/python-grapher/";
     public final String PYTHON3 = "/usr/local/bin/python3 ";
     // public final String PYTHON3 = "python3 ";
