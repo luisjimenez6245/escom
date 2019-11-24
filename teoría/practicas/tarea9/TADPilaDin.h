@@ -13,15 +13,10 @@ OBSERVACIONES:
     El presente archivo implica la construcción de una pila (stack) dinámica, es decir, la memoria
     que utiliza el programa para almacenar los elementos varía durante el tiempo de ejecución del mismo.
 */
-//Definición de constantes booleanas
-#define TRUE 1
-#define FALSE 0
-//Definición de boolean, tipo de dato inexistente en C.
-typedef char boolean;
+#include "Const.h"
 //Definición de element (elemento) que contendrá la pila <<stack>>
 typedef struct element
 {
-  double n;
   char c;
 } element;
 //Definición de node (nodo) que contendrá elementos y estarán conectados en la pila <<stack>>

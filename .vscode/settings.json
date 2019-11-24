@@ -7,7 +7,9 @@
         "string.h": "c",
         "locale": "c",
         "algorithm": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "tadcoladin.h": "c",
+        "tadpiladin.h": "c"
     },
     "python.pythonPath": "/usr/local/bin/python3"
 }

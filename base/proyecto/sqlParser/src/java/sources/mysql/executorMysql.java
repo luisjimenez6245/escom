@@ -88,7 +88,7 @@ public class executorMysql {
         return 0;
     }
 
-    public ResultSet save(String tableName, Map<String, Object> parameters) {
+    protected ResultSet save(String tableName, Map<String, Object> parameters) {
         tableName = tableName.toLowerCase();
         String query = "INSERT INTO " + tableName + " ";
         if (parameters != null) {
@@ -114,11 +114,11 @@ public class executorMysql {
         return null;
     }
 
-    public ResultSet get(String query, Map<String, Object> parameters) {
+    protected ResultSet get(String query, Map<String, Object> parameters) {
         return getList(query, parameters);
     }
 
-    public ResultSet getList(String query, Map<String, Object> parameters) {
+    protected ResultSet getList(String query, Map<String, Object> parameters) {
         if (parameters != null && parameters.size() > 0) {
             String valores = " WHERE ";
             valores = parameters.entrySet().stream().map((param) -> param.getKey() + " = ? AND ").reduce(valores, String::concat);
@@ -134,7 +134,7 @@ public class executorMysql {
         return null;
     }
 
-    public ResultSet set(String query, Map<String, Object> parameters, Map<String, Object> conditions) {
+    protected ResultSet set(String query, Map<String, Object> parameters, Map<String, Object> conditions) {
         if (parameters != null && parameters.size() > 0) {
             String valores = " SET ";
             valores = parameters.entrySet().stream().map((param) -> param.getKey() + " = ?, ").reduce(valores, String::concat);
@@ -156,7 +156,7 @@ public class executorMysql {
         return null;
     }
 
-    public Long delete(String tableName, Map<String, Object> parameters) {
+    protected Long delete(String tableName, Map<String, Object> parameters) {
         String query = "DELETE FROM " + tableName + " ";
         if (parameters != null && parameters.size() > 0) {
             String valores = "WHERE ";

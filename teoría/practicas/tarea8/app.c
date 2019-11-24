@@ -4,12 +4,14 @@
 
 /*
 Cadena 0000000000011111111111
+Compile: gcc app.c TADPilaDin.c -o a.out
 */
 
 FILE *fp;
-FILE *f_answer;
+FILE *fanswer;
+FILE *fstates;
 
-void generateString(char *, int );
+void generateString(char *, int);
 boolean isValidProcess();
 char getChar();
 
@@ -22,11 +24,13 @@ int main(int argc, const char **argv)
         generateString(file_name, n);
     }
     fp = fopen(file_name, "r");
-    if(isValidProcess()){
-            printf("Cadena valida\n");
+    if (isValidProcess())
+    {
+        printf("Cadena valida\n");
     }
-    else{
-    printf("Cadena no valida\n");
+    else
+    {
+        printf("Cadena no valida\n");
     }
     fclose(fp);
     return 0;
@@ -37,28 +41,31 @@ boolean isValidProcess()
     stack container;
     Initialize(&container);
     char toWork = getChar();
-    int c = 0;
     element e;
     while (toWork != EOF)
     {
-        while(toWork == '0')
+        while (toWork == '0')
         {
             e.c = 'x';
-            ++c;
-            printf("%i\n", c);
             Push(&container, e);
             toWork = getChar();
         }
-        while(toWork == '1' && !Empty(&container))
+        while (toWork == '1')
         {
-            --c;
-            printf("%i\n", c);
-            Pop(&container);
-            toWork = getChar();
+            if (!Empty(&container))
+            {
+                Pop(&container);
+                toWork = getChar();
+            }
+            else
+            {
+                Destroy(&container);
+                return FALSE;
+            }
         }
         toWork = getChar();
     }
-    if(Empty(&container))
+    if (Empty(&container))
     {
         Destroy(&container);
         return TRUE;
@@ -66,9 +73,8 @@ boolean isValidProcess()
     else
     {
         Destroy(&container);
-        return TRUE;
+        return FALSE;
     }
-    
 }
 
 char getChar()
@@ -82,13 +88,15 @@ void generateString(char *fileName, int number)
     generate = fopen(fileName, "w");
     int i;
     printf("Generado cadena");
-    if(number % 2 == 1)
+    if (number % 2 == 1)
         ++number;
-    for(i = 0; i < (number/2); ++i)
+    for (i = 0; i < (number / 2); ++i)
     {
         fputc('0', generate);
     }
-    for(i = 0; i < (number/2); ++i)
+    if (number % 2 == 1)
+        ++number;
+    for (i = 0; i < (number / 2); ++i)
     {
         fputc('1', generate);
     }
