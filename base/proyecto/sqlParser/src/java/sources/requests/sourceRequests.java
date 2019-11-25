@@ -139,7 +139,10 @@ public class sourceRequests extends executorRequests implements sources.requests
 
     @Override
     public Database getDatabase() {
-        return new Database(Integer.parseInt(request.getParameter("database_id") == null ? "0" : request.getParameter("database_id")));
+        return new Database(Integer.parseInt(request.getParameter("database_id") == null ? "0" : request.getParameter("database_id"))).build(
+                null,
+                request.getParameter("url") == null ? "0" : request.getParameter("url"),
+                request.getParameter("name") == null ? "0" : request.getParameter("name"));
     }
 
     @Override

@@ -317,7 +317,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.tableId != 0) {
-                lista.put("table_id", object.tableId);
+                lista.put("_table_id", object.tableId);
             }
             if (object.attributeKind != null) {
                 lista.put("attribute_kind", object.attributeKind);
@@ -341,10 +341,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 lista.put("name", object.name);
             }
             if (object.databaseId != 0) {
-                lista.put("database_id", object.databaseId);
+                lista.put("_database_id", object.databaseId);
             }
             if (object.tableId != 0) {
-                lista.put("table_id", object.tableId);
+                lista.put("_table_id", object.tableId);
             }
             if (object.attributes != null) {
                 lista.put("attributes", object.attributes);
@@ -368,7 +368,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 lista.put("url", object.url);
             }
             if (object.databaseId != 0) {
-                lista.put("database_id", object.databaseId);
+                lista.put("_database_id", object.databaseId);
             }
         }
         return MAPPER.databaseList(this.get(query, lista));
@@ -552,7 +552,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 lista.put("attribute_kind", object.attributeKind);
             }
             if (object.tableId != 0) {
-                lista.put("table_id", object.tableId);
+                lista.put("_table_id", object.tableId);
             }
             if (object.name != null) {
                 lista.put("name ", object.name);
@@ -569,10 +569,10 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.databaseId != 0) {
-                lista.put("database_id", object.databaseId);
+                lista.put("_database_id", object.databaseId);
             }
             if (object.tableId != 0) {
-                lista.put("table_id", object.tableId);
+                lista.put("_table_id", object.tableId);
             }
             if (object.name != null) {
                 lista.put("name", object.name);
@@ -592,7 +592,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.databaseId != 0) {
-                lista.put("database_id", object.databaseId);
+                lista.put("_database_id", object.databaseId);
             }
             if (object.url != null) {
                 lista.put("url", object.url);
@@ -766,7 +766,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 params.put("name ", object.name);
             }
             if (object.tableId != 0) {
-                params.put("table_id", object.tableId);
+                params.put("_table_id", object.tableId);
             }
         }
         object = MAPPER.attribute(this.set(query, params, conditions));
@@ -780,9 +780,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         HashMap<String, Object> params = new HashMap<>();
         HashMap<String, Object> conditions = new HashMap<>();
         if (object != null) {
-            conditions.put("table_id", object.tableId);
+            conditions.put("_table_id", object.tableId);
             if (object.databaseId != 0) {
-                params.put("database_id", object.databaseId);
+                params.put("_database_id", object.databaseId);
             }
             if (object.attributes != null) {
                 params.put("attributes", object.attributes);
@@ -802,7 +802,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
         HashMap<String, Object> params = new HashMap<>();
         HashMap<String, Object> conditions = new HashMap<>();
         if (object != null) {
-            conditions.put("database_id", object.databaseId);
+            conditions.put("_database_id", object.databaseId);
             if (object.url != null) {
                 params.put("url", object.url);
             }

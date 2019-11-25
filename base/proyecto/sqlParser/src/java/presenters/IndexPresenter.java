@@ -1,5 +1,8 @@
 package presenters;
 
+import models.Database;
+import models.Query;
+import models.User;
 import sources.mysql.repositoryMysql;
 import views.IndexView;
 
@@ -20,6 +23,18 @@ public class IndexPresenter {
     public void loadView() {
         this.view.showLevels(this.source.getLevelList(null));
     }
-   
+
+    public void loadDatabases(User user, Database object) {
+        if (user == null) {
+            if (object == null) {
+                
+            }
+        } else {
+            
+        }
+    }
+
+    public void loadQueries(Query object) {
+    }
 
 }

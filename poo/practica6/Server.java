@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStreamReader;
 
+import java.util.Scanner;
 import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 
@@ -25,7 +26,9 @@ public class Server {
     public Server() {
         try {
             server = new ServerSocket(PORT);
-            acceptClient(server.accept());
+            while (true) {
+                acceptClient(server.accept());
+            }
         } catch (IOException e) {
             System.out.println("Error de entrada/salida." + e.getMessage());
         }
@@ -33,9 +36,10 @@ public class Server {
 
     public void acceptClient(Socket socket) throws IOException {
         System.out.println("Nuevo Cliente");
-        BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        Scanner entrada = new Scanner(socket.getInputStream());
         String imageName = getInputString(entrada);
         System.out.println(imageName);
+
         ByteArrayOutputStream byteArrayOutputStream = getImageBytes(getImage("./imagenes/" + imageName));
         byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
         OutputStream outputStream = socket.getOutputStream();
@@ -45,22 +49,21 @@ public class Server {
         socket.close();
     }
 
-    private ByteArrayOutputStream getImageBytes(BufferedImage image) throws IOException{
+    private ByteArrayOutputStream getImageBytes(BufferedImage image) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", byteArrayOutputStream);
         return byteArrayOutputStream;
     }
 
-    public String getInputString(BufferedReader stdIn) throws IOException {
+    public String getInputString(Scanner stdIn) throws IOException {
         String res = "";
-        String userInput = "";
-        while ((userInput = stdIn.readLine()) != null) {
-            res += userInput;
+        if (stdIn.hasNextLine()) {
+            res += stdIn.nextLine();
         }
         return res;
     }
 
-    public BufferedImage getImage(String name) throws IOException{
+    public BufferedImage getImage(String name) throws IOException {
         return ImageIO.read(new File(name));
     }
 }

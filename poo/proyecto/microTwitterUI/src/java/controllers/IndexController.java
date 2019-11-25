@@ -16,7 +16,7 @@ public class IndexController extends iViewController implements IndexView {
 
     @Override
     public void main() {
-        String action = rSource.getAction();
+        
 
     }
 

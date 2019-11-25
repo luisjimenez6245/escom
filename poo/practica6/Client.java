@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.File;
 import java.awt.image.*;
 
+import java.io.PrintWriter;;
 import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 
@@ -24,18 +25,20 @@ public class Client {
         createSocket(name);
     }
     public void createSocket(String name) throws IOException{
-        Socket socket =  new Socket(HOST, PORT);
-        InputStream inputStream = socket.getInputStream();
+        Socket socket = new Socket(HOST, PORT);
+        PrintWriter mensaje = new PrintWriter(socket.getOutputStream()); 
+        mensaje.println(name);
+        //mensaje.close();
         byte[] sizeAr = new byte[4];
-        DataOutputStream mensaje = new DataOutputStream(socket.getOutputStream()); 
-        mensaje.writeUTF(name);
+        InputStream inputStream = socket.getInputStream();
         inputStream.read(sizeAr);
+
         int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
         byte[] imageAr = new byte[size];
         inputStream.read(imageAr);
         BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
         System.out.println("Received " + image.getHeight() + "x" + image.getWidth() + ": " + System.currentTimeMillis());
-        ImageIO.write(image, "jpg", new File("C:\\Users\\Jakub\\Pictures\\test2.jpg"));
+        ImageIO.write(image, "jpg", new File("./test2.jpg"));
         socket.close();
     }
 }
