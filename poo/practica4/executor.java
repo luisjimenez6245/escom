@@ -24,6 +24,7 @@ class Panel extends Controller implements ActionListener, Runnable {
         super();
         setSize(450, 350);
         setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @Override

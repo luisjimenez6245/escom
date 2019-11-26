@@ -95,6 +95,3 @@ abstract class Controller extends JFrame {
     protected abstract void loadActions();
 
 }
-interface iRemote extends Remote {
-    String printMsg(String pregunta) throws RemoteException;
-}

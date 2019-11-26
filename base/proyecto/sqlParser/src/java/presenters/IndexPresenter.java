@@ -26,12 +26,13 @@ public class IndexPresenter {
 
     public void loadDatabases(User user, Database object) {
         if (user == null) {
-            if (object == null) {
-                
-            }
+            
         } else {
             
         }
+    }
+    
+    private void getDatabases(){
     }
 
     public void loadQueries(Query object) {

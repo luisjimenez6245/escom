@@ -370,6 +370,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             if (object.databaseId != 0) {
                 lista.put("_database_id", object.databaseId);
             }
+             if (object.userId != 0) {
+                lista.put("user_id", object.userId);
+            }
         }
         return MAPPER.databaseList(this.get(query, lista));
     }
@@ -386,7 +389,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 lista.put("email_id", object.emailId);
             }
             if (object.userId != 0) {
-                lista.put("userId", object.userId);
+                lista.put("user_id", object.userId);
             }
             if (object.email != null) {
                 lista.put("email", object.email);
@@ -413,7 +416,7 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
                 lista.put("phone", object.phone);
             }
             if (object.userId != 0) {
-                lista.put("userId", object.userId);
+                lista.put("user_id", object.userId);
             }
             lista.put("is_valid", object.isValid);
             lista.put("is_principal", object.isPrincipal);
@@ -602,6 +605,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             }
             if (object.table != null) {
                 lista.put("tables", object.table);
+            }
+            if (object.userId != 0) {
+                lista.put("user_id", object.userId);
             }
         }
         object = MAPPER.database(this.save(query, lista));
@@ -811,6 +817,9 @@ public class sourceMysql extends executorMysql implements sources.mysql.reposito
             }
             if (object.name != null) {
                 params.put("name", object.name);
+            }
+            if (object.userId != 0) {
+                params.put("user_id", object.userId);
             }
         }
         object = MAPPER.database(this.set(query, params, conditions));

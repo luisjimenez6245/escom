@@ -144,7 +144,7 @@ public class mapperMysql {
         try {
             List<Database> li = new ArrayList<>();
             while (res.next()) {
-                li.add(new Database(res.getInt("database_id")).build(null, res.getString("url"), res.getString("name")));
+                li.add(new Database(res.getInt("database_id")).build(null, res.getString("url"), res.getString("name"), res.getInt("user_id")));
             }
             return (li.size() >= 1) ? li.toArray(new Database[li.size()]) : new Database[0];
         } catch (SQLException ex) {

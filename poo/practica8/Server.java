@@ -32,7 +32,3 @@ public class Server implements iRemote {
     }
 
 }
-
-interface iRemote extends Remote {
-    String printMsg(String pregunta) throws RemoteException;
-}

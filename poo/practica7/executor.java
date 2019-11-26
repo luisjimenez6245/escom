@@ -37,6 +37,7 @@ class Formulario extends Controller implements ActionListener {
     private JTextField TGenero;
     private JButton insertar;
     private JButton conect;
+    private JButton consult;
     private executorMysql exec;
 
     public Formulario() {
@@ -58,11 +59,12 @@ class Formulario extends Controller implements ActionListener {
         TGenero = new JTextField();
         insertar = new JButton("Enviar");
         conect = new JButton("Conectar");
+        consult = new JButton("Consultar");
     }
 
     @Override
     protected void loadContent() {
-        this.setLayout(new GridLayout(5, 2));
+        this.setLayout(new GridLayout(6, 2));
         this.add(LNombre);
         this.add(TNombre);
         this.add(LRaza);
@@ -73,29 +75,34 @@ class Formulario extends Controller implements ActionListener {
         this.add(TGenero);
         this.add(conect);
         this.add(insertar);
+        this.add(consult);
     }
 
     @Override
     protected void loadActions() {
         insertar.addActionListener(this);
         conect.addActionListener(this);
+        consult.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
         JButton b = (JButton) e.getSource();
-        if (b.getText().equals("Conectar")) {
+        if (b == conect) {
             checkConection();
         } else {
-            try {
-                String nombre = (String) TNombre.getText();
-                String raza = (String) TRaza.getText();
-                int edad = Integer.parseInt(TEdad.getText());
-                String genero = (String) TGenero.getText();
-                register(nombre, raza, edad, genero);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(rootPane, "La edad no es valida");
+            if (b == insertar) {
+                try {
+                    String nombre = (String) TNombre.getText();
+                    String raza = (String) TRaza.getText();
+                    int edad = Integer.parseInt(TEdad.getText());
+                    String genero = (String) TGenero.getText();
+                    register(nombre, raza, edad, genero);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(rootPane, "La edad no es valida");
+                }
+            } else {
+                getItems();
             }
-
         }
     }
 
@@ -116,6 +123,29 @@ class Formulario extends Controller implements ActionListener {
             parameters.put("edad", edad);
             parameters.put("genero", genero);
             exec.save("tableName", parameters);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No te haz conecatdo. :(");
+        }
+    }
+
+    private void getItems() {
+        if (exec != null) {
+            HashMap<String, Object> parameters = new HashMap<>();
+            String items = "";
+            try {
+                ResultSet r = exec.getList("Select * from tableName ", parameters);
+                while (r.next()) {
+                    items += "Perro:\n";
+                    items += "\t Nombre:" + r.getString("nombre") + "\n";
+                    items += "\t Raza:" + r.getString("raza") + "\n";
+                    items += "\t Edad:" + r.getString("edad") + "\n";
+                    items += "\t Género:" + r.getString("genero") + "\n";
+                }
+                r.close();
+                JOptionPane.showMessageDialog(rootPane, "Lista de Perros:\n" + items);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane, "Ocurrió un error:" + ex.toString());
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "No te haz conecatdo. :(");
         }

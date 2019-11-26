@@ -15,15 +15,17 @@ public class Database extends Model {
     public String url;
     public String name;
     public int databaseId;
+    public int userId;
 
     public Database(int databaseId) {
         this.databaseId = databaseId;
     }
 
-    public Database build(Table[] table, String url, String name) {
+    public Database build(Table[] table, String url, String name, int userId) {
         this.table = table;
         this.url = url;
         this.name = name;
+        this.userId = userId;
         return this;
     }
 
