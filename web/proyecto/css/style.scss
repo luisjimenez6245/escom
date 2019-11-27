@@ -1,0 +1,222 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+
+}
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+.form {
+  margin-left: 10px;
+  display: inline-block;
+  .button {
+    background-color: rgba(42, 139, 251, 1);
+    color: white;
+    border-radius: 2px;
+    text-decoration: none;
+    border: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
+    margin-right: 5px;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+.nav {
+  width: 100vw;
+  background-color: rgba(36, 41, 46, 1);
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  .container {
+    width: 95%;
+    margin-left: 2.5% !important;
+    display: table;
+  }
+  .logo {
+    font-weight: 900;
+    float: left;
+  }
+  .urls {
+    float: right;
+    .active {
+      border-bottom: 2px solid white;
+      opacity: 1;
+    }
+    div {
+      height: 1rem;
+      width: auto;
+      display: inline-block;
+      font-weight: 200;
+      text-align: center;
+      margin-left: 5px;
+      line-height: 0.8rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0);
+      opacity: 0.6;
+      font-size: 0.9rem;
+      text-transform: capitalize;
+      &:hover {
+        opacity: 0.8;
+        border-bottom: 2px solid white;
+      }
+    }
+  }
+}
+.main {
+  width: 100vw;
+
+  .canvas-container {
+    width: 90%;
+    margin-left: 5% !important;
+    canvas{
+      height: 100%;
+    }
+  }
+
+  .left & .right {
+    div {
+      padding-top: 50px;
+      width: 90%;
+      margin-left: 5% !important;
+    }
+  }
+
+  .left {
+    float: left;
+    width: 60vw;
+  }
+  .right {
+    float: right;
+    width: 40vw;
+  }
+
+  .code {
+    margin-top: 10px;
+    margin-left: 5% !important;
+    width: 90%;
+    .title {
+      border-radius: 5px 5px 0px 0px;
+      border: 1px solid rgba(220, 220, 220, 1);
+      border-bottom: 0px solid rgba(220, 220, 220, 1);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: rgba(246, 248, 250, 1);
+      label {
+        margin-left: 5%;
+      }
+    }
+    .container {
+      border-radius: 0px 0px 5px 5px;
+      max-height: 80vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border: 1px solid rgba(220, 220, 220, 1);
+    }
+    pre {
+      margin-left: 5% !important;
+      width: 90%;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #ecf0f1;
+  font-size: 16px;
+}
+button {
+  color: #ecf0f1;
+  background: #23a799;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  font-size: 1.3rem;
+  border: 0;
+}
+button:hover {
+  background: #dd6f4e;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+button:nth-child(2) {
+  margin: 0 1rem;
+}
+footer {
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+header {
+  background: #23a799;
+  color: #ecf0f1;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.Cell {
+  width: 50%;
+  text-align: center;
+  color: white;
+  padding: 0.5rem 0;
+}
+.flex {
+  display: flex;
+}
+.Row .Cell:nth-child(1) {
+  background: #3498db;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.Row .Cell:nth-child(2) {
+  background: #2980b9;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.Title2 {
+  text-align: center;
+  background: #465a61;
+  color: #ecf0f1;
+  padding: 0.5rem;
+}
+.wrapper {
+  max-width: 1080px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0 0 0;
+}
+p {
+  margin: 0;
+}
+
+div {
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

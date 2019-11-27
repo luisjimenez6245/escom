@@ -42,6 +42,7 @@ class Formulario extends Controller implements ActionListener {
 
     public Formulario() {
         super();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @Override
@@ -57,6 +58,14 @@ class Formulario extends Controller implements ActionListener {
         TRaza = new JTextField();
         TEdad = new JTextField();
         TGenero = new JTextField();
+        LNombre.setFont(new Font("Arial", Font.PLAIN, 25));
+        LRaza.setFont(new Font("Arial", Font.PLAIN, 25));
+        LEdad.setFont(new Font("Arial", Font.PLAIN, 25));
+        TNombre.setFont(new Font("Arial", Font.PLAIN, 25));
+        LGenero.setFont(new Font("Arial", Font.PLAIN, 25));
+        TRaza.setFont(new Font("Arial", Font.PLAIN, 25));
+        TEdad.setFont(new Font("Arial", Font.PLAIN, 25));
+        TGenero.setFont(new Font("Arial", Font.PLAIN, 25));
         insertar = new JButton("Enviar");
         conect = new JButton("Conectar");
         consult = new JButton("Consultar");
@@ -135,14 +144,18 @@ class Formulario extends Controller implements ActionListener {
             try {
                 ResultSet r = exec.getList("Select * from tableName ", parameters);
                 while (r.next()) {
-                    items += "Perro:\n";
-                    items += "\t Nombre:" + r.getString("nombre") + "\n";
-                    items += "\t Raza:" + r.getString("raza") + "\n";
-                    items += "\t Edad:" + r.getString("edad") + "\n";
+                    items += "Perro:";
+                    items += " Nombre:" + r.getString("nombre") + "";
+                    items += "\t Raza:" + r.getString("raza") + "";
+                    items += "\t Edad:" + r.getString("edad") + "";
                     items += "\t Género:" + r.getString("genero") + "\n";
                 }
                 r.close();
-                JOptionPane.showMessageDialog(rootPane, "Lista de Perros:\n" + items);
+                JTextArea output = new JTextArea(items);
+                output.setSize(620, 420);
+                JScrollPane scroll = new JScrollPane(output, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                scroll.setBounds(420, 0, 620, 420);
+                JOptionPane.showMessageDialog(rootPane,scroll, "Lista de Perros",JOptionPane.WARNING_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane, "Ocurrió un error:" + ex.toString());
             }

@@ -6,6 +6,24 @@ function startGame() {
     myGameArea.start();
 }
 
+function newCookie(name, value) {
+    var cookie = [name, '=', JSON.stringify(value), '; domain=.', window.location.host.toString(), '; path=/;'].join('');
+    console.log(cookie)
+    document.cookie = cookie;
+  }
+  function readCookie(name) {
+    var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+    result && (result = JSON.parse(result[1]));
+    return result;
+   }
+   function deleteCookie(name) {
+    document.cookie = [name, '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.', window.location.host.toString()].join('');
+  }
+  
+  function startGame() {
+    myGameArea.start(document.getElementById("canvas"));
+  }
+
 var myGameArea = {
     canvas: document.createElement("canvas"),
     start: function () {

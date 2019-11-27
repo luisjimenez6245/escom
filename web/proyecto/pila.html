@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-  <meta charset="utf-8">
-  <title> Pila </title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <script lenguaje="javascript" src="js/proyecto.js"></script>
-  <script lenguaje="javascript" src="js/pila.js"></script>
-  
+    <meta charset="utf-8" />
+    <title>Pila</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"/>
+    <script lenguaje="javascript" src="js/container.js"></script>
+    <script lenguaje="javascript" src="js/proyecto.js"></script>
+    <script lenguaje="javascript" src="js/pila.js"></script>
   </head>
-
   <body id="body" onLoad="iniciar();">
-    <header>
-      <h2> Pila </h2>
-    </header>
-
-    <form id="form1" runat="server">
-      <div class="Table">
-        <div class="Title">
-          <label>Numero:</label></td>
-          <input type="text" name="elem" id="elem"/>
+    <div class="nav">
+      <div class="container">
+        <div class="logo">
+          Pila
+        </div>
+        <div class="urls">
+          <div class="" onclick="window.location.href='index.html'">
+            index
+            </div>
+            <div class="" onclick="window.location.href='pila.html'">
+            pila
+            </div>
+            <div class="" onclick="window.location.href='cola.html'">
+            cola
+            </div>
+            <div class="active" onclick="window.location.href='lista.html'">
+            lista
+            </div>
         </div>
       </div>
-    </form>
-
-    <footer class="Table wrapper">
-      <Button id="push" value="PUSH" onclick="meterP()"> Push </Button>
-      <Button  id="pop" value="Pop" onclick="sacarP()"> Pop </Button>
-    </footer>
-
-    <div align="center">
-      <pre>
-      </pre>
-      - E J E M P L O -
-      <div id="result">
-        <canvas id="canvas_pila">
-        </canvas>
-      </div>
     </div>
-    <div align="left" id="Layer1" style="width:90%; height:315px; overflow: scroll;">
-      <pre>
+    <div class="main">
+      <div class="left">
+          <br>
+        <div class="">
+          <div>
+            <form id="form1" class="form" runat="server">
+                  <div class="Title">
+                    <label>Numero:</label><br>
+                    <input type="text" name="elem" id="elem"/>
+                  </div>
+                <input type="button" class="button" id="push" value="Push" onclick="meter()"/>
+                <input type="button" class="button" id="pop" value="Pop" onclick="sacar()"/>
+              </form>
+            </div>
+        </div>
+        <div class="canvas-container">
+          <canvas id="canvas"></canvas>
+        </div>	
+      </div>
+      <div class="right">
+        <br>
+        <div>
+          
+        </div>
+        <div class="code">
+          <div class="title">
+            <label>Código</label>
+          </div>
+          <div class="container">
+          <pre>
 #include < iostream >
 using namespace std;
 
@@ -138,9 +160,11 @@ int main(){
 
     return 0;
 }
-      </pre>
+          </pre>
+        </div>
+        </div>
+      </div>
     </div>
-
   </body>
   <script>
     startGame();

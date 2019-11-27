@@ -22,7 +22,7 @@ class Panel extends Controller implements ActionListener, Runnable {
 
     public Panel() {
         super();
-        setSize(450, 350);
+        setSize(550, 450);
         setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -39,7 +39,9 @@ class Panel extends Controller implements ActionListener, Runnable {
         imagenes[0] = new ImageIcon("2.jpg");
         imagenes[1] = new ImageIcon("1.jpg");
         iniciar = new JButton("Reiniciar");
-        marcador = new JLabel("Puntaje: 0 ");
+        marcador = new JLabel("P:0");
+        iniciar.setFont(new Font("Arial", Font.PLAIN, 25));
+        marcador.setFont(new Font("Arial", Font.PLAIN, 25));
 
     }
 
@@ -97,7 +99,7 @@ class Panel extends Controller implements ActionListener, Runnable {
             topos = 0;
             reiniciar();
         }
-        marcador.setText("Puntaje: " + topos);
+        marcador.setText("P:" + topos);
     }
 
     public void run() {
@@ -107,7 +109,7 @@ class Panel extends Controller implements ActionListener, Runnable {
         t = Math.abs(r.nextInt() % 5) + 1;
         while (true) {
             try {
-                cambio.sleep(t * 1000);
+                cambio.sleep(t * 500);
                 reiniciar();
                 cambio.start();
             } catch (Exception e) {

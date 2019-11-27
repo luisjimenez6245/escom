@@ -7,44 +7,71 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script lenguaje="javascript" src="js/container.js"></script>
   <script lenguaje="javascript" src="js/proyecto.js"></script>
+  <script lenguaje="javascript" src="js/lista.js"></script>
   </head>
 
   <body id="body">
-    <header>
-      <h2> Lista </h2>
-    </header>
-
-    <form id="form1" runat="server">
-      <div class="Table">
-        <div class="Title">
-          <label>Elemento:</label></td>
-          <input type="text" name="elem" id="elem"/>
-          <label>Posicion:</label>
-          <input type="text" name="pos" id="pos"/>
+    <div class="nav">
+      <div class="container">
+        <div class="logo">
+          Lista
+        </div>
+        <div class="urls">
+          <div class="" onclick="window.location.href='index.html'">
+            index
+          </div>
+          <div class="" onclick="window.location.href='pila.html'">
+            pila
+          </div>
+          <div class="" onclick="window.location.href='cola.html'">
+            cola
+          </div>
+          <div class="active" onclick="window.location.href='lista.html'">
+            lista
+          </div>
         </div>
       </div>
-    </form>
-
-    <footer class="Table wrapper">
-      <Button id="push" value="PUSH" onclick="meterL()"> Insertar </Button>
-      <Button id="puspos" value="PUSHPOP" onclick="meterpos()"> Insertar en posicion </Button>
-      <Button  id="pop" onclick="posL()"> Eliminar posicion </Button>
-      <Button  id="popE" value="PopE" onclick="sacarL()"> Eliminar por Elemento </Button>
-    </footer>
-
-    <div align="center">
-      <pre>
-      </pre>
-      - E J E M P L O -
-      <p></p>
-      - Posicion | Elemento -
-      <div id="result"></div>
     </div>
-
-    <div align="left" id="Layer1" style="width:780px; height:315px; overflow: scroll;">
-
-      <pre>
+    <div class="main">
+      <div class="left">
+        <br />
+        <div class="">
+          <div>
+            <form id="form1" class="form" runat="server">
+              <div class="Title">
+                <label>Numero:</label><br />
+                <input type="text" name="elem" id="elem" />
+              </div>
+              <input type="button" class="button" id="push" value="Insertar" onclick="meter()"/>
+              <input type="button" class="button" id="pop" value="Eliminar" onclick="sacar()"/>
+            </form>
+          </div>
+          <div>
+            <form id="form2" class="form" runat="server">
+              <div class="Title">
+                <label>Posición:</label><br />
+                <input type="number" name="pos" id="pos" />
+              </div>
+              <input type="button" class="button" id="posPush" value="Insertar por posicion" onclick="meterPosicion()"/>
+              <input type="button" class="button" id="popPush" value="Eliminar por posicion" onclick="sacarPosicion()"/>
+            </form>
+          </div>
+        </div>
+        <div class="canvas-container">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+      <div class="right">
+        <br />
+        <div></div>
+        <div class="code">
+          <div class="title">
+            <label>Código</label>
+          </div>
+          <div class="container">
+            <pre>
 #include < stdio.h >
 
 struct _agenda {
@@ -61,7 +88,8 @@ void mostrar_menu() {
      printf("2.- Borrar elementos\n");
      printf("3.- Mostrar lista\n");
      printf("4.- Salir\n\n");
-     printf("Escoge una opción: ");fflush(stdout);
+     printf("Escoge una opción: ");
+     fflush(stdout);
 }
 
 /* Con esta función añadimos un elemento al final de la lista */
@@ -136,8 +164,13 @@ int main() {
             }
     } while (opcion!='4');
 }
-      </pre>
-    </div>
-
-  </body>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script>
+startGame();
+</script>
 </html>

@@ -1,71 +1,109 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "TADPilaDin.h"
+
 /*
-if(c){s}s
-Compile: gcc app.c
+Cadena 0000000000011111111111
+Compile: gcc app.c TADPilaDin.c -o a.out
 */
-int getBool();
-void generateString();
-void getString();
-int getRandomNumber(int number);
 
+FILE *fp;
 FILE *fanswer;
-int length;
+FILE *fstates;
 
+void generateString(char *, int);
+boolean isValidProcess();
+char getChar();
 
 int main(int argc, const char **argv)
 {
-    int n = 100;
-    arc4random();
+    char *file_name = "./prime.txt";
     if (argc == 2)
     {
-        n = atoi(argv[1]);
+        int n = atoi(argv[1]);
+        generateString(file_name, n);
     }
-    length = getRandomNumber(n);
-    fanswer = fopen("./answer.c", "w");
-    generateString();
+    fp = fopen(file_name, "r");
+    fstates = fopen("states.txt", "r");
+    fanswer = fopen("answer.txt", "r");
+    if (isValidProcess())
+    {
+        printf("Cadena valida\n");
+    }
+    else
+    {
+        printf("Cadena no valida\n");
+    }
     fclose(fanswer);
+    fclose(fstates);
+    fclose(fp);
+    return 0;
 }
 
-void generateString()
+boolean isValidProcess()
 {
-    printf("length: %i\n", length);
-    while (length >= 0)
+    stack container;
+    Initialize(&container);
+    char toWork = getChar();
+    element e;
+    while (toWork != EOF)
     {
-       getString();
-    }
-    fputc('\n', fanswer);
-}
-
-void getString(){
-    if (getBool())
-    {
-        --length;
-        fputs("if(/*condition*/)\n{\n", fanswer);
-        if(getBool())
+        while (toWork == '0')
         {
-            getString();
+            e.c = 'x';
+            Push(&container, e);
+            toWork = getChar();
         }
-        fputs("\n}\n", fanswer);
-        if(getBool())
+        while (toWork == '1')
         {
-            fputs("else\n{\n", fanswer);
-            if(getBool()){
-                getString();
+            if (!Empty(&container))
+            {
+                Pop(&container);
+                toWork = getChar();
             }
-            fputs("\n}\n", fanswer);
+            else
+            {
+                Destroy(&container);
+                return FALSE;
+            }
         }
+        toWork = getChar();
+    }
+    if (Empty(&container))
+    {
+        Destroy(&container);
+        return TRUE;
+    }
+    else
+    {
+        Destroy(&container);
+        return FALSE;
     }
 }
-int getBool()
+
+char getChar()
 {
-    return getRandomNumber(2);
+    return (char)fgetc(fp);
 }
 
-int getRandomNumber(int number)
+void generateString(char *fileName, int number)
 {
-    int res = rand();
-    if (number > 0)
-        res = rand() % number;
-    return res;
+    FILE *generate;
+    generate = fopen(fileName, "w");
+    int i;
+    printf("Generado cadena\n");
+    if (number % 2 == 1)
+        ++number;
+    for (i = 0; i < (number / 2); ++i)
+    {
+        fputc('0', generate);
+    }
+    if (number % 2 == 1)
+        ++number;
+    for (i = 0; i < (number / 2); ++i)
+    {
+        fputc('1', generate);
+    }
+    fputc('\n', generate);
+    fclose(generate);
 }

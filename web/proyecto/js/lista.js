@@ -1,8 +1,5 @@
-var cola = new Array();
 let cWidth = 700;
-var id = 0;
-var length = 0;
-
+var dic = [];
 read();
 function read() {
   var db = conectToDb();
@@ -11,30 +8,55 @@ function read() {
       if (data.rows.length > 0) {
         id = data.rows[0].id;
         for (i = 0; i < data.rows.length; i++) {
-          let c = { i: i, id: data.rows[i].id };
-          addToGame(data.rows[i].content);
+            dic[i] = {}
+          addToGame(data.rows[i].content, data.rows[i].posicion);
         }
       }
     });
   });
 }
 
+function meterPosicion() {
+  var posicion = document.getElementById("pos").value;
+  if (posicion == "" || posicion == undefined || posicion == null) {
+    alert("Introduce una posición");
+  } else {
+    var elem = document.getElementById("elem").value;
+    if (posicion >= counter + 1) {
+      addToGame(elem);
+    } else {
+      addToGame(elem, posicion);
+    }
+  }
+}
+
+function sacarPosicion() {
+  var posicion = document.getElementById("pos").value;
+  if (posicion == "" || posicion == undefined || posicion == null) {
+    alert("Introduce una posición");
+  } else {
+    itemsInGame.splice(posicion, 1);
+    for (var i = parseInt(posicion); i < itemsInGame.length; ++i) {
+      itemsInGame[i].parent.x = itemsInGame[i - 1].x;
+      itemsInGame[i].x = itemsInGame[i-1].x;
+      itemsInGame[i].newPos();
+      itemsInGame[i].update();
+    }
+  }
+}
+
 function meter() {
   var elem = document.getElementById("elem").value;
-  if (elem == "") {
+  if (elem == "" || elem == undefined || elem == null) {
     alert("Introduce un elemento");
+    insertIntoDB("Cola", { id: counter + 1, content: elem, posicion: counter+1});
   } else {
-    insertIntoDB("Cola", { id: counter + 1, content: elem, posicion: 0 });
-    cola.push(parseInt(document.querySelector("#elem").value));
-    length = length + 51;
     addToGame(elem);
   }
 }
 
 function sacar() {
   if (itemsInGame.length > 0) {
-    deleteFromDB("Cola", id);
-    ++id;
     for (var i = itemsInGame.length - 1; i >= 0; --i) {
       if (i - 1 >= 0) {
         itemsInGame[i].x = itemsInGame[i - 1].x;
