@@ -14,6 +14,7 @@ FILE *fstates;
 void generateString(char *, int);
 boolean isValidProcess();
 char getChar();
+void printStack(stack *from);
 
 int main(int argc, const char **argv)
 {
@@ -24,8 +25,8 @@ int main(int argc, const char **argv)
         generateString(file_name, n);
     }
     fp = fopen(file_name, "r");
-    fstates = fopen("states.txt", "r");
-    fanswer = fopen("answer.txt", "r");
+    fstates = fopen("states.txt", "w");
+    fanswer = fopen("answer.txt", "w");
     if (isValidProcess())
     {
         printf("Cadena valida\n");
@@ -52,6 +53,7 @@ boolean isValidProcess()
         {
             e.c = 'x';
             Push(&container, e);
+            printStack(&container);
             toWork = getChar();
         }
         while (toWork == '1')
@@ -59,6 +61,7 @@ boolean isValidProcess()
             if (!Empty(&container))
             {
                 Pop(&container);
+                printStack(&container);
                 toWork = getChar();
             }
             else
@@ -106,4 +109,34 @@ void generateString(char *fileName, int number)
     }
     fputc('\n', generate);
     fclose(generate);
+}
+
+void printStack(stack *from)
+{
+    stack helper1, helper2;
+    Initialize(&helper1);
+    Initialize(&helper2);
+    printf("\nPila\n");
+    while (!Empty(from))
+    {
+        element el;
+        el = Pop(from);
+        printf("-------\n");
+        printf("---%c---\n", el.c);
+        printf("-------\n");
+        Push(&helper1, el);
+    }
+    printf("-------\n\n");
+    while (!Empty(&helper1))
+    {
+        Push(&helper2, Pop(&helper1));
+    }
+    while (!Empty(&helper2))
+    {
+        element el;
+        el = Pop(&helper2);
+        Push(from, el);
+    }
+    Destroy(&helper1);
+    Destroy(&helper2);
 }

@@ -34,9 +34,7 @@ COMPILACION PARA GENERAR EL CODIGO OBJETO: gcc TADListaDL.c -c
 
 //DEFINICION DE FUNCIONES
 
-/***************************************************
-Operaciones de construccion
-***************************************************/
+
 /*
 void Initialize(lista *l)
 Descripcion: Inicializar lista (Iniciar una lista para su uso)
@@ -179,7 +177,7 @@ posicion Search (lista *l,elemento e)
 	{
 		pasos++;
 		aux->pasos=pasos;
-		if(strcmp(aux->e.palabra,e.palabra)==0){
+		if(aux->e.c == e.c){
 			return aux;
 		}
 		aux=aux->siguiente;
@@ -187,9 +185,9 @@ posicion Search (lista *l,elemento e)
 	return NULL;
 }
 
-/***************************************************
+/*
 Operaciones de consulta
-/***************************************************/
+*/
 /*
 elemento Position(lista *l, posicion p)
 Descripcion: Recibe una lista l, una posicion p y devuelve el elemento en dicha posicion. 
@@ -309,9 +307,9 @@ boolean Empty (lista *l)
 {
 	return (l->tamanio==0) ? TRUE:FALSE;
 }
-/***************************************************
+/*
 Operaciones de modificacion
-****************************************************/
+*/
 /*
 void Insert (lista * l, posicion p, elemento e, boolean b);
 Descripcion: Inserta un elemento e en la lista este debera agregarse al frente de p 

@@ -17,8 +17,7 @@ typedef unsigned char boolean;
 
 typedef struct elemento
 {
-	char palabra[100];
-	char definicion[255];
+	char c;
 }elemento;
 
 //Estructura de un NODO DOBLEMENTE LIGADO

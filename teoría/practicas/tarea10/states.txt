@@ -1,0 +1,20 @@
+S->iCtSA
+A-> eS
+S->iCtSA
+S->iCtSA
+A-> eS
+A-> eS
+S->iCtSA
+A-> ε
+S->iCtSA
+S->iCtSA
+A-> ε
+A-> ε
+S->iCtSA
+A-> ε
+S->iCtSA
+A-> eS
+S->iCtSA
+A-> ε
+S->iCtSA
+A-> eS

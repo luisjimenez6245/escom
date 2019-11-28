@@ -1,19 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "TADPilaDin.h"
+#include "TADListaDL.h"
 
 /*
-Cadena 0000000000011111111111
-Compile: gcc app.c TADPilaDin.c -o a.out
+Maquina de Turing para 000111
+Compile: gcc app.c TADListaDL.c -o a.out
 */
+
+typedef struct container
+{
+    int to;
+    char change;
+    int state;
+} container;
 
 FILE *fp;
 FILE *fanswer;
 FILE *fstates;
+int aState;
 
-void generateString(char *, int);
+container evaluation(char c, int state);
+container evaluation0(int state);
+container evaluation1(int state);
+container evaluationX(int state);
+container evaluationY(int state);
+container evaluationB(int state);
+
+boolean validChar(char c);
 boolean isValidProcess();
+
 char getChar();
+
+void stateChange(int from, int to);
+void generateString();
+void generateString(char *, int);
+void printContainer(container c);
+void printChanges(lista* l);
+
+int getBool();
+int getRandomNumber(int number);
 
 int main(int argc, const char **argv)
 {
@@ -24,8 +49,8 @@ int main(int argc, const char **argv)
         generateString(file_name, n);
     }
     fp = fopen(file_name, "r");
-    fstates = fopen("states.txt", "r");
-    fanswer = fopen("answer.txt", "r");
+    fstates = fopen("states.txt", "w");
+    fanswer = fopen("answer.txt", "w");
     if (isValidProcess())
     {
         printf("Cadena valida\n");
@@ -42,43 +67,192 @@ int main(int argc, const char **argv)
 
 boolean isValidProcess()
 {
-    stack container;
-    Initialize(&container);
-    char toWork = getChar();
-    element e;
-    while (toWork != EOF)
+    lista l;
+    Initialize(&l);
+    container con;
+    elemento e;
+    posicion p;
+    int counter = 0;
+    con.state = 0;
+    char c = getChar();
+    e.c = c;
+    Add(&l, e);
+    con.to = 1;
+    while (con.state != 4 && validChar(c))
     {
-        while (toWork == '0')
+        printChanges(&l);
+        aState = con.state;
+        con = evaluation(c, con.state);
+        if (con.state >= 4)
         {
-            e.c = 'x';
-            Push(&container, e);
-            toWork = getChar();
+            stateChange(aState, 4);
+            break;
         }
-        while (toWork == '1')
+        stateChange(aState, con.state);
+        e.c = con.change;
+        Replace(&l, ElementPosition(&l, counter + 1), e);
+        counter += con.to;
+        if (con.to == 1)
         {
-            if (!Empty(&container))
+            if ((Size(&l) - 1) < counter)
             {
-                Pop(&container);
-                toWork = getChar();
+                c = getChar();
+                if (validChar(c))
+                {
+                    e.c = c;
+                    Add(&l, e);
+                }
+                else
+                {
+                    c = 'B';
+                }
             }
             else
             {
-                Destroy(&container);
-                return FALSE;
+                p = ElementPosition(&l, counter + 1);
+                c = Position(&l, p).c;
             }
         }
-        toWork = getChar();
+        else
+        {
+            if (Size(&l) < counter)
+            {
+                c = 'B';
+            }
+            else
+            {
+                p = ElementPosition(&l, counter + 1);
+                c = Position(&l, p).c;
+            }
+        }
     }
-    if (Empty(&container))
+    if (con.state == 4 && !validChar(getChar()))
     {
-        Destroy(&container);
+        while (!Empty(&l))
+        {
+            p = First(&l);
+            fputc(Position(&l, p).c, fanswer);
+            Remove(&l, p);
+        }
+        Destroy(&l);
         return TRUE;
     }
-    else
+    Destroy(&l);
+    return FALSE;
+}
+
+container evaluation(char c, int state)
+{
+    container res;
+    if (c == '0')
     {
-        Destroy(&container);
-        return FALSE;
+        res = evaluation0(state);
     }
+    else if (c == '1')
+    {
+        res = evaluation1(state);
+    }
+    else if (c == 'X')
+    {
+        res = evaluationX(state);
+    }
+    else if (c == 'Y')
+    {
+        res = evaluationY(state);
+    }
+    else if (c == 'B')
+    {
+        res = evaluationB(state);
+    }
+    return res;
+}
+
+container evaluation0(int state)
+{
+    container res;
+    if (state == 0)
+    {
+        res.change = 'X';
+        res.state = 1;
+        res.to = 1;
+    }
+    else if (state == 1)
+    {
+        res.change = '0';
+        res.state = 1;
+        res.to = 1;
+    }
+    else if (state == 2)
+    {
+        res.change = '0';
+        res.state = 2;
+        res.to = -1;
+    }
+    return res;
+}
+
+container evaluation1(int state)
+{
+    container res;
+    res.state = 5;
+    if (state == 1)
+    {
+        res.change = 'Y';
+        res.state = 2;
+        res.to = -1;
+    }
+    return res;
+}
+
+container evaluationX(int state)
+{
+    container res;
+    res.state = 5;
+    if (state == 2)
+    {
+        res.change = 'X';
+        res.state = 0;
+        res.to = 1;
+    }
+    return res;
+}
+
+container evaluationY(int state)
+{
+    container res;
+    res.change = 'Y';
+    res.to = 1;
+    if (state == 0)
+    {
+        res.state = 3;
+    }
+    else if (state == 1)
+    {
+        res.state = 1;
+    }
+    else if (state == 2)
+    {
+        res.state = 2;
+        res.to = -1;
+    }
+    else if (state == 3)
+    {
+        res.state = 3;
+    }
+    return res;
+}
+
+container evaluationB(int state)
+{
+    container res;
+    res.state = 5;
+    if (state == 3)
+    {
+        res.change = 'B';
+        res.state = 4;
+        res.to = 1;
+    }
+    return res;
 }
 
 char getChar()
@@ -106,4 +280,48 @@ void generateString(char *fileName, int number)
     }
     fputc('\n', generate);
     fclose(generate);
+}
+
+void printContainer(container c)
+{
+    printf("\nc: %c\n", c.change);
+    printf("state: %d \n", c.state);
+    printf("to: %i\n", c.to);
+}
+
+boolean validChar(char c)
+{
+    return (c != '\n' && c != '\t' && c != EOF && c != ' ');
+}
+
+void printChanges(lista *l)
+{
+    int i = 0;
+    printf("Cinta \n");
+    for(i  = 0; i < Size(l); ++i)
+    {
+        printf("-------\n");
+        printf("---%c---\n", (Position(l,ElementPosition(l, i + 1)).c));
+        printf("-------\n");
+    }
+    printf("-------\n\n");
+
+}
+
+void stateChange(int from, int to)
+{
+    fprintf(fstates, "q%i -> q%i\n", from, to);
+}
+
+int getBool()
+{
+    return getRandomNumber(2);
+}
+
+int getRandomNumber(int number)
+{
+    int res = rand();
+    if (number > 0)
+        res = rand() % number;
+    return res;
 }

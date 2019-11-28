@@ -10,6 +10,7 @@ void getString();
 int getRandomNumber(int number);
 
 FILE *fanswer;
+FILE *fstates;
 int length;
 
 
@@ -23,8 +24,11 @@ int main(int argc, const char **argv)
     }
     length = getRandomNumber(n);
     fanswer = fopen("./answer.c", "w");
+    fstates = fopen("./states.txt", "w");
+
     generateString();
     fclose(fanswer);
+    fclose(fstates);
 }
 
 void generateString()
@@ -42,6 +46,7 @@ void getString(){
     {
         --length;
         fputs("if(/*condition*/)\n{\n", fanswer);
+        fputs("S->iCtSA\n", fstates);
         if(getBool())
         {
             getString();
@@ -49,11 +54,15 @@ void getString(){
         fputs("\n}\n", fanswer);
         if(getBool())
         {
+            fputs("A-> eS\n", fstates);   
             fputs("else\n{\n", fanswer);
             if(getBool()){
                 getString();
             }
             fputs("\n}\n", fanswer);
+        }
+        else{
+            fputs("A-> ε\n", fstates);   
         }
     }
 }

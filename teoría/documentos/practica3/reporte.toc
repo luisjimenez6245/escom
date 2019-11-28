@@ -1,0 +1,34 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {spanish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Aut\IeC {\'o}mata de cadena con terminaci\IeC {\'o}n 01}{2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Programa}{2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.1}Input}{5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.2}Output}{6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Cadena palindroma}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Programa}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Input}{10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Output}{10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}S->iCtSA \ A-> eS}{11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Programa}{11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Input}{13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Output}{13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Maquina de Turing con Funcionalidad }{14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Programa}{14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Input}{21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.2}Output}{22}% 
