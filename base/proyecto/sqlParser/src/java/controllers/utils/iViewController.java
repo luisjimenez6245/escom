@@ -82,18 +82,18 @@ public abstract class iViewController {
         String resultado = ""
                 + "<head>"
                 + "\n "
-                + "<title>Plataforma</title> "
+                + "<title>SQL</title> \n"
                 + "\n "
-                + css
-                + scripts
+                + css + " \n"
+                + scripts + " \n"
                 + "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>\n"
                 + "<meta charset='utf-8'>\n"
-                + "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>"
-                + "<meta charset='UTF-8'>"
-                + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
+                + "<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> \n"
+                + "<meta charset='UTF-8'> \n"
+                + "<meta name='viewport' content='width=device-width, initial-scale=1.0'> \n"
                 + "\n"
                 + ""
-                + "</head>"
+                + "</head> \n"
                 + "\n";
         return resultado;
     }

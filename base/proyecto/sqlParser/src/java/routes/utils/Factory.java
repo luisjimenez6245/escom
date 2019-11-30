@@ -8,7 +8,7 @@ import controllers.utils.Devs;
 import presenters.IndexPresenter;
 import presenters.LoginPresenter;
 import sources.mysql.repositoryMysql;
-import sources.mysql.sourceMysql;
+import sources.mysql.SourceMysql;
 import views.IndexView;
 import views.LoginView;
 
@@ -19,7 +19,7 @@ import views.LoginView;
 public class Factory {
 
     private static final Manager MAN = Manager.getInstance();
-    private static final repositoryMysql SOURCE = new sourceMysql(MAN.getProperty("dbUser"), MAN.getProperty("dbPassword"), MAN.getProperty("dbName"), MAN.getProperty("dbUrl"), MAN.getProperty("dbPort"));
+    private static final repositoryMysql SOURCE = new SourceMysql(MAN.getProperty("dbUser"), MAN.getProperty("dbPassword"), MAN.getProperty("dbName"), MAN.getProperty("dbUrl"), MAN.getProperty("dbPort"));
 
     public static LoginPresenter createLoginPresenter(LoginView view) {
         return new LoginPresenter(view, SOURCE);

@@ -26,16 +26,37 @@ public class IndexPresenter {
 
     public void loadDatabases(User user, Database object) {
         if (user == null) {
-            
+
         } else {
-            
+
         }
     }
-    
-    private void getDatabases(){
+
+    private void getDatabases() {
+    }
+
+    private void getDatabases(User user) {
+        if (user != null) {
+            source.getDatabase(new Database(0).build(null, null, null, user.userId));
+        } else {
+            getDatabases();
+        }
+    }
+
+    public void getTables(Database object) {
+
     }
 
     public void loadQueries(Query object) {
+
+    }
+
+    public void createSession(User user) {
+
+    }
+
+    public void createSession() {
+
     }
 
 }

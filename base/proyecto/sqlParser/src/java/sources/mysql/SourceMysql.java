@@ -19,11 +19,11 @@ import models.Database;
  *
  * @author Luis Diego Jiménez Delgado
  */
-public class sourceMysql extends executorMysql implements sources.mysql.repositoryMysql {
+public class SourceMysql extends ExecutorMysql implements sources.mysql.repositoryMysql {
 
-    private final mapperMysql MAPPER = new mapperMysql();
+    private final MapperMysql MAPPER = new MapperMysql();
 
-    public sourceMysql(String user, String password, String dbName, String url, String port) {
+    public SourceMysql(String user, String password, String dbName, String url, String port) {
         super(user, password, dbName, url, port);
     }
 

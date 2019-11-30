@@ -18,18 +18,24 @@ import java.util.logging.Logger;
  *
  * @author Luis Diego Jiménez Delgado
  */
-public class executorMysql {
+public class ExecutorMysql {
 
     private final String DRIVERCLASSNAME = "com.mysql.jdbc.Driver";
     private final String BASEURL = "jdbc:mysql://$url$:$port$/dbName?allowPublicKeyRetrieval=true&useSSL=false&useServerPrepStmts=true";
     private Connection connection = null;
     private final boolean debug = false;
 
-    public executorMysql(String user, String password, String dbName, String url, String port) {
+    public ExecutorMysql(String user, String password, String dbName, String url, String port) {
         if (debug) {
             connection = conectar("", "", "", "", "");
         } else {
             connection = conectar(user, password, dbName, url, port);
+        }
+    }
+
+    protected void closeConnection() throws SQLException {
+        if (!connection.isClosed()) {
+            connection.close();
         }
     }
 
@@ -109,7 +115,7 @@ public class executorMysql {
             param.put(tableName + "_id", id);
             return this.get("SELECT * FROM " + tableName + " ", param);
         } catch (SQLException ex) {
-            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -129,7 +135,7 @@ public class executorMysql {
             ResultSet r = executeQuery(query, mapToArray(parameters));
             return r;
         } catch (SQLException ex) {
-            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -151,7 +157,7 @@ public class executorMysql {
             ResultSet r = executeQuery(query, mapToArray(parameters));
             return r;
         } catch (SQLException ex) {
-            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -168,7 +174,7 @@ public class executorMysql {
             this.executeUpdate(query, mapToArray(parameters));
             return 0L;
         } catch (SQLException ex) {
-            Logger.getLogger(executorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

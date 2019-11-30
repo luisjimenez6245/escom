@@ -25,7 +25,7 @@ import models.enums.UserType;
  *
  * @author Luis Diego Jiménez Delgado
  */
-public class mapperMysql {
+public class MapperMysql {
 
     private final Logger LOGGER = new Logger();
 
