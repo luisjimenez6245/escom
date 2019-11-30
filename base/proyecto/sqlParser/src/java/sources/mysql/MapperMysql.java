@@ -18,6 +18,7 @@ import models.AttributeKind;
 import models.Attribute;
 import models.Table;
 import models.Database;
+import models.Session;
 import models.enums.QueryType;
 import models.enums.UserType;
 
@@ -35,6 +36,7 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Email(res.getInt("email_id")).build(res.getString("email"), res.getBoolean("is_active"), res.getBoolean("is_principal"), res.getBoolean("is_valid"), res.getInt("user_id")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Email[li.size()]) : new Email[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -48,6 +50,7 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Phone(res.getInt("phone_id")).build(res.getString("phone"), res.getBoolean("is_active"), res.getBoolean("is_principal"), res.getBoolean("is_valid"), res.getInt("user_id")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Phone[li.size()]) : new Phone[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -63,6 +66,7 @@ public class MapperMysql {
                 li.add(new User(res.getInt("user_id")).build(null, res.getString("surname"), res.getDate("creation_date"), res.getBoolean("is_active"), null, UserType.valueOf(res.getString("user_type")),
                         res.getString("password"), res.getString("name")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new User[li.size()]) : new User[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -80,6 +84,7 @@ public class MapperMysql {
                         res.getInt("number"),
                         res.getString("name")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Level[li.size()]) : new Level[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -93,6 +98,8 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Query(res.getInt("query_id")).build(res.getDate("creation_date"), QueryType.valueOf(res.getString("query_type")), res.getString("name")));
             }
+            res.close();
+
             return (li.size() >= 1) ? li.toArray(new Query[li.size()]) : new Query[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -106,6 +113,7 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new AttributeKind(res.getInt("attribute_kind_id")).build(res.getInt("min_value"), res.getInt("max_value"), res.getString("name"), res.getString("description"), res.getString("sql_syntax")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new AttributeKind[li.size()]) : new AttributeKind[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -119,6 +127,7 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Attribute(res.getInt("attribute_id")).build(new AttributeKind(res.getInt("attribute_kind")), res.getString("name"), res.getInt("table_id")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Attribute[li.size()]) : new Attribute[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -133,6 +142,7 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Table(res.getInt("table_id")).build(null, res.getInt("database_id"), res.getString("name")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Table[li.size()]) : new Table[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
@@ -146,10 +156,25 @@ public class MapperMysql {
             while (res.next()) {
                 li.add(new Database(res.getInt("database_id")).build(null, res.getString("url"), res.getString("name"), res.getInt("user_id")));
             }
+            res.close();
             return (li.size() >= 1) ? li.toArray(new Database[li.size()]) : new Database[0];
         } catch (SQLException ex) {
             LOGGER.error(ex);
 
+        }
+        return null;
+    }
+    
+    public Session[] sessionList(ResultSet res) {
+        try {
+            List<Session> li = new ArrayList<>();
+            while (res.next()) {
+                li.add(new Session(res.getInt("session_id")).build(new User(res.getInt("user_id")), res.getString("token"), res.getDate("date"), res.getString("ip")));
+            }
+            res.close();
+            return (li.size() >= 1) ? li.toArray(new Session[li.size()]) : new Session[0];
+        } catch (SQLException ex) {
+            LOGGER.error(ex);
         }
         return null;
     }

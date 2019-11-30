@@ -16,10 +16,6 @@ import java.util.Set;
 
 public class Manager {
 
-    public static String APPNAME =  "sqlParser";
-    public static String DOMAIN = "http://localhost";
-   // public static String DOMAIN = "http://192.168.1.72";
-    public static String URL = DOMAIN + ":8080/sqlParser";
     private final Properties configProp = new Properties();
     
     private Manager() {

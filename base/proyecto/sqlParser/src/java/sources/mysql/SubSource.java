@@ -1,22 +1,58 @@
 package sources.mysql;
 
+import controllers.security.Logger;
+import controllers.security.Manager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SubSource {
 
     private Executor exec;
-    
-   
+    private final Logger LOGGER = new Logger();
+
+    public SubSource() {
+    }
+
+    public boolean check(String query, String dbName, String url) {
+        String res = query.toLowerCase();
+        try {
+            try {
+                exec = new Executor(Manager.getInstance().getProperty("dbTestUser"), Manager.getInstance().getProperty("dbTestPassword"), dbName, url, Manager.getInstance().getProperty("dbPort"));
+                if (res.contains("select")) {
+                    checkQuery(query);
+                } else {
+                    checkUpdate(query);
+                }
+                exec.closeConnection();
+                res = "";
+            } catch (SQLException ex) {
+                LOGGER.error(ex);
+                res = ex.getSQLState();
+            }
+            exec.closeConnection();
+        } catch (SQLException ex) {
+            res = ex.getSQLState();
+        }
+        return res.toLowerCase().contains("");
+    }
+
+    private void checkQuery(String query) throws SQLException {
+        exec.executeQuery(query);
+    }
+
+    private void checkUpdate(String query) throws SQLException {
+        exec.executeUpdate(query);
+    }
+
     private class Executor {
 
         private final String DRIVERCLASSNAME = "com.mysql.jdbc.Driver";
         private final String BASEURL = "jdbc:mysql://$url$:$port$/dbName?allowPublicKeyRetrieval=true&useSSL=false&useServerPrepStmts=true";
         private Connection connection = null;
-        private final boolean debug = false;
 
         public Executor(String user, String password, String dbName, String url, String port) {
             connection = conectar(user, password, dbName, url, port);
@@ -48,7 +84,6 @@ public class SubSource {
                 }
             }
             return state.executeQuery();
-
         }
 
         public int executeUpdate(String query, Object[] parameters) throws SQLException {
@@ -72,19 +107,24 @@ public class SubSource {
         }
 
         public int executeUpdate(String query) throws SQLException {
-            PreparedStatement state;
+            Statement state;
             if (query.toLowerCase().contains("insert")) {
-                state = this.connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+                state = this.connection.createStatement(1, PreparedStatement.RETURN_GENERATED_KEYS);
             } else {
-                state = this.connection.prepareStatement(query);
+                state = this.connection.createStatement();
             }
-            state.execute();
+            state.execute(query);
             if (query.toLowerCase().contains("insert")) {
                 ResultSet res = state.getGeneratedKeys();
                 return res.next() ? res.getInt(1) : 0;
             }
 
             return 0;
+        }
+
+        public ResultSet executeQuery(String query) throws SQLException {
+            Statement state = this.connection.createStatement();
+            return state.executeQuery(query);
         }
     }
 }

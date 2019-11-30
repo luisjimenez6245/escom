@@ -21,7 +21,7 @@ public class IndexPresenter {
     }
 
     public void loadView() {
-        this.view.showLevels(this.source.getLevelList(null));
+        this.view.view();
     }
 
     public void loadDatabases(User user, Database object) {

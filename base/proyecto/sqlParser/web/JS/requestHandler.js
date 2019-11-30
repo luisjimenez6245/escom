@@ -11,6 +11,17 @@ function showLoading() {
     $("#modal-loading").removeClass("container-hidden");
 }
 
+
+function hideLeft() {
+    $("#left-container").addClass("container-hidden");
+    $("#left-container").removeClass("left-container");
+}
+
+function showLeft() {
+    $("#left-container").addClass("left-container");
+    $("#left-container").removeClass("container-hidden");
+}
+
 function hideLoading() {
     $("#modal-loading").addClass("container-hidden");
     $("#modal-loading").removeClass("container-loading");

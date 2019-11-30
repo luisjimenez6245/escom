@@ -6,6 +6,7 @@
 package controllers.utils;
 
 import com.google.gson.Gson;
+import controllers.security.Manager;
 import models.User;
 import sources.requests.repositoryRequests;
 
@@ -15,31 +16,63 @@ import sources.requests.repositoryRequests;
  */
 public abstract class iViewController {
 
+    protected static final String URL = Manager.getInstance().getProperty("URL");
+
     protected final repositoryRequests rSource;
 
     public User user;
 
+    protected String scripts = "";
+
+    protected String titulo = "";
+
+    protected String alertas = "";
+
+    protected String scriptsFinal = "";
+
+    protected String content = "";
+
+    protected String nav = "";
+
+    protected String css = "";
+
+    protected String modal = "";
+
     protected iViewController(repositoryRequests rSource) {
         this.rSource = rSource;
+        this.scripts += "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js\"></script>\n";
+        this.css += "<link rel=\"stylesheet\" href=\"" + URL + "css/general.css\" />\n";
+        this.scripts += "<script src=\"" + URL + "js/requestHandler.js\"></script>\n";
+        this.nav += "      <nav class=\"nav\">\n"
+                + "        <div class=\"container\">\n"
+                + "          <div class=\"logo\"></div>\n"
+                + "          <div class=\"urls\">\n"
+                + "            <div class=\"\" onclick=\"window.location.href='index.html'\">\n"
+                + "              index\n"
+                + "            </div>\n"
+                + "            <div class=\"\" onclick=\"window.location.href='pila.html'\">\n"
+                + "              pila\n"
+                + "            </div>\n"
+                + "            <div class=\"\" onclick=\"window.location.href='cola.html'\">\n"
+                + "              cola\n"
+                + "            </div>\n"
+                + "            <div class=\"active\" onclick=\"window.location.href='lista.html'\">\n"
+                + "              lista\n"
+                + "            </div>\n"
+                + "          </div>\n"
+                + "          <div class=\"user-info\"></div>\n"
+                + "          <div class='panel' onclick=\"showLeft()\">\n"
+                + "            <div></div>\n"
+                + "            <div></div>\n"
+                + "            <div></div>\n"
+                + "            <div></div>\n"
+                + "          </div>\n"
+                + "        </div>\n"
+                + "      </nav>\n";
     }
 
-    public String scripts = "";
-
-    public String titulo = "";
-
-    public String alertas = "";
-
-    public String scriptsFinal = "";
-
-    public String content = "";
-
-    public String nav = "";
-
-    public String css = "";
-
-    public String modal = "";
-
     public String createContent() {
+
         String resultado
                 = "<!DOCTYPE html>"
                 + "\n"
@@ -52,24 +85,31 @@ public abstract class iViewController {
         }
         resultado
                 += "<body>\n"
-                + "<div class='bk'>\n"
-                + "</div>"
-                + nav
-                + "\n<div class='container-hidden' id='modal-loading'>\n"
-                + " <div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>"
-                + "</div>\n"
-                + "\n<div class='container-hidden' id='modal-container'>\n"
-                + modal
-                + "</div>\n"
-                + "<div id='js-handler' class='container-hidden'></div>"
-                + "<div id='main-container'>"
-                + content
-                + "</div>\n"
-                + "\n"
-                //      + "<div class='noJS' id='no-js'>\n"
-                //    + "    Se requiere de JavaScript para poder usar la plataforma.\n"
-                //  + "</div> "
-                + "\n"
+                + "<div class=\"no-js\"></div>\n"
+                + "    <div class=\"container-hidden\" id='loader'>\n"
+                + "      <div class=\"lds-ellipsis\">\n"
+                + "        <div></div>\n"
+                + "        <div></div>\n"
+                + "        <div></div>\n"
+                + "        <div></div>\n"
+                + "      </div>\n"
+                + "    </div>\n"
+                + "    <div class=\"modal\"></div>\n"
+                + this.nav
+                + "    <div class=\"main\">\n"
+                + "      <div class=\"left-container\" id='left-container'>\n"
+                + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
+                + "        <div class=\"container\">\n"
+                + "          a\n"
+                + "        </div>\n"
+                + "      </div>\n"
+                + "      <div class=\"main-body\">\n"
+                + "        <div class=\"nav-rigth\"></div>\n"
+                + "      </div>\n"
+                + "      <footer class=\"footer\">\n"
+                + "        <div class=\"\"></div>\n"
+                + "      </footer>\n"
+                + "    </div>"
                 + "</body>"
                 + "\n"
                 + scriptsFinal

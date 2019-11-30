@@ -12,6 +12,7 @@ import models.AttributeKind;
 import models.Attribute;
 import models.Table;
 import models.Database;
+import models.Session;
 
 /**
  *
@@ -108,5 +109,15 @@ public interface repositoryMysql {
     public Database[] getDatabaseList(Database object);
 
     public int deleteDatabase(int key);
+
+    public Session getSession(Session object);
+
+    public Session[] getSessionList(Session object);
+
+    public int deleteSession(int key);
+
+    public Session saveSession(Session object);
+
+    public Session updateSession(Session object);
 
 }

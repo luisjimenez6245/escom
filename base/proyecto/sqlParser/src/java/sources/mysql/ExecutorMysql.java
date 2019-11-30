@@ -3,16 +3,17 @@
  */
 package sources.mysql;
 
+import controllers.security.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,13 +24,50 @@ public class ExecutorMysql {
     private final String DRIVERCLASSNAME = "com.mysql.jdbc.Driver";
     private final String BASEURL = "jdbc:mysql://$url$:$port$/dbName?allowPublicKeyRetrieval=true&useSSL=false&useServerPrepStmts=true";
     private Connection connection = null;
-    private final boolean debug = false;
+    private final boolean debug = true;
 
-    public ExecutorMysql(String user, String password, String dbName, String url, String port) {
+    private final String USER;
+    private final String PASSWORD;
+    private final String DBNAME;
+    private final String URL;
+    private final String PORT;
+
+    private final Logger LOGGER = new Logger();
+
+    public ExecutorMysql(String USER, String PASSWORD, String DBNAME, String URL, String PORT) {
+        this.USER = USER;
+        this.PASSWORD = PASSWORD;
+        this.DBNAME = DBNAME;
+        this.URL = URL;
+        this.PORT = PORT;
         if (debug) {
-            connection = conectar("", "", "", "", "");
+            connection = conectar(USER, PASSWORD, DBNAME, URL, PORT);
+            kill();
         } else {
-            connection = conectar(user, password, dbName, url, port);
+        }
+        connection = conectar(USER, PASSWORD, DBNAME, URL, PORT);
+
+    }
+
+    private void kill() {
+        try {
+            connection.abort((Runnable command) -> {
+                try (Statement st = (Statement) connection.createStatement()) {
+                    ResultSet res = st.executeQuery("select * from information_schema.processlist where DB =  '" + DBNAME + "' order by id desc;");
+                    ArrayList<Integer> id = new ArrayList<>();
+                    while (res.next()) {
+                        id.add(res.getInt("id"));
+                    }
+                    for (int i = id.size() - 1; i > 0; --i) {
+                        st.executeUpdate("KILL " + id.get(i) + ";");
+                    }
+                } catch (SQLException ex) {
+                    LOGGER.errorBd(ex);
+                }
+            });
+            connection.close();
+        } catch (SQLException ex) {
+            LOGGER.errorBd(ex);
         }
     }
 
@@ -46,14 +84,14 @@ public class ExecutorMysql {
             Class.forName(this.DRIVERCLASSNAME).newInstance();
             return DriverManager.getConnection(urlBD, user, password);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex) {
-            System.out.println(ex.fillInStackTrace());
+            LOGGER.errorBd(ex);
         }
         return null;
     }
 
     private boolean verifyConnection() {
         if (this.connection == null) {
-            this.connection = conectar("", "", "", "", "");
+            this.connection = conectar(USER, PASSWORD, DBNAME, URL, PORT);
         }
         return connection != null;
     }
@@ -115,7 +153,7 @@ public class ExecutorMysql {
             param.put(tableName + "_id", id);
             return this.get("SELECT * FROM " + tableName + " ", param);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.errorBd(ex);
         }
         return null;
     }
@@ -135,7 +173,7 @@ public class ExecutorMysql {
             ResultSet r = executeQuery(query, mapToArray(parameters));
             return r;
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.errorBd(ex);
         }
         return null;
     }
@@ -157,7 +195,7 @@ public class ExecutorMysql {
             ResultSet r = executeQuery(query, mapToArray(parameters));
             return r;
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.errorBd(ex);
         }
         return null;
     }
@@ -174,7 +212,7 @@ public class ExecutorMysql {
             this.executeUpdate(query, mapToArray(parameters));
             return 0L;
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutorMysql.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.errorBd(ex);
         }
         return null;
     }

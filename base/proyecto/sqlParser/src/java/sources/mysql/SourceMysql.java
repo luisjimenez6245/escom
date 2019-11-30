@@ -14,6 +14,7 @@ import models.AttributeKind;
 import models.Attribute;
 import models.Table;
 import models.Database;
+import models.Session;
 
 /**
  *
@@ -370,7 +371,7 @@ public class SourceMysql extends ExecutorMysql implements sources.mysql.reposito
             if (object.databaseId != 0) {
                 lista.put("_database_id", object.databaseId);
             }
-             if (object.userId != 0) {
+            if (object.userId != 0) {
                 lista.put("user_id", object.userId);
             }
         }
@@ -914,5 +915,55 @@ public class SourceMysql extends ExecutorMysql implements sources.mysql.reposito
             return res[0];
         }
         return new Database(0);
+    }
+
+    @Override
+    public Session getSession(Session object) {
+        Session[] res = getSessionList(object);
+        if (res != null
+                && res.length > 0) {
+            return res[0];
+        }
+        return new Session(0);
+    }
+
+    @Override
+    public int deleteSession(int key) {
+        String query = "session";
+        HashMap<String, Object> lista = new HashMap<>();
+        if (key != 0) {
+            lista.put("session_id", key);
+        }
+
+        this.delete(query, lista);
+        Email helper = getEmail(new Email(key));
+        if (helper == null || helper.emailId == 0) {
+            return key;
+        }
+        return 0;
+    }
+
+    @Override
+    public Session saveSession(Session object) {
+         
+        return object;
+    }
+    
+
+    @Override
+    public Session updateSession(Session object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Session[] getSessionList(Session object) {
+        String query = "select s.* from session s";
+        HashMap<String, Object> lista = new HashMap<>();
+        if (object != null) {
+            if (object.sessionId != 0) {
+                lista.put("session_id", object.sessionId);
+            }
+        }
+        return MAPPER.sessionList(this.get(query, lista));
     }
 }

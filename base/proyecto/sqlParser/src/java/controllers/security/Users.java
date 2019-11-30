@@ -75,7 +75,7 @@ public class Users {
     }
 
     public static String getToken(User user) {
-        String res = Manager.URL + "/login%c_action=auth#x=" + user.userId;
+        String res = Manager.getInstance().getProperty("URL") + "/login%c_action=auth#x=" + user.userId;
         return res;
     }
 
