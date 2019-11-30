@@ -94,7 +94,9 @@ public abstract class iViewController {
                 + "        <div></div>\n"
                 + "      </div>\n"
                 + "    </div>\n"
-                + "    <div class=\"modal\"></div>\n"
+                + "    <div class=\"modal\">\n"
+                + this.modal
+                + "     </div>\n"
                 + this.nav
                 + "    <div class=\"main\">\n"
                 + "      <div class=\"left-container\" id='left-container'>\n"

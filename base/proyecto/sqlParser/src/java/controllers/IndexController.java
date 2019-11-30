@@ -17,6 +17,8 @@ import views.IndexView;
 public class IndexController extends iViewController implements IndexView {
 
     private final IndexPresenter presenter;
+    
+    private final String LEFTNAV = "";
 
     public IndexController(repositoryRequests rSource) {
         super(rSource);
