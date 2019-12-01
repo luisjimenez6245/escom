@@ -271,7 +271,7 @@ public class SourceMysql extends ExecutorMysql implements sources.mysql.reposito
                 lista.put("query_id", object.queryId);
             }
             if (object.queryType != null) {
-                lista.put("query_type", object.queryType);
+                lista.put("query_type", object.queryType.toString());
             }
         }
         return MAPPER.queryList(this.get(query, lista));

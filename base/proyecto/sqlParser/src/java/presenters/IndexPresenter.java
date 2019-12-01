@@ -3,6 +3,7 @@ package presenters;
 import models.Database;
 import models.Query;
 import models.User;
+import models.enums.QueryType;
 import models.enums.UserType;
 import sources.mysql.SubSource;
 import sources.mysql.repositoryMysql;
@@ -25,6 +26,7 @@ public class IndexPresenter {
     public void loadView(User user) {
         if (user == null || user.userId == 0) {
             user = source.getUser(new User(0).build(null, null, null, false, null, UserType.PUBLIC, null, null));
+            this.view.showQuerys(source.getQueryList(new Query(0).build(null, QueryType.INITAL, null)));
             loadDatabases(user, null);
         }
         this.view.view();
@@ -62,9 +64,15 @@ public class IndexPresenter {
 
     }
 
+    public void onGetQuery(Query query, User user, Database database) {
+        if (user == null || user.userType.equals(UserType.PUBLIC) || user.userId == 0) {
+        }
+        this.view.showQuerys(source.getQueryList(new Query(0).build(null, query.queryType, query.name)));
+    }
+
     public void onClickCheckQuery(Query query, User user, Database database) {
         SubSource sub = new SubSource();
-        if (user == null || user.userType.equals(UserType.PUBLIC)|| user.userId == 0) {
+        if (user == null || user.userType.equals(UserType.PUBLIC) || user.userId == 0) {
             user = source.getUser(new User(0).build(null, null, null, false, null, UserType.PUBLIC, null, null));
             database = source.getDatabase(new Database(0).build(null, null, null, user.userId));
         }

@@ -104,7 +104,7 @@ public class SourceRequests extends executorRequests implements sources.requests
         return new Query(Integer.parseInt(request.getParameter("query_id") == null ? "0" : request.getParameter("query_id")))
                 .build(
                         new Date(),
-                        QueryType.valueOf(request.getParameter("query_type") == null ? "SELECT" : request.getParameter("query_type")),
+                        QueryType.valueOf(request.getParameter("query_type") == null ? "UNKNOWN" : request.getParameter("query_type")),
                         request.getParameter("query") == null ? "" : request.getParameter("query")
                 );
     }

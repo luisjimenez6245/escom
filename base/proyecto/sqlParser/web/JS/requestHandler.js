@@ -11,7 +11,10 @@ function showLoading() {
     $("#modal-loading").removeClass("container-hidden");
 }
 
-
+function hideLoading() {
+    $("#modal-loading").addClass("container-hidden");
+    $("#modal-loading").removeClass("container-loading");
+}
 function hideLeft() {
     $("#left-container").addClass("container-hidden");
     $("#left-container").removeClass("left-container");
@@ -22,10 +25,7 @@ function showLeft() {
     $("#left-container").removeClass("container-hidden");
 }
 
-function hideLoading() {
-    $("#modal-loading").addClass("container-hidden");
-    $("#modal-loading").removeClass("container-loading");
-}
+
 
 function showModal() {
     $("#modal-container").addClass("container-modal");
@@ -70,7 +70,6 @@ function validate_email(email) {
 }
 
 function requestHandler(url, method, params, op) {
-    showLoading();
     $.ajax({
         url: URL + url,
         method: method,
@@ -83,7 +82,6 @@ function requestHandler(url, method, params, op) {
                     window.history.pushState("object or string", url, URL + url);
                     screenHandler(res);
                 }
-                hideLoading();
             } else {
                 alert('Se requiere volver a iniciar sesión');
                 exit();

@@ -23,14 +23,21 @@ public class IndexController extends iViewController implements IndexView {
             + "      <div class=\"main-body\">\n"
             + "        <div class=\"container\">\n"
             + "          <div class=\"title\">\n"
-            + "            SQL Checker\n"
+            + "            SQL Helper\n"
             + "          </div>\n"
             + "          <div class=\"subtitle\">\n"
             + "            Escribe tu sentencia a revisar\n"
             + "          </div>\n"
             + "          <div class=\"main\">\n"
             + "            <div class=\"right\">\n"
-            + "              <div></div>\n"
+            + "              <div class=\"container-items\">\n"
+            + "                <div class=\"subtitle\">\n"
+            + "                  Palabras sugeridas\n"
+            + "                </div>\n"
+            + "                <div class=\"container-content\" id='query-helper-container'>\n"
+            + "                     $helper-items$"
+            + "                </div>\n"
+            + "              </div>\n"
             + "            </div>\n"
             + "            <div class=\"left\">\n"
             + "              <div class=\"text-area\">\n"
@@ -73,7 +80,11 @@ public class IndexController extends iViewController implements IndexView {
                 if (action.equals("check_syntax")) {
                     this.presenter.onClickCheckQuery(rSource.getQuery(), user, rSource.getDatabase());
                 } else {
-                    content = "hola";
+                    if (action.equals("auto_complete")) {
+                        this.presenter.onGetQuery(rSource.getQuery(), user, rSource.getDatabase());
+                    } else {
+                        content = "hola";
+                    }
                 }
             }
         }
@@ -82,7 +93,9 @@ public class IndexController extends iViewController implements IndexView {
     @Override
     public void view() {
         content = LEFTNAV + CONTENT;
-        scriptsFinal += "<script>\n $(function() {\n"
+        scriptsFinal += ""
+                + " <script>\n "
+                + "   $(function() {\n"
                 + "      let container = document.getElementById(\"code-content\");\n"
                 + "      codemirror = CodeMirror.fromTextArea(container, {\n"
                 + "        lineNumbers: true,\n"
@@ -91,7 +104,16 @@ public class IndexController extends iViewController implements IndexView {
                 + "        smartIndent: true,\n"
                 + "        matchBrackets: true,\n"
                 + "        autofocus: true,\n"
-                + "        extraKeys: { \"Ctrl-Space\": \"autocomplete\" }\n"
+                + "        extraKeys: {\n"
+                + "          \"Ctrl-Space\": function(m) {\n"
+                + "              let q = $(\".CodeMirror\")[0].CodeMirror.getValue();\n"
+                + "              let params = {\n"
+                + "                c_action: \"auto_complete\",\n"
+                + "                query: q\n"
+                + "              };\n"
+                + "              requestHandler(\"/\", \"POST\", params, false);\n"
+                + "          }\n"
+                + "        }\n"
                 + "      });\n"
                 + "    });"
                 + "</script>\n";
@@ -105,18 +127,25 @@ public class IndexController extends iViewController implements IndexView {
     public void showDatabases(Database[] databases) {
         String res = "";
         for (Database d : databases) {
-            res += "<div>" + d.name + "</div>";
+            res += "<div class=\"child\">" + d.name + "</div>\n";
         }
         LEFTNAV = LEFTNAV.replace("$content$", res);
         content = LEFTNAV;
     }
 
     @Override
-    public void showTables(Table[] tables) {
+    public void showTables(Table[] Table) {
+
     }
 
     @Override
     public void showQuerys(Query[] queries) {
+        String res = "";
+        for (Query t : queries) {
+            res += "<div class=\"item\" onclick=\"onClickAutoComplete('" + t.name + "')\">" + t.name + "</div>\n";
+        }
+        CONTENT = CONTENT.replace("$helper-items$", res);
+        content = CONTENT;
     }
 
     @Override

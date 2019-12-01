@@ -64,7 +64,8 @@
       <div class="container-hidden" id="left-container">
         <span class="close fas fa-times" onclick="hideLeft()"></span>
         <div class="container">
-          a
+          <div class="child">a</div>
+          <div class="child">b</div>
         </div>
       </div>
       <div class="main-body">
@@ -77,7 +78,17 @@
           </div>
           <div class="main">
             <div class="right">
-              <div></div>
+              <div class="container-items">
+                <div class="subtitle">
+                  akakakkakakaka
+                </div>
+                <div class="container-content">
+                  <div class="item">a</div>
+                  <div class="item">a</div>
+                  <div class="item">a</div>
+                  <div class="item">a</div>
+                </div>
+              </div>
             </div>
             <div class="left">
               <div class="text-area">
@@ -105,7 +116,11 @@
         smartIndent: true,
         matchBrackets: true,
         autofocus: true,
-        extraKeys: { "Ctrl-Space": "autocomplete" }
+        extraKeys: {
+          "Ctrl-Space": function(m) {
+            onAutoComplete();
+          }
+        }
       });
     });
   </script>

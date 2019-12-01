@@ -9,6 +9,7 @@ package models.enums;
  */
 public enum QueryType {
 
+    INITAL,
     INSERT,
     SELECT,
     UPDATE,
@@ -18,6 +19,8 @@ public enum QueryType {
     DESCRIBE,
     PROCEDURE,
     FUNCTION,
-    ALTER
+    ALTER,
+    SHOW,
+    UNKNOWN
 
 }

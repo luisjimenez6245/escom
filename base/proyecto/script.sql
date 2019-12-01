@@ -49,6 +49,7 @@ create table _database(
 	_database_id  int not null primary key auto_increment
 );
 
+
 create table _table(
 	_table_id  int not null primary key auto_increment,
 	name nvarchar(254),
@@ -58,10 +59,11 @@ create table _table(
 create table query(
 	query_type nvarchar(254),
 	creation_date Datetime,
-	name nvarchar(254),
+	name text,
 	query_id  int not null primary key auto_increment,
     _database_id int not null
 );
+
 
 create table attribute(
 	attribute_kind_id int not null,
@@ -104,4 +106,32 @@ values(now(), 'public user', 'public user', 'PUBLIC', true, '');
 insert into _database (url, name,  user_id) values
 ('localhost', 'test', 1);
 
-select * from _database;
+insert into query (query_type, creation_date, name, _database_id) values
+('INITAL', now(), 'INSERT', 1),
+('INITAL', now(), 'SELECT', 1),
+('INITAL', now(), 'UPDATE', 1),
+('INITAL', now(), 'DELETE', 1),
+('INITAL', now(), 'CREATE', 1),
+('INITAL', now(), 'DROP', 1),
+('INITAL', now(), 'DESCRIBE', 1),
+('INITAL', now(), 'ALTER', 1),
+('INSERT', now(), 'INTO', 1),
+('INSERT', now(), 'VALUES', 1),
+('SELECT', now(), 'FROM', 1),
+('SELECT', now(), 'WHERE', 1),
+('SELECT', now(), 'GROUP BY', 1),
+('SELECT', now(), 'HAVING', 1),
+('SELECT', now(), 'LIMIT', 1),
+('SELECT', now(), 'ORDER BY', 1),
+('UPDATE', now(), 'WHERE', 1),
+('UPDATE', now(), 'HAVING', 1),
+('DELETE', now(), 'FROM', 1),
+('DELETE', now(), 'WHERE', 1),
+('DELETE', now(), 'HAVING', 1)
+
+
+;
+
+
+
+select * from user;

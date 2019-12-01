@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
 @import "./codemirror.css";
+@import "./normalize.css";
+
 
 @mixin transitions($transition) {
   -webkit-transition: $transition; /* Safari */
@@ -14,6 +16,7 @@
 
   @return 0 $primary-offset $blur $color;
 }
+
 @mixin card($depth) {
   @if $depth < 1 {
     box-shadow: none;
@@ -76,6 +79,32 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+.container-items{
+  width: 90%;
+  margin-left: 2.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-top: 1rem;
+  .container-content{
+    padding-top: .3rem;
+    @include disable-selection();
+  }
+  .item{
+    display: inline;
+    background-color: rgba(36, 41, 46, .9);
+    padding: .3rem;;
+    font-size: .8rem;
+    color:white;
+    vertical-align: middle;
+    border-radius: 2px;
+    @include disable-selection();
+    &:hover{
+      opacity: .7;
+      cursor: pointer;
+    }
+  }
+}
+
 .left-container{
   z-index: 100;
   position: fixed;
@@ -96,11 +125,18 @@ html {
     }
   }
   .container{
+    counter-reset: section;
     width: 90%;
     margin-left: 5%;
     min-width: 2rem;
     padding-top: 45px;
     color: white;
+    .child{
+      &::before{
+        counter-increment: section;
+        content:counter(section) ;      
+      }
+    }
   }
 
 }
@@ -113,7 +149,7 @@ html {
   display: none !important;
 }
 
-.loader {
+.container-loading {
   @include div-properties(100vw, 100vh, white, flex);
   position: fixed;
   z-index: 10000;
@@ -135,7 +171,7 @@ html {
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      background: rgba(42, 139, 251, 1);
+      background: rgba(36, 41, 46, 1);
       animation-timing-function: cubic-bezier(0, 1, 1, 0);
       &:nth-child(1) {
         left: 6px;
@@ -277,6 +313,7 @@ html {
     }
   }
 }
+
 .main {
   width: 100%;
   display: table;
@@ -303,12 +340,11 @@ html {
   }
   .left {
     float: left;
-    width: 55%;
+    width: 60%;
   }
   .right {
-    background-color: green;
     float: right;
-    width: 45%;
+    width: 40%;
   }
 
   .code {

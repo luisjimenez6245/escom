@@ -89,8 +89,8 @@ public abstract class iViewController {
         }
         resultado
                 += "<body>\n"
-                + "<div class=\"no-js\"></div>\n"
-                + "    <div class=\"container-hidden\" id='loader'>\n"
+                + "    <div class=\"no-js\"></div>\n"
+                + "    <div class=\"container-hidden\" id='modal-loading'>\n"
                 + "      <div class=\"lds-ellipsis\">\n"
                 + "        <div></div>\n"
                 + "        <div></div>\n"

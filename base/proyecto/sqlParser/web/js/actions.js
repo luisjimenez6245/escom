@@ -1,11 +1,29 @@
-function onClickDatabases(){
-    
+function onClickDatabases() {}
+
+function onClickCheckSyntax() {
+  let q = $(".CodeMirror")[0].CodeMirror.getValue();
+  if (q !== undefined && q !== "") {
+    showLoading();
+    let params = {
+      c_action: "check_syntax",
+      query: q
+    };
+    requestHandler("/", "POST", params, false);
+    hideLoading();
+  }
 }
 
-function onClickCheckSyntax(){
-    let params = {
-        'c_action': 'check_syntax',
-        'query' : $('.CodeMirror')[0].CodeMirror.getValue()
-    };
-    requestHandler('/', 'POST', params, false);
+function onClickAutoComplete(query) {
+  let q = $(".CodeMirror")[0].CodeMirror.getValue() + " " + query;
+  $(".CodeMirror")[0].CodeMirror.setValue(q);
+  onAutoComplete();
+}
+
+function onAutoComplete() {
+  let q = $(".CodeMirror")[0].CodeMirror.getValue();
+  let params = {
+    c_action: "auto_complete",
+    query: q
+  };
+  requestHandler("/", "POST", params, true);
 }
