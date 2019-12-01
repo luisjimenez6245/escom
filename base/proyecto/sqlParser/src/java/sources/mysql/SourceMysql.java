@@ -217,25 +217,17 @@ public class SourceMysql extends ExecutorMysql implements sources.mysql.reposito
             if (object.userId != 0) {
                 lista.put("user_id", object.userId);
             }
-            if (object.emails != null) {
-                lista.put("emails", object.emails);
-            }
             if (object.surname != null) {
                 lista.put("surname", object.surname);
             }
-            lista.put("is_active", object.isActive);
             if (object.creationDate != null) {
                 lista.put("creation_date", object.creationDate);
             }
             if (object.name != null) {
                 lista.put("name", object.name);
             }
-
-            if (object.phones != null) {
-                lista.put("phones", object.phones);
-            }
             if (object.userType != null) {
-                lista.put("user_type", object.userType);
+                lista.put("user_type", object.userType.toString());
             }
         }
         return MAPPER.userList(this.get(query, lista));
@@ -356,14 +348,11 @@ public class SourceMysql extends ExecutorMysql implements sources.mysql.reposito
 
     @Override
     public Database[] getDatabaseList(Database object) {
-        String query = "select d.* from _database d";
+        String query = "select d.* from _database d ";
         HashMap<String, Object> lista = new HashMap<>();
         if (object != null) {
             if (object.name != null) {
                 lista.put("name", object.name);
-            }
-            if (object.table != null) {
-                lista.put("tables", object.table);
             }
             if (object.url != null) {
                 lista.put("url", object.url);

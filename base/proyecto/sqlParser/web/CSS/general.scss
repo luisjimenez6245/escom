@@ -179,7 +179,14 @@ html {
     }
   }
 }
-
+.footer{
+  margin-top: 3rem;
+  width: 90%;
+  text-align: center;
+  margin-left: 5%;
+  font-size: .8rem;
+  color: rgba(100,100,100,1);
+}
 
 .main-body{
   width: 100%;
@@ -202,9 +209,12 @@ html {
       font-size: 1.8rem;
       padding-bottom: 1.2rem;
     }
-    .sutitle{
+    .subtitle{
       width: 100%;
       text-align: justify;
+      font-size: 1rem;
+      font-weight: 200;
+      color: rgba(60, 60, 60, 1);
     }
   }
 }
@@ -271,16 +281,16 @@ html {
   width: 100%;
   display: table;
   .text-area{
+    width: 95%;
     margin-top: 1rem;
+    border: 1px solid rgba(240,240, 240, 1);
   }
   textarea{
     text-align: justify;
     resize: none;
-    width: 90%;
-    padding-left: 2.5%;
+    width: 100%;
     padding-top: 5px;
     height: 400px;
-    border-radius: 5px;
     outline: none;
     border: 1px solid rgba(230, 230, 230, 1);
   }
@@ -328,5 +338,172 @@ html {
       width: 90%;
       font-size: 0.9rem;
     }
+  }
+}
+
+.container-modal {
+  @include div-properties(100vw, 100vh, rgba(40, 40, 40, 0.6), flex);
+  position: fixed;
+  z-index:200;
+  vertical-align: middle;
+  align-items: center;
+  top:0px;
+  left:0px;
+  @include disable-selection;
+  .blur {
+      top:0px;
+      left:0px;
+      @include div-properties(100%, 100%, rgba(30, 30, 30, 0.7), flex);
+      z-index: 0;
+      position: absolute;
+  }
+  .container{
+      @include div-properties(auto, auto, null, inline-block);
+      &-message, &-form{
+          position: relative;
+          margin: auto;
+          vertical-align: middle;
+          @media only screen and (min-width: 20px) {
+              @include div-properties(90%, auto, white, inline-block);
+          }
+          .header, .footer{
+              span{
+                  position: absolute;
+                  float: right;
+                  @include div-properties(1.2rem, 1.2rem, null, block);
+                  opacity:.7;
+                  font-size: 1.2rem;
+                  &:hover{
+                      opacity: 1;
+                  }
+                  cursor: pointer;
+              }
+          }
+          .header{
+              @include div-properties(100%, auto, #3780af, inline-block);
+              padding-top: 1rem !important;
+              div{
+                  margin-left: 5%;
+                  text-align: center;
+                  color: white;
+                  padding-bottom: .5rem;
+                  @include div-properties(90%, auto, #3780af, inline-block);
+              }
+              .title{
+                  padding-top: 1rem !important;
+                  font-size: 1.5rem;
+                  line-height: 1.2rem;
+                  font-weight: 500;
+                  text-transform: uppercase;
+              }
+              span{
+                  color: white;
+                  right: .5rem;
+                  top: .5rem;
+              }
+
+          }
+          .content{
+              @include div-properties(100%, auto, null, inline-block);
+              margin-top: .2rem;
+              .container-full{
+                  @include div-properties(90%, auto, null, inline-block);
+                  margin: 0px;
+                  margin-left: 5%;
+                  margin-top: .2rem;
+                  font-size: 1rem;
+                  label{
+                      font-size: 1rem;
+                  }
+                  select{
+                      font-size: .9rem;
+                  }
+                  input[type="text"],
+                  input[type="email"],
+                  input[type="password"], select {
+                      float:none;
+                      @media only screen and (min-width: 0) {
+                          @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
+                      }
+                      @media only screen and (min-width: 720) {
+                          @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
+                      }
+                  }
+                  .title{
+                      font-size: 1.05rem;
+                      font-weight: 400;
+                      text-align: left;
+                      padding: 0px;
+                      @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
+                      margin: 0px;
+                  }
+                  .mini-title{
+                      text-transform: uppercase;
+                      padding-top: .5rem;
+                      font-size: 1.05rem;
+                      padding-bottom: .5rem;
+                      span{
+                          font-size: 0.95rem;
+                      }
+                  }
+                  .word{
+                      position: relative;
+                      @include div-properties(95%, 7rem, null, inline-block);
+                      overflow: hidden;
+                      overflow-y: auto;
+                      font-size: .95rem;
+                      opacity: .7;
+                      &:hover{
+                          opacity: 1;
+                      }
+                  }
+              }
+          }
+          .footer{
+              max-height:  3rem !important;
+              padding:  0px !important;
+              margin-top: 0px !important;
+              @include div-properties(100%, auto, white, inline-block);
+              span{
+                  color: gray;
+                  right: .5rem;
+                  bottom: .5rem;
+              }
+          }
+      }
+      &-form{
+          @media only screen and (min-width: 768px) {
+              @include div-properties(25%, auto, white, inline-block);
+              min-width: 500px !important;
+          }
+      }
+      &-message{
+          @media only screen and (min-width: 768px) {
+              @include div-properties(40%, auto, white, inline-block);
+              min-width: 650px !important;
+          }
+      }
+  }
+  div {
+      .title {
+          @include div-properties(90%, auto, null, inline-block);
+          margin-left: 5%;
+          font-weight: 700;
+          text-align: center;
+          margin-left: 5%;
+          font-weight: 700;
+          font-size: 1.35rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.8rem;
+      }
+      .container {
+          @include div-properties(90%, auto, null, inline-block);
+          position: relative;
+          font-size: 1.35rem;
+          margin-left: 5%;
+          .button-middle{
+              background-color: #3780af;
+          }
+      }
   }
 }

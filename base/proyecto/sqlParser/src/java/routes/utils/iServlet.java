@@ -12,7 +12,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sources.requests.repositoryRequests;
+import sources.requests.SourceRequests;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -29,7 +30,7 @@ public abstract class iServlet extends HttpServlet {
     protected int resStatus = 0;
 
     protected final Logger ERRORES = new Logger();
-    protected repositoryRequests repository;
+    protected RepositoryRequests repository;
 
     public iServlet() {
     }
@@ -174,7 +175,7 @@ public abstract class iServlet extends HttpServlet {
 
     // </editor-fold>
     private void selector(HttpServletRequest request, HttpServletResponse response, int numero) throws ServletException, IOException {
-        this.repository = new sources.requests.sourceRequests(request);
+        this.repository = new SourceRequests(request);
         try {
             request.setCharacterEncoding("UTF-8");
             obtenDireccion(request.getRequestURI() == null ? "" : request.getRequestURI());

@@ -70,12 +70,6 @@ create table attribute(
 	table_id  int not null
 );
 
-alter table email add constraint FKemail FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
-alter table phone add constraint FKphone FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
-alter table _table add constraint FK_tabledatabase_id FOREIGN KEY (_database_id) REFERENCES _database(_database_id) on Delete cascade on update cascade;
-alter table query add constraint FKquerydatabase_id FOREIGN KEY (_database_id) REFERENCES _database(_database_id) on Delete cascade on update cascade;
-alter table attribute add constraint FKattributeattribute_kind_id FOREIGN KEY (attribute_kind_id) REFERENCES attribute_kind(attribute_kind_id) on Delete cascade on update cascade;
-alter table _database add constraint FK_databaseuser_id FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
 
 create table level(
 	level_id  int not null primary key auto_increment,
@@ -84,10 +78,30 @@ create table level(
 	is_principal boolean,
 	is_active boolean
 );
+create table session(
+  session_id int not null primary key auto_increment,
+  user_id int not null,
+  token nvarchar(254),
+  date datetime,
+  ip nvarchar(254)
+);
+
+alter table email add constraint FKemail FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
+alter table phone add constraint FKphone FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
+alter table session add constraint FKsession FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
+alter table _table add constraint FK_tabledatabase_id FOREIGN KEY (_database_id) REFERENCES _database(_database_id) on Delete cascade on update cascade;
+alter table query add constraint FKquerydatabase_id FOREIGN KEY (_database_id) REFERENCES _database(_database_id) on Delete cascade on update cascade;
+alter table attribute add constraint FKattributeattribute_kind_id FOREIGN KEY (attribute_kind_id) REFERENCES attribute_kind(attribute_kind_id) on Delete cascade on update cascade;
+alter table _database add constraint FK_databaseuser_id FOREIGN KEY (user_id) REFERENCES user(user_id) on Delete cascade on update cascade;
+
 
 
 insert into level (name, number, is_principal, is_active)values("mas facil", 1, true, true);
 
+insert into user (creation_date, name, surname, user_type, is_active, password)
+values(now(), 'public user', 'public user', 'PUBLIC', true, '');
 
+insert into _database (url, name,  user_id) values
+('localhost', 'test', 1);
 
 select * from _database;

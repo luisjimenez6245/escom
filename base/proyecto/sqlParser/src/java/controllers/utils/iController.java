@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import controllers.security.Logger;
 import models.utils.Model;
 import sources.mysql.repositoryMysql;
-import sources.requests.repositoryRequests;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -26,11 +26,11 @@ public abstract class iController{
         this.source = source;
     }
     
-    public abstract void get(String name, repositoryRequests repository);
-    public abstract void getList(String name, repositoryRequests repository);
-    public abstract void save(String name, repositoryRequests repository);
-    public abstract void delete(String name, repositoryRequests repository);
-    public abstract void update(String name, repositoryRequests repository);
+    public abstract void get(String name, RepositoryRequests repository);
+    public abstract void getList(String name, RepositoryRequests repository);
+    public abstract void save(String name, RepositoryRequests repository);
+    public abstract void delete(String name, RepositoryRequests repository);
+    public abstract void update(String name, RepositoryRequests repository);
     
     public String getContent(){
         return res;

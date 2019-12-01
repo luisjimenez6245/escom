@@ -4,6 +4,7 @@ import models.Database;
 import models.Level;
 import models.Query;
 import models.Table;
+import models.User;
 
 /**
  *
@@ -20,5 +21,9 @@ public interface IndexView extends iView {
     public void showQuerys(Query[] queries);
 
     public void showError(String message);
+    
+    public void setUser(User user);
+    
+    public void clickCheckQuery(Query query, boolean isValid);
 
 }

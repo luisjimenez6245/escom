@@ -5,10 +5,11 @@ import models.Database;
 import models.Level;
 import models.Query;
 import models.Table;
+import models.User;
 import presenters.IndexPresenter;
 import routes.utils.Factory;
-import sources.requests.repositoryRequests;
 import views.IndexView;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -18,23 +19,43 @@ public class IndexController extends iViewController implements IndexView {
 
     private final IndexPresenter presenter;
 
-    private final String CONTENT = ""
+    private String CONTENT = ""
             + "      <div class=\"main-body\">\n"
-            + "        <div class=\"nav-rigth\"></div>\n"
+            + "        <div class=\"container\">\n"
+            + "          <div class=\"title\">\n"
+            + "            SQL Checker\n"
+            + "          </div>\n"
+            + "          <div class=\"subtitle\">\n"
+            + "            Escribe tu sentencia a revisar\n"
+            + "          </div>\n"
+            + "          <div class=\"main\">\n"
+            + "            <div class=\"right\">\n"
+            + "              <div></div>\n"
+            + "            </div>\n"
+            + "            <div class=\"left\">\n"
+            + "              <div class=\"text-area\">\n"
+            + "                <textarea id=\"code-content\"></textarea>\n"
+            + "              </div>\n"
+            + "              <div>\n"
+            + "                <input type=\"button\" value=\"checar\" onclick=\"onClickCheckSyntax()\"/>\n"
+            + "              </div>\n"
+            + "            </div>\n"
+            + "          </div>\n"
+            + "        </div>"
             + "      </div>\n"
             + "      <footer class=\"footer\">\n"
-            + "        <div class=\"\"></div>\n"
+            + "        <div class=\"\">Proyecto Bases</div>\n"
             + "      </footer>\n";
 
-    private final String LEFTNAV = ""
-            + "      <div class=\"left-container\" id='left-container'>\n"
+    private String LEFTNAV = ""
+            + "      <div class=\"container-hidden\" id='left-container'>\n"
             + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
             + "        <div class=\"container\">\n"
-            + "          a\n"
+            + "          $content$\n"
             + "        </div>\n"
             + "      </div>\n";
 
-    public IndexController(repositoryRequests rSource) {
+    public IndexController(RepositoryRequests rSource) {
         super(rSource);
         presenter = Factory.createIndexPresenter(this);
     }
@@ -42,20 +63,38 @@ public class IndexController extends iViewController implements IndexView {
     @Override
     public void main() {
         String action = rSource.getAction();
+        user = rSource.getUser();
         if (action.equals("")) {
-            this.presenter.loadView();
+            this.presenter.loadView(user);
         } else {
-            if (action.equals("getDatabases")) {
+            if (action.equals("get_databases")) {
                 this.presenter.loadDatabases(user, rSource.getDatabase());
             } else {
-                content = "hola";
+                if (action.equals("check_syntax")) {
+                    this.presenter.onClickCheckQuery(rSource.getQuery(), user, rSource.getDatabase());
+                } else {
+                    content = "hola";
+                }
             }
         }
     }
 
     @Override
     public void view() {
-        content = LEFTNAV+ CONTENT;
+        content = LEFTNAV + CONTENT;
+        scriptsFinal += "<script>\n $(function() {\n"
+                + "      let container = document.getElementById(\"code-content\");\n"
+                + "      codemirror = CodeMirror.fromTextArea(container, {\n"
+                + "        lineNumbers: true,\n"
+                + "        mode: \"text/x-mysql\",\n"
+                + "        indentWithTabs: true,\n"
+                + "        smartIndent: true,\n"
+                + "        matchBrackets: true,\n"
+                + "        autofocus: true,\n"
+                + "        extraKeys: { \"Ctrl-Space\": \"autocomplete\" }\n"
+                + "      });\n"
+                + "    });"
+                + "</script>\n";
     }
 
     @Override
@@ -64,7 +103,12 @@ public class IndexController extends iViewController implements IndexView {
 
     @Override
     public void showDatabases(Database[] databases) {
-
+        String res = "";
+        for (Database d : databases) {
+            res += "<div>" + d.name + "</div>";
+        }
+        LEFTNAV = LEFTNAV.replace("$content$", res);
+        content = LEFTNAV;
     }
 
     @Override
@@ -77,6 +121,44 @@ public class IndexController extends iViewController implements IndexView {
 
     @Override
     public void showError(String message) {
+    }
+
+    @Override
+    public void setUser(User user) {
+
+    }
+
+    @Override
+    public void clickCheckQuery(Query query, boolean isValid) {
+        content = "";
+        modal = ""
+                + "  <div class='blur'></div>\n"
+                + "            <div class='container-form'>\n"
+                + "                <div class='header'>\n"
+                + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
+                + "                    <div class='title'>" + String.valueOf(isValid) + "</div>\n"
+                + "                    <div>" + query.name + "</div>\n"
+                + "                </div>\n"
+                + "                <div class='content container-form form form-control'>\n"
+                + "                    <div clasS='container'>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                        <div class='container-full' style='text-align: center'>\n"
+                + "                           Ocurrió un error interno, favor de verificar tus datos y volverlo a intentar\n"
+                + "                        </div>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                        <div class='container-full'>\n"
+                + "                            <div class='button button-middle'  onclick='succesRegister()'>\n"
+                + "                                <label>Aceptar</label>\n"
+                + "                            </div>\n"
+                + "                        </div>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                    </div>\n"
+                + "                </div>\n"
+                + "            </div>";
+        scriptsFinal += "<script>"
+                + "showModal();"
+                + "</script>";
+
     }
 
 }

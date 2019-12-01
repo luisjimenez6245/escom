@@ -2,8 +2,8 @@ package controllers;
 
 import controllers.utils.iViewController;
 import models.User;
-import sources.requests.repositoryRequests;
 import views.LoginView;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -11,7 +11,7 @@ import views.LoginView;
  */
 public class LoginController extends iViewController implements LoginView{
 
-    public LoginController(repositoryRequests rSource) {
+    public LoginController(RepositoryRequests rSource) {
         super(rSource);
     }
 

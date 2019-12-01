@@ -23,6 +23,7 @@ public class Index extends iServlet {
     @Override
     protected void post() throws Exception {
         controller = new IndexController(repository);
+        controller.main();
         result = controller.getJson();
     }
 

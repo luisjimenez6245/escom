@@ -11,6 +11,7 @@ public enum UserType {
 
     BLOCKED,
     AVILABLE,
-    NOT_VERIFIED
+    NOT_VERIFIED,
+    PUBLIC
 
 }

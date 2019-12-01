@@ -12,12 +12,13 @@ import models.AttributeKind;
 import models.Attribute;
 import models.Table;
 import models.Database;
+import models.Session;
 
 /**
  *
  * @author Luis Diego Jiménez Delgado
  */
-public interface repositoryRequests {
+public interface RepositoryRequests {
 
     public Email getEmail();
 
@@ -28,6 +29,10 @@ public interface repositoryRequests {
     public Phone[] getPhoneList();
 
     public User getUser();
+
+    public User getSessionUser();
+
+    public Session getSession();
 
     public User[] getUserList();
 
@@ -54,7 +59,7 @@ public interface repositoryRequests {
     public Database getDatabase();
 
     public Database[] getDatabaseList();
-    
+
     public String getAction();
 
 }

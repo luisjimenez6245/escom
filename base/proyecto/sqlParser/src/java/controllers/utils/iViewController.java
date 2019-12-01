@@ -8,7 +8,7 @@ package controllers.utils;
 import com.google.gson.Gson;
 import controllers.security.Manager;
 import models.User;
-import sources.requests.repositoryRequests;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -18,7 +18,7 @@ public abstract class iViewController {
 
     protected static final String URL = Manager.getInstance().getProperty("URL");
 
-    protected final repositoryRequests rSource;
+    protected final RepositoryRequests rSource;
 
     public User user;
 
@@ -38,12 +38,15 @@ public abstract class iViewController {
 
     protected String modal = "";
 
-    protected iViewController(repositoryRequests rSource) {
+    protected iViewController(RepositoryRequests rSource) {
         this.rSource = rSource;
         this.scripts += "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js\"></script>\n";
-        this.scripts += "<script src=\"" + URL + "js/jquery-linedtextarea.js\"></script>\n";
+        this.scripts += "<script src=\"" + URL + "js/codemirror.js\"></script>\n";
+        this.scripts += "<script src=\"" + URL + "js/sql.js\"></script>\n";
         this.css += "<link rel=\"stylesheet\" href=\"" + URL + "css/general.css\" />\n";
         this.scripts += "<script src=\"" + URL + "js/requestHandler.js\"></script>\n";
+        this.scripts += "<script src=\"" + URL + "js/models.js\"></script>\n";
+        this.scripts += "<script src=\"" + URL + "js/actions.js\"></script>\n";
         this.nav += "      <nav class=\"nav\">\n"
                 + "        <div class=\"container\">\n"
                 + "          <div class=\"logo\"></div>\n"
@@ -95,14 +98,14 @@ public abstract class iViewController {
                 + "        <div></div>\n"
                 + "      </div>\n"
                 + "    </div>\n"
-                + "    <div class=\"modal\">\n"
+                + "    <div class='container-hidden' id='modal-container'>\n"
                 + this.modal
                 + "     </div>\n"
                 + this.nav
                 + "    <div class=\"main\">\n"
                 + content
-                
-                + "    </div>"
+                + "    </div>\n"
+                + "<div id='js-handler' class='container-hidden'></div>\n"
                 + "</body>"
                 + "\n"
                 + scriptsFinal

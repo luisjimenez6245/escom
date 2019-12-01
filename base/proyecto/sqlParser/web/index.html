@@ -12,6 +12,7 @@
     </script>
     <script src="js/requestHandler.js"></script>
     <script src="js/codemirror.js"></script>
+    <script src="js/sql.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -76,29 +77,36 @@
           </div>
           <div class="main">
             <div class="right">
-              <div>
-                a
-              </div>
+              <div></div>
             </div>
             <div class="left">
               <div class="text-area">
                 <textarea id="code-content"></textarea>
+              </div>
+              <div>
+                <input type="button" value="checar" />
               </div>
             </div>
           </div>
         </div>
       </div>
       <footer class="footer">
-        <div class=""></div>
+        <div class="">Proyecto Bases</div>
       </footer>
     </div>
   </body>
   <script>
-    var textarea = document.getElementById("code-content");
-    var editor = CodeMirror.fromTextArea(textarea, {
-      lineNumbers: true,
-      mode: "javascript",
-      smartIndent: true
+    $(function() {
+      let container = document.getElementById("code-content");
+      codemirror = CodeMirror.fromTextArea(container, {
+        lineNumbers: true,
+        mode: "text/x-mysql",
+        indentWithTabs: true,
+        smartIndent: true,
+        matchBrackets: true,
+        autofocus: true,
+        extraKeys: { "Ctrl-Space": "autocomplete" }
+      });
     });
   </script>
 </html>

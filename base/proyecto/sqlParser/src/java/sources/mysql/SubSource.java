@@ -30,14 +30,14 @@ public class SubSource {
                 exec.closeConnection();
                 res = "";
             } catch (SQLException ex) {
-                LOGGER.error(ex);
-                res = ex.getSQLState();
+                res = ex.getMessage();
             }
             exec.closeConnection();
         } catch (SQLException ex) {
+            LOGGER.error(ex);
             res = ex.getSQLState();
         }
-        return res.toLowerCase().contains("");
+        return !res.toLowerCase().contains("your sql syntax");
     }
 
     private void checkQuery(String query) throws SQLException {

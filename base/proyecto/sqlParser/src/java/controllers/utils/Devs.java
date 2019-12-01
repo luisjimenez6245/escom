@@ -2,7 +2,7 @@ package controllers.utils;
 
 import models.AttributeKind;
 import sources.mysql.repositoryMysql;
-import sources.requests.repositoryRequests;
+import sources.requests.RepositoryRequests;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Devs extends iController {
     }
 
     @Override
-    public void get(String name, repositoryRequests repository) {
+    public void get(String name, RepositoryRequests repository) {
         System.out.println(name);
         if (name.equals("attribute")) {
             res = JSON.toJson(source.getAttribute(repository.getAttribute()));
@@ -48,7 +48,7 @@ public class Devs extends iController {
     }
 
     @Override
-    public void getList(String name, repositoryRequests repository) {
+    public void getList(String name, RepositoryRequests repository) {
         if (name.equals("attribute")) {
             res = JSON.toJson(source.getAttributeList(repository.getAttribute()));
         }
@@ -79,7 +79,7 @@ public class Devs extends iController {
     }
 
     @Override
-    public void save(String name, repositoryRequests repository) {
+    public void save(String name, RepositoryRequests repository) {
         if (name.equals("attribute")) {
             res = JSON.toJson(source.saveAttribute(repository.getAttribute()));
         }
@@ -110,7 +110,7 @@ public class Devs extends iController {
     }
 
     @Override
-    public void delete(String name, repositoryRequests repository) {
+    public void delete(String name, RepositoryRequests repository) {
         if (name.equals("attribute")) {
             res = JSON.toJson(source.deleteAttribute((repository.getAttribute()).attributeId));
         }
@@ -141,7 +141,7 @@ public class Devs extends iController {
     }
 
     @Override
-    public void update(String name, repositoryRequests repository) {
+    public void update(String name, RepositoryRequests repository) {
         if (name.equals("attribute")) {
             res = JSON.toJson(source.setAttribute(repository.getAttribute()));
         }
