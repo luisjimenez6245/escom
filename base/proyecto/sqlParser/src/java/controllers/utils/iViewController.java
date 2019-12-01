@@ -41,6 +41,7 @@ public abstract class iViewController {
     protected iViewController(repositoryRequests rSource) {
         this.rSource = rSource;
         this.scripts += "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js\"></script>\n";
+        this.scripts += "<script src=\"" + URL + "js/jquery-linedtextarea.js\"></script>\n";
         this.css += "<link rel=\"stylesheet\" href=\"" + URL + "css/general.css\" />\n";
         this.scripts += "<script src=\"" + URL + "js/requestHandler.js\"></script>\n";
         this.nav += "      <nav class=\"nav\">\n"
@@ -99,18 +100,8 @@ public abstract class iViewController {
                 + "     </div>\n"
                 + this.nav
                 + "    <div class=\"main\">\n"
-                + "      <div class=\"left-container\" id='left-container'>\n"
-                + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
-                + "        <div class=\"container\">\n"
-                + "          a\n"
-                + "        </div>\n"
-                + "      </div>\n"
-                + "      <div class=\"main-body\">\n"
-                + "        <div class=\"nav-rigth\"></div>\n"
-                + "      </div>\n"
-                + "      <footer class=\"footer\">\n"
-                + "        <div class=\"\"></div>\n"
-                + "      </footer>\n"
+                + content
+                
                 + "    </div>"
                 + "</body>"
                 + "\n"

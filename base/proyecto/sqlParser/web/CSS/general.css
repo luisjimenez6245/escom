@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url(./codemirror.css);
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);
@@ -26,6 +27,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   margin: 0;
+  background-color: #f8f8f8;
 }
 html {
   font-family: sans-serif;
@@ -39,6 +41,7 @@ html {
   width: 350px;
   top: 0px;
   background-color: #24292e;
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22);
 }
 .left-container .close {
   float: right;
@@ -142,6 +145,33 @@ html {
 .form .button:hover {
   opacity: 0.7;
 }
+.main-body {
+  width: 100%;
+  min-width: 80%;
+}
+.main-body .container {
+  background-color: white;
+  margin-top: 1.2rem;
+  width: 80%;
+  height: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-left: 7.5%;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24);
+}
+.main-body .container .title {
+  width: 100%;
+  text-align: center;
+  color: #323232;
+  font-size: 1.8rem;
+  padding-bottom: 1.2rem;
+}
+.main-body .container .sutitle {
+  width: 100%;
+  text-align: justify;
+}
 .nav {
   width: 100vw;
   background-color: #24292e;
@@ -207,14 +237,22 @@ html {
   border-bottom: 2px solid white;
 }
 .main {
-  width: 100vw;
+  width: 100%;
+  display: table;
 }
-.main .canvas-container {
+.main .text-area {
+  margin-top: 1rem;
+}
+.main textarea {
+  text-align: justify;
+  resize: none;
   width: 90%;
-  margin-left: 5% !important;
-}
-.main .canvas-container canvas {
-  height: 100%;
+  padding-left: 2.5%;
+  padding-top: 5px;
+  height: 400px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #e6e6e6;
 }
 .left .main .right div {
   padding-top: 50px;
@@ -223,11 +261,12 @@ html {
 }
 .main .left {
   float: left;
-  width: 60vw;
+  width: 55%;
 }
 .main .right {
+  background-color: green;
   float: right;
-  width: 40vw;
+  width: 45%;
 }
 .main .code {
   margin-top: 10px;

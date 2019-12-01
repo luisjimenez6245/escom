@@ -17,8 +17,22 @@ import views.IndexView;
 public class IndexController extends iViewController implements IndexView {
 
     private final IndexPresenter presenter;
-    
-    private final String LEFTNAV = "";
+
+    private final String CONTENT = ""
+            + "      <div class=\"main-body\">\n"
+            + "        <div class=\"nav-rigth\"></div>\n"
+            + "      </div>\n"
+            + "      <footer class=\"footer\">\n"
+            + "        <div class=\"\"></div>\n"
+            + "      </footer>\n";
+
+    private final String LEFTNAV = ""
+            + "      <div class=\"left-container\" id='left-container'>\n"
+            + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
+            + "        <div class=\"container\">\n"
+            + "          a\n"
+            + "        </div>\n"
+            + "      </div>\n";
 
     public IndexController(repositoryRequests rSource) {
         super(rSource);
@@ -41,7 +55,7 @@ public class IndexController extends iViewController implements IndexView {
 
     @Override
     public void view() {
-
+        content = LEFTNAV+ CONTENT;
     }
 
     @Override
