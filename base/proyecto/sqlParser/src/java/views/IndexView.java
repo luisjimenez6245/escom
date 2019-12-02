@@ -18,12 +18,14 @@ public interface IndexView extends iView {
 
     public void showTables(Table[] tables);
 
-    public void showQuerys(Query[] queries);
+    public void showQueries(Query[] queries);
 
     public void showError(String message);
     
     public void setUser(User user);
     
     public void clickCheckQuery(Query query, boolean isValid);
+    
+    public void showProbableQueries(Query[] queries);
 
 }

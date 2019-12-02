@@ -14,7 +14,11 @@ function onClickCheckSyntax() {
 }
 
 function onClickAutoComplete(query) {
-  let q = $(".CodeMirror")[0].CodeMirror.getValue() + " " + query;
+  var q = $(".CodeMirror")[0].CodeMirror.getValue();
+  if (q !== undefined && q !== "") {
+    q += ' '; 
+  }
+  q += query;
   $(".CodeMirror")[0].CodeMirror.setValue(q);
   onAutoComplete();
 }

@@ -139,11 +139,8 @@ public class IndexController extends iViewController implements IndexView {
     }
 
     @Override
-    public void showQuerys(Query[] queries) {
-        String res = "";
-        for (Query t : queries) {
-            res += "<div class=\"item\" onclick=\"onClickAutoComplete('" + t.name + "')\">" + t.name + "</div>\n";
-        }
+    public void showQueries(Query[] queries) {
+        String res = createQueries(queries);
         CONTENT = CONTENT.replace("$helper-items$", res);
         content = CONTENT;
     }
@@ -187,7 +184,24 @@ public class IndexController extends iViewController implements IndexView {
         scriptsFinal += "<script>"
                 + "showModal();"
                 + "</script>";
+    }
 
+    @Override
+    public void showProbableQueries(Query[] queries) {
+        String res = createQueries(queries);
+        modal = "#query-helper-container";
+        content = res;
+        scriptsFinal = "<script>\n"
+                + "$('#query-helper-container').empty();\n"
+                + "</script>\n";
+    }
+
+    private String createQueries(Query[] queries) {
+        String res = "";
+        for (Query t : queries) {
+            res += "<div class=\"item\" onclick=\"onClickAutoComplete('" + t.name + "')\">" + t.name + "</div>\n";
+        }
+        return res;
     }
 
 }

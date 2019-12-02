@@ -26,7 +26,7 @@ public class IndexPresenter {
     public void loadView(User user) {
         if (user == null || user.userId == 0) {
             user = source.getUser(new User(0).build(null, null, null, false, null, UserType.PUBLIC, null, null));
-            this.view.showQuerys(source.getQueryList(new Query(0).build(null, QueryType.INITAL, null)));
+            this.view.showQueries(source.getQueryList(new Query(0).build(null, QueryType.INITAL, null)));
             loadDatabases(user, null);
         }
         this.view.view();
@@ -67,7 +67,8 @@ public class IndexPresenter {
     public void onGetQuery(Query query, User user, Database database) {
         if (user == null || user.userType.equals(UserType.PUBLIC) || user.userId == 0) {
         }
-        this.view.showQuerys(source.getQueryList(new Query(0).build(null, query.queryType, query.name)));
+        System.out.println(query.name);
+        this.view.showProbableQueries(source.getQueryList(new Query(0).build(null, query.queryType, null)));
     }
 
     public void onClickCheckQuery(Query query, User user, Database database) {

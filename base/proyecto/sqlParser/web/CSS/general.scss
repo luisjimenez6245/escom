@@ -90,9 +90,10 @@ html {
     @include disable-selection();
   }
   .item{
-    display: inline;
+    display: inline-block;
     background-color: rgba(36, 41, 46, .9);
-    padding: .3rem;;
+    padding: .3rem;
+    margin-bottom: 5px;
     font-size: .8rem;
     color:white;
     vertical-align: middle;

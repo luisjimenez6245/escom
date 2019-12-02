@@ -52,9 +52,10 @@ html {
   user-select: none;
 }
 .container-items .item {
-  display: inline;
+  display: inline-block;
   background-color: rgba(36, 41, 46, 0.9);
   padding: 0.3rem;
+  margin-bottom: 5px;
   font-size: 0.8rem;
   color: white;
   vertical-align: middle;
