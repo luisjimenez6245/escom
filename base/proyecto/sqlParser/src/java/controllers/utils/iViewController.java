@@ -5,6 +5,7 @@
  */
 package controllers.utils;
 
+import org.apache.commons.text.StringEscapeUtils;
 import com.google.gson.Gson;
 import controllers.security.Manager;
 import models.User;
@@ -99,12 +100,15 @@ public abstract class iViewController {
                 + "      </div>\n"
                 + "    </div>\n"
                 + "    <div class='container-hidden' id='modal-container'>\n"
-                + this.modal
-                + "     </div>\n"
-                + this.nav
-                + "    <div class=\"main\">\n"
-                + content
-                + "    </div>\n"
+                + StringEscapeUtils.escapeJava(
+                        this.modal
+                        + "     </div>\n"
+                        + this.nav
+                        + "    <div class=\"main\">\n"
+                        + content
+                        + "    </div>\n"
+                        + ""
+                ).replace("\\n", "").replace("\\\"", "\"")
                 + "<div id='js-handler' class='container-hidden'></div>\n"
                 + "</body>"
                 + "\n"
@@ -167,7 +171,7 @@ public abstract class iViewController {
         public String modal;
 
         public html(String content, String script, String modal) {
-            this.content = content;
+            this.content = StringEscapeUtils.escapeJson(content);
             this.script = script;
             this.modal = modal;
         }

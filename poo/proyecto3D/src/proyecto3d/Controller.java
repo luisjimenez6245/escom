@@ -29,5 +29,4 @@ public abstract class Controller extends JFrame {
     protected abstract void loadContent();
 
     protected abstract void loadActions();
-
 }

@@ -67,9 +67,18 @@ public class Container extends JPanel {
         int deltaX3 = (firstPoint.x + thirdPoint.x) / 2;
         int deltaY3 = (firstPoint.y + thirdPoint.y) / 2;
         if (level <= 0) {
-            triangle.drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y);
-            triangle.drawLine(secondPoint.x, secondPoint.y, thirdPoint.x, thirdPoint.y);
-            triangle.drawLine(thirdPoint.x, thirdPoint.y, firstPoint.x, firstPoint.y);
+            new Thread() {
+                public void run() {
+                    try {
+                        sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    triangle.drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y);
+                    triangle.drawLine(secondPoint.x, secondPoint.y, thirdPoint.x, thirdPoint.y);
+                    triangle.drawLine(thirdPoint.x, thirdPoint.y, firstPoint.x, firstPoint.y);
+                }
+            }.start();
         } else {
 
             triangle(triangle, new Point((firstPoint.x), (firstPoint.y)), new Point((deltaX1), (deltaY1)), new Point((deltaX3), (deltaY3)), level - 1);

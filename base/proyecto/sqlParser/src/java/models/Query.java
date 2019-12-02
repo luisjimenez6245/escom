@@ -34,7 +34,9 @@ public class Query extends Model {
         if (name != null) {
             String helper = name.replace(" ", "");
             helper = helper.toLowerCase();
-            if (helper.startsWith("insert")) {
+            if (helper.equals("")) {
+                this.queryType = QueryType.INITAL;
+            } else if (helper.startsWith("insert")) {
                 this.queryType = QueryType.INSERT;
             } else if (helper.startsWith("select")) {
                 this.queryType = QueryType.SELECT;

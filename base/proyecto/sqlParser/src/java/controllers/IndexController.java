@@ -192,7 +192,8 @@ public class IndexController extends iViewController implements IndexView {
         modal = "#query-helper-container";
         content = res;
         scriptsFinal = "<script>\n"
-                + "$('#query-helper-container').empty();\n"
+                + "\n"
+                + " $('#query-helper-container').empty();\n\n"
                 + "</script>\n";
     }
 
