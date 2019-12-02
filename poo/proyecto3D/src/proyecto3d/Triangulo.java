@@ -7,6 +7,8 @@ package proyecto3d;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -49,18 +51,21 @@ public class Triangulo extends Controller implements ActionListener {
 
     @Override
     protected void loadActions() {
-       btn.addActionListener(this);
-
+        btn.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String res = this.field.getText() == null ? "" : this.field.getText();
         try {
-            Container.draw(res);
+            this.setVisible(false);
         } catch (Exception ex) {
             System.out.println(ex.toString());
+        } catch (Throwable ex) {
+            Logger.getLogger(Triangulo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.dispose();
+        new Container(Integer.parseInt(res));
     }
 
 }

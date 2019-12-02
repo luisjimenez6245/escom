@@ -167,7 +167,6 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         }*/
 
         window.pack();
-        window.requestFocusInWindow();
         drawTurtleIcon();
         window.setVisible(true);
         makeShapes();
@@ -270,6 +269,10 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      *
      * @param i Pass this any integer. It doesn't do anything.
      */
+    public static void setWindow(JFrame frame) {
+        window = frame;
+    }
+
     private Turtle(int i) {
     }
 
@@ -587,8 +590,6 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static Color getStateDotColor(ArrayList state) {
         return (Color) state.get(20);
     }
-
-    
 
     private static void restoreState(long time) {
         ArrayList state = turtleStates.get(time);
@@ -2211,5 +2212,4 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         return (canvasY - centerY) * scale + height / 2.0;
     }
 
-   
 }
