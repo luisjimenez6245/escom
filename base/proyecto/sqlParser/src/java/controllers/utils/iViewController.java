@@ -52,17 +52,8 @@ public abstract class iViewController {
                 + "        <div class=\"container\">\n"
                 + "          <div class=\"logo\"></div>\n"
                 + "          <div class=\"urls\">\n"
-                + "            <div class=\"\" onclick=\"window.location.href='index.html'\">\n"
+                + "            <div class=\"\" onclick=\"window.location.href='index'\">\n"
                 + "              index\n"
-                + "            </div>\n"
-                + "            <div class=\"\" onclick=\"window.location.href='pila.html'\">\n"
-                + "              pila\n"
-                + "            </div>\n"
-                + "            <div class=\"\" onclick=\"window.location.href='cola.html'\">\n"
-                + "              cola\n"
-                + "            </div>\n"
-                + "            <div class=\"active\" onclick=\"window.location.href='lista.html'\">\n"
-                + "              lista\n"
                 + "            </div>\n"
                 + "          </div>\n"
                 + "          <div class=\"user-info\"></div>\n"
@@ -171,7 +162,7 @@ public abstract class iViewController {
         public String modal;
 
         public html(String content, String script, String modal) {
-            this.content = StringEscapeUtils.escapeJson(content);
+            this.content = content;
             this.script = script;
             this.modal = modal;
         }

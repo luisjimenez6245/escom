@@ -44,7 +44,7 @@ public class IndexController extends iViewController implements IndexView {
             + "                <textarea id=\"code-content\"></textarea>\n"
             + "              </div>\n"
             + "              <div>\n"
-            + "                <input type=\"button\" value=\"checar\" onclick=\"onClickCheckSyntax()\"/>\n"
+            + "                <input type=\"button\" value=\"checar\" class=\"button\" onclick=\"onClickCheckSyntax()\"/>\n"
             + "              </div>\n"
             + "            </div>\n"
             + "          </div>\n"
@@ -53,7 +53,6 @@ public class IndexController extends iViewController implements IndexView {
             + "      <footer class=\"footer\">\n"
             + "        <div class=\"\">Proyecto Bases</div>\n"
             + "      </footer>\n";
-
     private String LEFTNAV = ""
             + "      <div class=\"container-hidden\" id='left-container'>\n"
             + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
@@ -155,32 +154,60 @@ public class IndexController extends iViewController implements IndexView {
     }
 
     @Override
-    public void clickCheckQuery(Query query, boolean isValid) {
+    public void clickCheckQuery(Query query, boolean isValid, String error) {
         content = "";
-        modal = ""
-                + "  <div class='blur'></div>\n"
-                + "            <div class='container-form'>\n"
-                + "                <div class='header'>\n"
-                + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
-                + "                    <div class='title'>" + String.valueOf(isValid) + "</div>\n"
-                + "                    <div>" + query.name + "</div>\n"
-                + "                </div>\n"
-                + "                <div class='content container-form form form-control'>\n"
-                + "                    <div clasS='container'>\n"
-                + "                        <div class='container-full'></div>\n"
-                + "                        <div class='container-full' style='text-align: center'>\n"
-                + "                           Ocurrió un error interno, favor de verificar tus datos y volverlo a intentar\n"
-                + "                        </div>\n"
-                + "                        <div class='container-full'></div>\n"
-                + "                        <div class='container-full'>\n"
-                + "                            <div class='button button-middle'  onclick='succesRegister()'>\n"
-                + "                                <label>Aceptar</label>\n"
-                + "                            </div>\n"
-                + "                        </div>\n"
-                + "                        <div class='container-full'></div>\n"
-                + "                    </div>\n"
-                + "                </div>\n"
-                + "            </div>";
+        if (isValid) {
+            modal = ""
+                    + "  <div class='blur'></div>\n"
+                    + "            <div class='container-form'>\n"
+                    + "                <div class='header'>\n"
+                    + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
+                    + "                    <div class='title'>Éxito</div>\n"
+                    + "                    <div>Tu sentencia es valida</div>\n"
+                    + "                </div>\n"
+                    + "                <div class='content container-form form form-control'>\n"
+                    + "                    <div clasS='container'>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                        <div class='container-full' style='text-align: center'>\n"
+                    + "                           La sentencia que escribiste es valida sintácticamente\n"
+                    + "                        </div>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                        <div class='container-full'>\n"
+                    + "                            <div class='button button-middle'  onclick='hideModal()'>\n"
+                    + "                                <label>Aceptar</label>\n"
+                    + "                            </div>\n"
+                    + "                        </div>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                    </div>\n"
+                    + "                </div>\n"
+                    + "            </div>";
+        } else {
+            modal = ""
+                    + "  <div class='blur'></div>\n"
+                    + "            <div class='container-form'>\n"
+                    + "                <div class='header'>\n"
+                    + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
+                    + "                    <div class='title'>Error</div>\n"
+                    + "                    <div>Tu sentencia no es valida</div>\n"
+                    + "                </div>\n"
+                    + "                <div class='content container-form form form-control'>\n"
+                    + "                    <div clasS='container'>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                        <div class='container-full' style='text-align: center'>\n"
+                    + "                           La sentencia que escribiste nor es valida sintácticamente, revisala e intenta de nuevo.<br> El error esta " + error.replace("You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use", "").replace("near", "cerca de").replace("at line", "de la linea")
+                    + "                        </div>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                        <div class='container-full'>\n"
+                    + "                            <div class='button button-middle'  onclick='hideModal()'>\n"
+                    + "                                <label>Aceptar</label>\n"
+                    + "                            </div>\n"
+                    + "                        </div>\n"
+                    + "                        <div class='container-full'></div>\n"
+                    + "                    </div>\n"
+                    + "                </div>\n"
+                    + "            </div>";
+
+        }
         scriptsFinal += "<script>"
                 + "showModal();"
                 + "</script>";

@@ -72,8 +72,16 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private static Turtle selectedTurtle;
     private static boolean running;
 
+    public static JMenu menu;
+    public static JMenuItem menuItem1;
+
     static {
         init();
+    }
+
+    public static void setActiion(JMenuItem item) {
+        menuItem1 = item;
+        menu.add(menuItem1);
     }
 
     /**
@@ -93,6 +101,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         while (running) {
             time = System.nanoTime();
             processKeys();
+            update();
             waitUntil(time + 1000000000 / fps);
         }
     }
@@ -160,11 +169,21 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         setupBuffering();
         draw = new JLabel(icon);
         window.setContentPane(draw);
-        /*
+
+        JMenuBar menuBar = new JMenuBar();
+        menu = new JMenu("Número");
+        menuBar.add(menu);
+
+        if (menuItem1 != null) {
+            menu.add(menuItem1);
+        }
+
+        window.setJMenuBar(menuBar);
+
         try {
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         } catch (Exception e) {
-        }*/
+        }
 
         window.pack();
         drawTurtleIcon();
@@ -180,6 +199,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         window.addKeyListener(turtle);
         draw.addKeyListener(turtle);
         draw.requestFocus();
+        updateAll();
         (new Thread(turtle, "render")).start();
         (new Thread(turtle, "listen")).start();
     }
@@ -188,6 +208,8 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
         running = false;
         window.setVisible(false);
         window.dispose();
+        window = null;
+        init();
     }
 
     private static void setupBuffering() {
@@ -2210,6 +2232,13 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
 
     public static double screenY(double canvasY) {
         return (canvasY - centerY) * scale + height / 2.0;
+    }
+
+    public int getNumber() {
+        int ans = Integer.parseInt(
+                JOptionPane.showInputDialog("Selecciona un número:")
+        );
+        return ans;
     }
 
 }

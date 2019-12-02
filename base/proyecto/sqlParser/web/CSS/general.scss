@@ -79,6 +79,64 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+.button{
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center !important;
+  background-color:  rgba(36, 41, 46, 1);
+  border: none;
+  color: white;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 5px;
+  margin-right: 5px;
+  .add{
+      &:before{
+          margin-right: .3rem;
+          content: '+';
+      }
+
+  }
+  label{
+      font-size: 1.1rem !important;
+      cursor: pointer ;
+      text-align: center !important;
+      text-transform: uppercase;
+  }
+  &-clear, &-full{
+      float:right;
+  }
+  &-clear, &-middle-clear{
+      vertical-align: top;
+      font-family: white;
+      color: rgba(36, 41, 46, 1);
+      padding: .8rem;
+  }
+  &-full, &-middle{
+      font-size: .8rem;
+      padding: 1rem;
+      background-color:  rgba(36, 41, 46, .1);
+      color:  rgba(36, 41, 46, 1);
+      font-weight: 500;
+  }
+  &-middle{
+      margin: auto;
+  }
+  &-middle-clear{
+      margin: auto;
+  }
+  &:hover, &:focus{
+      opacity: .7;
+  }
+}
+
 .container-items{
   width: 90%;
   margin-left: 2.5%;
@@ -105,7 +163,7 @@ html {
     }
   }
   .icon{
-    
+
   }
 }
 

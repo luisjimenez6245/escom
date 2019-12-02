@@ -1,25 +1,48 @@
 package proyecto3d;
 
 import java.awt.Color;
-import javax.swing.JFrame;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 public class Container {
 
-    private  Turtle fabi;
-    private final int level;
+    private Turtle fabi;
+    private int level;
 
     public Container(int level) {
         this.level = level;
         init();
     }
-    public void init(){
+
+    public void init() {
+        JMenuItem menuItem1 = new JMenuItem("Seleccionar");
+        menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                level = fabi.getNumber();
+                close();
+                Turtle.setActiion(menuItem1);
+                fabi = new Turtle(-300, -260);
+                createTriangle(level, new Point(-300, -260), new Point(300, -260), new Point(0, 260));
+            }
+        });
+        Turtle.setActiion(menuItem1);
         Turtle.setCanvasSize(700, 700);
         fabi = new Turtle(-300, -260);
         createTriangle(level, new Point(-300, -260), new Point(300, -260), new Point(0, 260));
     }
 
     public void close() {
+        fabi.setPosition(-300, -260);
         fabi.clear();
+        Turtle.update();
+        fabi.exit();
     }
 
     public void createTriangle(int level, Point firstPoint, Point secondPoint, Point thirdPoint) {
@@ -31,6 +54,7 @@ public class Container {
             fabi.setPosition(thirdPoint.x, thirdPoint.y);
             fabi.setPosition(firstPoint.x, firstPoint.y);
             fabi.setPosition(secondPoint.x, secondPoint.y);
+            Turtle.update();
 
         } else {
             double deltaX1 = (secondPoint.x + firstPoint.x) / 2;

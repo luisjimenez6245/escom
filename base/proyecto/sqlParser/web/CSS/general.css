@@ -35,6 +35,64 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+.button {
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center !important;
+  background-color: #24292e;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.button .add:before {
+  margin-right: 0.3rem;
+  content: "+";
+}
+.button label {
+  font-size: 1.1rem !important;
+  cursor: pointer;
+  text-align: center !important;
+  text-transform: uppercase;
+}
+.button-clear,
+.button-full {
+  float: right;
+}
+.button-clear,
+.button-middle-clear {
+  vertical-align: top;
+  font-family: white;
+  color: #24292e;
+  padding: 0.8rem;
+}
+.button-full,
+.button-middle {
+  font-size: 0.8rem;
+  padding: 1rem;
+  background-color: rgba(36, 41, 46, 0.1);
+  color: #24292e;
+  font-weight: 500;
+}
+.button-middle {
+  margin: auto;
+}
+.button-middle-clear {
+  margin: auto;
+}
+.button:hover,
+.button:focus {
+  opacity: 0.7;
+}
 .container-items {
   width: 90%;
   margin-left: 2.5%;

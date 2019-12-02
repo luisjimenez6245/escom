@@ -22,6 +22,7 @@ public abstract class Controller extends JFrame {
         this.invalidate();
         this.validate();
         this.repaint();
+        this.revalidate();
     }
 
     protected abstract void loadView();

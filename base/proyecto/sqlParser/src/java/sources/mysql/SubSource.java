@@ -13,12 +13,13 @@ public class SubSource {
 
     private Executor exec;
     private final Logger LOGGER = new Logger();
+    public String res;
 
     public SubSource() {
     }
 
     public boolean check(String query, String dbName, String url) {
-        String res = query.toLowerCase();
+        res = query.toLowerCase();
         try {
             try {
                 exec = new Executor(Manager.getInstance().getProperty("dbTestUser"), Manager.getInstance().getProperty("dbTestPassword"), dbName, url, Manager.getInstance().getProperty("dbPort"));

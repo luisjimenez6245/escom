@@ -5,6 +5,7 @@
  */
 package proyecto3d;
 
+import java.util.Random;
 
 /**
  *
@@ -16,9 +17,8 @@ public class Proyecto3D {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Triangulo();
+        Random r = new Random();
+        new Container(Math.abs(r.nextInt() % 7) + 1);
     }
-
-    
 
 }

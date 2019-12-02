@@ -16,56 +16,80 @@ import javax.swing.JTextField;
  *
  * @author luis
  */
-public class Triangulo extends Controller implements ActionListener {
+public class Triangulo {
 
-    private static final long serialVersionUID = -6691512838218834379L;
-    private JTextField field;
-    private JButton btn;
+    public int number = 0;
 
     public Triangulo() {
-        super();
-
+        f a = new f();
+        new Thread(){
+            public void run() {
+                while (number == 0) {
+                    a.method();
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
     }
 
-    @Override
-    protected void loadView() {
-        setLayout(null);
-        setTitle("Triangulo");
-        setVisible(true);
-        setSize(320, 320);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    private class f extends Controller implements ActionListener {
 
-        field = new JTextField("");
-        btn = new JButton("Aceptar");
-        field.setBounds(100, 50, 90, 30);
-        btn.setBounds(100, 100, 90, 30);
-        this.add(field);
-        this.add(btn);
+        private static final long serialVersionUID = -6691512838218834379L;
+        private JTextField field;
+        private JButton btn;
+        public boolean r;
 
-    }
-
-    @Override
-    protected void loadContent() {
-
-    }
-
-    @Override
-    protected void loadActions() {
-        btn.addActionListener(this);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String res = this.field.getText() == null ? "" : this.field.getText();
-        try {
-            this.setVisible(false);
-        } catch (Exception ex) {
-            System.out.println(ex.toString());
-        } catch (Throwable ex) {
-            Logger.getLogger(Triangulo.class.getName()).log(Level.SEVERE, null, ex);
+        public f() {
+            super();
         }
-        this.dispose();
-        new Container(Integer.parseInt(res));
+
+        @Override
+        protected void loadView() {
+            setLayout(null);
+            setTitle("Triangulo");
+            setVisible(true);
+            setSize(320, 320);
+            this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            field = new JTextField("");
+            btn = new JButton("Aceptar");
+            field.setBounds(100, 50, 90, 30);
+            btn.setBounds(100, 100, 90, 30);
+            this.add(field);
+            this.add(btn);
+
+        }
+        
+        public void method(){}
+
+        @Override
+        protected void loadContent() {
+
+        }
+
+        @Override
+        protected void loadActions() {
+            btn.addActionListener(this);
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String res = this.field.getText() == null ? "" : this.field.getText();
+            try {
+                this.setVisible(false);
+            } catch (Exception ex) {
+                System.out.println(ex.toString());
+            } catch (Throwable ex) {
+                Logger.getLogger(Triangulo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.dispose();
+            number = (Integer.parseInt(res));
+            r = false;
+        }
     }
 
 }

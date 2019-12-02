@@ -77,7 +77,7 @@ public class IndexPresenter {
             user = source.getUser(new User(0).build(null, null, null, false, null, UserType.PUBLIC, null, null));
             database = source.getDatabase(new Database(0).build(null, null, null, user.userId));
         }
-        this.view.clickCheckQuery(query, sub.check(query.name, database.name, database.url));
+        this.view.clickCheckQuery(query, sub.check(query.name, database.name, database.url), sub.res);
 
     }
 

@@ -24,7 +24,7 @@ public interface IndexView extends iView {
     
     public void setUser(User user);
     
-    public void clickCheckQuery(Query query, boolean isValid);
+    public void clickCheckQuery(Query query, boolean isValid, String error);
     
     public void showProbableQueries(Query[] queries);
 
