@@ -47,14 +47,17 @@ public class Container {
 
     public void createTriangle(int level, Point firstPoint, Point secondPoint, Point thirdPoint) {
         if (level <= 0) {
-            fabi.penColor(Color.white);
-            fabi.setPosition(firstPoint.x, firstPoint.y);
-            fabi.penColor(Color.red);
-            fabi.setPosition(secondPoint.x, secondPoint.y);
-            fabi.setPosition(thirdPoint.x, thirdPoint.y);
-            fabi.setPosition(firstPoint.x, firstPoint.y);
-            fabi.setPosition(secondPoint.x, secondPoint.y);
-            Turtle.update();
+            new Thread() {
+                public void run() {
+                    Turtle t = new Turtle(firstPoint.x, firstPoint.y);
+                    t.setPosition(secondPoint.x, secondPoint.y);
+                    t.setPosition(thirdPoint.x, thirdPoint.y);
+                    t.setPosition(firstPoint.x, firstPoint.y);
+                    t.hide();
+                    Turtle.update();
+                    t = null;
+                }
+            }.start();
 
         } else {
             double deltaX1 = (secondPoint.x + firstPoint.x) / 2;

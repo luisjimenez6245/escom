@@ -18,7 +18,8 @@ public class Proyecto3D {
      */
     public static void main(String[] args) {
         Random r = new Random();
-        new Container(Math.abs(r.nextInt() % 7) + 1);
+        new Container(Math.abs(r.nextInt() % 5) + 1);
+       // new Container(6);
     }
 
 }
