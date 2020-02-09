@@ -57,6 +57,7 @@ public class IndexController extends iViewController implements IndexView {
             + "      <div class=\"container-hidden\" id='left-container'>\n"
             + "        <span class=\"close fas fa-times\" onclick=\"hideLeft()\"></span>\n"
             + "        <div class=\"container\">\n"
+            + "          <div class=\"option\" onclick='onClickNewDatabase()'>Nueva base de datos <span class='fas fa-plus'></span></div>\n"
             + "          $content$\n"
             + "        </div>\n"
             + "      </div>\n";
@@ -82,7 +83,15 @@ public class IndexController extends iViewController implements IndexView {
                     if (action.equals("auto_complete")) {
                         this.presenter.onGetQuery(rSource.getQuery(), user, rSource.getDatabase());
                     } else {
-                        content = "hola";
+                        if (action.equals("click_create_database")) {
+                            this.presenter.onClickNewDatabase();
+                        } else {
+                            if (action.equals("click_save_database")) {
+                                this.presenter.onClickNewDatabase();
+                            } else {
+                                content = "";
+                            }
+                        }
                     }
                 }
             }
@@ -126,7 +135,7 @@ public class IndexController extends iViewController implements IndexView {
     public void showDatabases(Database[] databases) {
         String res = "";
         for (Database d : databases) {
-            res += "<div class=\"child\">" + d.name + "</div>\n";
+            res += "<div class=\"child\" id='database-item-" + d.databaseId + "' onclick=\"onClickUseDatabase('item-" + d.databaseId + "')\">" + d.name + "<span class='fas fa-info-circle'></span></div>\n";
         }
         LEFTNAV = LEFTNAV.replace("$content$", res);
         content = LEFTNAV;
@@ -183,7 +192,7 @@ public class IndexController extends iViewController implements IndexView {
                     + "            </div>";
         } else {
             modal = ""
-                    + "  <div class='blur'></div>\n"
+                    + "  <div class='blur' onclick='hideModal()'></div>\n"
                     + "            <div class='container-form'>\n"
                     + "                <div class='header'>\n"
                     + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
@@ -227,9 +236,46 @@ public class IndexController extends iViewController implements IndexView {
     private String createQueries(Query[] queries) {
         String res = "";
         for (Query t : queries) {
-            res += "<div class=\"item\" onclick=\"onClickAutoComplete('" + t.name + "')\">" + t.name + "</div>\n";
+            res += "<div class=\"item\" onclick=\"onClickAutoComplete('" + t.name + "')\"> " + t.name + "</div>\n";
         }
         return res;
+    }
+
+    @Override
+    public void clickCreateDatabase() {
+        content = "";
+        modal = ""
+                + "  <div class='blur' onclick='hideModal()'></div>\n"
+                + "            <div class='container-form'>\n"
+                + "                <div class='header'>\n"
+                + "                    <span class='fas fa-times' onclick='hideModal()'></span>\n"
+                + "                    <div class='title'>Nueva base de datos</div>\n"
+                + "                    <div>Estas apunto de crear una nueva base de datos.</div>\n"
+                + "                </div>\n"
+                + "                <div class='content container-form form form-control'>\n"
+                + "                    <div clasS='container'>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                        <div class='container-full' style='text-align: center'>\n"
+                + "                           Se generará el código sql para que se ejecute, ejecutalo para crear la base de datos.\n"
+                + "                        </div>\n"
+                + "                        <div class='container-full'></div>"
+                + "                        <div class='container-full'>"
+                + "                            <input type='text' placeholder='Nombre'  id='db_name' value=''/>\n"
+                + "                        </div>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                        <div class='container-full'>\n"
+                + "                            <div class='button button-middle'  onclick='onClickSaveDatabase()'>\n"
+                + "                                <label>Aceptar</label>\n"
+                + "                            </div>\n"
+                + "                        </div>\n"
+                + "                        <div class='container-full'></div>\n"
+                + "                    </div>\n"
+                + "                </div>\n"
+                + "            </div>";
+        scriptsFinal += "<script>"
+                + "showModal();"
+                + "</script>";
+
     }
 
 }

@@ -3,7 +3,6 @@
 @import "./codemirror.css";
 @import "./normalize.css";
 
-
 @mixin transitions($transition) {
   -webkit-transition: $transition; /* Safari */
   transition: $transition;
@@ -79,11 +78,11 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-.button{
+.button {
   font-weight: 500;
   cursor: pointer;
   text-align: center !important;
-  background-color:  rgba(36, 41, 46, 1);
+  background-color: rgba(36, 41, 46, 1);
   border: none;
   color: white;
   border-radius: 2px;
@@ -97,77 +96,79 @@ html {
   padding-right: 20px;
   margin-top: 5px;
   margin-right: 5px;
-  .add{
-      &:before{
-          margin-right: .3rem;
-          content: '+';
-      }
-
+  .add {
+    &:before {
+      margin-right: 0.3rem;
+      content: "+";
+    }
   }
-  label{
-      font-size: 1.1rem !important;
-      cursor: pointer ;
-      text-align: center !important;
-      text-transform: uppercase;
+  label {
+    font-size: 1.1rem !important;
+    cursor: pointer;
+    text-align: center !important;
+    text-transform: uppercase;
   }
-  &-clear, &-full{
-      float:right;
+  &-clear,
+  &-full {
+    float: right;
   }
-  &-clear, &-middle-clear{
-      vertical-align: top;
-      font-family: white;
-      color: rgba(36, 41, 46, 1);
-      padding: .8rem;
+  &-clear,
+  &-middle-clear {
+    vertical-align: top;
+    font-family: white;
+    color: rgba(36, 41, 46, 1);
+    padding: 0.8rem;
   }
-  &-full, &-middle{
-      font-size: .8rem;
-      padding: 1rem;
-      background-color:  rgba(36, 41, 46, .1);
-      color:  rgba(36, 41, 46, 1);
-      font-weight: 500;
+  &-full,
+  &-middle {
+    font-size: 0.8rem;
+    padding: 1rem;
+    background-color: rgba(36, 41, 46, 0.1);
+    color: rgba(36, 41, 46, 1);
+    font-weight: 500;
   }
-  &-middle{
-      margin: auto;
+  &-middle {
+    margin: auto;
   }
-  &-middle-clear{
-      margin: auto;
+  &-middle-clear {
+    margin: auto;
   }
-  &:hover, &:focus{
-      opacity: .7;
+  &:hover,
+  &:focus {
+    opacity: 0.7;
   }
 }
 
-.container-items{
+.container-items {
   width: 90%;
   margin-left: 2.5%;
   padding-left: 2.5%;
   padding-right: 2.5%;
   margin-top: 1rem;
-  .container-content{
-    padding-top: .3rem;
-    @include disable-selection();
+  .container-content {
+    padding-top: 0.3rem;
+    @include disable-selection;
   }
-  .item{
+  .item {
     display: inline-block;
-    background-color: rgba(36, 41, 46, .9);
-    padding: .3rem;
+    background-color: rgba(36, 41, 46, 0.9);
+    padding: 0.3rem;
     margin-bottom: 5px;
-    font-size: .8rem;
-    color:white;
+    font-size: 0.8rem;
+    color: white;
     vertical-align: middle;
     border-radius: 2px;
-    @include disable-selection();
-    &:hover{
-      opacity: .7;
+    @include disable-selection;
+    &:hover {
+      opacity: 0.7;
       cursor: pointer;
     }
   }
-  .icon{
-
+  .icon {
   }
 }
 
-.left-container{
+.left-container {
   z-index: 100;
   position: fixed;
   height: 100vh;
@@ -175,32 +176,45 @@ html {
   top: 0px;
   background-color: rgba(36, 41, 46, 1);
   @include card(5);
-  .close{
+  .close {
     float: right;
     margin-right: 10px;
     margin-top: 20px;
     color: white;
-    font-size: 1.2rem;      
-    opacity: .5;
-    &:hover{
+    font-size: 1.2rem;
+    opacity: 0.5;
+    &:hover {
       opacity: 1;
     }
   }
-  .container{
+  .container {
     counter-reset: section;
     width: 90%;
     margin-left: 5%;
     min-width: 2rem;
     padding-top: 45px;
     color: white;
-    .child{
-      &::before{
-        counter-increment: section;
-        content:counter(section) ;      
+    .child,
+    .option {
+      @include disable-selection;
+      opacity: 0.7;
+      margin-top: 5px;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      width: 100%;
+      height: auto;
+      text-transform: uppercase;
+      &:hover {
+        opacity: 1;
+      }
+      span {
+        float: right;
       }
     }
+    .selected {
+      opacity: 1;
+    }
   }
-
 }
 
 .container-hidden {
@@ -245,7 +259,7 @@ html {
       }
       &:nth-child(3) {
         left: 26px;
-        animation:  lds-ellipsis3 0.6s infinite;
+        animation: lds-ellipsis3 0.6s infinite;
       }
       &:nth-child(4) {
         left: 45px;
@@ -276,20 +290,89 @@ html {
       opacity: 0.7;
     }
   }
+  &-control {
+    position: relative;
+    @include div-properties(100%, auto, null, inline-block);
+  }
+  .word {
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    @include div-properties(
+      92.5% !important,
+      auto !important,
+      null,
+      inline-block !important
+    );
+    overflow: scroll;
+  }
+  .ql-toolbar {
+    margin-top: 1rem !important;
+    position: relative !important;
+    @include div-properties(
+      92.5% !important,
+      auto !important,
+      null,
+      inline-block !important
+    );
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+      @media only screen and (min-width: 0) {
+          @include div-properties(92.5%, 1.5rem, rgba(0,0,0,0), inline-block);
+          font-size: 1rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+      }
+      @media only screen and (min-width: 720) {
+          @include div-properties(92.5%, 1.5rem, rgba(0,0,0,0), inline-block);
+          font-size: 1rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+      }
+      font-weight: 500;
+      border: none;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,.6);
+      color: rgba(0, 0, 0, 0.6);
+      &:focus {
+          outline: none;
+          border-bottom: 1px solid black;
+          color: rgba(0, 0, 0, 1);
+      }
+      &:disabled {
+          color: rgba(0, 0, 0, 0.6);
+          @include disable-selection;
+      }
+  }
+  .tag {
+    &-small {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+    &-medium {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+    &-big {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
 }
-.footer{
+.footer {
   margin-top: 3rem;
   width: 90%;
   text-align: center;
   margin-left: 5%;
-  font-size: .8rem;
-  color: rgba(100,100,100,1);
+  font-size: 0.8rem;
+  color: rgba(100, 100, 100, 1);
 }
 
-.main-body{
+.main-body {
   width: 100%;
   min-width: 80%;
-  .container{
+  .container {
     background-color: white;
     margin-top: 1.2rem;
     width: 80%;
@@ -300,14 +383,14 @@ html {
     padding-right: 2.5%;
     margin-left: 7.5%;
     @include card(1);
-    .title{
+    .title {
       width: 100%;
       text-align: center;
       color: rgba(50, 50, 50, 1);
       font-size: 1.8rem;
       padding-bottom: 1.2rem;
     }
-    .subtitle{
+    .subtitle {
       width: 100%;
       text-align: justify;
       font-size: 1rem;
@@ -322,7 +405,7 @@ html {
   color: white;
   padding-top: 15px;
   padding-bottom: 15px;
-  div{
+  div {
     @include disable-selection;
   }
   .container {
@@ -340,7 +423,7 @@ html {
       margin-bottom: 5px;
       text-decoration: none;
     }
-    &:hover{
+    &:hover {
       opacity: 1;
     }
   }
@@ -379,12 +462,12 @@ html {
 .main {
   width: 100%;
   display: table;
-  .text-area{
+  .text-area {
     width: 95%;
     margin-top: 1rem;
-    border: 1px solid rgba(240,240, 240, 1);
+    border: 1px solid rgba(240, 240, 240, 1);
   }
-  textarea{
+  textarea {
     text-align: justify;
     resize: none;
     width: 100%;
@@ -442,166 +525,183 @@ html {
 .container-modal {
   @include div-properties(100vw, 100vh, rgba(40, 40, 40, 0.6), flex);
   position: fixed;
-  z-index:200;
+  z-index: 200;
   vertical-align: middle;
   align-items: center;
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   @include disable-selection;
   .blur {
-      top:0px;
-      left:0px;
-      @include div-properties(100%, 100%, rgba(30, 30, 30, 0.7), flex);
-      z-index: 0;
-      position: absolute;
+    top: 0px;
+    left: 0px;
+    @include div-properties(100%, 100%, rgba(30, 30, 30, 0.7), flex);
+    z-index: 0;
+    position: absolute;
   }
-  .container{
-      @include div-properties(auto, auto, null, inline-block);
-      &-message, &-form{
-          position: relative;
-          margin: auto;
-          vertical-align: middle;
-          @media only screen and (min-width: 20px) {
-              @include div-properties(90%, auto, white, inline-block);
-          }
-          .header, .footer{
-              span{
-                  position: absolute;
-                  float: right;
-                  @include div-properties(1.2rem, 1.2rem, null, block);
-                  opacity:.7;
-                  font-size: 1.2rem;
-                  &:hover{
-                      opacity: 1;
-                  }
-                  cursor: pointer;
-              }
-          }
-          .header{
-              @include div-properties(100%, auto, #3780af, inline-block);
-              padding-top: 1rem !important;
-              div{
-                  margin-left: 5%;
-                  text-align: center;
-                  color: white;
-                  padding-bottom: .5rem;
-                  @include div-properties(90%, auto, #3780af, inline-block);
-              }
-              .title{
-                  padding-top: 1rem !important;
-                  font-size: 1.5rem;
-                  line-height: 1.2rem;
-                  font-weight: 500;
-                  text-transform: uppercase;
-              }
-              span{
-                  color: white;
-                  right: .5rem;
-                  top: .5rem;
-              }
-
-          }
-          .content{
-              @include div-properties(100%, auto, null, inline-block);
-              margin-top: .2rem;
-              .container-full{
-                  @include div-properties(90%, auto, null, inline-block);
-                  margin: 0px;
-                  margin-left: 5%;
-                  margin-top: .2rem;
-                  font-size: 1rem;
-                  label{
-                      font-size: 1rem;
-                  }
-                  select{
-                      font-size: .9rem;
-                  }
-                  input[type="text"],
-                  input[type="email"],
-                  input[type="password"], select {
-                      float:none;
-                      @media only screen and (min-width: 0) {
-                          @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
-                      }
-                      @media only screen and (min-width: 720) {
-                          @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
-                      }
-                  }
-                  .title{
-                      font-size: 1.05rem;
-                      font-weight: 400;
-                      text-align: left;
-                      padding: 0px;
-                      @include div-properties(100%, 1.5rem, rgba(0,0,0,0), inline-block);
-                      margin: 0px;
-                  }
-                  .mini-title{
-                      text-transform: uppercase;
-                      padding-top: .5rem;
-                      font-size: 1.05rem;
-                      padding-bottom: .5rem;
-                      span{
-                          font-size: 0.95rem;
-                      }
-                  }
-                  .word{
-                      position: relative;
-                      @include div-properties(95%, 7rem, null, inline-block);
-                      overflow: hidden;
-                      overflow-y: auto;
-                      font-size: .95rem;
-                      opacity: .7;
-                      &:hover{
-                          opacity: 1;
-                      }
-                  }
-              }
-          }
-          .footer{
-              max-height:  3rem !important;
-              padding:  0px !important;
-              margin-top: 0px !important;
-              @include div-properties(100%, auto, white, inline-block);
-              span{
-                  color: gray;
-                  right: .5rem;
-                  bottom: .5rem;
-              }
-          }
+  .container {
+    @include div-properties(auto, auto, null, inline-block);
+    &-message,
+    &-form {
+      position: relative;
+      margin: auto;
+      vertical-align: middle;
+      @media only screen and (min-width: 20px) {
+        @include div-properties(90%, auto, white, inline-block);
       }
-      &-form{
-          @media only screen and (min-width: 768px) {
-              @include div-properties(25%, auto, white, inline-block);
-              min-width: 500px !important;
+      .header,
+      .footer {
+        span {
+          position: absolute;
+          float: right;
+          @include div-properties(1.2rem, 1.2rem, null, block);
+          opacity: 0.7;
+          font-size: 1.2rem;
+          &:hover {
+            opacity: 1;
           }
+          cursor: pointer;
+        }
       }
-      &-message{
-          @media only screen and (min-width: 768px) {
-              @include div-properties(40%, auto, white, inline-block);
-              min-width: 650px !important;
+      .header {
+        @include div-properties(100%, auto, #3780af, inline-block);
+        padding-top: 1rem !important;
+        div {
+          margin-left: 5%;
+          text-align: center;
+          color: white;
+          padding-bottom: 0.5rem;
+          @include div-properties(90%, auto, #3780af, inline-block);
+        }
+        .title {
+          padding-top: 1rem !important;
+          font-size: 1.5rem;
+          line-height: 1.2rem;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+        span {
+          color: white;
+          right: 0.5rem;
+          top: 0.5rem;
+        }
+      }
+      .content {
+        @include div-properties(100%, auto, null, inline-block);
+        margin-top: 0.2rem;
+        .container-full {
+          @include div-properties(90%, auto, null, inline-block);
+          margin: 0px;
+          margin-left: 5%;
+          margin-top: 0.2rem;
+          font-size: 1rem;
+          label {
+            font-size: 1rem;
           }
+          select {
+            font-size: 0.9rem;
+          }
+          input[type="text"],
+          input[type="email"],
+          input[type="password"],
+          select {
+            float: none;
+            @media only screen and (min-width: 0) {
+              @include div-properties(
+                100%,
+                1.5rem,
+                rgba(0, 0, 0, 0),
+                inline-block
+              );
+            }
+            @media only screen and (min-width: 720) {
+              @include div-properties(
+                100%,
+                1.5rem,
+                rgba(0, 0, 0, 0),
+                inline-block
+              );
+            }
+          }
+          .title {
+            font-size: 1.05rem;
+            font-weight: 400;
+            text-align: left;
+            padding: 0px;
+            @include div-properties(
+              100%,
+              1.5rem,
+              rgba(0, 0, 0, 0),
+              inline-block
+            );
+            margin: 0px;
+          }
+          .mini-title {
+            text-transform: uppercase;
+            padding-top: 0.5rem;
+            font-size: 1.05rem;
+            padding-bottom: 0.5rem;
+            span {
+              font-size: 0.95rem;
+            }
+          }
+          .word {
+            position: relative;
+            @include div-properties(95%, 7rem, null, inline-block);
+            overflow: hidden;
+            overflow-y: auto;
+            font-size: 0.95rem;
+            opacity: 0.7;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
       }
+      .footer {
+        max-height: 3rem !important;
+        padding: 0px !important;
+        margin-top: 0px !important;
+        @include div-properties(100%, auto, white, inline-block);
+        span {
+          color: gray;
+          right: 0.5rem;
+          bottom: 0.5rem;
+        }
+      }
+    }
+    &-form {
+      @media only screen and (min-width: 768px) {
+        @include div-properties(25%, auto, white, inline-block);
+        min-width: 500px !important;
+      }
+    }
+    &-message {
+      @media only screen and (min-width: 768px) {
+        @include div-properties(40%, auto, white, inline-block);
+        min-width: 650px !important;
+      }
+    }
   }
   div {
-      .title {
-          @include div-properties(90%, auto, null, inline-block);
-          margin-left: 5%;
-          font-weight: 700;
-          text-align: center;
-          margin-left: 5%;
-          font-weight: 700;
-          font-size: 1.35rem;
-          padding-top: 0.5rem;
-          padding-bottom: 0.8rem;
+    .title {
+      @include div-properties(90%, auto, null, inline-block);
+      margin-left: 5%;
+      font-weight: 700;
+      text-align: center;
+      margin-left: 5%;
+      font-weight: 700;
+      font-size: 1.35rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.8rem;
+    }
+    .container {
+      @include div-properties(90%, auto, null, inline-block);
+      position: relative;
+      font-size: 1.35rem;
+      margin-left: 5%;
+      .button-middle {
+        background-color: #3780af;
       }
-      .container {
-          @include div-properties(90%, auto, null, inline-block);
-          position: relative;
-          font-size: 1.35rem;
-          margin-left: 5%;
-          .button-middle{
-              background-color: #3780af;
-          }
-      }
+    }
   }
 }

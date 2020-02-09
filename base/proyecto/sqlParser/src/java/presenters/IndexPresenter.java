@@ -63,6 +63,15 @@ public class IndexPresenter {
     public void loadQueries(Query object) {
 
     }
+    
+    public void onClickNewDatabase(){
+        this.view.clickCreateDatabase();
+    }
+    
+     public void onClickSaveDatabase(Database database, User user){
+         
+        this.view.clickCreateDatabase();
+    }
 
     public void onGetQuery(Query query, User user, Database database) {
         if (user == null || user.userType.equals(UserType.PUBLIC) || user.userId == 0) {
