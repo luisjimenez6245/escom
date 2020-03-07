@@ -13,14 +13,10 @@ int main(int argc, const char **argv)
         args[i - 1] = argv[i];
     }
     args[argc - 1] = (char *)0;
-    for (int i = 0; i < (argc - 1); ++i)
-    {
-        printf("%s\n", args[i]);
-    }
     res = execvp(args[0], args);
     if (res != 0)
     {
-        printf("Ocurrió un error en la llamada\n");
+        printf("El comando no existe\n");
     }
-    return 0;
+    return res;
 }
