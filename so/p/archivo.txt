@@ -1,0 +1,3 @@
+main.c
+archivo.txt
+a.out
