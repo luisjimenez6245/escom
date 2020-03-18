@@ -9,7 +9,8 @@
         "algorithm": "c",
         "iterator": "c",
         "tadcoladin.h": "c",
-        "tadpiladin.h": "c"
+        "tadpiladin.h": "c",
+        "istream": "cpp"
     },
     "python.pythonPath": "/usr/local/bin/python3"
 }
