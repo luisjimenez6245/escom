@@ -34,7 +34,8 @@ int main(int argc, const char **argv)
         create_threads(num1, n_threads, n_tasks, complement_tasks);
         clock_t end = clock();
         double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-        printf("Terminó en %f segundos\n", time_spent);
+        printf("\nResultado de la multiplicación: %ix%i = %i\n", num1, num2, result);
+        printf("\nTerminó en %f segundos\n", time_spent);
     }
     else
     {
@@ -65,7 +66,7 @@ void create_threads(int num1, int n_threads, int n_tasks, int complements)
         pthread_join(threads[i], (void **)&exit_code);
         clock_t end = clock();
         double time_spent = (double)(end - begin_times[i]) / CLOCKS_PER_SEC;
-        printf("\nHilo %i termino con código: %i, terminó en: %f\n", i, *exit_code, time_spent);
+        printf("\nHilo %i termino con código: %i, terminó en: %f segundos\n", i, *exit_code, time_spent);
     }
 }
 
@@ -76,7 +77,7 @@ void *create_thread(void *args)
     for (i = 0; i < actual_args->n_tasks; i++)
     {
         result += *actual_args->to_add;
-        //printf("Hilo %i, Vuelta %i:, Total de vueltas: %i, %i\n", actual_args->id, i, actual_args->n_tasks, result);
+        printf("Hilo %i, Vuelta %i:, Total de vueltas: %i, %i\n", actual_args->id, i, actual_args->n_tasks, result);
     }
     pthread_exit(args);
 }
