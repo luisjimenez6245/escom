@@ -12,7 +12,7 @@ typedef struct
 } create_thread_container;
 
 int process_count = 0;
-pthread_mutex_t barrera = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t barrier = PTHREAD_MUTEX_INITIALIZER;
 sem_t semaphore;
 
 void sync(void);
@@ -23,9 +23,9 @@ int main(int argc, const char **argv)
     pthread_t threads[NTHREADS];
     int i, *exit_code;
     sem_init(&semaphore, 0, 1);
-    create_thread_container *con = malloc(sizeof(*con));
     for (i = 0; i < NTHREADS; ++i)
     {
+        create_thread_container *con = malloc(sizeof(*con));
         con->id = i;
         if (pthread_create(&threads[i], NULL, manage_thread, con))
         {
@@ -48,14 +48,14 @@ void sync(void)
     if (process_count < NTHREADS)
     {
         sem_post(&semaphore);
-        pthread_mutex_lock(&barrera);
+        pthread_mutex_lock(&barrier);
     }
     else
     {
         int i;
         for (i = 0; i < (NTHREADS); i++)
         {
-            pthread_mutex_unlock(&barrera);
+            pthread_mutex_unlock(&barrier);
         }
         process_count = 0;
         sem_wait(&semaphore);
