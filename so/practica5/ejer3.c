@@ -3,70 +3,73 @@
 #include <unistd.h>
 #include <pthread.h>
 
-typedef struct
-{
-    int id;
-    int to_add;
-    int times;
-} create_thread_container;
-
-int get_random_number(int number);
+#define NHILOS 2
 
 int number;
 
+void *increase(void *arg)
+{
+    int lim = *(int *)arg;
+    int i;
+    for (i = 0; i < lim; i++)
+    {
+        number++;
+        printf("+1: %i\n", number);
+    }
+    pthread_exit(arg);
+}
+
+void *decrease(void *arg)
+{
+    int lim = *(int *)arg;
+    int i;
+    for (i = 0; i < lim; i++)
+    {
+        number--;
+        printf("-1: %i\n", number);
+    }
+    pthread_exit(arg);
+}
+
 int main(int argc, const char **argv)
 {
-    int a, b;
+    int a, b, status, *exit_code, i;
     number = 0;
+
+    pthread_t threads[NHILOS];
+
     if (argc > 2)
     {
         a = atoi(argv[1]);
         b = atoi(argv[2]);
-        if (a < 0)
-            a = a * -1;
-        if (b > 0)
-            b = b * -1;
+
+        status = pthread_create(&threads[0], NULL, increase, &a);
+
+        if (status)
+        {
+            printf("\nError en pthread_create %i\n", status);
+            exit(-1);
+        }
+
+        status = pthread_create(&threads[1], NULL, decrease, &b);
+
+        if (status)
+        {
+            printf("\nError en pthread_create %i\n", status);
+            exit(-1);
+        }
+
+        for (i = 0; i < NHILOS; i++)
+        {
+            pthread_join(threads[i], (void **)&exit_code);
+            printf("\nEl hilo terminó con valor %i\n", *exit_code);
+        }
+
+        printf("\nEl valor final es: %i\n", number);
     }
     else
     {
-        a = get_random_number(100000);
-        b = -1 * get_random_number(100000);
+        printf("Por favor coloca los argumentos A y B\n");
     }
     return 0;
-}
-
-void manage_threads(int a, int b)
-{
-    pthread_t threads[2];
-    int status = 0;
-    
-    create_thread_container *msjs = malloc(sizeof(*msjs));
-    msjs->id = 0;
-    msjs->to_add = a;
-    msjs->times = get_random_number(100000);
-    status = pthread_create(&threads[0], NULL, create_thread, msjs);
-    msjs = malloc(sizeof(*msjs));
-    msjs->id = 1;
-    msjs->to_add = b;
-    msjs->times = get_random_number(100000);
-    status = pthread_create(&threads[0], NULL, create_thread, msjs);
-}
-
-void *create_thread(void *args)
-{
-    create_thread_container *actual_args = args;
-    int i;
-    for (i = 0; i < actual_args->times; i++)
-    {
-        number += actual_args->to_add;
-    }
-    pthread_exit(args);
-}
-
-int get_random_number(int number)
-{
-    int res = rand();
-    if (number > 0)
-        res = rand() % number;
-    return res;
 }
