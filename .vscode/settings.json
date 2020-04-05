@@ -17,7 +17,8 @@
         "bitset": "c",
         "chrono": "c",
         "unordered_map": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "stdlib.h": "c"
     },
     "python.pythonPath": "/usr/local/bin/python3"
 }
