@@ -10,9 +10,10 @@ void *create_writer(void *args);
 int get_random_number(int number);
 int get_bool();
 
-sem_t reader, writer;
 int readers_count = 0;
 FILE *fanswer;
+sem_t reader, writer;
+
 int main(int argc, const char **argv)
 {
     if (argc > 2)
@@ -24,6 +25,7 @@ int main(int argc, const char **argv)
             fanswer = fopen("./hola.txt", "w");
             fclose(fanswer);
             create_processes(readers, writers);
+            fclose(fanswer);
         }
         else
         {
@@ -39,9 +41,9 @@ int main(int argc, const char **argv)
 
 void create_processes(int readers, int writers)
 {
+    pthread_t threads[readers + writers];
     sem_init(&writer, 0, 1);
     sem_init(&reader, 0, 1);
-    pthread_t threads[readers + writers];
     int i = 0, status, *exit_code;
     while (readers != 0 || writers != 0)
     {
@@ -71,11 +73,6 @@ void create_processes(int readers, int writers)
                 --writers;
             }
         }
-        if (status)
-        {
-            printf("Error al crear hilo\n");
-            exit(1);
-        }
         ++i;
     }
     for (i = 0; i < (readers + writers); ++i)
@@ -90,17 +87,15 @@ void *create_reader(void *args)
     readers_count += 1;
     if (readers_count == 1)
     {
-     //   fanswer = fopen("./hola.txt", "r+");
         sem_wait(&writer);
     }
     printf("Estoy leyendo\n");
     sem_post(&reader);
-    /*char c = (char)fgetc(fanswer);
-    while (c != EOF)
-    {
+    fanswer = fopen("hola.txt", "r");
+    char c;
+    while ((c = fgetc(fanswer)) != EOF)
         printf("%c", c);
-        c = (char)fgetc(fanswer);
-    }*/
+    fclose(fanswer);
     printf("Terminé de leer\n");
     sem_wait(&reader);
     readers_count -= 1;
@@ -114,10 +109,16 @@ void *create_reader(void *args)
 void *create_writer(void *args)
 {
     sem_wait(&writer);
-   // fanswer = fopen("./hola.txt", "a");
-   // fputs("Estoy aaaa\n", fanswer);
-   // fclose(fanswer);
-    printf("Terminé de escribir\n");
+    fanswer = fopen("./hola.txt", "a+t");
+    printf("Inserta texto a escribir: ");
+    char c = ' ';
+    while ((c) != '\n')
+    {
+        scanf("%c", &c);
+        fputc(c, fanswer);
+    }
+    fclose(fanswer);
+    printf("\n fin de escritura");
     sem_post(&writer);
 }
 
