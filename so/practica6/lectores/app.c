@@ -3,6 +3,9 @@
 #include <semaphore.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 void create_processes(int readers, int writers);
 void *create_reader(void *args);
@@ -10,27 +13,54 @@ void *create_writer(void *args);
 int get_random_number(int number);
 int get_bool();
 
-int readers_count = 0;
-FILE *fanswer;
+int readers_count = 0, char_count = 0;
+char *fanswer;
 sem_t reader, writer;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main(int argc, const char **argv)
 {
     if (argc > 2)
     {
+        key_t llave;
+        int shmid, opc;
+
+        //1er paso
+        llave = ftok("./hola.txt", 39);
+        if (llave == -1)
+        {
+            perror("Error en ftok.");
+            exit(-1);
+        }
+
+        //2do paso
+        shmid = shmget(llave, sizeof(char[1000000]), IPC_CREAT | 0777);
+        if (shmid == -1)
+        {
+            perror("Error en shmget.");
+            exit(-1);
+        }
+
+        //3er paso
+        fanswer = (char *)shmat(shmid, 0, 0);
+        if (fanswer == NULL)
+        {
+            perror("Error en shmat.");
+            exit(-1);
+        }
         int readers = atoi(argv[1]);
         int writers = atoi(argv[2]);
         if (readers > writers)
         {
-            fanswer = fopen("./hola.txt", "w");
-            fclose(fanswer);
             create_processes(readers, writers);
-            fclose(fanswer);
         }
         else
         {
             printf("Faltaron lectores\n");
         }
+        shmdt((char *)fanswer);
+        shmctl(shmid, IPC_RMID, 0);
+        exit(0);
     }
     else
     {
@@ -89,13 +119,12 @@ void *create_reader(void *args)
     {
         sem_wait(&writer);
     }
-    printf("Estoy leyendo\n");
     sem_post(&reader);
-    fanswer = fopen("hola.txt", "r");
-    char c;
-    while ((c = fgetc(fanswer)) != EOF)
-        printf("%c", c);
-    fclose(fanswer);
+    printf("Estoy leyendo\n");
+    printf("%s\n", *fanswer);
+    /* fanswer = fopen("hola.txt", "r");
+   
+    fclose(fanswer);*/
     printf("Terminé de leer\n");
     sem_wait(&reader);
     readers_count -= 1;
@@ -109,16 +138,18 @@ void *create_reader(void *args)
 void *create_writer(void *args)
 {
     sem_wait(&writer);
-    fanswer = fopen("./hola.txt", "a+t");
     printf("Inserta texto a escribir: ");
-    char c = ' ';
-    while ((c) != '\n')
+    scanf("%s", fanswer);
+    /*fanswer = fopen("./hola.txt", "a+t");
+    
+    char c;
+    do
     {
-        scanf("%c", &c);
+        c = get_char();
         fputc(c, fanswer);
-    }
-    fclose(fanswer);
-    printf("\n fin de escritura");
+    }while (c != '\n');
+    fclose(fanswer);*/
+    printf("fin de escritura\n");
     sem_post(&writer);
 }
 
