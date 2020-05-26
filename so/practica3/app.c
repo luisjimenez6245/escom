@@ -8,6 +8,7 @@ void create_process_childs(int n);
 
 int main(int argc, const char **argv)
 {
+    printf("dsajkndjsad");
     int n = 2;
     if (argc == 2)
     {
@@ -32,7 +33,6 @@ void create_process_childs(int n)
             if (pid == 0)
             {
                 printf("\nHIJO %i\n Mi PID es: %i \n Mi padre es: %i\n", i, getpid(), getppid());
-                selector(i, numero, numero2);
                 exit(2);
             }
             else

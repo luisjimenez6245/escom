@@ -50,6 +50,7 @@ void create_process_child()
 
 int call_proc_from_string(char *command)
 {
+  printf("commando: %s\n", command);
   int count = 1;
   char *args[get_arg_count(command) + 1];
   char *token = strtok(command, " ");
@@ -83,7 +84,7 @@ char *get_command()
   char *command = malloc(100 * sizeof(char));
   printf("%s", prompt);
   fflush(stdin);
-  scanf("%s", command);
+  scanf("%[^\n]%*c", command);
   fflush(stdin);
   return command;
 }
@@ -117,7 +118,7 @@ void get_names(){
 
   strcat(prompt, ":");
   strcat(prompt, dr);
-  strcat(prompt, "$ > t");
+  strcat(prompt, "$ >  ");
 
   printf("%s\n", prompt);
 }
