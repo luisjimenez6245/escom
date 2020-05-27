@@ -50,7 +50,6 @@ void create_process_child()
 
 int call_proc_from_string(char *command)
 {
-  printf("commando: %s\n", command);
   int count = 1;
   char *args[get_arg_count(command) + 1];
   char *token = strtok(command, " ");
