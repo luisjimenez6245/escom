@@ -5,9 +5,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #define INPUT_END 1
 #define OUTPUT_END 0
+
 
 char *concatenate(size_t size, char *array[size], const char *joint)
 {
@@ -32,19 +35,6 @@ char *concatenate(size_t size, char *array[size], const char *joint)
     }
     *p = '\0';
     return result;
-}
-
-int has_pipe(char **args, int size)
-{
-    int i = 0;
-    for (i = 0; i < size; ++i)
-    {
-        if (strchr(args[i], '|') != NULL)
-        {
-            return 1;
-        }
-    }
-    return 0;
 }
 
 int get_arg_count(char *proc, char to_search)
@@ -92,7 +82,6 @@ char *get_command_from_pipe(char *command, int position, int complete_string)
 
 int call_proc_from_string(char *command)
 {
-  printf("commando: %s\n", command);
   int count = 0;
   char *args[get_arg_count(command, ' ')];
   char *token = strtok(command, " ");
@@ -109,7 +98,6 @@ int call_proc_from_string(char *command)
 
 int call_proc_from_string_c(char *command)
 {
-  printf("commando: %s\n", command);
   int count = 1;
   char *args[get_arg_count(command, ' ') + 1];
   char *token = strtok(command, " ");
@@ -125,6 +113,92 @@ int call_proc_from_string_c(char *command)
   return res;
 }
 
+int execute_file_on_command(char * command, char* filename) {
+	int def = dup(1);
+
+  int file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IROTH);
+  if(file < 0)    return 1;
+  if(dup2(file,1) < 0)    return 1;
+  int pid;
+  if( pid = fork() == 0) {
+    	close(file);
+    	close(def);
+      call_proc_from_string(command);
+    	return 0;
+  }
+  dup2(def, 1);
+  close(file);
+  close(def);
+  wait(NULL);
+  close(file);
+	return 0;
+}
+
+int execute_file_in_command(char * command, char * filename, ) {
+	int pipefd[2];
+	if(pipe(pipefd)) {
+		printf("pipe");
+		exit(127);
+	}
+
+  int pid = fork();
+  if(pid == -1){
+    perror("Error en la llamada a fork");
+    exit(127);
+  }else if(pid == 0){
+    close(pipefd[0]);  /* the other side of the pipe */
+    dup2(pipefd[1], 1);  /* automatically closes previous fd 1 */
+    close(pipefd[1]);  /* cleanup */
+    FILE * pFile;
+    char mystring;
+
+    pFile = fopen (filename , "r");
+    if (pFile == NULL) perror ("Error opening file");
+    else {
+      while ((mystring=fgetc(pFile)) != EOF) {
+          putchar(mystring); /* print the character */
+      }
+      fclose (pFile);
+    }
+    exit(EXIT_SUCCESS);
+  }else{
+    close(pipefd[1]);  /* the other side of the pipe */
+    dup2(pipefd[0], 0);  /* automatically closes previous fd 0 */
+    close(pipefd[0]);  /* cleanup */
+    call_proc_from_string(command);
+    perror(command);
+    exit(125);
+  }
+
+	return 0;
+}
+
+char * get_file_name(char * command, int in)
+{
+  char * command_copy  = malloc(strlen(command) + 1);
+  strcpy(command_copy, command);
+  char* to_search = " ";
+  if(in)
+    to_search = "<";
+  else
+    to_search = ">";
+
+  char *token = strtok(command_copy, to_search);
+  char *filename = token;
+  while(token != NULL){
+    filename = token;
+    token = strtok(NULL, to_search);
+  }
+  token = strtok(filename, " ");
+  while(token != NULL){
+    filename = token;
+    token = strtok(NULL, " ");
+  }
+
+  command = strtok(command, to_search);
+  printf("cmd: %s\n", command);
+  return filename;
+}
 
 int manage_pipe(char *first_command, char *second_command)
 {
@@ -177,14 +251,28 @@ int main(int argc, const char **argv)
     char *command = concatenate(argc - 1, args, " ");
     if (strchr(command, '|') != NULL)
     {
-        char * copy = malloc(strlen(command) + 1); 
+        char * copy = malloc(strlen(command) + 1);
         char * first_command = get_command_from_pipe(strcpy(copy, command), 0, 0);
         char * next_command = get_command_from_pipe(strcpy(copy, command), 1, 1);
         return manage_pipe(first_command,next_command);
     }
     else
     {
+      if(strchr(command, '<') != NULL){
+
+        char * filename = get_file_name(command, 1);
+        execute_file_in_command(command, filename);
+
+      }
+      else if(strchr(command, '>') != NULL){
+        //out
+        char * filename = get_file_name(command, 0);
+        execute_file_on_command(command, filename);
+
+      }
+      else  {
         res = execvp(args[0], args);
+      }
     }
     if (res != 0)
     {
