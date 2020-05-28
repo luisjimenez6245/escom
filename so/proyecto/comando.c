@@ -11,30 +11,29 @@
 #define INPUT_END 1
 #define OUTPUT_END 0
 
-
 char *concatenate(size_t size, char *array[size], const char *joint)
 {
-    size_t jlen, lens[size];
-    size_t i, total_size = (size - 1) * (jlen = strlen(joint)) + 1;
-    char *result, *p;
+  size_t jlen, lens[size];
+  size_t i, total_size = (size - 1) * (jlen = strlen(joint)) + 1;
+  char *result, *p;
 
-    for (i = 0; i < size; ++i)
+  for (i = 0; i < size; ++i)
+  {
+    total_size += (lens[i] = strlen(array[i]));
+  }
+  p = result = malloc(total_size);
+  for (i = 0; i < size; ++i)
+  {
+    memcpy(p, array[i], lens[i]);
+    p += lens[i];
+    if (i < size - 1)
     {
-        total_size += (lens[i] = strlen(array[i]));
+      memcpy(p, joint, jlen);
+      p += jlen;
     }
-    p = result = malloc(total_size);
-    for (i = 0; i < size; ++i)
-    {
-        memcpy(p, array[i], lens[i]);
-        p += lens[i];
-        if (i < size - 1)
-        {
-            memcpy(p, joint, jlen);
-            p += jlen;
-        }
-    }
-    *p = '\0';
-    return result;
+  }
+  *p = '\0';
+  return result;
 }
 
 int get_arg_count(char *proc, char to_search)
@@ -52,39 +51,40 @@ int get_arg_count(char *proc, char to_search)
 
 char *get_command_from_pipe(char *command, int position, int complete_string)
 {
-    int i = 0, count = get_arg_count(command, '|');
-    char *token = strtok(command, "|");
-    for (i = 0; i < position; ++i)
+  int i = 0, count = get_arg_count(command, '|');
+  char *token = strtok(command, "|");
+  for (i = 0; i < position; ++i)
+  {
+    token = strtok(NULL, "|");
+  }
+  if (token != NULL)
+  {
+    if (complete_string)
     {
+      char *res[count];
+      res[0] = token;
+      for (i = 1; i < count; ++i)
+      {
         token = strtok(NULL, "|");
-    }
-    if (token != NULL)
-    {
-        if(complete_string)
-        {
-            char *res[count];
-            res[0] = token;
-            for (i = 1; i < count; ++i)
-            {
-                token = strtok(NULL, "|");
-                            res[i] = token;
-            }
-            return concatenate(count, res, "|");
-        }
-        else
-        {
-            return token;
-        }
+        res[i] = token;
+      }
+      return concatenate(count, res, "|");
     }
     else
-        return "";
+    {
+      return token;
+    }
+  }
+  else
+    return "";
 }
 
-int call_proc_from_string(char *command)
+int call_proc_from_string(char *command, int count)
 {
-  int count = 0;
-  char *args[get_arg_count(command, ' ')];
+  char *args[get_arg_count(command, ' ') + count];
   char *token = strtok(command, " ");
+  if (count == 1)
+    args[0] = "./comando.out";
   while (token != NULL)
   {
     args[count] = token;
@@ -96,101 +96,107 @@ int call_proc_from_string(char *command)
   return res;
 }
 
-int call_proc_from_string_c(char *command)
+int command_with_file_out(char *command, char *filename, int appendable)
 {
-  int count = 1;
-  char *args[get_arg_count(command, ' ') + 1];
-  char *token = strtok(command, " ");
-  args[0]  = "./comando.out";
-  while (token != NULL)
+  int def = dup(1);
+  int file;
+  if (appendable)
+    file = open(filename, O_APPEND | O_CREAT);
+  else
+    file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IROTH);
+
+  if (file < 0)
   {
-    args[count] = token;
-    count += 1;
-    token = strtok(NULL, " ");
+    return 1;
   }
-  args[count] = (char *)0;
-  int res = execvp(args[0], args);
-  return res;
-}
-
-int execute_file_on_command(char * command, char* filename) {
-	int def = dup(1);
-
-  int file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IROTH);
-  if(file < 0)    return 1;
-  if(dup2(file,1) < 0)    return 1;
+  if (dup2(file, 1) < 0)
+    return 1;
   int pid;
-  if( pid = fork() == 0) {
-    	close(file);
-    	close(def);
-      call_proc_from_string(command);
-    	return 0;
+  if (pid = fork() == 0)
+  {
+    close(file);
+    close(def);
+    call_proc_from_string(command, 0);
+    return 0;
   }
   dup2(def, 1);
   close(file);
   close(def);
   wait(NULL);
   close(file);
-	return 0;
+  return 0;
 }
 
-int execute_file_in_command(char * command, char * filename, ) {
-	int pipefd[2];
-	if(pipe(pipefd)) {
-		printf("pipe");
-		exit(127);
-	}
-
+int command_with_file_in(char *command, char *filename)
+{
+  int pipes[2];
   int pid = fork();
-  if(pid == -1){
-    perror("Error en la llamada a fork");
-    exit(127);
-  }else if(pid == 0){
-    close(pipefd[0]);  /* the other side of the pipe */
-    dup2(pipefd[1], 1);  /* automatically closes previous fd 1 */
-    close(pipefd[1]);  /* cleanup */
-    FILE * pFile;
+  if (pipe(pipes))
+  {
+    printf("Error en pipe!\n");
+    exit(-1);
+  }
+  if (pid == -1)
+  {
+    printf("Error en la llamada a fork\n");
+    exit(-1);
+  }
+  else if (pid == 0)
+  {
+    close(pipes[OUTPUT_END]);
+    dup2(pipes[INPUT_END], 1);
+    close(pipes[INPUT_END]);
+    FILE *pFile;
     char mystring;
 
-    pFile = fopen (filename , "r");
-    if (pFile == NULL) perror ("Error opening file");
-    else {
-      while ((mystring=fgetc(pFile)) != EOF) {
-          putchar(mystring); /* print the character */
-      }
-      fclose (pFile);
+    pFile = fopen(filename, "r");
+    if (pFile == NULL)
+    {
+      printf("No se pudo abrir el archivo\n");
+      exit(-1);
     }
-    exit(EXIT_SUCCESS);
-  }else{
-    close(pipefd[1]);  /* the other side of the pipe */
-    dup2(pipefd[0], 0);  /* automatically closes previous fd 0 */
-    close(pipefd[0]);  /* cleanup */
-    call_proc_from_string(command);
-    perror(command);
-    exit(125);
+    else
+    {
+      while ((mystring = fgetc(pFile)) != EOF)
+      {
+        putchar(mystring);
+      }
+      fclose(pFile);
+    }
+    exit(0);
+  }
+  else
+  {
+    close(pipes[INPUT_END]);
+    dup2(pipes[OUTPUT_END], 0);
+    close(pipes[OUTPUT_END]);
+    call_proc_from_string(command, 0);
+    exit(-1);
   }
 
-	return 0;
+  return 0;
 }
 
-char * get_file_name(char * command, int in)
+char *get_file_name(char *command, int in)
 {
-  char * command_copy  = malloc(strlen(command) + 1);
+  char *command_copy = malloc(strlen(command) + 1);
   strcpy(command_copy, command);
-  char* to_search = " ";
-  if(in)
+  char *to_search = " ";
+  if (in)
     to_search = "<";
   else
     to_search = ">";
 
   char *token = strtok(command_copy, to_search);
   char *filename = token;
-  while(token != NULL){
+  while (token != NULL)
+  {
     filename = token;
     token = strtok(NULL, to_search);
   }
   token = strtok(filename, " ");
-  while(token != NULL){
+  while (token != NULL)
+  {
     filename = token;
     token = strtok(NULL, " ");
   }
@@ -202,81 +208,84 @@ char * get_file_name(char * command, int in)
 
 int manage_pipe(char *first_command, char *second_command)
 {
-    pid_t pid;
-    int fd[2];
-    pipe(fd);
+  pid_t pid;
+  int fd[2];
+  pipe(fd);
+  pid = fork();
+
+  if (pid == 0)
+  {
+    dup2(fd[INPUT_END], STDOUT_FILENO);
+    close(fd[OUTPUT_END]);
+    close(fd[INPUT_END]);
+    if (call_proc_from_string(first_command, 0))
+    {
+    }
+    fprintf(stderr, "Failed to execute '%s'\n", "ls");
+    exit(1);
+  }
+  else
+  {
     pid = fork();
 
     if (pid == 0)
     {
-        dup2(fd[INPUT_END], STDOUT_FILENO);
-        close(fd[OUTPUT_END]);
-        close(fd[INPUT_END]);
-        call_proc_from_string(first_command);
-        fprintf(stderr, "Failed to execute '%s'\n", "ls");
-        exit(1);
+      dup2(fd[OUTPUT_END], STDIN_FILENO);
+      close(fd[INPUT_END]);
+      close(fd[OUTPUT_END]);
+      if (call_proc_from_string(second_command, 1))
+      {
+      }
+      exit(1);
     }
     else
     {
-        pid = fork();
-
-        if (pid == 0)
-        {
-            dup2(fd[OUTPUT_END], STDIN_FILENO);
-            close(fd[INPUT_END]);
-            close(fd[OUTPUT_END]);
-            call_proc_from_string_c(second_command);
-            fprintf(stderr, "Failed to execute '%s'\n", "wc");
-            exit(1);
-        }
-        else
-        {
-            int status;
-            close(fd[OUTPUT_END]);
-            close(fd[INPUT_END]);
-            waitpid(pid, &status, 0);
-        }
+      int status;
+      close(fd[OUTPUT_END]);
+      close(fd[INPUT_END]);
+      waitpid(pid, &status, 0);
     }
+  }
 }
 
 int main(int argc, const char **argv)
 {
-    int res = 0;
-    char *args[argc - 1];
-    for (int i = 1; i < argc; ++i)
+  int res = 0;
+  char *args[argc - 1];
+  for (int i = 1; i < argc; ++i)
+  {
+    args[i - 1] = argv[i];
+  }
+  args[argc - 1] = (char *)0;
+  char *command = concatenate(argc - 1, args, " ");
+  if (strchr(command, '|') != NULL)
+  {
+    char *copy = malloc(strlen(command) + 1);
+    char *first_command = get_command_from_pipe(strcpy(copy, command), 0, 0);
+    char *next_command = get_command_from_pipe(strcpy(copy, command), 1, 1);
+    return manage_pipe(first_command, next_command);
+  }
+  else
+  {
+    if (strchr(command, '<') != NULL)
     {
-        args[i - 1] = argv[i];
+      char *filename = get_file_name(command, 1);
+      command_with_file_in(command, filename);
     }
-    args[argc - 1] = (char *)0;
-    char *command = concatenate(argc - 1, args, " ");
-    if (strchr(command, '|') != NULL)
+    else if (strchr(command, '>') != NULL)
     {
-        char * copy = malloc(strlen(command) + 1);
-        char * first_command = get_command_from_pipe(strcpy(copy, command), 0, 0);
-        char * next_command = get_command_from_pipe(strcpy(copy, command), 1, 1);
-        return manage_pipe(first_command,next_command);
+      int appendable = get_arg_count(command, '>');
+      char *filename = get_file_name(command, 0);
+      command_with_file_out(command, filename, appendable);
     }
     else
     {
-      if(strchr(command, '<') != NULL){
-
-        char * filename = get_file_name(command, 1);
-        execute_file_in_command(command, filename);
-
-      }
-      else if(strchr(command, '>') != NULL){
-        //out
-        char * filename = get_file_name(command, 0);
-        execute_file_on_command(command, filename);
-
-      }
-      else  {
-        res = execvp(args[0], args);
-      }
+      res = execvp(args[0], args);
     }
-    if (res != 0)
-    {
-        printf("El comando no existe\n");
-    }
-    return res;
+  }
+  if (res != 0)
+  {
+    printf("El comando no existe\n");
+  }
+  return res;
 }
