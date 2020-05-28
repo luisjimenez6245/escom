@@ -100,7 +100,7 @@ int command_with_file_out(char *command, char *filename, int appendable)
 {
   int def = dup(1);
   int file;
-  if (appendable)
+  if (appendable != 1)
     file = open(filename, O_APPEND | O_CREAT);
   else
     file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IROTH);
@@ -129,49 +129,48 @@ int command_with_file_out(char *command, char *filename, int appendable)
 
 int command_with_file_in(char *command, char *filename)
 {
-  int pipes[2];
-  int pid = fork();
-  if (pipe(pipes))
+  int pipefd[2];
+  if (pipe(pipefd))
   {
-    printf("Error en pipe!\n");
-    exit(-1);
+    printf("pipe");
+    exit(127);
   }
+
+  int pid = fork();
   if (pid == -1)
   {
-    printf("Error en la llamada a fork\n");
-    exit(-1);
+    perror("Error en la llamada a fork");
+    exit(127);
   }
   else if (pid == 0)
   {
-    close(pipes[OUTPUT_END]);
-    dup2(pipes[INPUT_END], 1);
-    close(pipes[INPUT_END]);
+    close(pipefd[0]);   /* the other side of the pipe */
+    dup2(pipefd[1], 1); /* automatically closes previous fd 1 */
+    close(pipefd[1]);   /* cleanup */
     FILE *pFile;
     char mystring;
 
     pFile = fopen(filename, "r");
     if (pFile == NULL)
-    {
-      printf("No se pudo abrir el archivo\n");
-      exit(-1);
-    }
+      perror("Error opening file");
     else
     {
       while ((mystring = fgetc(pFile)) != EOF)
       {
-        putchar(mystring);
+        putchar(mystring); /* print the character */
       }
       fclose(pFile);
     }
-    exit(0);
+    exit(EXIT_SUCCESS);
   }
   else
   {
-    close(pipes[INPUT_END]);
-    dup2(pipes[OUTPUT_END], 0);
-    close(pipes[OUTPUT_END]);
+    close(pipefd[1]);   /* the other side of the pipe */
+    dup2(pipefd[0], 0); /* automatically closes previous fd 0 */
+    close(pipefd[0]);   /* cleanup */
     call_proc_from_string(command, 0);
-    exit(-1);
+    perror(command);
+    exit(125);
   }
 
   return 0;
