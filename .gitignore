@@ -247,3 +247,6 @@ dkms.conf
 
 *.icloud
 .vscode
+
+.vscode/
+settings.json
