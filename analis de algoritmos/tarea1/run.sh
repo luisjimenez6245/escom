@@ -22,9 +22,10 @@ array[18]=10000
 array[19]=20000
 
 
+echo "" > "./$1/res.txt"
 for i in ${array[*]}
 do
-    echo "$i"
-    ./$1/a.out "$i" > "./$1/res-$i.txt"
+    ./$1/a.out "$i" >> "./$1/res.txt"
+    echo "" >> "./$1/res.txt"
 done
 
