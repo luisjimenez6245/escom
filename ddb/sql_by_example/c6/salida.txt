@@ -1,0 +1,2214 @@
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       350          3 JDeveloper Lab                                            
+L509                                                         107                
+                                                                                
+        10          2 DP Overview                                               
+L214                                                         102                
+                                                                                
+        20          2 Intro to Computers                                        
+L210                                                         103                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+        20          4 Intro to Computers                                        
+L214                                                         104                
+                                                                                
+        20          7 Intro to Computers                                        
+L509                                                         105                
+                                                                                
+        20          8 Intro to Computers                                        
+L210                                                         106                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+        25          1 Intro to Programming                                      
+M311                                                         107                
+                                                                                
+        25          2 Intro to Programming                                      
+L210                                                         108                
+                                                                                
+        25          3 Intro to Programming                                      
+L507                                                         101                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+        25          4 Intro to Programming                                      
+L214                                                         102                
+                                                                                
+        25          5 Intro to Programming                                      
+L509                                                         103                
+                                                                                
+        25          6 Intro to Programming                                      
+L509                                                         104                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+        25          7 Intro to Programming                                      
+L210                                                         105                
+                                                                                
+        25          8 Intro to Programming                                      
+L509                                                         106                
+                                                                                
+        25          9 Intro to Programming                                      
+L507                                                         107                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       146          2 Java for C/C++ Programmers                                
+L507                                                         102                
+                                                                                
+       147          1 GUI Programming                                           
+L509                                                         103                
+                                                                                
+       204          1 Intro to SQL                                              
+L210                                                         104                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       210          1 Oracle Tools                                              
+L507                                                         105                
+                                                                                
+       220          1 PL/SQL Programming                                        
+L509                                                         106                
+                                                                                
+       230          1 Intro to Internet                                         
+L500                                                         107                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       230          2 Intro to Internet                                         
+L214                                                         108                
+                                                                                
+       240          1 Intro to the Basic Language                               
+L509                                                         101                
+                                                                                
+       240          2 Intro to the Basic Language                               
+L214                                                         102                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       310          1 Operating Systems                                         
+L507                                                         103                
+                                                                                
+       330          1 Network Administration                                    
+L511                                                         104                
+                                                                                
+       350          1 JDeveloper Lab                                            
+L509                                                         105                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       350          2 JDeveloper Lab                                            
+L214                                                         106                
+                                                                                
+       130          1 Intro to Unix                                             
+L507                                                         103                
+                                                                                
+       420          1 Database System Principles                                
+M311                                                         108                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       450          1 DB Programming in Java                                    
+L507                                                         101                
+                                                                                
+       134          2 Advanced Unix Admin                                       
+L509                                                         102                
+                                                                                
+       134          3 Advanced Unix Admin                                       
+L509                                                         103                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       135          1 Unix Tips and Techniques                                  
+L509                                                         104                
+                                                                                
+       135          2 Unix Tips and Techniques                                  
+L214                                                         105                
+                                                                                
+       135          3 Unix Tips and Techniques                                  
+L509                                                         106                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       135          4 Unix Tips and Techniques                                  
+M200                                                         107                
+                                                                                
+       140          1 Structured Analysis                                       
+L509                                                         108                
+                                                                                
+       140          2 Structured Analysis                                       
+L210                                                         101                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       140          3 Structured Analysis                                       
+L507                                                         102                
+                                                                                
+       142          1 Project Management                                        
+L211                                                         103                
+                                                                                
+       142          2 Project Management                                        
+L214                                                         104                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       142          3 Project Management                                        
+L507                                                         105                
+                                                                                
+       144          2 Database Design                                           
+L214                                                         106                
+                                                                                
+       145          1 Internet Protocols                                        
+L214                                                         107                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       145          3 Internet Protocols                                        
+L210                                                         108                
+                                                                                
+       146          1 Java for C/C++ Programmers                                
+L509                                                         101                
+                                                                                
+       124          1 Advanced Java Programming                                 
+M500                                                         102                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       124          2 Advanced Java Programming                                 
+H310                                                         103                
+                                                                                
+       124          3 Advanced Java Programming                                 
+L214                                                         104                
+                                                                                
+       124          4 Advanced Java Programming                                 
+L210                                                         105                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       125          1 JDeveloper                                                
+L509                                                         106                
+                                                                                
+       125          2 JDeveloper                                                
+L509                                                         107                
+                                                                                
+       125          3 JDeveloper                                                
+L214                                                         108                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       125          4 JDeveloper                                                
+L211                                                         101                
+                                                                                
+       125          6 JDeveloper                                                
+L507                                                         102                
+                                                                                
+       130          2 Intro to Unix                                             
+L214                                                         104                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       130          3 Intro to Unix                                             
+L509                                                         105                
+                                                                                
+       130          4 Intro to Unix                                             
+L509                                                         106                
+                                                                                
+       132          1 Basics of Unix Admin                                      
+L509                                                         107                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       132          3 Basics of Unix Admin                                      
+L509                                                         108                
+                                                                                
+       134          1 Advanced Unix Admin                                       
+L509                                                         101                
+                                                                                
+       100          1 Hands-On Windows                                          
+L214                                                         102                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       100          2 Hands-On Windows                                          
+L500                                                         103                
+                                                                                
+       100          3 Hands-On Windows                                          
+L509                                                         104                
+                                                                                
+       100          4 Hands-On Windows                                          
+L507                                                         105                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       100          5 Hands-On Windows                                          
+L214                                                         106                
+                                                                                
+       120          1 Intro to Java Programming                                 
+L507                                                         107                
+                                                                                
+       120          2 Intro to Java Programming                                 
+L206                                                         108                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       120          3 Intro to Java Programming                                 
+L509                                                         101                
+                                                                                
+       120          4 Intro to Java Programming                                 
+L509                                                         102                
+                                                                                
+       120          5 Intro to Java Programming                                 
+L210                                                         103                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       120          7 Intro to Java Programming                                 
+L507                                                         104                
+                                                                                
+       122          1 Intermediate Java Programming                             
+M311                                                         105                
+                                                                                
+       122          2 Intermediate Java Programming                             
+L211                                                         106                
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+       122          3 Intermediate Java Programming                             
+L507                                                         107                
+                                                                                
+       122          4 Intermediate Java Programming                             
+L210                                                         108                
+                                                                                
+       122          5 Intermediate Java Programming                             
+L507                                                         101                
+                                                                                
+
+78 filas seleccionadas.
+
+
+ COURSE_NO DESCRIPTION                                        SECTION_NO        
+---------- -------------------------------------------------- ----------        
+        10 DP Overview                                                 2        
+        20 Intro to Computers                                          2        
+        20 Intro to Computers                                          4        
+        20 Intro to Computers                                          7        
+        20 Intro to Computers                                          8        
+       146 Java for C/C++ Programmers                                  1        
+       146 Java for C/C++ Programmers                                  2        
+       310 Operating Systems                                           1        
+
+8 filas seleccionadas.
+
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Norman                    01247 MA North Adams                                  
+Kocka                     02124 MA Dorchester                                   
+Sethi                     02155 MA Tufts Univ. Bedford                          
+La Blank                  02189 MA Weymouth                                     
+Boremmann                 02563 MA Sandwich                                     
+Ancean                    06483 CT Oxford                                       
+Madej                     06605 CT Bridgeport                                   
+Thares                    06798 CT Woodbury                                     
+Scrittorale               06820 WV Georgetown                                   
+Kiraly                    06820 WV Georgetown                                   
+Padel                     06820 WV Georgetown                                   
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Meshaj                    06830 CT Greenwich                                    
+Dennis                    06830 CT Greenwich                                    
+Dalvi                     06830 CT Greenwich                                    
+Allende                   06850 CT Norwalk                                      
+Essner                    06851 CT Norwalk                                      
+Lopez                     06853 CT Rowayton                                     
+Andrew                    06870 CT Old Greenwich                                
+Tucker                    06877 CT Ridgefield                                   
+Cheevens                  06880 CT Westport                                     
+Miller                    06880 CT Westport                                     
+Bunnell                   06902 CT Stamford                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Segall                    06903 CT Stamford                                     
+Annina                    06903 CT Stamford                                     
+Archor                    06905 CT Stamford                                     
+Caro                      06907 CT Stamford                                     
+Wicelinski                07003 NJ Bloomfiel                                    
+Intal                     07003 NJ Bloomfiel                                    
+Jameson                   07008 NJ Carteret                                     
+Kelly                     07010 NJ Cliffside Park                               
+Velasco                   07010 NJ Cliffside Park                               
+Mulroy                    07010 NJ Cliffside Park                               
+Lopez                     07010 NJ Cliffside Park                               
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Mithane                   07010 NJ Cliffside Park                               
+Tucker                    07010 NJ Cliffside Park                               
+Ordes                     07011 NJ Clifton                                      
+Orent                     07011 NJ Clifton                                      
+Tangaribuan               07012 NJ Clifton                                      
+Owens                     07012 NJ Clifton                                      
+Velasco                   07016 NJ Cranford                                     
+Cowie                     07016 NJ Cranford                                     
+Bresser, HR Rep.          07023 NJ Fanwood                                      
+Moskowitz                 07024 NJ Ft. Lee                                      
+Kwong                     07024 NJ Ft. Lee                                      
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Delbrun                   07024 NJ Ft. Lee                                      
+Ginestra                  07024 NJ Ft. Lee                                      
+Porch                     07024 NJ Ft. Lee                                      
+Walston                   07024 NJ Ft. Lee                                      
+Citron                    07024 NJ Ft. Lee                                      
+Limate                    07024 NJ Ft. Lee                                      
+Naso                      07024 NJ Ft. Lee                                      
+Cook                      07029 NJ Harrison                                     
+Edwards                   07036 NJ Lyndon                                       
+Thomas                    07036 NJ Lyndon                                       
+Edwards                   07040 NJ Maplewood                                    
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Sheppard                  07042 NJ Montclair                                    
+Moffat                    07042 NJ Montclair                                    
+Olvsade                   07042 NJ Montclair                                    
+Dewitt                    07042 NJ Montclair                                    
+Montanez                  07042 NJ Montclair                                    
+Grant                     07044 NJ Verona                                       
+Dunkon                    07047 NJ North Bergen                                 
+German                    07047 NJ North Bergen                                 
+Landry                    07047 NJ North Bergen                                 
+Dusenberry                07047 NJ North Bergen                                 
+Naso                      07047 NJ North Bergen                                 
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Martin                    07055 NJ Passaic                                      
+Leung                     07055 NJ Passaic                                      
+Jackson                   07057 NJ Wallington                                   
+Miroff                    07060 NJ Plainfield                                   
+Sprouse                   07060 NJ Plainfield                                   
+Heedles                   07060 NJ Plainfield                                   
+Griffith                  07065 NJ Rahway                                       
+Porch                     07070 NJ Rutherford                                   
+Towle                     07070 NJ Rutherford                                   
+Noviello                  07070 NJ Rutherford                                   
+Garnes                    07078 NJ Short Hills                                  
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Prochaska                 07078 NJ Short Hills                                  
+Buckberg                  07090 NJ Westfield                                    
+Benitez                   07093 NJ Guttenberg                                   
+Dalvi                     07094 NJ Secaucus                                     
+Ocampo                    07094 NJ Secaucus                                     
+Beitler                   07096 NJ Secaucus                                     
+Sikinger                  07104 NJ Newark                                       
+Reyes                     07107 NJ Newark                                       
+Braun                     07111 NY Irvington                                    
+Thorton                   07111 NY Irvington                                    
+Leopta                    07112 NJ Newark                                       
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Mehta                     07302 NJ Jersey City                                  
+De Armas                  07304 NJ Jersey City                                  
+Oates                     07304 NJ Jersey City                                  
+Ittoop                    07306 NJ Jersey City                                  
+Roberts                   07306 NJ Jersey City                                  
+Frost                     07306 NJ Jersey City                                  
+Gallo                     07306 NJ Jersey City                                  
+Harty                     07307 NJ Jersey City                                  
+Ellman                    07307 NJ Jersey City                                  
+Garshman                  07307 NJ Jersey City                                  
+Affinito                  07401 NJ Allendale                                    
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Eakheit                   07421 NJ Hewitt                                       
+Millstein                 07430 NJ Mahwah                                       
+Cadet                     07444 NJ Pompton Plains                               
+Zapulla                   07450 NJ Ridgewood                                    
+Goldsmith                 07450 NJ Ridgewood                                    
+Sonam                     10015 NY New York                                     
+Sonam                     10015 NY New York                                     
+Tashi                     10015 NY New York                                     
+Sonam                     10015 NY New York                                     
+Tashi                     10015 NY New York                                     
+Tashi                     10015 NY New York                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Abdou                     10025 NY New York                                     
+Gillen                    10025 NY New York                                     
+Pace                      10025 NY New York                                     
+Lefkowitz                 10048 NY New York                                     
+Puetrino                  10954 NY Nannet                                       
+Pineda                    10956 NY New City                                     
+Jamerncy                  10956 NY New City                                     
+Robichaud                 10965 NY Pearl River                                  
+Perkins                   11021 NY Great Neck                                   
+McNeal                    11030 NY Manhasset                                    
+Lawson                    11042 NY Long Beach                                   
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Valentine                 11050 NY Fort Washington                              
+King                      11101 NY Long Island City                             
+Robles                    11101 NY Long Island City                             
+McLean                    11102 NY Astoria                                      
+Guarino                   11104 NY Sunnyside                                    
+Mierzwa                   11105 NY Astoria                                      
+Frangopoulos              11105 NY Astoria                                      
+Rothstein                 11106 NY Long Island City                             
+Sheppard                  11106 NY Long Island City                             
+Kurtz                     11106 NY Long Island City                             
+Moon                      11106 NY Long Island City                             
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Grant                     11201 NY Brooklyn                                     
+Satterfield               11201 NY Brooklyn                                     
+Masser                    11203 NY Brooklyn                                     
+Lindeman                  11204 NY Brooklyn                                     
+Zuckerberg                11204 NY Brooklyn                                     
+Dermody                   11205 NY Brooklyn                                     
+annunziato                11205 NY Brooklyn                                     
+Bullock                   11206 NY Brooklyn                                     
+Grant                     11207 NY Brooklyn                                     
+Radicola                  11208 NY Brooklyn                                     
+Allende                   11209 NY Brooklyn                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Winnicki                  11209 NY Brooklyn                                     
+Williams                  11209 NY Brooklyn                                     
+Masser                    11209 NY Brooklyn                                     
+Wilson                    11209 NY Brooklyn                                     
+Boyce                     11212 NY Brooklyn                                     
+Eng                       11213 NY Brooklyn                                     
+Torres                    11213 NY Brooklyn                                     
+Alexander                 11214 NY Brooklyn                                     
+Tabs                      11214 NY Brooklyn                                     
+Walter                    11214 NY Brooklyn                                     
+Torres                    11215 NY Brooklyn                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Perrin                    11215 NY Brooklyn                                     
+Page                      11215 NY Brooklyn                                     
+Smagler                   11216 NY Brooklyn                                     
+Smith                     11217 NY Brooklyn                                     
+McGill                    11218 NY Brooklyn                                     
+Archer                    11218 NY Brooklyn                                     
+Cahouet                   11219 NY Brooklyn                                     
+Thompson                  11220 NY Brooklyn                                     
+Carcia                    11220 NY Brooklyn                                     
+Bathmanapan               11221 NY Brooklyn                                     
+Mastandora                11222 NY Brooklyn                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Yeroushalmi               11224 NY Brooklyn                                     
+Grant                     11224 NY Brooklyn                                     
+Murray                    11224 NY Brooklyn                                     
+Marten                    11225 NY Brooklyn                                     
+Brown                     11225 NY Brooklyn                                     
+Ward                      11225 NY Brooklyn                                     
+Mandel                    11226 NY Brooklyn                                     
+Jaele                     11226 NY Brooklyn                                     
+Laporte                   11226 NY Brooklyn                                     
+Smith                     11226 NY Brooklyn                                     
+Gallagher                 11228 NY Brooklyn                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Daly                      11229 NY Brooklyn                                     
+Viotty                    11230 NY Brooklyn                                     
+Nyziak                    11230 NY Brooklyn                                     
+Biers                     11232 NY Brooklyn                                     
+Saluja                    11233 NY Brooklyn                                     
+Lin                       11233 NY Brooklyn                                     
+Draquez                   11234 NY Brooklyn                                     
+Simmons                   11235 NY Brooklyn                                     
+Daly                      11235 NY Brooklyn                                     
+Lefbowitz                 11236 NY Brooklyn                                     
+Hagel                     11236 NY Brooklyn                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Baltazar                  11236 NY Brooklyn                                     
+Yourish                   11238 NY Brooklyn                                     
+Smith                     11238 NY Brooklyn                                     
+Smith                     11238 NY Brooklyn                                     
+Smith                     11238 NY Brooklyn                                     
+M. Orent                  11303 NY Monbasset                                    
+MacDonald, Jr.            11354 NY Flushing                                     
+Chirichella               11355 NY Flushing                                     
+Axch                      11355 NY Flushing                                     
+Torres                    11355 NY Flushing                                     
+Avia                      11355 NY Flushing                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Kulina                    11355 NY Flushing                                     
+Anglin                    11357 NY Whitestone                                   
+Padron                    11357 NY Whitestone                                   
+Abdou                     11358 NY Flushing                                     
+Milano                    11360 NY Bayside                                      
+Segall                    11365 NY Fresh Meadows                                
+Joas                      11365 NY Fresh Meadows                                
+Fielding                  11365 NY Fresh Meadows                                
+Jodoin                    11366 NY Flushing                                     
+Miller                    11368 NY Corona                                       
+Lasseter                  11368 NY Corona                                       
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Boyd                      11368 NY Corona                                       
+Chatman                   11368 NY Corona                                       
+Hutheesing                11368 NY Corona                                       
+Griffen                   11368 NY Corona                                       
+Malone                    11369 NY Elmhurst                                     
+M. Orent                  11372 NY Jackson Heights                              
+Valentine                 11372 NY Jackson Heights                              
+Tripp                     11372 NY Jackson Heights                              
+Zopf                      11372 NY Jackson Heights                              
+Engongoro                 11372 NY Jackson Heights                              
+Da Silva                  11373 NY Amherst                                      
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Rosenberg                 11373 NY Amherst                                      
+Ramesh                    11373 NY Amherst                                      
+Lippen                    11373 NY Amherst                                      
+Barogh                    11373 NY Amherst                                      
+Philpotts                 11373 NY Amherst                                      
+Runyan                    11375 NY Forest Hills                                 
+Callender                 11375 NY Forest Hills                                 
+Greenberg                 11375 NY Forest Hills                                 
+Saliternan                11375 NY Forest Hills                                 
+Lloyd                     11375 NY Forest Hills                                 
+Liggons                   11377 NY Woodside                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Kuehn                     11377 NY Woodside                                     
+Diokno                    11377 NY Woodside                                     
+Miller                    11377 NY Woodside                                     
+Sentell                   11385 NY Ridgewood Queens                             
+Martin                    11385 NY Ridgewood Queens                             
+Austin                    11385 NY Ridgewood Queens                             
+Shah                      11412 NY Hollis                                       
+Reed                      11412 NY Hollis                                       
+Brownstein                11412 NY Hollis                                       
+Aung                      11413 NY Laurelton                                    
+Larcia                    11413 NY Laurelton                                    
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Cross                     11413 NY Laurelton                                    
+Kasperovich               11414 NY Howard Bank                                  
+Jung                      11415 NY Kew Gardens                                  
+De Simone                 11419 NY Richmond Hill                                
+Crocitto                  11419 NY Richmond Hill                                
+Galik                     11420 NY Jamaica                                      
+Velie                     11422 NY Laurelton                                    
+Arias                     11426 NY Bellrose                                     
+Jimenes                   11428 NY Queens Village                               
+Valamas                   11432 NY Jamaica                                      
+Kellam                    11433 NY Jamaica                                      
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Wetcel                    11434 NY Jamaica                                      
+Chamnonkool               11434 NY Jamaica                                      
+Enison                    11435 NY Jamaica                                      
+Galik                     11435 NY Jamaica                                      
+Allende                   11510 NY Baldwin                                      
+Schafer                   11530 NY Garden City                                  
+Airall                    11552 NY West Hempstead                               
+Vargas                    11561 NY Long Beach                                   
+Abid                      11565 NY Malverne                                     
+Merriman                  11565 NY Malverne                                     
+Ross                      11565 NY Malverne                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Balterzar                 11576 NY Roslyn                                       
+McHowell                  11717 NJ Brentwood                                    
+Carey                     11743 NY Huntington                                   
+Brendler                  11746 NY Dix Hills                                    
+Korka                     11746 NY Dix Hills                                    
+Krot                      11746 NY Dix Hills                                    
+Galik                     11758 NY Massapequa                                   
+Waldman                   11766 NY Huntington                                   
+Bose                      11787 NY Smithtown                                    
+Gates                     11787 NY Smithtown                                    
+Mwangi                    13760 NY Endicott                                     
+
+LAST_NAME                 ZIP   ST CITY                                         
+------------------------- ----- -- -------------------------                    
+Gilloon                   43224 OH Columbus                                     
+Snow                      48104 MI Ann Arbor                                    
+
+277 filas seleccionadas.
+
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Mardig                    Abdou                            119                  
+Suzanne M.                Abid                             257                  
+Alan                      Affinito                         190                  
+Ralph                     Alexander                        120                  
+Edwin                     Allende                          198                  
+Genny                     Andrew                           162                  
+Freedon                   annunziato                       206                  
+Maria                     Arias                            172                  
+Gary                      Aung                             127                  
+Gary                      Aung                             127                  
+Mary                      Axch                             202                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Derrick                   Baltazar                         140                  
+P.                        Balterzar                        170                  
+Nana                      Barogh                           252                  
+Nana                      Barogh                           252                  
+John T.                   Beitler                          160                  
+Jose                      Benitez                          271                  
+Jose                      Benitez                          271                  
+Gerard                    Biers                            143                  
+Walter                    Boremmann                        253                  
+Regina                    Bose                             195                  
+Debra                     Boyce                            175                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Robert                    Boyd                             141                  
+Joel                      Brendler                         234                  
+Gene                      Bresser, HR Rep.                 200                  
+Gene                      Bresser, HR Rep.                 200                  
+Michael                   Brown                            174                  
+Denise                    Brownstein                       171                  
+Anthony                   Bullock                          181                  
+Frank                     Bunnell                          247                  
+Judy                      Cahouet                          147                  
+Judy                      Cahouet                          147                  
+Michael                   Carcia                           235                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Michael                   Carcia                           235                  
+Charles                   Caro                             270                  
+Charles                   Caro                             270                  
+Melvina                   Chamnonkool                      254                  
+Reynaldo                  Chatman                          215                  
+Reynaldo                  Chatman                          215                  
+Reynaldo                  Chatman                          215                  
+Jeffrey                   Citron                           217                  
+Angel                     Cook                             203                  
+Fred                      Crocitto                         102                  
+Fred                      Crocitto                         102                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Eric                      Da Silva                         218                  
+J.                        Dalvi                            197                  
+Irv                       Dalvi                            245                  
+Peter                     Daly                             165                  
+John                      De Simone                        274                  
+Jeffrey                   Delbrun                          182                  
+Dawn                      Dennis                           154                  
+M.                        Diokno                           224                  
+Madhav                    Dusenberry                       216                  
+Thomas                    Edwards                          152                  
+Thomas                    Edwards                          159                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Bill                      Engongoro                        280                  
+Bill                      Engongoro                        280                  
+Laetia                    Enison                           104                  
+David                     Essner                           144                  
+Evan                      Fielding                         250                  
+Evan                      Fielding                         250                  
+Evan                      Fielding                         250                  
+Catherine                 Frangopoulos                     251                  
+Catherine                 Frangopoulos                     251                  
+Rommel                    Frost                            237                  
+Rommel                    Frost                            237                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+O.                        Garnes                           187                  
+Angelo                    Garshman                         139                  
+Regina                    Gates                            150                  
+Joseph                    German                           146                  
+Nicole                    Gillen                           163                  
+Phil                      Gilloon                          188                  
+Jenny                     Goldsmith                        211                  
+Jenny                     Goldsmith                        211                  
+Scott                     Grant                            156                  
+Omaira                    Grant                            129                  
+Verona                    Grant                            194                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Eilene                    Grant                            161                  
+Arun                      Griffen                          204                  
+Jean                      Griffith                         260                  
+Jean                      Griffith                         260                  
+Lorraine                  Harty                            264                  
+Bessie                    Heedles                          227                  
+Bessie                    Heedles                          227                  
+Alfred                    Hutheesing                       205                  
+Jonathan                  Jaele                            282                  
+Jonathan                  Jaele                            282                  
+Al                        Jamerncy                         193                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Shirley                   Jameson                          157                  
+Jim                       Joas                             167                  
+May                       Jodoin                           166                  
+Janet                     Jung                             232                  
+Janet                     Jung                             232                  
+Janet                     Jung                             232                  
+Lloyd                     Kellam                           209                  
+Radharam                  King                             263                  
+George                    Kocka                            230                  
+George                    Korka                            279                  
+George                    Korka                            279                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+N                         Kuehn                            117                  
+N                         Kuehn                            117                  
+Anil                      Kulina                           113                  
+Anil                      Kulina                           113                  
+Ricardo                   Kurtz                            178                  
+Ricardo                   Kurtz                            178                  
+Julius                    Kwong                            267                  
+Julius                    Kwong                            267                  
+Thomas E.                 La Blank                         278                  
+Thomas E.                 La Blank                         278                  
+J.                        Landry                           103                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Winsome                   Laporte                          114                  
+Winsome                   Laporte                          114                  
+Hazel                     Lasseter                         136                  
+Michael                   Lefbowitz                        201                  
+Paul                      Lefkowitz                        145                  
+Evelyn                    Liggons                          277                  
+Evelyn                    Liggons                          277                  
+Roy                       Limate                           158                  
+Julita                    Lippen                           122                  
+Adrienne                  Lopez                            229                  
+Hiedi                     Lopez                            118                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Steven                    M. Orent                         191                  
+Sheradha                  Malone                           221                  
+Maria                     Martin                           110                  
+Maria                     Martin                           110                  
+Michelle                  Masser                           135                  
+Oscar                     McGill                           173                  
+Oscar                     McGill                           173                  
+Frantz                    McLean                           169                  
+Dennis                    Mehta                            185                  
+George                    Merriman                         259                  
+George                    Merriman                         259                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Victor                    Meshaj                           196                  
+Catherine                 Mierzwa                          107                  
+James                     Miller                           137                  
+Edgar                     Moffat                           225                  
+Bernadette                Montanez                         207                  
+Vinnie                    Moon                             261                  
+Angel                     Moskowitz                        105                  
+Kathleen                  Mulroy                           233                  
+Kathleen                  Mulroy                           233                  
+Sally                     Naso                             168                  
+Hedy                      Naso                             273                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Peggy                     Noviello                         111                  
+Peggy                     Noviello                         111                  
+Lula                      Oates                            130                  
+Lula                      Oates                            130                  
+Virginia                  Ocampo                           281                  
+Virginia                  Ocampo                           281                  
+Judith                    Olvsade                          106                  
+Judith                    Olvsade                          106                  
+Daniel                    Ordes                            242                  
+D.                        Orent                            148                  
+Meryl                     Owens                            246                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Frank                     Pace                             223                  
+Frank                     Pace                             223                  
+Kate                      Page                             266                  
+Benita                    Perkins                          283                  
+Benita                    Perkins                          283                  
+Sylvia                    Perrin                           164                  
+Mrudula                   Philpotts                        153                  
+Sean                      Pineda                           121                  
+Kevin                     Porch                            272                  
+Judith                    Prochaska                        149                  
+Pierre                    Radicola                         123                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Simon                     Ramesh                           179                  
+James                     Reed                             133                  
+James                     Reed                             133                  
+Deborah                   Reyes                            189                  
+Deborah                   Reyes                            189                  
+Bharat                    Roberts                          243                  
+Barbara                   Robichaud                        212                  
+George                    Ross                             275                  
+Adele                     Rothstein                        265                  
+Jeff                      Runyan                           128                  
+Beth                      Satterfield                      176                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Beth                      Satterfield                      176                  
+Z.A.                      Scrittorale                      240                  
+J.                        Segall                           199                  
+Robert                    Segall                           220                  
+J.                        Segall                           199                  
+Judy                      Sethi                            108                  
+Arlyne                    Sheppard                         151                  
+Christine                 Sheppard                         186                  
+John                      Smith                            138                  
+John                      Smith                            138                  
+Roger                     Snow                             238                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Roger                     Snow                             238                  
+Roger                     Snow                             238                  
+Ronald                    Tangaribuan                      268                  
+David                     Thares                           210                  
+Thomas                    Thomas                           112                  
+Thomas                    Thomas                           112                  
+Sharon                    Thompson                         269                  
+E.A.                      Torres                           180                  
+Angela                    Torres                           134                  
+E.A.                      Torres                           180                  
+Gerry                     Tripp                            236                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Gerry                     Tripp                            236                  
+A.                        Tucker                           208                  
+Florence                  Valamas                          276                  
+Florence                  Valamas                          276                  
+Mohamed                   Valentine                        228                  
+Suzanna                   Velasco                          258                  
+Lorrane                   Velasco                          256                  
+Lorrane                   Velasco                          256                  
+Frank                     Viotty                           192                  
+Monica                    Waldman                          142                  
+Donna                     Walston                          262                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Larry                     Walter                           109                  
+Larry                     Walter                           109                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Sarah                     Wilson                           244                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Joseph                    Yourish                          241                  
+Tamara                    Zapulla                          248                  
+Tamara                    Zapulla                          248                  
+Salewa                    Zuckerberg                       184                  
+Salewa                    Zuckerberg                       184                  
+Salewa                    Zuckerberg                       184                  
+
+226 filas seleccionadas.
+
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Mardig                    Abdou                            119                  
+Suzanne M.                Abid                             257                  
+Alan                      Affinito                         190                  
+Ralph                     Alexander                        120                  
+Edwin                     Allende                          198                  
+Genny                     Andrew                           162                  
+Freedon                   annunziato                       206                  
+Maria                     Arias                            172                  
+Gary                      Aung                             127                  
+Mary                      Axch                             202                  
+Derrick                   Baltazar                         140                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+P.                        Balterzar                        170                  
+Nana                      Barogh                           252                  
+John T.                   Beitler                          160                  
+Jose                      Benitez                          271                  
+Gerard                    Biers                            143                  
+Walter                    Boremmann                        253                  
+Regina                    Bose                             195                  
+Debra                     Boyce                            175                  
+Robert                    Boyd                             141                  
+Joel                      Brendler                         234                  
+Gene                      Bresser, HR Rep.                 200                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Michael                   Brown                            174                  
+Denise                    Brownstein                       171                  
+Anthony                   Bullock                          181                  
+Frank                     Bunnell                          247                  
+Judy                      Cahouet                          147                  
+Michael                   Carcia                           235                  
+Charles                   Caro                             270                  
+Melvina                   Chamnonkool                      254                  
+Reynaldo                  Chatman                          215                  
+Jeffrey                   Citron                           217                  
+Angel                     Cook                             203                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Fred                      Crocitto                         102                  
+Eric                      Da Silva                         218                  
+Irv                       Dalvi                            245                  
+J.                        Dalvi                            197                  
+Peter                     Daly                             165                  
+John                      De Simone                        274                  
+Jeffrey                   Delbrun                          182                  
+Dawn                      Dennis                           154                  
+M.                        Diokno                           224                  
+Madhav                    Dusenberry                       216                  
+Thomas                    Edwards                          159                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Thomas                    Edwards                          152                  
+Bill                      Engongoro                        280                  
+Laetia                    Enison                           104                  
+David                     Essner                           144                  
+Evan                      Fielding                         250                  
+Catherine                 Frangopoulos                     251                  
+Rommel                    Frost                            237                  
+O.                        Garnes                           187                  
+Angelo                    Garshman                         139                  
+Regina                    Gates                            150                  
+Joseph                    German                           146                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Nicole                    Gillen                           163                  
+Phil                      Gilloon                          188                  
+Jenny                     Goldsmith                        211                  
+Eilene                    Grant                            161                  
+Scott                     Grant                            156                  
+Omaira                    Grant                            129                  
+Verona                    Grant                            194                  
+Arun                      Griffen                          204                  
+Jean                      Griffith                         260                  
+Lorraine                  Harty                            264                  
+Bessie                    Heedles                          227                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Alfred                    Hutheesing                       205                  
+Jonathan                  Jaele                            282                  
+Al                        Jamerncy                         193                  
+Shirley                   Jameson                          157                  
+Jim                       Joas                             167                  
+May                       Jodoin                           166                  
+Janet                     Jung                             232                  
+Lloyd                     Kellam                           209                  
+Radharam                  King                             263                  
+George                    Kocka                            230                  
+George                    Korka                            279                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+N                         Kuehn                            117                  
+Anil                      Kulina                           113                  
+Ricardo                   Kurtz                            178                  
+Julius                    Kwong                            267                  
+Thomas E.                 La Blank                         278                  
+J.                        Landry                           103                  
+Winsome                   Laporte                          114                  
+Hazel                     Lasseter                         136                  
+Michael                   Lefbowitz                        201                  
+Paul                      Lefkowitz                        145                  
+Evelyn                    Liggons                          277                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Roy                       Limate                           158                  
+Julita                    Lippen                           122                  
+Hiedi                     Lopez                            118                  
+Adrienne                  Lopez                            229                  
+Steven                    M. Orent                         191                  
+Sheradha                  Malone                           221                  
+Maria                     Martin                           110                  
+Michelle                  Masser                           135                  
+Oscar                     McGill                           173                  
+Frantz                    McLean                           169                  
+Dennis                    Mehta                            185                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+George                    Merriman                         259                  
+Victor                    Meshaj                           196                  
+Catherine                 Mierzwa                          107                  
+James                     Miller                           137                  
+Edgar                     Moffat                           225                  
+Bernadette                Montanez                         207                  
+Vinnie                    Moon                             261                  
+Angel                     Moskowitz                        105                  
+Kathleen                  Mulroy                           233                  
+Hedy                      Naso                             273                  
+Sally                     Naso                             168                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Peggy                     Noviello                         111                  
+Lula                      Oates                            130                  
+Virginia                  Ocampo                           281                  
+Judith                    Olvsade                          106                  
+Daniel                    Ordes                            242                  
+D.                        Orent                            148                  
+Meryl                     Owens                            246                  
+Frank                     Pace                             223                  
+Kate                      Page                             266                  
+Benita                    Perkins                          283                  
+Sylvia                    Perrin                           164                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Mrudula                   Philpotts                        153                  
+Sean                      Pineda                           121                  
+Kevin                     Porch                            272                  
+Judith                    Prochaska                        149                  
+Pierre                    Radicola                         123                  
+Simon                     Ramesh                           179                  
+James                     Reed                             133                  
+Deborah                   Reyes                            189                  
+Bharat                    Roberts                          243                  
+Barbara                   Robichaud                        212                  
+George                    Ross                             275                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Adele                     Rothstein                        265                  
+Jeff                      Runyan                           128                  
+Beth                      Satterfield                      176                  
+Z.A.                      Scrittorale                      240                  
+Robert                    Segall                           220                  
+J.                        Segall                           199                  
+Judy                      Sethi                            108                  
+Arlyne                    Sheppard                         151                  
+Christine                 Sheppard                         186                  
+John                      Smith                            138                  
+Roger                     Snow                             238                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Ronald                    Tangaribuan                      268                  
+David                     Thares                           210                  
+Thomas                    Thomas                           112                  
+Sharon                    Thompson                         269                  
+Angela                    Torres                           134                  
+E.A.                      Torres                           180                  
+Gerry                     Tripp                            236                  
+A.                        Tucker                           208                  
+Florence                  Valamas                          276                  
+Mohamed                   Valentine                        228                  
+Suzanna                   Velasco                          258                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Lorrane                   Velasco                          256                  
+Frank                     Viotty                           192                  
+Monica                    Waldman                          142                  
+Donna                     Walston                          262                  
+Larry                     Walter                           109                  
+Daniel                    Wicelinski                       124                  
+Yvonne                    Williams                         214                  
+Sarah                     Wilson                           244                  
+Joseph                    Yourish                          241                  
+Tamara                    Zapulla                          248                  
+Salewa                    Zuckerberg                       184                  
+
+165 filas seleccionadas.
+
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Mardig                    Abdou                            119                  
+Suzanne M.                Abid                             257                  
+Alan                      Affinito                         190                  
+Ralph                     Alexander                        120                  
+Edwin                     Allende                          198                  
+Genny                     Andrew                           162                  
+Freedon                   annunziato                       206                  
+Maria                     Arias                            172                  
+Gary                      Aung                             127                  
+Gary                      Aung                             127                  
+Mary                      Axch                             202                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Derrick                   Baltazar                         140                  
+P.                        Balterzar                        170                  
+Nana                      Barogh                           252                  
+Nana                      Barogh                           252                  
+John T.                   Beitler                          160                  
+Jose                      Benitez                          271                  
+Jose                      Benitez                          271                  
+Gerard                    Biers                            143                  
+Walter                    Boremmann                        253                  
+Regina                    Bose                             195                  
+Debra                     Boyce                            175                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Robert                    Boyd                             141                  
+Joel                      Brendler                         234                  
+Gene                      Bresser, HR Rep.                 200                  
+Gene                      Bresser, HR Rep.                 200                  
+Michael                   Brown                            174                  
+Denise                    Brownstein                       171                  
+Anthony                   Bullock                          181                  
+Frank                     Bunnell                          247                  
+Judy                      Cahouet                          147                  
+Judy                      Cahouet                          147                  
+Michael                   Carcia                           235                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Michael                   Carcia                           235                  
+Charles                   Caro                             270                  
+Charles                   Caro                             270                  
+Melvina                   Chamnonkool                      254                  
+Reynaldo                  Chatman                          215                  
+Reynaldo                  Chatman                          215                  
+Reynaldo                  Chatman                          215                  
+Jeffrey                   Citron                           217                  
+Angel                     Cook                             203                  
+Fred                      Crocitto                         102                  
+Fred                      Crocitto                         102                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Eric                      Da Silva                         218                  
+J.                        Dalvi                            197                  
+Irv                       Dalvi                            245                  
+Peter                     Daly                             165                  
+John                      De Simone                        274                  
+Jeffrey                   Delbrun                          182                  
+Dawn                      Dennis                           154                  
+M.                        Diokno                           224                  
+Madhav                    Dusenberry                       216                  
+Thomas                    Edwards                          152                  
+Thomas                    Edwards                          159                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Bill                      Engongoro                        280                  
+Bill                      Engongoro                        280                  
+Laetia                    Enison                           104                  
+David                     Essner                           144                  
+Evan                      Fielding                         250                  
+Evan                      Fielding                         250                  
+Evan                      Fielding                         250                  
+Catherine                 Frangopoulos                     251                  
+Catherine                 Frangopoulos                     251                  
+Rommel                    Frost                            237                  
+Rommel                    Frost                            237                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+O.                        Garnes                           187                  
+Angelo                    Garshman                         139                  
+Regina                    Gates                            150                  
+Joseph                    German                           146                  
+Nicole                    Gillen                           163                  
+Phil                      Gilloon                          188                  
+Jenny                     Goldsmith                        211                  
+Jenny                     Goldsmith                        211                  
+Scott                     Grant                            156                  
+Omaira                    Grant                            129                  
+Verona                    Grant                            194                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Eilene                    Grant                            161                  
+Arun                      Griffen                          204                  
+Jean                      Griffith                         260                  
+Jean                      Griffith                         260                  
+Lorraine                  Harty                            264                  
+Bessie                    Heedles                          227                  
+Bessie                    Heedles                          227                  
+Alfred                    Hutheesing                       205                  
+Jonathan                  Jaele                            282                  
+Jonathan                  Jaele                            282                  
+Al                        Jamerncy                         193                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Shirley                   Jameson                          157                  
+Jim                       Joas                             167                  
+May                       Jodoin                           166                  
+Janet                     Jung                             232                  
+Janet                     Jung                             232                  
+Janet                     Jung                             232                  
+Lloyd                     Kellam                           209                  
+Radharam                  King                             263                  
+George                    Kocka                            230                  
+George                    Korka                            279                  
+George                    Korka                            279                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+N                         Kuehn                            117                  
+N                         Kuehn                            117                  
+Anil                      Kulina                           113                  
+Anil                      Kulina                           113                  
+Ricardo                   Kurtz                            178                  
+Ricardo                   Kurtz                            178                  
+Julius                    Kwong                            267                  
+Julius                    Kwong                            267                  
+Thomas E.                 La Blank                         278                  
+Thomas E.                 La Blank                         278                  
+J.                        Landry                           103                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Winsome                   Laporte                          114                  
+Winsome                   Laporte                          114                  
+Hazel                     Lasseter                         136                  
+Michael                   Lefbowitz                        201                  
+Paul                      Lefkowitz                        145                  
+Evelyn                    Liggons                          277                  
+Evelyn                    Liggons                          277                  
+Roy                       Limate                           158                  
+Julita                    Lippen                           122                  
+Adrienne                  Lopez                            229                  
+Hiedi                     Lopez                            118                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Steven                    M. Orent                         191                  
+Sheradha                  Malone                           221                  
+Maria                     Martin                           110                  
+Maria                     Martin                           110                  
+Michelle                  Masser                           135                  
+Oscar                     McGill                           173                  
+Oscar                     McGill                           173                  
+Frantz                    McLean                           169                  
+Dennis                    Mehta                            185                  
+George                    Merriman                         259                  
+George                    Merriman                         259                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Victor                    Meshaj                           196                  
+Catherine                 Mierzwa                          107                  
+James                     Miller                           137                  
+Edgar                     Moffat                           225                  
+Bernadette                Montanez                         207                  
+Vinnie                    Moon                             261                  
+Angel                     Moskowitz                        105                  
+Kathleen                  Mulroy                           233                  
+Kathleen                  Mulroy                           233                  
+Sally                     Naso                             168                  
+Hedy                      Naso                             273                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Peggy                     Noviello                         111                  
+Peggy                     Noviello                         111                  
+Lula                      Oates                            130                  
+Lula                      Oates                            130                  
+Virginia                  Ocampo                           281                  
+Virginia                  Ocampo                           281                  
+Judith                    Olvsade                          106                  
+Judith                    Olvsade                          106                  
+Daniel                    Ordes                            242                  
+D.                        Orent                            148                  
+Meryl                     Owens                            246                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Frank                     Pace                             223                  
+Frank                     Pace                             223                  
+Kate                      Page                             266                  
+Benita                    Perkins                          283                  
+Benita                    Perkins                          283                  
+Sylvia                    Perrin                           164                  
+Mrudula                   Philpotts                        153                  
+Sean                      Pineda                           121                  
+Kevin                     Porch                            272                  
+Judith                    Prochaska                        149                  
+Pierre                    Radicola                         123                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Simon                     Ramesh                           179                  
+James                     Reed                             133                  
+James                     Reed                             133                  
+Deborah                   Reyes                            189                  
+Deborah                   Reyes                            189                  
+Bharat                    Roberts                          243                  
+Barbara                   Robichaud                        212                  
+George                    Ross                             275                  
+Adele                     Rothstein                        265                  
+Jeff                      Runyan                           128                  
+Beth                      Satterfield                      176                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Beth                      Satterfield                      176                  
+Z.A.                      Scrittorale                      240                  
+J.                        Segall                           199                  
+Robert                    Segall                           220                  
+J.                        Segall                           199                  
+Judy                      Sethi                            108                  
+Arlyne                    Sheppard                         151                  
+Christine                 Sheppard                         186                  
+John                      Smith                            138                  
+John                      Smith                            138                  
+Roger                     Snow                             238                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Roger                     Snow                             238                  
+Roger                     Snow                             238                  
+Ronald                    Tangaribuan                      268                  
+David                     Thares                           210                  
+Thomas                    Thomas                           112                  
+Thomas                    Thomas                           112                  
+Sharon                    Thompson                         269                  
+E.A.                      Torres                           180                  
+Angela                    Torres                           134                  
+E.A.                      Torres                           180                  
+Gerry                     Tripp                            236                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Gerry                     Tripp                            236                  
+A.                        Tucker                           208                  
+Florence                  Valamas                          276                  
+Florence                  Valamas                          276                  
+Mohamed                   Valentine                        228                  
+Suzanna                   Velasco                          258                  
+Lorrane                   Velasco                          256                  
+Lorrane                   Velasco                          256                  
+Frank                     Viotty                           192                  
+Monica                    Waldman                          142                  
+Donna                     Walston                          262                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Larry                     Walter                           109                  
+Larry                     Walter                           109                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Daniel                    Wicelinski                       124                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Yvonne                    Williams                         214                  
+Sarah                     Wilson                           244                  
+
+FIRST_NAME                LAST_NAME                 STUDENT_ID                  
+------------------------- ------------------------- ----------                  
+Joseph                    Yourish                          241                  
+Tamara                    Zapulla                          248                  
+Tamara                    Zapulla                          248                  
+Salewa                    Zuckerberg                       184                  
+Salewa                    Zuckerberg                       184                  
+Salewa                    Zuckerberg                       184                  
+
+226 filas seleccionadas.
+
+
+STUDENT_ID  COURSE_NO TO_CHAR(E.ENROLL_DA SECTION_ID                            
+---------- ---------- ------------------- ----------                            
+       103         20 01/30/2003 10:18 AM         81                            
+       104         20 01/30/2003 10:18 AM         81                            
+
+
+STUDENT_ID  COURSE_NO TO_CHAR(E.ENROLL_DA SECTION_ID                            
+---------- ---------- ------------------- ----------                            
+       103         20 01/30/2003 10:18 AM         81                            
+       104         20 01/30/2003 10:18 AM         81                            
+
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+        10          2 DP Overview                                               
+L214                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+        20          2 Intro to Computers                                        
+L210                                                         103                
+Schorin                   Nina                                                  
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+        20          4 Intro to Computers                                        
+L214                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+        20          7 Intro to Computers                                        
+L509                                                         105                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Morris                    Anita                                                 
+                                                                                
+        20          8 Intro to Computers                                        
+L210                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+        25          1 Intro to Programming                                      
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+M311                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+        25          2 Intro to Programming                                      
+L210                                                         108                
+Lowry                     Charles                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+        25          3 Intro to Programming                                      
+L507                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+        25          4 Intro to Programming                                      
+L214                                                         102                
+Wojick                    Tom                                                   
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+        25          5 Intro to Programming                                      
+L509                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+        25          6 Intro to Programming                                      
+L509                                                         104                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Pertez                    Gary                                                  
+                                                                                
+        25          7 Intro to Programming                                      
+L210                                                         105                
+Morris                    Anita                                                 
+                                                                                
+        25          8 Intro to Programming                                      
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L509                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+        25          9 Intro to Programming                                      
+L507                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       100          1 Hands-On Windows                                          
+L214                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+       100          2 Hands-On Windows                                          
+L500                                                         103                
+Schorin                   Nina                                                  
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       100          3 Hands-On Windows                                          
+L509                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+       100          4 Hands-On Windows                                          
+L507                                                         105                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Morris                    Anita                                                 
+                                                                                
+       100          5 Hands-On Windows                                          
+L214                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+       120          1 Intro to Java Programming                                 
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L507                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+       120          2 Intro to Java Programming                                 
+L206                                                         108                
+Lowry                     Charles                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       120          3 Intro to Java Programming                                 
+L509                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+       120          4 Intro to Java Programming                                 
+L509                                                         102                
+Wojick                    Tom                                                   
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       120          5 Intro to Java Programming                                 
+L210                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+       120          7 Intro to Java Programming                                 
+L507                                                         104                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Pertez                    Gary                                                  
+                                                                                
+       122          1 Intermediate Java Programming                             
+M311                                                         105                
+Morris                    Anita                                                 
+                                                                                
+       122          2 Intermediate Java Programming                             
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L211                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+       122          3 Intermediate Java Programming                             
+L507                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       122          4 Intermediate Java Programming                             
+L210                                                         108                
+Lowry                     Charles                                               
+                                                                                
+       122          5 Intermediate Java Programming                             
+L507                                                         101                
+Hanks                     Fernand                                               
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       124          1 Advanced Java Programming                                 
+M500                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+       124          2 Advanced Java Programming                                 
+H310                                                         103                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Schorin                   Nina                                                  
+                                                                                
+       124          3 Advanced Java Programming                                 
+L214                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+       124          4 Advanced Java Programming                                 
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L210                                                         105                
+Morris                    Anita                                                 
+                                                                                
+       125          1 JDeveloper                                                
+L509                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       125          2 JDeveloper                                                
+L509                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+       125          3 JDeveloper                                                
+L214                                                         108                
+Lowry                     Charles                                               
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       125          4 JDeveloper                                                
+L211                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+       125          6 JDeveloper                                                
+L507                                                         102                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Wojick                    Tom                                                   
+                                                                                
+       130          1 Intro to Unix                                             
+L507                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+       130          2 Intro to Unix                                             
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L214                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+       130          3 Intro to Unix                                             
+L509                                                         105                
+Morris                    Anita                                                 
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       130          4 Intro to Unix                                             
+L509                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+       132          1 Basics of Unix Admin                                      
+L509                                                         107                
+Frantzen                  Marilyn                                               
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       132          3 Basics of Unix Admin                                      
+L509                                                         108                
+Lowry                     Charles                                               
+                                                                                
+       134          2 Advanced Unix Admin                                       
+L509                                                         102                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Wojick                    Tom                                                   
+                                                                                
+       134          3 Advanced Unix Admin                                       
+L509                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+       134          1 Advanced Unix Admin                                       
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L509                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+       135          1 Unix Tips and Techniques                                  
+L509                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       135          2 Unix Tips and Techniques                                  
+L214                                                         105                
+Morris                    Anita                                                 
+                                                                                
+       135          3 Unix Tips and Techniques                                  
+L509                                                         106                
+Smythe                    Todd                                                  
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       135          4 Unix Tips and Techniques                                  
+M200                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+       140          1 Structured Analysis                                       
+L509                                                         108                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Lowry                     Charles                                               
+                                                                                
+       140          2 Structured Analysis                                       
+L210                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+       140          3 Structured Analysis                                       
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L507                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+       142          1 Project Management                                        
+L211                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       142          2 Project Management                                        
+L214                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+       142          3 Project Management                                        
+L507                                                         105                
+Morris                    Anita                                                 
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       144          2 Database Design                                           
+L214                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+       145          1 Internet Protocols                                        
+L214                                                         107                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Frantzen                  Marilyn                                               
+                                                                                
+       145          3 Internet Protocols                                        
+L210                                                         108                
+Lowry                     Charles                                               
+                                                                                
+       146          2 Java for C/C++ Programmers                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L507                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+       146          1 Java for C/C++ Programmers                                
+L509                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       147          1 GUI Programming                                           
+L509                                                         103                
+Schorin                   Nina                                                  
+                                                                                
+       204          1 Intro to SQL                                              
+L210                                                         104                
+Pertez                    Gary                                                  
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       210          1 Oracle Tools                                              
+L507                                                         105                
+Morris                    Anita                                                 
+                                                                                
+       220          1 PL/SQL Programming                                        
+L509                                                         106                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Smythe                    Todd                                                  
+                                                                                
+       230          1 Intro to Internet                                         
+L500                                                         107                
+Frantzen                  Marilyn                                               
+                                                                                
+       230          2 Intro to Internet                                         
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L214                                                         108                
+Lowry                     Charles                                               
+                                                                                
+       240          1 Intro to the Basic Language                               
+L509                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       240          2 Intro to the Basic Language                               
+L214                                                         102                
+Wojick                    Tom                                                   
+                                                                                
+       310          1 Operating Systems                                         
+L507                                                         103                
+Schorin                   Nina                                                  
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+                                                                                
+       330          1 Network Administration                                    
+L511                                                         104                
+Pertez                    Gary                                                  
+                                                                                
+       350          3 JDeveloper Lab                                            
+L509                                                         107                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+Frantzen                  Marilyn                                               
+                                                                                
+       350          1 JDeveloper Lab                                            
+L509                                                         105                
+Morris                    Anita                                                 
+                                                                                
+       350          2 JDeveloper Lab                                            
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+L214                                                         106                
+Smythe                    Todd                                                  
+                                                                                
+       420          1 Database System Principles                                
+M311                                                         108                
+Lowry                     Charles                                               
+                                                                                
+
+ COURSE_NO SECTION_NO DESCRIPTION                                               
+---------- ---------- --------------------------------------------------        
+LOCATION                                           INSTRUCTOR_ID                
+-------------------------------------------------- -------------                
+LAST_NAME                 FIRST_NAME                                            
+------------------------- -------------------------                             
+       450          1 DB Programming in Java                                    
+L507                                                         101                
+Hanks                     Fernand                                               
+                                                                                
+
+78 filas seleccionadas.
+
+
+STUDENT_ID SECTION_ID TY         NO   INDIV_GR ENROLLDT                         
+---------- ---------- -- ---------- ---------- --------                         
+       220        119 FI          1         85 02/16/03                         
+       220        119 HM          1         84 02/16/03                         
+       220        119 HM          2         84 02/16/03                         
+       220        119 HM          3         74 02/16/03                         
+       220        119 HM          4         74 02/16/03                         
+       220        119 MT          1         88 02/16/03                         
+       220        119 PA          1         91 02/16/03                         
+       220        119 QZ          1         92 02/16/03                         
+       220        119 QZ          2         91 02/16/03                         
+
+9 filas seleccionadas.
+
+
+ COURSE_NO SECTION_NO STUDENT_ID                                                
+---------- ---------- ----------                                                
+        20          2        103                                                
+        20          2        104                                                
+       146          2        117                                                
+       310          1        119                                                
+       310          1        120                                                
+        10          2        128                                                
+       146          2        140                                                
+        20          8        158                                                
+        20          8        199                                                
+       310          1        238                                                
+        20          2        240                                                
+
+ COURSE_NO SECTION_NO STUDENT_ID                                                
+---------- ---------- ----------                                                
+       310          1        243                                                
+
+12 filas seleccionadas.
+

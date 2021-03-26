@@ -1,4 +1,4 @@
-SPOOL C:\Users\luis\Documents\Github\ESCOM\ddb\sql_by_example\c4\salida.txt
+SPOOL C:\Users\luisj\Documents\Github\ESCOM\ddb\sql_by_example\c4\salida.txt
 rem RISCHERT, A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Perarson.
 
 
@@ -62,7 +62,7 @@ SELECT RPAD(UPPER(city), 20,'.')
 
 
 SELECT LOWER('LUIS') as name FROM dual;
-SELECT LOWER("ASDFGHJKL") from dual;
+SELECT LOWER('ASDFGHJKL') from dual;
 SELECT CONCAT('Cara', 'melo') from dual;
 SELECT CONCAT('CAME', 'LLO') from dual;
 
