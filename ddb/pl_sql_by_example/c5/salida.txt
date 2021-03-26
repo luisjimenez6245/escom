@@ -1,0 +1,45 @@
+Introduzca un valor para sv_num: 1
+antiguo   2: v_num NUMBER := &sv_num;
+nuevo   2: v_num NUMBER := 1;
+1 is odd number                                                                                                                                       
+Done                                                                                                                                                  
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_user_date: 03-AUG-2000
+antiguo   2:     v_date DATE := TO_DATE('&sv_user_date', 'DD-MON-YYYY');
+nuevo   2:     v_date DATE := TO_DATE('03-AUG-2000', 'DD-MON-YYYY');
+Today is Wednesday                                                                                                                                    
+
+Procedimiento PL/SQL terminado correctamente.
+
+Course: 20                                                                                                                                            
+Description: Intro to Computers                                                                                                                       
+Prerequisite: No prerequisite course required                                                                                                         
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_instructor_id: 1
+antiguo   2:    v_instructor_id NUMBER := &sv_instructor_id;
+nuevo   2:    v_instructor_id NUMBER := 1;
+This instructor teaches 0 sections                                                                                                                    
+Done…                                                                                                                                               
+
+Procedimiento PL/SQL terminado correctamente.
+
+Final grade:                                                                                                                                          
+
+Procedimiento PL/SQL terminado correctamente.
+
+
+STUDENT_ID|=|SECTION_ID|=|FINAL_GRADE|=|NUMERIC_GRADE|=|     GRADE                                                                                    
+----------|=|----------|=|-----------|=|-------------|=|----------                                                                                    
+       102|=|        86|=|           |=|           85|=|        85                                                                                    
+       102|=|        89|=|         92|=|           92|=|        92                                                                                    
+
+
+STUDENT_ID|=|SECTION_ID|=|FINAL_GRADE|=|NUMERIC_GRADE|=|     GRADE                                                                                    
+----------|=|----------|=|-----------|=|-------------|=|----------                                                                                    
+       102|=|        86|=|           |=|           85|=|        85                                                                                    
+       102|=|        89|=|         92|=|           92|=|                                                                                              
+

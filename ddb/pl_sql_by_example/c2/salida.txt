@@ -1,0 +1,30 @@
+I ate 2 cookies with 600 calories.                                                                                                                    
+I really ate 3 cookies with 900 calories.                                                                                                             
+The truth is, I actually ate 8 cookies with 2400 calories.                                                                                            
+
+Procedimiento PL/SQL terminado correctamente.
+
+1                                                                                                                                                     
+1200                                                                                                                                                  
+6                                                                                                                                                     
+1800                                                                                                                                                  
+
+Procedimiento PL/SQL terminado correctamente.
+
+Outer Block, v_test: 123                                                                                                                              
+Inner Block, v_test: 456                                                                                                                              
+Inner Block, outer_block.v_test: 123                                                                                                                  
+
+Procedimiento PL/SQL terminado correctamente.
+
+outer student id is 123                                                                                                                               
+inner student id is 125                                                                                                                               
+When am I displayed?                                                                                                                                  
+outer student id is 123                                                                                                                               
+
+Procedimiento PL/SQL terminado correctamente.
+
+The course is unknown. The location is 603D.                                                                                                          
+
+Procedimiento PL/SQL terminado correctamente.
+

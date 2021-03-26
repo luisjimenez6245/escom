@@ -1,4 +1,4 @@
-SPOOL C:\Users\luis\Documents\Github\ESCOM\ddb\pl_sql_by_example\c2\salida.txt
+SPOOL C:\Users\luisj\Documents\GitHub\escom\ddb\pl_sql_by_example\c2\salida.txt
 
 rem ROSENZWEIG, B & SILVESTROVA, E. (2009). Oracle® PL/SQL™ by Example,USA:Perarson.
 rem [ROSENZWEIG,2009,31]
@@ -8,7 +8,7 @@ DECLARE
     v_cookies_amt NUMBER := 2;
     v_calories_per_cookie CONSTANT NUMBER := 300;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('I ate ' || v_cookies_amt || ' cookies with ' || v_cookies_amt * #v_calories_per_cookie || ' calories.');
+    DBMS_OUTPUT.PUT_LINE('I ate ' || v_cookies_amt || ' cookies with ' || v_cookies_amt * v_calories_per_cookie || ' calories.');
     v_cookies_amt := 3;
     DBMS_OUTPUT.PUT_LINE('I really ate ' || v_cookies_amt || ' cookies with ' || v_cookies_amt * v_calories_per_cookie || ' calories.'); 
     v_cookies_amt := v_cookies_amt + 5;
@@ -56,7 +56,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Inner Block, outer_block.v_test: '|| Outer_block.v_test);
     END inner_block;
 END outer_block;
-
+/
 
 rem [ROSENZWEIG,2009,36]
 -- ch02_5a.sql

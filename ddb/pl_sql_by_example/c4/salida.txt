@@ -1,0 +1,52 @@
+v_num1 = 3                                                                                                                                            
+v_num2 = 5                                                                                                                                            
+
+Procedimiento PL/SQL terminado correctamente.
+
+v_num1 != v_num2                                                                                                                                      
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_user_date: 03-AUG-2000
+antiguo   2:     v_date DATE := TO_DATE('&sv_user_date', 'DD-MON-YYYY');
+nuevo   2:     v_date DATE := TO_DATE('03-AUG-2000', 'DD-MON-YYYY');
+Done...                                                                                                                                               
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_course_no: 1
+antiguo   3:     v_course_no CHAR(6) := '&sv_course_no';
+nuevo   3:     v_course_no CHAR(6) := '1';
+Introduzca un valor para sv_section_no: 1
+antiguo   4:     v_section_no NUMBER := &sv_section_no;
+nuevo   4:     v_section_no NUMBER := 1;
+Section 1 of course 25 is not full                                                                                                                    
+
+Procedimiento PL/SQL terminado correctamente.
+
+10 students can still enroll into section 1 of course 25                                                                                              
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_student_id: 1
+antiguo   2:     v_student_id NUMBER := &sv_student_id;
+nuevo   2:     v_student_id NUMBER := 1;
+Introduzca un valor para sv_section_id: 1
+antiguo   3:     v_section_id NUMBER := &sv_section_id;
+nuevo   3:     v_section_id NUMBER := 1;
+There is no such student or section                                                                                                                   
+
+Procedimiento PL/SQL terminado correctamente.
+
+Introduzca un valor para sv_temp_in: 1
+antiguo   2:     v_temp_in NUMBER := &sv_temp_in;
+nuevo   2:     v_temp_in NUMBER := 1;
+Introduzca un valor para sv_scale_in: 1
+antiguo   3:     v_scale_in CHAR := '&sv_scale_in';
+nuevo   3:     v_scale_in CHAR := '1';
+This is not a valid scale                                                                                                                             
+New scale is: C                                                                                                                                       
+New temperature is: 0                                                                                                                                 
+
+Procedimiento PL/SQL terminado correctamente.
+
