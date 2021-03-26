@@ -47,26 +47,11 @@ SELECT last_name,
 
 
 
- SELECT last_name, registration_date 
- FROM student 
- WHERE registration_date = TO_DATE('22-JAN-2003', 'DD-MON-YYYY');
-
- SELECT last_name, registration_date 
- FROM student 
- WHERE registration_date = '22-JAN-2003';
-
-
-
 SELECT TO_CHAR(TO_DATE('17-OCT-67','DD-MON-RR'),'YYYY') "1900", 
  TO_CHAR(TO_DATE('17-OCT-17','DD-MON-RR'),'YYYY') "2000" 
  FROM dual;
 
 
-SELECT last_name, 
- TO_CHAR(registration_date, 'DD-MON-YYYY HH24:MI:SS') 
- FROM student 
- WHERE registration_date = TO_DATE('22-JAN-2003', 'DD-MON-YYYY') 
-;
 
 
 SELECT course_no, section_id, 
@@ -133,10 +118,6 @@ SELECT TO_CHAR(start_date_time, 'DD-MON-YYYY') "Start Date",
  FROM dual ;
 
 
-SELECT MONTHS_BETWEEN(TO_DATE('17-AUG-2003','DD-MON-YYYY'), 
- TO_DATE('29-SEP-1999','DD-MON-YYYY')) months 
- FROM dual;
-
  SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI:SS') "Current", 
  TO_CHAR(SYSDATE+3, 'DD-MON-YYYY HH24:MI:SS') "Answer" 
  FROM dual;
@@ -145,20 +126,6 @@ SELECT TO_CHAR(CURRENT_DATE, 'DD-MON-YYYY HH:MI:SS PM')
  FROM dual ;
 
 
-SELECT col_timestamp_w_tz, 
- EXTRACT(YEAR FROM col_timestamp_w_tz) year, 
- EXTRACT(MONTH FROM col_timestamp_w_tz) month, 
- EXTRACT(DAY FROM col_timestamp_w_tz) day, 
- EXTRACT(HOUR FROM col_timestamp_w_tz) hour, 
- EXTRACT(MINUTE FROM col_timestamp_w_tz) min, 
- EXTRACT(SECOND ;
-
-SELECT col_date, col_timestamp, col_timestamp_w_tz 
- FROM date_example;
-
-
-SELECT col_date, col_timestamp, col_timestamp_w_tz 
- FROM date_example ;
 
 
  SELECT TZ_OFFSET('Europe/London') "London", 
