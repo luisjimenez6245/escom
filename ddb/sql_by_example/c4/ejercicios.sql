@@ -2,6 +2,14 @@ SPOOL C:\Users\luisj\Documents\Github\ESCOM\ddb\sql_by_example\c4\salida.txt
 rem RISCHERT, A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Perarson.
 
 
+set pagesize 99
+set linesize 200
+set colsep '|=|'
+set underline =
+set null s/Datos
+set feedback on
+
+
 SELECT last_name, registration_date 
  FROM student 
  WHERE student_id IN (123, 161, 190);

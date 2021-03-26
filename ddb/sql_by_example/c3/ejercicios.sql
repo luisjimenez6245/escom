@@ -1,6 +1,13 @@
-SPOOL C:\Users\luisj\Documents\Github\ESCOM\ddb\sql_by_example\c4\salida.txt
+SPOOL C:\Users\luisj\Documents\Github\ESCOM\ddb\sql_by_example\c3\salida.txt
 rem RISCHERT, A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Perarson.
 
+
+set pagesize 99
+set linesize 200
+set colsep '|=|'
+set underline =
+set null s/Datos
+set feedback on
 
 
 SELECT student_id,
@@ -9,7 +16,6 @@ FROM student;
 
 
 
-WHERE INSTR(last_name, 'o', 1, 3) > 0;
 SELECT RPAD(city, 20, '*') "City Name",
     LPAD(state, 10, '-') "State Name"
 FROM zipcode;
