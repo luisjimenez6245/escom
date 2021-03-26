@@ -15,8 +15,7 @@ SELECT RPAD(city, 20, '*') "City Name",
 FROM zipcode;
 
 
-SELECT LOWER("LUIS");
-SELECT LOWER("ASDFGHJKL");
+
 SELECT LTRIM('0001234500', '0') left,
     RTRIM('0001234500', '0') right,
     LTRIM(RTRIM('0001234500', '0'), '0') both
@@ -62,8 +61,10 @@ SELECT RPAD(UPPER(city), 20,'.')
   FROM zipcode;
 
 
-SELECT CONCAT("Cara", "melo");
-SELECT CONCAT("CAME", "LLO");
+SELECT LOWER('LUIS') as name FROM dual;
+SELECT LOWER("ASDFGHJKL") from dual;
+SELECT CONCAT('Cara', 'melo') from dual;
+SELECT CONCAT('CAME', 'LLO') from dual;
 
 
 SPOOL OFF
