@@ -28,6 +28,78 @@ SELECT MAX(enroll_date)
  FROM enrollment ;
 
 
+col location format A7;
+col sum format $9,900.99;
+col total format 999,999;
+
+SELECT location , COUNT(*) * 100 as total, SUM(capacity) AS sum, 
+ MIN(capacity) AS min, MAX(capacity) AS max 
+ FROM section 
+ GROUP BY location;
+
+
+SELECT location "Location", instructor_id, 
+ COUNT(location) "Total Locations", 
+ SUM(capacity) "Total Capacity" 
+ FROM section 
+ GROUP BY location, instructor_id 
+HAVING SUM(capacity) > 65 
+ORDER BY "Total Capacity" DESC;
+
+
+SELECT location "Location",
+     SUM(capacity) "Total Capacity"
+     FROM section
+     WHERE section_no = 3
+     GROUP BY location
+    HAVING (COUNT(location) > 3
+    AND location LIKE 'L5%')
+;
+
+
+SELECT location "Location",
+     SUM(capacity) "Total Capacity"
+     FROM section
+     WHERE section_no in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+     GROUP BY location
+    HAVING (COUNT(location) > 3
+    AND location LIKE 'L5%')
+;
+
+SELECT location "Location", instructor_id, 
+ COUNT(location) "Total Locations", 
+ SUM(capacity) "Total Capacity" 
+ FROM section 
+ WHERE section_no IN (2, 3) 
+ GROUP BY location, instructor_id 
+HAVING SUM(capacity) > 50;
+
+
+SELECT location "Location", instructor_id, 
+ COUNT(location) "Total Locations", 
+ SUM(capacity) "Total Capacity" 
+ FROM section 
+ WHERE section_no IN (2, 3, 4, 5, 6, 7, 8) 
+ GROUP BY location, instructor_id 
+HAVING SUM(capacity) > 50;
+
+
+SELECT location "Location", instructor_id, 
+ COUNT(location) "Total Locations", 
+ SUM(capacity) "Total Capacity" 
+ FROM section 
+ WHERE section_no IN (2, 3, 4, 5, 6, 7, 8) 
+ GROUP BY location, instructor_id 
+;
+
+SELECT location "Location", instructor_id, 
+ COUNT(location) "Total Locations", 
+ SUM(capacity) "Total Capacity" 
+ FROM section 
+ WHERE section_no IN (2, 3, 4, 5, 6, 7, 8) 
+ GROUP BY location, instructor_id 
+HAVING SUM(capacity) > 25;
+
 
 
 SELECT location "Location", instructor_id, 

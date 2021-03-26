@@ -13,8 +13,6 @@ BEGIN
         -- increment loop counter by one
         v_counter := v_counter + 1;
         DBMS_OUTPUT.PUT_LINE('before continue condition, v_counter = '||v_counter);
-        -- if CONTINUE condition yields TRUE pass control to the
-        -- first executable statement of the loop
         IF v_counter < 3 THEN
             CONTINUE;
         END IF;
@@ -39,44 +37,35 @@ DECLARE
     v_counter BINARY_INTEGER := 0;
 BEGIN
     LOOP
-        -- increment loop counter by one
         v_counter := v_counter + 1;
         DBMS_OUTPUT.PUT_LINE('before continue condition, v_counter = '||v_counter);
-        -- if CONTINUE condition yields TRUE pass control to the
-        -- first executable statement of the loop
         CONTINUE WHEN v_counter < 3;
         DBMS_OUTPUT.PUT_LINE('after continue condition, v_counter = '||v_counter);
-        -- if EXIT condition yields TRUE exit the loop
         IF v_counter = 5 THEN
             EXIT;
         END IF;
     END LOOP;
-    -- control resumes here
     DBMS_OUTPUT.PUT_LINE ('Done...');
 END;
 /
 
 
 rem [ROSENZWEIG,2009, 153]
--- ch07_2b.sql, version 2.0
 SET SERVEROUTPUT ON
 DECLARE
     v_sum NUMBER := 0;
 BEGIN
     FOR v_counter in 1..10 LOOP
-        -- if v_counter is even, pass control to the top of the loop
         CONTINUE WHEN mod(v_counter, 2) = 0;
         v_sum := v_sum + v_counter;
         DBMS_OUTPUT.PUT_LINE ('Current sum is: '||v_sum);
     END LOOP;
-    -- control resumes here
     DBMS_OUTPUT.PUT_LINE ('Final sum is: '||v_sum);
 END;
 /
 
 
 rem [ROSENZWEIG,2009, 157]
--- ch07_3b.sql, version 2.0
 SET SERVEROUTPUT ON
 DECLARE
     v_test NUMBER := 0;

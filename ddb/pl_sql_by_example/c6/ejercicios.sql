@@ -16,32 +16,26 @@ END;
 /
 
 rem [ROSENZWEIG,2009, 118]
--- ch06_1a.sql, version 1.0
 SET SERVEROUTPUT ON
 DECLARE
     v_counter BINARY_INTEGER := 0;
 BEGIN
     LOOP
-    -- increment loop counter by one
         v_counter := v_counter + 1;
         DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
-    -- if EXIT condition yields TRUE exit the loop
        EXIT WHEN v_counter = 5;
     END LOOP;
-    -- control resumes here
     DBMS_OUTPUT.PUT_LINE ('Done...');
 END;
 /
 
 rem [ROSENZWEIG,2009, 123]
--- ch06_2b.sql, version 2.0
 DECLARE
     v_course course.course_no%type := 430;
     v_instructor_id instructor.instructor_id%type := 102;
     v_sec_num section.section_no%type := 0;
 BEGIN
     LOOP
-    -- increment section number by one
         v_sec_num := v_sec_num + 2;
         INSERT INTO section
         (section_id, course_no, section_no, instructor_id,
@@ -50,10 +44,8 @@ BEGIN
         VALUES
         (section_id_seq.nextval, v_course, v_sec_num,
         v_instructor_id, SYSDATE, USER, SYSDATE, USER);
-        -- if number of sections added is ten exit the loop
         EXIT WHEN v_sec_num = 10;
     END LOOP;
-    -- control resumes here
     COMMIT;
 END;
 /
@@ -75,7 +67,6 @@ END;
 /
 
 rem [ROSENZWEIG,2009, 131]
--- ch06_3b.sql, version 2.0
 SET SERVEROUTPUT ON
 DECLARE
     v_counter BINARY_INTEGER := 2;
@@ -93,7 +84,6 @@ END;
 
 
 rem [ROSENZWEIG,2009, 138]
--- ch06_4b.sql, version 2.0
 SET SERVEROUTPUT ON
 DECLARE
     v_factorial NUMBER := 1;
@@ -107,17 +97,13 @@ END;
 
 
 rem [ROSENZWEIG,2009, 139]
--- ch06_5b.sql, version 2.0
 SET SERVEROUTPUT ON
 BEGIN
     FOR v_counter IN 0..10 LOOP
-    -- if v_counter is even, display its value on the
-    -- screen
         IF MOD(v_counter, 2) = 0 THEN
             DBMS_OUTPUT.PUT_LINE ('v_counter = '||v_counter);
         END IF;
     END LOOP;
-    -- control resumes here
     DBMS_OUTPUT.PUT_LINE ('Done...');
 END;
 
