@@ -11,7 +11,7 @@ int main()
 {
     int udp_socket, lbind, tam;
     struct sockaddr_in local, remota;
-    unsigned char buffer[512] = "Hola Grupo"; //el bufer lo cambio a 512
+    unsigned char buffer[512] = "Prueba UDP"; //el bufer lo cambio a 512
     udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (udp_socket == -1)
@@ -35,8 +35,8 @@ int main()
         {
             perror("\n Exito en el bind");
             remota.sin_family = AF_INET;   /* address family: AF_INET */
-            remota.sin_port = htons(8080); /* port in network byte order, cambio puerto serv */
-            remota.sin_addr.s_addr = inet_addr("192.168.1.120");
+            remota.sin_port = htons(52); /* port in network byte order, cambio puerto serv */
+            remota.sin_addr.s_addr = inet_addr("8.8.8.8");
 
             //iniciar ciclo while o dowhile
             // capturar el mensaje con un fgets o con gets entonces envio mensaje

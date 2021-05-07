@@ -1,4 +1,3 @@
-//librerias
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,19 +7,18 @@
 #include <sys/socket.h>
 #include <linux/if_packet.h>
 #include <net/ethernet.h> /* the L2 protocols */
-//manual netdevice
 #include <sys/ioctl.h>
 #include <net/if.h>
 
-unsigned char MAC[6], MASK[4], IP[4]; //Definimos las variables MAC, MASK (mascara de sub red) y la IP
+unsigned char MAC[6], MASK[4], IP[4]; 
 void obtenerDatos(int ds)             //Creamos una funcion para obtener los datos. ds = Descriptor de socket
 {
     int i = 0;
     char nombre[10];
-    struct ifreq nic;                           //Definimos una estructura ifreq del manual netdevice y la llamaremos nic
-    printf("\nIntroduce la interfaz de red: "); //Pedimos la iterfaz de red
+    struct ifreq nic;                           
+    printf("\nIntroduce la interfaz de red: "); 
     scanf("%s", nombre);
-    strcpy(nic.ifr_name, nombre); //Declaramos la funciòn strcpy para copiar la interfaz de red a nuestra estructura nic
+    strcpy(nic.ifr_name, nombre);
 
     //Obtenemos el indice de la interfaz de red con la funciòn ioclt.
     if (ioctl(ds, SIOCGIFINDEX, &nic) == -1)
@@ -32,7 +30,6 @@ void obtenerDatos(int ds)             //Creamos una funcion para obtener los dat
         printf("\nEl indice es: %d\n", nic.ifr_ifindex); //Imprimimos el valor del indice
     }
 
-    //Obtenemos la direccion MAC (SIOCGIFHWADDR)
     if (ioctl(ds, SIOCGIFHWADDR, &nic) == -1)
     {                                      //Si devuelve -1 existio un error al obtener la direcciòn MAC
         perror("Error al obtener la MAC"); //avisamos que existe un error
