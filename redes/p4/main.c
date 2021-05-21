@@ -11,7 +11,7 @@ int main()
 {
     int udp_socket, lbind, tam;
     struct sockaddr_in local, remota;
-    unsigned char buffer[512] = "Mensaje del chat  00"; //el bufer lo cambio a 512
+    unsigned char buffer[512] = "Mensaje del chat  00"; 
     udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (udp_socket == -1)
@@ -22,8 +22,8 @@ int main()
     else
     {
         perror("\nExito al abrir el socket");
-        local.sin_family = AF_INET; /* address family: AF_INET */
-        local.sin_port = htons(0);  /* port in network byte order */
+        local.sin_family = AF_INET; 
+        local.sin_port = htons(8080); 
         local.sin_addr.s_addr = INADDR_ANY;
         lbind = bind(udp_socket, (struct sockaddr *)&local, sizeof(local));
         if (lbind == -1)
@@ -34,8 +34,8 @@ int main()
         else
         {
             perror("\n Exito en el bind");
-            remota.sin_family = AF_INET;   /* address family: AF_INET */
-            remota.sin_port = htons(8080); /* port in network byte order, cambio puerto serv */
+            remota.sin_family = AF_INET;   
+            remota.sin_port = htons(8080); 
             remota.sin_addr.s_addr = inet_addr("192.168.1.110");
 
             for (;;)
@@ -49,9 +49,6 @@ int main()
                 else
                 {
                     perror("\n Exito al enviar");
-
-                    // me pongo a recibir el mensaje de respuesta
-                    // imprimo el mensaje
                 }
                 sleep(1);
             }

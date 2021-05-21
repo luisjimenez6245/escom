@@ -46,7 +46,6 @@ int main(int argc, char **argv)
         {
             printf("\n El mensaje es :%s", paqRec);
         }
-        sleep(1);
     }
     close(udp_socket);
     return 0;
