@@ -1,17 +1,17 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/ip.h> /* superset of previous */
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h> /* See NOTES */
-#include <sys/socket.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <string.h>
 
 int main()
 {
     int udp_socket, lbind;
     struct sockaddr_in local, remota;
-    unsigned char buffer[100] = "Hola Red Soy Fabian";
+    unsigned char buffer[100] = "Hola Red Soy Luis";
     udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
     if (udp_socket == -1)
     {
