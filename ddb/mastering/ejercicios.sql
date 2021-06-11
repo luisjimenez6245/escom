@@ -1,16 +1,3 @@
-SPOOL D:\Sexto\DistributedDB\Tareas\TerceraEntrega\SPOOL_EntregarMastering.txt
-
-REM Mastering Oracle SQL [ Mishra,2002,163]
-
-set linesize 150 
-set pagesize 99
-set colsep '||'	
-set colsep '|=|'
-set underline =
-set null s/Dato
-
-rem connect alanmaster/alanmaster
-rem 4,8,13
 
 rem 57 ignora null no toma en cuenta las filas
 SELECT COUNT(*), SUM(SALE_PRICE), AVG(SALE_PRICE)
@@ -91,9 +78,3 @@ SELECT CUST_NBR, COUNT(ORDER_NBR)
 FROM CUST_ORDER
 HAVING COUNT(ORDER_NBR) > 1
 GROUP BY CUST_NBR;
-
-
-
-rem cap 5
-
-spool off

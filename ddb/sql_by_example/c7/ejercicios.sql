@@ -1,20 +1,22 @@
-SPOOL D:\Sexto\DistributedDB\Tareas\SegundaEntrega\SPOOLSQLByExample.txt
-rem Rischert,A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Pearson.
-rem cap 7
+SPOOL C:\Users\luisj\Documents\Github\ESCOM\ddb\sql_by_example\c7\salida.txt
+rem RISCHERT, A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Perarson.
 
-set linesize 150 
 set pagesize 99
-set colsep '||' 
+set linesize 200
 set colsep '|=|'
 set underline =
-set null s/Dato
+set null s/Datos
+set feedback on
+
 
 rem [Rischert,A,2004,368]
 SELECT course_no, description, cost
  FROM course
  WHERE cost =
  (SELECT MIN(cost)
- FROM course) ;
+ FROM course);
+
+
 rem [Rischert,A,2004,369]
 SELECT course_no, description, cost
  FROM course
@@ -50,7 +52,6 @@ SELECT c.course_no, c.description
  AND s.location = 'L211' ;
 
 rem determine the students with the highest grade for their project (PJ). pag 372 subquery
-
 SELECT student_id, section_id, numeric_grade
  FROM grade
  WHERE grade_type_code = 'PJ'
@@ -89,60 +90,3 @@ SELECT section_id, numeric_grade
  FROM grade
  WHERE section_id = 84
  AND numeric_grade < ALL (80, 90) ;
-
-rem cap 8
-rem 425
-SELECT first_name, last_name, phone, COUNT(*)
- FROM student
- GROUP BY first_name, last_name, phone
-HAVING COUNT(*) > 1 ;
-
-rem 424
-SELECT first_name, last_name, phone
- FROM instructor
- UNION
-SELECT first_name, last_name, phone
- FROM student ;
-
-rem 434
-SELECT instructor_id
- FROM instructor
- MINUS
-SELECT instructor_id
- FROM section ;
-
-rem 435
-SELECT DISTINCT instructor_id
- FROM section ;
-
-rem 437
-SELECT created_by
- FROM enrollment
-INTERSECT
-SELECT created_by
- FROM course ;
-
-rem cap 15
-rem 717 $ fin de la linea
-SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
- '[[:digit:]]{5}$')
- AS substr
- FROM dual;
-
- SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234  23456',
- '[[:digit:]]{5}$')
- AS substr
- FROM dual;
-rem 718 posicion de los numeros
-SELECT REGEXP_INSTR('NY 10032 USA',
- '[[:digit:]]{5}')
- AS rx_instr
- FROM dual ;
-
-rem 719
-SELECT REGEXP_REPLACE('   Joe    Smith',
- '( ){2,}', ' ')
- AS RX_REPLACE
- FROM dual ;
-
-spool off
