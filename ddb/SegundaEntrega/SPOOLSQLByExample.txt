@@ -1,0 +1,612 @@
+SQL> rem Rischert,A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Pearson.
+SQL> rem cap 7
+SQL> 
+SQL> set linesize 150
+SQL> set pagesize 99
+SQL> set colsep '||'
+SQL> set colsep '|=|'
+SQL> set underline =
+SQL> set null s/Dato
+SQL> 
+SQL> rem [Rischert,A,2004,368]
+SQL> SELECT course_no, description, cost
+  2   FROM course
+  3   WHERE cost =
+  4   (SELECT MIN(cost)
+  5   FROM course) ;
+
+ COURSE_NO|=|DESCRIPTION                                       |=|      COST                                                                          
+==========|=|==================================================|=|==========                                                                          
+       230|=|Intro to Internet                                 |=|    266.28                                                                          
+       240|=|Intro to the Basic Language                       |=|    266.28                                                                          
+
+2 filas seleccionadas.
+
+SQL> rem [Rischert,A,2004,369]
+SQL> SELECT course_no, description, cost
+  2   FROM course
+  3   WHERE cost IN
+  4   (SELECT cost
+  5   FROM course
+  6   WHERE prerequisite = 20) ;
+
+ COURSE_NO|=|DESCRIPTION                                       |=|      COST                                                                          
+==========|=|==================================================|=|==========                                                                          
+       100|=|Hands-On Windows                                  |=|   1749.61                                                                          
+       124|=|Advanced Java Programming                         |=|   1749.61                                                                          
+       125|=|JDeveloper                                        |=|   1749.61                                                                          
+       130|=|Intro to Unix                                     |=|   1749.61                                                                          
+       132|=|Basics of Unix Admin                              |=|   1749.61                                                                          
+       134|=|Advanced Unix Admin                               |=|   1749.61                                                                          
+       142|=|Project Management                                |=|   1749.61                                                                          
+       144|=|Database Design                                   |=|   1749.61                                                                          
+       145|=|Internet Protocols                                |=|   1749.61                                                                          
+       147|=|GUI Programming                                   |=|   1749.61                                                                          
+       204|=|Intro to SQL                                      |=|   1749.61                                                                          
+       210|=|Oracle Tools                                      |=|   1749.61                                                                          
+       220|=|PL/SQL Programming                                |=|   1749.61                                                                          
+       330|=|Network Administration                            |=|   1749.61                                                                          
+       350|=|JDeveloper Lab                                    |=|   1749.61                                                                          
+       420|=|Database System Principles                        |=|   1749.61                                                                          
+       430|=|JDeveloper Techniques                             |=|   1749.61                                                                          
+        25|=|Intro to Programming                              |=|     290.6                                                                          
+       120|=|Intro to Java Programming                         |=|     290.6                                                                          
+       122|=|Intermediate Java Programming                     |=|     290.6                                                                          
+       140|=|Structured Analysis                               |=|     290.6                                                                          
+
+21 filas seleccionadas.
+
+SQL> 
+SQL> rem [Rischert,A,2004,370]
+SQL> rem The next query determines the last and first names of students enrolled in section number 8 ofcourse number 20.
+SQL> SELECT last_name, first_name
+  2   FROM student
+  3   WHERE student_id IN
+  4   (SELECT student_id
+  5   FROM enrollment
+  6   WHERE section_id IN
+  7   (SELECT section_id
+  8   FROM section
+  9   WHERE section_no = 8
+ 10   AND course_no = 20)) ;
+
+LAST_NAME                |=|FIRST_NAME                                                                                                                
+=========================|=|=========================                                                                                                 
+Limate                   |=|Roy                                                                                                                       
+Segall                   |=|J.                                                                                                                        
+
+2 filas seleccionadas.
+
+SQL> 
+SQL> rem 371
+SQL> SELECT course_no, description
+  2   FROM course
+  3   WHERE course_no IN
+  4   (SELECT course_no
+  5   FROM section
+  6   WHERE location = 'L211') ;
+
+ COURSE_NO|=|DESCRIPTION                                                                                                                              
+==========|=|==================================================                                                                                       
+       122|=|Intermediate Java Programming                                                                                                            
+       125|=|JDeveloper                                                                                                                               
+       142|=|Project Management                                                                                                                       
+
+3 filas seleccionadas.
+
+SQL> 
+SQL> SELECT c.course_no, c.description
+  2   FROM course c, section s
+  3   WHERE c.course_no = s.course_no
+  4   AND s.location = 'L211' ;
+
+ COURSE_NO|=|DESCRIPTION                                                                                                                              
+==========|=|==================================================                                                                                       
+       122|=|Intermediate Java Programming                                                                                                            
+       125|=|JDeveloper                                                                                                                               
+       142|=|Project Management                                                                                                                       
+
+3 filas seleccionadas.
+
+SQL> 
+SQL> rem determine the students with the highest grade for their project (PJ). pag 372 subquery
+SQL> 
+SQL> SELECT student_id, section_id, numeric_grade
+  2   FROM grade
+  3   WHERE grade_type_code = 'PJ'
+  4   AND (section_id, numeric_grade) IN
+  5   (SELECT section_id, MAX(numeric_grade)
+  6   FROM grade
+  7   WHERE grade_type_code = 'PJ'
+  8   GROUP BY section_id) ;
+
+STUDENT_ID|=|SECTION_ID|=|NUMERIC_GRADE                                                                                                               
+==========|=|==========|=|=============                                                                                                               
+       105|=|       155|=|           92                                                                                                               
+       234|=|       137|=|           99                                                                                                               
+       232|=|       149|=|           83                                                                                                               
+       245|=|        82|=|           77                                                                                                               
+       168|=|       133|=|           92                                                                                                               
+       166|=|        88|=|           99                                                                                                               
+       176|=|       115|=|           76                                                                                                               
+       153|=|       144|=|           92                                                                                                               
+
+8 filas seleccionadas.
+
+SQL> 
+SQL> rem 384 correlated
+SQL> SELECT student_id, section_id, numeric_grade
+  2   FROM grade outer
+  3   WHERE grade_type_code = 'PJ'
+  4   AND numeric_grade =
+  5   (SELECT MAX(numeric_grade)
+  6   FROM grade
+  7   WHERE grade_type_code = outer.grade_type_code
+  8   AND section_id = outer.section_id)
+  9  
+SQL> rem The following correlated subquery displays instructors where the INSTRUCTOR_ID has a matching
+SQL> rem row in the SECTION table 386
+SQL> SELECT instructor_id, last_name, first_name, zip
+  2   FROM instructor i
+  3   WHERE EXISTS
+  4   (SELECT 'X'
+  5   FROM section
+  6   WHERE i.instructor_id = instructor_id) ;
+
+INSTRUCTOR_ID|=|LAST_NAME                |=|FIRST_NAME               |=|ZIP                                                                           
+=============|=|=========================|=|=========================|=|=====                                                                         
+          101|=|Hanks                    |=|Fernand                  |=|10015                                                                         
+          102|=|Wojick                   |=|Tom                      |=|10025                                                                         
+          103|=|Schorin                  |=|Nina                     |=|10025                                                                         
+          104|=|Pertez                   |=|Gary                     |=|10035                                                                         
+          105|=|Morris                   |=|Anita                    |=|10015                                                                         
+          106|=|Smythe                   |=|Todd                     |=|10025                                                                         
+          107|=|Frantzen                 |=|Marilyn                  |=|10005                                                                         
+          108|=|Lowry                    |=|Charles                  |=|10025                                                                         
+
+8 filas seleccionadas.
+
+SQL> 
+SQL> rem 414
+SQL> SELECT section_id, numeric_grade
+  2   FROM grade
+  3   WHERE section_id = 84
+  4   AND numeric_grade < ANY (80, 90) ;
+
+SECTION_ID|=|NUMERIC_GRADE                                                                                                                            
+==========|=|=============                                                                                                                            
+        84|=|           88                                                                                                                            
+        84|=|           77                                                                                                                            
+        84|=|           88                                                                                                                            
+
+3 filas seleccionadas.
+
+SQL> 
+SQL> SELECT section_id, numeric_grade
+  2   FROM grade
+  3   WHERE section_id = 84
+  4   AND numeric_grade < ALL (80, 90) ;
+
+SECTION_ID|=|NUMERIC_GRADE                                                                                                                            
+==========|=|=============                                                                                                                            
+        84|=|           77                                                                                                                            
+
+1 fila seleccionada.
+
+SQL> 
+SQL> rem cap 8
+SQL> rem 425
+SQL> SELECT first_name, last_name, phone, COUNT(*)
+  2   FROM student
+  3   GROUP BY first_name, last_name, phone
+  4  HAVING COUNT(*) > 1 ;
+
+FIRST_NAME               |=|LAST_NAME                |=|PHONE          |=|  COUNT(*)                                                                  
+=========================|=|=========================|=|===============|=|==========                                                                  
+s/Dato                   |=|Smith                    |=|s/Dato         |=|         2                                                                  
+s/Dato                   |=|Sonam                    |=|s/Dato         |=|         2                                                                  
+Thomas                   |=|Edwards                  |=|201-555-5555   |=|         2                                                                  
+Kevin                    |=|Porch                    |=|201-555-5555   |=|         2                                                                  
+s/Dato                   |=|Tashi                    |=|s/Dato         |=|         2                                                                  
+
+5 filas seleccionadas.
+
+SQL> 
+SQL> rem 424
+SQL> SELECT first_name, last_name, phone
+  2   FROM instructor
+  3   UNION
+  4  SELECT first_name, last_name, phone
+  5   FROM student ;
+
+FIRST_NAME               |=|LAST_NAME                |=|PHONE                                                                                         
+=========================|=|=========================|=|===============                                                                               
+A.                       |=|Tucker                   |=|203-555-5555                                                                                  
+Adele                    |=|Rothstein                |=|718-555-5555                                                                                  
+Adrienne                 |=|Lopez                    |=|201-555-5555                                                                                  
+Al                       |=|Jamerncy                 |=|212-555-5555                                                                                  
+Alan                     |=|Affinito                 |=|201-555-5555                                                                                  
+Alan                     |=|Galik                    |=|718-555-5555                                                                                  
+Alfred                   |=|Hutheesing               |=|718-555-5555                                                                                  
+Allan                    |=|Simmons                  |=|718-555-5555                                                                                  
+Angel                    |=|Cook                     |=|201-555-5555                                                                                  
+Angel                    |=|Moskowitz                |=|201-555-5555                                                                                  
+Angela                   |=|Torres                   |=|718-555-5555                                                                                  
+Angelo                   |=|Garshman                 |=|201-555-5555                                                                                  
+Anil                     |=|Kulina                   |=|718-555-5555                                                                                  
+Anita                    |=|Morris                   |=|2125551212                                                                                    
+Anna                     |=|Bathmanapan              |=|718-555-5555                                                                                  
+Anthony                  |=|Bullock                  |=|718-555-5555                                                                                  
+Arlyne                   |=|Sheppard                 |=|718-555-5555                                                                                  
+Artie                    |=|Ward                     |=|718-555-5555                                                                                  
+Arun                     |=|Griffen                  |=|718-555-5555                                                                                  
+Asian                    |=|Chirichella              |=|718-555-5555                                                                                  
+Austin V.                |=|Cadet                    |=|201-555-5555                                                                                  
+Barbara                  |=|Robichaud                |=|212-555-5555                                                                                  
+Barry                    |=|Dunkon                   |=|201-555-5555                                                                                  
+Benita                   |=|Perkins                  |=|718-555-5555                                                                                  
+Bernadette               |=|Montanez                 |=|201-555-5555                                                                                  
+Bernice                  |=|Dermody                  |=|718-555-5555                                                                                  
+Bessie                   |=|Heedles                  |=|201-555-5555                                                                                  
+Beth                     |=|Satterfield              |=|718-555-5555                                                                                  
+Bharat                   |=|Roberts                  |=|201-555-5555                                                                                  
+Bill                     |=|Engongoro                |=|718-555-5555                                                                                  
+Brian                    |=|Robles                   |=|718-555-5555                                                                                  
+Brian                    |=|Saluja                   |=|718-555-5555                                                                                  
+Bridget                  |=|Hagel                    |=|718-555-5555                                                                                  
+Calvin                   |=|Kiraly                   |=|203-555-5555                                                                                  
+Carlos                   |=|Airall                   |=|718-555-5555                                                                                  
+Catherine                |=|Frangopoulos             |=|718-555-5555                                                                                  
+Catherine                |=|Mierzwa                  |=|718-555-5555                                                                                  
+Cathy                    |=|Austin                   |=|718-555-5555                                                                                  
+Charles                  |=|Caro                     |=|203-555-5555                                                                                  
+Charles                  |=|Lowry                    |=|2125551212                                                                                    
+Christine                |=|Sheppard                 |=|201-555-5555                                                                                  
+Craig                    |=|Anglin                   |=|718-555-5555                                                                                  
+Craig                    |=|Padron                   |=|718-555-5555                                                                                  
+D.                       |=|Dewitt                   |=|201-555-5555                                                                                  
+D.                       |=|Orent                    |=|201-555-5555                                                                                  
+Daniel                   |=|McHowell                 |=|718-555-5555                                                                                  
+Daniel                   |=|Ordes                    |=|201-555-5555                                                                                  
+Daniel                   |=|Wicelinski               |=|201-555-5555                                                                                  
+David                    |=|Eng                      |=|718-555-5555                                                                                  
+David                    |=|Essner                   |=|203-555-5555                                                                                  
+David                    |=|Thares                   |=|203-555-5555                                                                                  
+Dawn                     |=|Dennis                   |=|203-555-5555                                                                                  
+Deborah                  |=|Reyes                    |=|201-555-5555                                                                                  
+Debra                    |=|Boyce                    |=|718-555-5555                                                                                  
+Debra                    |=|Shah                     |=|718-555-5555                                                                                  
+Denise                   |=|Brownstein               |=|718-555-5555                                                                                  
+Dennis                   |=|Mehta                    |=|201-555-5555                                                                                  
+Derrick                  |=|Baltazar                 |=|718-555-5555                                                                                  
+Donna                    |=|Walston                  |=|201-555-5555                                                                                  
+E.A.                     |=|Torres                   |=|718-555-5555                                                                                  
+Edgar                    |=|Moffat                   |=|201-555-5555                                                                                  
+Edith                    |=|Daly                     |=|718-555-5555                                                                                  
+Edwin                    |=|Allende                  |=|203-555-5555                                                                                  
+Eilene                   |=|Grant                    |=|718-555-5555                                                                                  
+Eric                     |=|Da Silva                 |=|718-555-5555                                                                                  
+Evan                     |=|Fielding                 |=|718-555-5555                                                                                  
+Evelyn                   |=|Liggons                  |=|718-555-5555                                                                                  
+Fermin                   |=|Galik                    |=|718-555-5555                                                                                  
+Fernand                  |=|Hanks                    |=|2125551212                                                                                    
+Florence                 |=|Valamas                  |=|718-555-5555                                                                                  
+Frances                  |=|Lawson                   |=|718-555-5555                                                                                  
+Frank                    |=|Bunnell                  |=|203-555-5555                                                                                  
+Frank                    |=|M. Orent                 |=|718-555-5555                                                                                  
+Frank                    |=|Pace                     |=|203-555-5555                                                                                  
+Frank                    |=|Viotty                   |=|718-555-5555                                                                                  
+Frantz                   |=|McLean                   |=|718-555-5555                                                                                  
+Fred                     |=|Crocitto                 |=|718-555-5555                                                                                  
+Freedon                  |=|annunziato               |=|718-555-5555                                                                                  
+Gabriel                  |=|Smith                    |=|718-555-5555                                                                                  
+Gary                     |=|Aung                     |=|718-555-5555                                                                                  
+Gary                     |=|Pertez                   |=|2125551212                                                                                    
+Gene                     |=|Bresser, HR Rep.         |=|201-555-5555                                                                                  
+Genny                    |=|Andrew                   |=|203-555-5555                                                                                  
+George                   |=|Eakheit                  |=|201-555-5555                                                                                  
+George                   |=|Kocka                    |=|617-555-5555                                                                                  
+George                   |=|Korka                    |=|718-555-5555                                                                                  
+George                   |=|Merriman                 |=|718-555-5555                                                                                  
+George                   |=|Milano                   |=|718-555-5555                                                                                  
+George                   |=|Ross                     |=|718-555-5555                                                                                  
+Gerard                   |=|Biers                    |=|718-555-5555                                                                                  
+Gerry                    |=|Tripp                    |=|718-555-5555                                                                                  
+Gilbert                  |=|Ginestra                 |=|201-555-5555                                                                                  
+Hazel                    |=|Lasseter                 |=|718-555-5555                                                                                  
+Hedy                     |=|Naso                     |=|201-555-5555                                                                                  
+Helga                    |=|Towle                    |=|201-555-5555                                                                                  
+Henry                    |=|Masser                   |=|718-555-5555                                                                                  
+
+FIRST_NAME               |=|LAST_NAME                |=|PHONE                                                                                         
+=========================|=|=========================|=|===============                                                                               
+Hiedi                    |=|Lopez                    |=|203-555-5555                                                                                  
+Howard                   |=|Leopta                   |=|201-555-5555                                                                                  
+Irene                    |=|Willig                   |=|2125551212                                                                                    
+Irv                      |=|Dalvi                    |=|201-555-5555                                                                                  
+J.                       |=|Dalvi                    |=|203-555-5555                                                                                  
+J.                       |=|Landry                   |=|201-555-5555                                                                                  
+J.                       |=|Segall                   |=|718-555-5555                                                                                  
+Jack                     |=|Kasperovich              |=|718-555-5555                                                                                  
+James                    |=|Miller                   |=|718-555-5555                                                                                  
+James                    |=|Reed                     |=|718-555-5555                                                                                  
+James E.                 |=|Norman                   |=|617-555-5555                                                                                  
+Jane                     |=|Jackson                  |=|201-555-5555                                                                                  
+Janet                    |=|Jung                     |=|718-555-5555                                                                                  
+Jean                     |=|Griffith                 |=|201-555-5555                                                                                  
+Jeannette                |=|Smagler                  |=|718-555-5555                                                                                  
+Jeff                     |=|Runyan                   |=|718-555-5555                                                                                  
+Jeffrey                  |=|Citron                   |=|201-555-5555                                                                                  
+Jeffrey                  |=|Delbrun                  |=|201-555-5555                                                                                  
+Jenny                    |=|Goldsmith                |=|201-555-5555                                                                                  
+Jerry                    |=|Abdou                    |=|718-555-5555                                                                                  
+Jim                      |=|Joas                     |=|718-555-5555                                                                                  
+Joane                    |=|Buckberg                 |=|201-555-5555                                                                                  
+Joel                     |=|Brendler                 |=|718-555-5555                                                                                  
+Joel                     |=|Krot                     |=|718-555-5555                                                                                  
+John                     |=|Ancean                   |=|203-555-5555                                                                                  
+John                     |=|De Simone                |=|718-555-5555                                                                                  
+John                     |=|Mithane                  |=|201-555-5555                                                                                  
+John                     |=|Smith                    |=|718-555-5555                                                                                  
+John                     |=|Tabs                     |=|718-555-5555                                                                                  
+John                     |=|Velie                    |=|718-555-5555                                                                                  
+John T.                  |=|Beitler                  |=|201-555-5555                                                                                  
+Jonathan                 |=|Jaele                    |=|718-555-5555                                                                                  
+Jose                     |=|Benitez                  |=|201-555-5555                                                                                  
+Joseph                   |=|German                   |=|201-555-5555                                                                                  
+Joseph                   |=|Jimenes                  |=|718-555-5555                                                                                  
+Joseph                   |=|Yourish                  |=|718-555-5555                                                                                  
+Judith                   |=|Olvsade                  |=|201-555-5555                                                                                  
+Judith                   |=|Prochaska                |=|201-555-5555                                                                                  
+Judy                     |=|Cahouet                  |=|718-555-5555                                                                                  
+Judy                     |=|Sethi                    |=|617-555-5555                                                                                  
+Julita                   |=|Lippen                   |=|718-555-5555                                                                                  
+Julius                   |=|Kwong                    |=|201-555-5555                                                                                  
+Kardik                   |=|Guarino                  |=|718-555-5555                                                                                  
+Kate                     |=|Page                     |=|718-555-5555                                                                                  
+Kathleen                 |=|Mastandora               |=|718-555-5555                                                                                  
+Kathleen                 |=|Mulroy                   |=|201-555-5555                                                                                  
+Kevin                    |=|Lin                      |=|718-555-5555                                                                                  
+Kevin                    |=|Porch                    |=|201-555-5555                                                                                  
+Laetia                   |=|Enison                   |=|718-555-5555                                                                                  
+Larry                    |=|Walter                   |=|718-555-5555                                                                                  
+Leonard                  |=|Millstein                |=|201-555-5555                                                                                  
+Lloyd                    |=|Kellam                   |=|718-555-5555                                                                                  
+Lorelei                  |=|McNeal                   |=|718-555-5555                                                                                  
+Lorraine                 |=|Harty                    |=|201-555-5555                                                                                  
+Lorraine                 |=|Tucker                   |=|201-555-5555                                                                                  
+Lorrane                  |=|Velasco                  |=|201-555-5555                                                                                  
+Lula                     |=|Oates                    |=|201-555-5555                                                                                  
+Lynwood A.               |=|Thorton                  |=|201-555-5555                                                                                  
+M.                       |=|Diokno                   |=|718-555-5555                                                                                  
+Madhav                   |=|Dusenberry               |=|201-555-5555                                                                                  
+Mardig                   |=|Abdou                    |=|718-555-5555                                                                                  
+Margaret                 |=|Lloyd                    |=|718-555-5555                                                                                  
+Margaret                 |=|Mandel                   |=|718-555-5555                                                                                  
+Maria                    |=|Allende                  |=|718-555-5555                                                                                  
+Maria                    |=|Arias                    |=|718-555-5555                                                                                  
+Maria                    |=|Martin                   |=|718-555-5555                                                                                  
+Marianne                 |=|De Armas                 |=|201-555-5555                                                                                  
+Marilyn                  |=|Frantzen                 |=|2125551212                                                                                    
+Mark                     |=|Miller                   |=|718-555-5555                                                                                  
+Mary                     |=|Axch                     |=|718-555-5555                                                                                  
+May                      |=|Jodoin                   |=|718-555-5555                                                                                  
+Mei-Wah                  |=|Zopf                     |=|718-555-5555                                                                                  
+Melvin                   |=|Martin                   |=|201-555-5555                                                                                  
+Melvina                  |=|Chamnonkool              |=|718-555-5555                                                                                  
+Meryl                    |=|Owens                    |=|201-555-5555                                                                                  
+Michael                  |=|Brown                    |=|718-555-5555                                                                                  
+Michael                  |=|Carcia                   |=|718-555-5555                                                                                  
+Michael                  |=|Lefbowitz                |=|718-555-5555                                                                                  
+Michael                  |=|Miroff                   |=|201-555-5555                                                                                  
+Michelle                 |=|Masser                   |=|718-555-5555                                                                                  
+Mike                     |=|Madej                    |=|203-555-5555                                                                                  
+Mohamed                  |=|Valentine                |=|718-555-5555                                                                                  
+Monica                   |=|Waldman                  |=|718-555-5555                                                                                  
+Morty                    |=|Miller                   |=|203-555-5555                                                                                  
+Mrudula                  |=|Philpotts                |=|718-555-5555                                                                                  
+N                        |=|Kuehn                    |=|718-555-5555                                                                                  
+Nana                     |=|Barogh                   |=|718-555-5555                                                                                  
+Nicole                   |=|Gillen                   |=|904-555-5555                                                                                  
+Nina                     |=|Schorin                  |=|2125551212                                                                                    
+Norman                   |=|Callender                |=|718-555-5555                                                                                  
+O.                       |=|Garnes                   |=|201-555-5555                                                                                  
+Omaira                   |=|Grant                    |=|718-555-5555                                                                                  
+Oscar                    |=|Archer                   |=|718-555-5555                                                                                  
+Oscar                    |=|McGill                   |=|718-555-5555                                                                                  
+P.                       |=|Balterzar                |=|718-555-5555                                                                                  
+Pat                      |=|Puetrino                 |=|212-555-5555                                                                                  
+
+FIRST_NAME               |=|LAST_NAME                |=|PHONE                                                                                         
+=========================|=|=========================|=|===============                                                                               
+Paul                     |=|Braun                    |=|201-555-5555                                                                                  
+Paul                     |=|Intal                    |=|201-555-5555                                                                                  
+Paul                     |=|Lefkowitz                |=|212-555-5555                                                                                  
+Paul                     |=|Sikinger                 |=|201-555-5555                                                                                  
+Paula                    |=|Mwangi                   |=|914-555-5555                                                                                  
+Paula                    |=|Valentine                |=|718-555-5555                                                                                  
+Peggy                    |=|Noviello                 |=|s/Dato                                                                                        
+Peter                    |=|Carey                    |=|718-555-5555                                                                                  
+Peter                    |=|Daly                     |=|718-555-5555                                                                                  
+Phil                     |=|Gilloon                  |=|614-555-5555                                                                                  
+Piang                    |=|Nyziak                   |=|718-555-5555                                                                                  
+Pierre                   |=|Radicola                 |=|718-555-5555                                                                                  
+Piotr                    |=|Padel                    |=|203-555-5555                                                                                  
+Preston                  |=|Cross                    |=|718-555-5555                                                                                  
+Preston                  |=|Larcia                   |=|718-555-5555                                                                                  
+Price                    |=|Marten                   |=|718-555-5555                                                                                  
+R.                       |=|Sprouse                  |=|201-555-5555                                                                                  
+Radharam                 |=|King                     |=|718-555-5555                                                                                  
+Rafael A.                |=|Torres                   |=|718-555-5555                                                                                  
+Ralph                    |=|Alexander                |=|718-555-5555                                                                                  
+Rawan                    |=|Rosenberg                |=|718-555-5555                                                                                  
+Ray                      |=|Schafer                  |=|718-555-5555                                                                                  
+Raymond                  |=|Cheevens                 |=|203-555-5555                                                                                  
+Reeva                    |=|Yeroushalmi              |=|718-555-5555                                                                                  
+Regina                   |=|Bose                     |=|718-555-5555                                                                                  
+Regina                   |=|Gates                    |=|718-555-5555                                                                                  
+Reynaldo                 |=|Chatman                  |=|718-555-5555                                                                                  
+Ricardo                  |=|Kurtz                    |=|718-555-5555                                                                                  
+Rick                     |=|Chow                     |=|2125551212                                                                                    
+Rita                     |=|Archor                   |=|203-555-5555                                                                                  
+Robert                   |=|Boyd                     |=|718-555-5555                                                                                  
+Robert                   |=|Segall                   |=|203-555-5555                                                                                  
+Robin                    |=|Kelly                    |=|201-555-5555                                                                                  
+Roger                    |=|Cowie                    |=|201-555-5555                                                                                  
+Roger                    |=|Snow                     |=|517-555-5555                                                                                  
+Romeo                    |=|Ittoop                   |=|201-555-5555                                                                                  
+Rommel                   |=|Frost                    |=|201-555-5555                                                                                  
+Ronald                   |=|Tangaribuan              |=|201-555-5555                                                                                  
+Rosemary                 |=|Ellman                   |=|201-555-5555                                                                                  
+Roy                      |=|Limate                   |=|201-555-5555                                                                                  
+Salewa                   |=|Lindeman                 |=|718-555-5555                                                                                  
+Salewa                   |=|Zuckerberg               |=|718-555-5555                                                                                  
+Sally                    |=|Naso                     |=|201-555-5555                                                                                  
+Salondra                 |=|Galik                    |=|718-555-5555                                                                                  
+Sarah                    |=|Annina                   |=|203-555-5555                                                                                  
+Sarah                    |=|Wilson                   |=|718-555-5555                                                                                  
+Scott                    |=|Grant                    |=|718-555-5555                                                                                  
+Sean                     |=|Pineda                   |=|212-555-5555                                                                                  
+Sengita                  |=|MacDonald, Jr.           |=|718-555-5555                                                                                  
+Sharon                   |=|Thompson                 |=|718-555-5555                                                                                  
+Sheradha                 |=|Malone                   |=|718-555-5555                                                                                  
+Shirley                  |=|Jameson                  |=|201-555-5555                                                                                  
+Shirley                  |=|Leung                    |=|201-555-5555                                                                                  
+Shirley                  |=|Murray                   |=|718-555-5555                                                                                  
+Simon                    |=|Ramesh                   |=|718-555-5555                                                                                  
+Steven                   |=|Gallagher                |=|718-555-5555                                                                                  
+Steven                   |=|M. Orent                 |=|718-555-5555                                                                                  
+Suzanna                  |=|Velasco                  |=|201-555-5555                                                                                  
+Suzanne M.               |=|Abid                     |=|718-555-5555                                                                                  
+Sylvia                   |=|Perrin                   |=|718-555-5555                                                                                  
+Tamara                   |=|Zapulla                  |=|201-555-5555                                                                                  
+Thomas                   |=|Edwards                  |=|201-555-5555                                                                                  
+Thomas                   |=|Thomas                   |=|201-555-5555                                                                                  
+Thomas E.                |=|La Blank                 |=|617-555-5555                                                                                  
+Todd                     |=|Smythe                   |=|2125551212                                                                                    
+Tom                      |=|Vargas                   |=|718-555-5555                                                                                  
+Tom                      |=|Wojick                   |=|2125551212                                                                                    
+V.                       |=|Greenberg                |=|718-555-5555                                                                                  
+V.                       |=|Saliternan               |=|718-555-5555                                                                                  
+Valerie                  |=|Avia                     |=|718-555-5555                                                                                  
+Vera                     |=|Wetcel                   |=|718-555-5555                                                                                  
+Verona                   |=|Grant                    |=|201-555-5555                                                                                  
+Victor                   |=|Meshaj                   |=|203-555-5555                                                                                  
+Vinnie                   |=|Moon                     |=|718-555-5555                                                                                  
+Virginia                 |=|Ocampo                   |=|201-555-5555                                                                                  
+Walter                   |=|Boremmann                |=|617-555-5555                                                                                  
+William                  |=|Gallo                    |=|201-555-5555                                                                                  
+Winsome                  |=|Laporte                  |=|718-555-5555                                                                                  
+Yu                       |=|Sentell                  |=|718-555-5555                                                                                  
+Yvonne                   |=|Allende                  |=|718-555-5555                                                                                  
+Yvonne                   |=|Williams                 |=|718-555-5555                                                                                  
+Yvonne                   |=|Winnicki                 |=|718-555-5555                                                                                  
+Z.A.                     |=|Scrittorale              |=|203-555-5555                                                                                  
+Zalman                   |=|Draquez                  |=|718-555-5555                                                                                  
+s/Dato                   |=|Rosenzweig               |=|s/Dato                                                                                        
+s/Dato                   |=|Smith                    |=|s/Dato                                                                                        
+s/Dato                   |=|Sonam                    |=|s/Dato                                                                                        
+s/Dato                   |=|Tashi                    |=|s/Dato                                                                                        
+
+280 filas seleccionadas.
+
+SQL> 
+SQL> rem 434
+SQL> SELECT instructor_id
+  2   FROM instructor
+  3   MINUS
+  4  SELECT instructor_id
+  5   FROM section ;
+
+INSTRUCTOR_ID                                                                                                                                         
+=============                                                                                                                                         
+          109                                                                                                                                         
+          110                                                                                                                                         
+
+2 filas seleccionadas.
+
+SQL> 
+SQL> rem 435
+SQL> SELECT DISTINCT instructor_id
+  2   FROM section ;
+
+INSTRUCTOR_ID                                                                                                                                         
+=============                                                                                                                                         
+          101                                                                                                                                         
+          102                                                                                                                                         
+          103                                                                                                                                         
+          104                                                                                                                                         
+          105                                                                                                                                         
+          106                                                                                                                                         
+          107                                                                                                                                         
+          108                                                                                                                                         
+
+8 filas seleccionadas.
+
+SQL> 
+SQL> rem 437
+SQL> SELECT created_by
+  2   FROM enrollment
+  3  INTERSECT
+  4  SELECT created_by
+  5   FROM course ;
+
+CREATED_BY                                                                                                                                            
+==============================                                                                                                                        
+DSCHERER                                                                                                                                              
+
+1 fila seleccionada.
+
+SQL> 
+SQL> rem cap 15
+SQL> rem 717 $ fin de la linea
+SQL> SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
+  2   '[[:digit:]]{5}$')
+  3   AS substr
+  4   FROM dual;
+
+SUBST                                                                                                                                                 
+=====                                                                                                                                                 
+91234                                                                                                                                                 
+
+1 fila seleccionada.
+
+SQL> 
+SQL>  SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234  23456',
+  2   '[[:digit:]]{5}$')
+  3   AS substr
+  4   FROM dual;
+
+SUBST                                                                                                                                                 
+=====                                                                                                                                                 
+23456                                                                                                                                                 
+
+1 fila seleccionada.
+
+SQL> rem 718 posicion de los numeros
+SQL> SELECT REGEXP_INSTR('NY 10032 USA',
+  2   '[[:digit:]]{5}')
+  3   AS rx_instr
+  4   FROM dual ;
+
+  RX_INSTR                                                                                                                                            
+==========                                                                                                                                            
+         4                                                                                                                                            
+
+1 fila seleccionada.
+
+SQL> 
+SQL> rem 719
+SQL> SELECT REGEXP_REPLACE('   Joe    Smith',
+  2   '( ){2,}', ' ')
+  3   AS RX_REPLACE
+  4   FROM dual ;
+
+RX_REPLACE                                                                                                                                            
+==========                                                                                                                                            
+ Joe Smith                                                                                                                                            
+
+1 fila seleccionada.
+
+SQL> 
+SQL> spool off
