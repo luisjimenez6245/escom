@@ -1,0 +1,28 @@
+
+SUBST                                                                                                                                                                                                   
+=====                                                                                                                                                                                                   
+91234                                                                                                                                                                                                   
+
+1 fila seleccionada.
+
+
+SUBST                                                                                                                                                                                                   
+=====                                                                                                                                                                                                   
+23456                                                                                                                                                                                                   
+
+1 fila seleccionada.
+
+
+  RX_INSTR                                                                                                                                                                                              
+==========                                                                                                                                                                                              
+         4                                                                                                                                                                                              
+
+1 fila seleccionada.
+
+
+RX_REPLACE                                                                                                                                                                                              
+==========                                                                                                                                                                                              
+ Joe Smith                                                                                                                                                                                              
+
+1 fila seleccionada.
+

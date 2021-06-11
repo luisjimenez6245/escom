@@ -1,69 +1,25 @@
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
 
-Procedimiento PL/SQL terminado correctamente.
+Advertencia: Función creada con errores de compilación.
 
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
+Introduzca un valor para sv_cnumber: 1
+antiguo   4: v_description := show_description(&sv_cnumber);
+nuevo   4: v_description := show_description(1);
+v_description := show_description(1);
+                 *
+ERROR en línea 4:
+ORA-06550: línea 4, columna 18: 
+PLS-00905: el objeto SYS.SHOW_DESCRIPTION no es válido 
+ORA-06550: línea 4, columna 1: 
+PL/SQL: Statement ignored 
 
-Procedimiento PL/SQL terminado correctamente.
 
-Current sum is: 1                                                               
-Current sum is: 4                                                               
-Current sum is: 9                                                               
-Current sum is: 16                                                              
-Current sum is: 25                                                              
-Final sum is: 25                                                                
 
-Procedimiento PL/SQL terminado correctamente.
+Función creada.
 
-Outer Loop                                                                      
-i = 3                                                                           
-v_test = 0                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Outer Loop                                                                      
-i = 2                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Outer Loop                                                                      
-i = 1                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
+Introduzca un valor para id: 1
+antiguo   4: v_id := &id;
+nuevo   4: v_id := 1;
+Student ID: 1 is not valid.                                                                                                                           
 
 Procedimiento PL/SQL terminado correctamente.
 

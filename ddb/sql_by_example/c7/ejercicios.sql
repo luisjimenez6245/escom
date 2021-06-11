@@ -90,3 +90,6 @@ SELECT section_id, numeric_grade
  FROM grade
  WHERE section_id = 84
  AND numeric_grade < ALL (80, 90) ;
+
+
+spool off;

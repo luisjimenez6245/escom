@@ -1,0 +1,98 @@
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+SELECT AVG(NVL(SALE_PRICE,0)) FROM CUST_ORDER
+                                   *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+FROM CUST_ORDER
+     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> @C:\Users\luisj\Documents\GitHub\escom\ddb\pl_sql_by_example\c11\ejercicios.sql
+

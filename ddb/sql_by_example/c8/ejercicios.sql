@@ -39,3 +39,6 @@ SELECT created_by
 INTERSECT
 SELECT created_by
  FROM course ;
+
+
+spool off;

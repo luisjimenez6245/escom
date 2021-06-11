@@ -8,7 +8,6 @@ set underline =
 set null s/Datos
 set feedback on
 
-
 rem cap 15
 rem 717 $ fin de la linea
 SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
@@ -32,4 +31,4 @@ SELECT REGEXP_REPLACE('   Joe    Smith',
  AS RX_REPLACE
  FROM dual ;
 
-spool off
+spool off;

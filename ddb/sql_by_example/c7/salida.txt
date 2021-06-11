@@ -1,0 +1,110 @@
+
+ COURSE_NO|=|DESCRIPTION                                       |=|      COST                                                                                                                            
+==========|=|==================================================|=|==========                                                                                                                            
+       135|=|Unix Tips and Techniques                          |=|      1095                                                                                                                            
+       230|=|Intro to Internet                                 |=|      1095                                                                                                                            
+       240|=|Intro to the Basic Language                       |=|      1095                                                                                                                            
+
+3 filas seleccionadas.
+
+
+ COURSE_NO|=|DESCRIPTION                                       |=|      COST                                                                                                                            
+==========|=|==================================================|=|==========                                                                                                                            
+        10|=|DP Overview                                       |=|      1195                                                                                                                            
+        20|=|Intro to Computers                                |=|      1195                                                                                                                            
+        25|=|Intro to Programming                              |=|      1195                                                                                                                            
+       100|=|Hands-On Windows                                  |=|      1195                                                                                                                            
+       120|=|Intro to Java Programming                         |=|      1195                                                                                                                            
+       122|=|Intermediate Java Programming                     |=|      1195                                                                                                                            
+       124|=|Advanced Java Programming                         |=|      1195                                                                                                                            
+       125|=|JDeveloper                                        |=|      1195                                                                                                                            
+       130|=|Intro to Unix                                     |=|      1195                                                                                                                            
+       132|=|Basics of Unix Admin                              |=|      1195                                                                                                                            
+       134|=|Advanced Unix Admin                               |=|      1195                                                                                                                            
+       140|=|Structured Analysis                               |=|      1195                                                                                                                            
+       142|=|Project Management                                |=|      1195                                                                                                                            
+       144|=|Database Design                                   |=|      1195                                                                                                                            
+       145|=|Internet Protocols                                |=|      1195                                                                                                                            
+       146|=|Java for C/C++ Programmers                        |=|      1195                                                                                                                            
+       147|=|GUI Programming                                   |=|      1195                                                                                                                            
+       204|=|Intro to SQL                                      |=|      1195                                                                                                                            
+       210|=|Oracle Tools                                      |=|      1195                                                                                                                            
+       220|=|PL/SQL Programming                                |=|      1195                                                                                                                            
+       310|=|Operating Systems                                 |=|      1195                                                                                                                            
+       330|=|Network Administration                            |=|      1195                                                                                                                            
+       350|=|JDeveloper Lab                                    |=|      1195                                                                                                                            
+       420|=|Database System Principles                        |=|      1195                                                                                                                            
+       430|=|JDeveloper Techniques                             |=|      1195                                                                                                                            
+
+25 filas seleccionadas.
+
+
+LAST_NAME                |=|FIRST_NAME                                                                                                                                                                  
+=========================|=|=========================                                                                                                                                                   
+Limate                   |=|Roy                                                                                                                                                                         
+Segall                   |=|J.                                                                                                                                                                          
+
+2 filas seleccionadas.
+
+
+ COURSE_NO|=|DESCRIPTION                                                                                                                                                                                
+==========|=|==================================================                                                                                                                                         
+       142|=|Project Management                                                                                                                                                                         
+       125|=|JDeveloper                                                                                                                                                                                 
+       122|=|Intermediate Java Programming                                                                                                                                                              
+
+3 filas seleccionadas.
+
+
+ COURSE_NO|=|DESCRIPTION                                                                                                                                                                                
+==========|=|==================================================                                                                                                                                         
+       122|=|Intermediate Java Programming                                                                                                                                                              
+       125|=|JDeveloper                                                                                                                                                                                 
+       142|=|Project Management                                                                                                                                                                         
+
+3 filas seleccionadas.
+
+
+STUDENT_ID|=|SECTION_ID|=|NUMERIC_GRADE                                                                                                                                                                 
+==========|=|==========|=|=============                                                                                                                                                                 
+       232|=|       149|=|           83                                                                                                                                                                 
+       176|=|       115|=|           76                                                                                                                                                                 
+       234|=|       137|=|           99                                                                                                                                                                 
+       105|=|       155|=|           92                                                                                                                                                                 
+       168|=|       133|=|           92                                                                                                                                                                 
+       166|=|        88|=|           99                                                                                                                                                                 
+       245|=|        82|=|           77                                                                                                                                                                 
+       153|=|       144|=|           92                                                                                                                                                                 
+
+8 filas seleccionadas.
+
+
+INSTRUCTOR_ID|=|LAST_NAME                |=|FIRST_NAME               |=|ZIP                                                                                                                             
+=============|=|=========================|=|=========================|=|=====                                                                                                                           
+          106|=|Smythe                   |=|Todd                     |=|10025                                                                                                                           
+          108|=|Lowry                    |=|Charles                  |=|10025                                                                                                                           
+          102|=|Wojick                   |=|Tom                      |=|10025                                                                                                                           
+          101|=|Hanks                    |=|Fernand                  |=|10015                                                                                                                           
+          104|=|Pertez                   |=|Gary                     |=|10035                                                                                                                           
+          107|=|Frantzen                 |=|Marilyn                  |=|10005                                                                                                                           
+          103|=|Schorin                  |=|Nina                     |=|10025                                                                                                                           
+          105|=|Morris                   |=|Anita                    |=|10015                                                                                                                           
+
+8 filas seleccionadas.
+
+
+SECTION_ID|=|NUMERIC_GRADE                                                                                                                                                                              
+==========|=|=============                                                                                                                                                                              
+        84|=|           88                                                                                                                                                                              
+        84|=|           77                                                                                                                                                                              
+        84|=|           88                                                                                                                                                                              
+
+3 filas seleccionadas.
+
+
+SECTION_ID|=|NUMERIC_GRADE                                                                                                                                                                              
+==========|=|=============                                                                                                                                                                              
+        84|=|           77                                                                                                                                                                              
+
+1 fila seleccionada.
+

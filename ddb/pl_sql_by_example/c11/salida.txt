@@ -1,69 +1,168 @@
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
+Student name: Pierre Radicola                                                                                                                         
 
 Procedimiento PL/SQL terminado correctamente.
 
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
+Scott Grant has an ID of 156                                                                                                                          
 
 Procedimiento PL/SQL terminado correctamente.
 
-Current sum is: 1                                                               
-Current sum is: 4                                                               
-Current sum is: 9                                                               
-Current sum is: 16                                                              
-Current sum is: 25                                                              
-Final sum is: 25                                                                
+Bayonne has a zipcode of 07002                                                                                                                        
 
 Procedimiento PL/SQL terminado correctamente.
 
-Outer Loop                                                                      
-i = 3                                                                           
-v_test = 0                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Outer Loop                                                                      
-i = 2                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Outer Loop                                                                      
-i = 1                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
 
-Procedimiento PL/SQL terminado correctamente.
+Tabla borrada.
+
+
+Tabla creada.
+
+CREATE OR REPLACE TRIGGER temp_aiur
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
+
+CREATE OR REPLACE TRIGGER temp_adr2
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
+
+CREATE OR REPLACE TRIGGER temp_biudr2
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
+
+CREATE OR REPLACE TRIGGER temp_aiudr
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+         3||          ||         5                                                                                                                    
+          ||        10||         5                                                                                                                    
+       100||          ||         5                                                                                                                    
+
+
+2 filas actualizadas.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+         4||          ||         5                                                                                                                    
+          ||        10||         5                                                                                                                    
+       101||          ||         5                                                                                                                    
+
+
+2 filas suprimidas.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+          ||        10||         5                                                                                                                    
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+          ||        10||         5                                                                                                                    
+        30||          ||         5                                                                                                                    
+        40||          ||         5                                                                                                                    
+        50||          ||         5                                                                                                                    
+        60||          ||         5                                                                                                                    
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+          ||        10||         5                                                                                                                    
+        30||          ||         5                                                                                                                    
+        40||          ||         5                                                                                                                    
+        50||          ||         5                                                                                                                    
+        60||          ||         5                                                                                                                    
+          ||        10||         5                                                                                                                    
+       100||          ||         5                                                                                                                    
+
+7 filas seleccionadas.
+
+
+4 filas suprimidas.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+          ||        10||         5                                                                                                                    
+        30||          ||         5                                                                                                                    
+          ||        10||         5                                                                                                                    
+
+
+1 fila suprimida.
+
+
+         X||         Y||         Z                                                                                                                    
+----------||----------||----------                                                                                                                    
+          ||        10||         5                                                                                                                    
+          ||        10||         5                                                                                                                    
+
+CREATE OR REPLACE TRIGGER temp5_aiur
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+
+1 fila creada.
+
+CREATE OR REPLACE TRIGGER temp_adr
+                          *
+ERROR en línea 1:
+ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+
 
