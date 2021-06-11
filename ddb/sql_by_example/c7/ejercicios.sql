@@ -38,7 +38,7 @@ SELECT last_name, first_name
  WHERE section_no = 8
  AND course_no = 20)) ;
 
-rem 371
+rem [RISCHERT,2004,371]
 SELECT course_no, description
  FROM course
  WHERE course_no IN
@@ -51,7 +51,7 @@ SELECT c.course_no, c.description
  WHERE c.course_no = s.course_no
  AND s.location = 'L211' ;
 
-rem determine the students with the highest grade for their project (PJ). pag 372 subquery
+rem [RISCHERT,2004,372]
 SELECT student_id, section_id, numeric_grade
  FROM grade
  WHERE grade_type_code = 'PJ'
@@ -61,7 +61,7 @@ SELECT student_id, section_id, numeric_grade
  WHERE grade_type_code = 'PJ'
  GROUP BY section_id) ;
 
-rem 384 correlated
+rem [RISCHERT,2004,384]
 SELECT student_id, section_id, numeric_grade
  FROM grade outer
  WHERE grade_type_code = 'PJ'
@@ -72,7 +72,7 @@ SELECT student_id, section_id, numeric_grade
  AND section_id = outer.section_id) 
 
 rem The following correlated subquery displays instructors where the INSTRUCTOR_ID has a matching
-rem row in the SECTION table 386
+rem [RISCHERT,2004,386]
 SELECT instructor_id, last_name, first_name, zip
  FROM instructor i
  WHERE EXISTS
@@ -80,7 +80,24 @@ SELECT instructor_id, last_name, first_name, zip
  FROM section
  WHERE i.instructor_id = instructor_id) ;
 
-rem 414
+
+-- Inline Views And Scalar Subquery Expressions
+rem [RISCHERT,2004,408]
+SELECT a.course_no, total_capacity, total_students,
+ROUND(100/total_capacity*total_students, 2)
+"Filled Percentage"
+FROM (SELECT COUNT(*) total_students, s.course_no
+FROM enrollment e, section s
+WHERE e.section_id = s.section_id
+GROUP BY s.course_no) a,
+(SELECT SUM(capacity) total_capacity, course_no
+FROM section
+GROUP BY course_no) b
+WHERE b.course_no = a.course_no
+ORDER BY "Filled Percentage" DESC;
+
+
+rem [RISCHERT,2004,414]
 SELECT section_id, numeric_grade
  FROM grade
  WHERE section_id = 84

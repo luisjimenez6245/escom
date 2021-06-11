@@ -1,0 +1,199 @@
+SQL> rem ROSENZWEIG, B & SILVESTROVA, E. (2009). OracleÂ® PL/SQLâ„¢ by Example,USA:Perarson.
+SQL> 
+SQL> -- Compound Triggers
+SQL> 
+SQL> rem [ROSENZWEIG,2009,293]
+SQL> CREATE OR REPLACE TRIGGER section_biu
+  2  BEFORE INSERT OR UPDATE ON section
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_total NUMBER;
+  6  v_name VARCHAR2(30);
+  7  BEGIN
+  8  SELECT COUNT(*)
+  9  INTO v_total
+ 10  FROM section -- SECTION is MUTATING
+ 11  WHERE instructor_id = :NEW. instructor_id;
+ 12  -- check if the current instructor is overbooked
+ 13  IF v_total >= 10 THEN
+ 14  SELECT first_name||' '||last_name
+ 15  INTO v_name
+ 16  FROM instructor
+ 17  WHERE instructor_id = :NEW.instructor_id;
+ 18  RAISE_APPLICATION_ERROR
+ 19  (-20000, 'Instructor, '||v_name||', is overbooked');
+ 20  END IF;
+ 21  EXCEPTION
+ 22  WHEN NO_DATA_FOUND THEN
+ 23  RAISE_APPLICATION_ERROR
+ 24  (-20001, 'This is not a valid instructor');
+ 25  END;
+ 26  /
+
+Advertencia: Disparador creado con errores de compilación.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,297]
+SQL> CREATE OR REPLACE TRIGGER enrollment_biu
+  2  BEFORE INSERT OR UPDATE ON enrollment
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_total NUMBER;
+  6  v_name VARCHAR2(30);
+  7  BEGIN
+  8  SELECT COUNT(*)
+  9  INTO v_total
+ 10  FROM enrollment
+ 11  WHERE student_id = :NEW. student_id;
+ 12  -- check if the current student is enrolled in too
+ 13  -- many courses
+ 14  IF v_total >= 3 THEN
+ 15  SELECT first_name||' '||last_name
+ 16  INTO v_name
+ 17  FROM student
+ 18  WHERE student_id = :NEW.STUDENT_ID;
+ 19  RAISE_APPLICATION_ERROR (-20000, 'Student, '||v_name||
+ 20  ', is registered for 3 courses already');
+ 21  END IF;
+ 22  EXCEPTION
+ 23  WHEN NO_DATA_FOUND THEN
+ 24  RAISE_APPLICATION_ERROR
+ 25  (-20001, 'This is not a valid student');
+ 26  END;
+ 27  Issue the following INSERT and UPDATE statements:
+ 28  INSERT INTO ENROLLMENT
+ 29  (student_id, section_id, enroll_date, created_by, created_date,
+ 30  modified_by, modified_date)
+ 31  VALUES (184, 98, SYSDATE, USER, SYSDATE, USER, SYSDATE);
+ 32  INSERT INTO ENROLLMENT
+ 33  (student_id, section_id, enroll_date, created_by, created_date,
+ 34  modified_by, modified_date)
+ 35  VALUES (399, 98, SYSDATE, USER, SYSDATE, USER, SYSDATE);
+ 36  UPDATE ENROLLMENT
+ 37  SET student_id = 399
+ 38  WHERE student_id = 283;
+ 39  
+ 40  rem [ROSENZWEIG,2009,302]
+ 41  CREATE OR REPLACE TRIGGER student_compound
+ 42  FOR INSERT ON STUDENT
+ 43  COMPOUND TRIGGER
+ 44  -- Declaration section
+ 45  v_day VARCHAR2(10);
+ 46  v_date DATE;
+ 47  v_user VARCHAR2(30);
+ 48  BEFORE STATEMENT IS
+ 49  BEGIN
+ 50  v_day := RTRIM(TO_CHAR(SYSDATE, 'DAY'));
+ 51  IF v_day LIKE ('S%') THEN
+ 52  RAISE_APPLICATION_ERROR
+ 53  (-20000, 'A table cannot be modified during off hours');
+ 54  END IF;
+ 55  v_date := SYSDATE;
+ 56  v_user := USER;
+ 57  END BEFORE STATEMENT;
+ 58  BEFORE EACH ROW IS
+ 59  BEGIN
+ 60  :NEW.student_id := STUDENT_ID_SEQ.NEXTVAL;
+ 61  :NEW.created_by := v_user;
+ 62  :NEW.created_date := v_date;
+ 63  :NEW.modified_by := v_user;
+ 64  :NEW.modified_date := v_date;
+ 65  END BEFORE EACH ROW;
+ 66  END student_compound;
+ 67  /
+
+Advertencia: Disparador creado con errores de compilación.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,302]
+SQL> CREATE OR REPLACE TRIGGER section_biu
+  2  BEFORE INSERT OR UPDATE ON section
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_total NUMBER;
+  6  v_name VARCHAR2(30);
+  7  BEGIN
+  8  SELECT COUNT(*)
+  9  INTO v_total
+ 10  FROM section -- SECTION is MUTATING
+ 11  WHERE instructor_id = :NEW.instructor_id;
+ 12  -- check if the current instructor is overbooked
+ 13  IF v_total >= 10 THEN
+ 14  SELECT first_name||' '||last_name
+ 15  INTO v_name
+ 16  FROM instructor
+ 17  WHERE instructor_id = :NEW.instructor_id;
+ 18  RAISE_APPLICATION_ERROR
+ 19  (-20000, 'Instructor, '||v_name||', is overbooked');
+ 20  END IF;
+ 21  EXCEPTION
+ 22  WHEN NO_DATA_FOUND THEN
+ 23  RAISE_APPLICATION_ERROR
+ 24  (-20001, 'This is not a valid instructor');
+ 25  END;
+ 26  /
+
+Disparador creado.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,310]
+SQL> -- ch14_2b.sql, version 2.0
+SQL> CREATE OR REPLACE TRIGGER enrollment_compound
+  2  FOR INSERT OR UPDATE ON enrollment
+  3  COMPOUND TRIGGER
+  4  v_student_id STUDENT.STUDENT_ID%TYPE;
+  5  v_student_name VARCHAR2(50);
+  6  v_total INTEGER;
+  7  v_date DATE;
+  8  v_user STUDENT.CREATED_BY%TYPE;
+  9  BEFORE STATEMENT IS
+ 10  BEGIN
+ 11  v_date := SYSDATE;
+ 12  v_user := USER;
+ 13  END BEFORE STATEMENT;
+ 14  BEFORE EACH ROW IS
+ 15  BEGIN
+ 16  IF INSERTING THEN
+ 17  :NEW.created_date := v_date;
+ 18  :NEW.created_by := v_user;
+ 19  ELSIF UPDATING THEN
+ 20  :NEW.created_date := :OLD.created_date;
+ 21  :NEW.created_by := :OLD.created_by;
+ 22  END IF;
+ 23  :NEW.MODIFIED_DATE := v_date;
+ 24  :NEW.MODIFIED_BY := v_user;
+ 25  IF :NEW.STUDENT_ID IS NOT NULL THEN
+ 26  BEGIN
+ 27  v_student_id := :NEW.STUDENT_ID;
+ 28  SELECT first_name||' '||last_name
+ 29  INTO v_student_name
+ 30  FROM student
+ 31  WHERE student_id = v_student_id;
+ 32  EXCEPTION
+ 33  WHEN NO_DATA_FOUND THEN
+ 34  RAISE_APPLICATION_ERROR
+ 35  (-20001, 'This is not a valid student');
+ 36  END;
+ 37  END IF;
+ 38  END BEFORE EACH ROW;
+ 39  AFTER STATEMENT IS
+ 40  BEGIN
+ 41  SELECT COUNT(*)
+ 42  INTO v_total
+ 43  FROM enrollment
+ 44  WHERE student_id = v_student_id;
+ 45  -- check if the current student is enrolled in too
+ 46  -- many courses
+ 47  IF v_total >= 3 THEN
+ 48  RAISE_APPLICATION_ERROR (-20000, 'Student, '||v_student_name||
+ 49  ', is registered for 3 courses already ');
+ 50  END IF;
+ 51  END AFTER STATEMENT;
+ 52  END enrollment_compound;
+ 53  /
+
+Disparador creado.
+
+SQL> 
+SQL> 
+SQL> SPOOL OFF

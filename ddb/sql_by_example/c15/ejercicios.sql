@@ -9,7 +9,7 @@ set null s/Datos
 set feedback on
 
 rem cap 15
-rem 717 $ fin de la linea
+rem [RISCHERT,2004,717]
 SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
  '[[:digit:]]{5}$')
  AS substr
@@ -19,16 +19,24 @@ SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
  '[[:digit:]]{5}$')
  AS substr
  FROM dual;
-rem 718 posicion de los numeros
+
+
+rem [RISCHERT,2004,718]
 SELECT REGEXP_INSTR('NY 10032 USA',
  '[[:digit:]]{5}')
  AS rx_instr
  FROM dual ;
 
-rem 719
+rem [RISCHERT,2004,719]
 SELECT REGEXP_REPLACE('   Joe    Smith',
  '( ){2,}', ' ')
  AS RX_REPLACE
  FROM dual ;
+
+rem [RISCHERT,2004,726]
+SELECT REGEXP_SUBSTR('first field, second field , third field',
+', [^,]*,')
+FROM dual:
+
 
 spool off;

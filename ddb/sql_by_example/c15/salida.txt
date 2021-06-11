@@ -1,3 +1,18 @@
+SQL> rem RISCHERT, A (2004).Oracle® SQL by Example,Upper Saddle River,NJ,USA:Perarson.
+SQL> 
+SQL> set pagesize 99
+SQL> set linesize 200
+SQL> set colsep '|=|'
+SQL> set underline =
+SQL> set null s/Datos
+SQL> set feedback on
+SQL> 
+SQL> rem cap 15
+SQL> rem [RISCHERT,2004,717]
+SQL> SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234',
+  2   '[[:digit:]]{5}$')
+  3   AS substr
+  4   FROM dual;
 
 SUBST                                                                                                                                                                                                   
 =====                                                                                                                                                                                                   
@@ -5,6 +20,11 @@ SUBST
 
 1 fila seleccionada.
 
+SQL> 
+SQL>  SELECT REGEXP_SUBSTR('Joe Smith, 12345 Berry Lane, Orta, CA 91234  23456',
+  2   '[[:digit:]]{5}$')
+  3   AS substr
+  4   FROM dual;
 
 SUBST                                                                                                                                                                                                   
 =====                                                                                                                                                                                                   
@@ -12,6 +32,13 @@ SUBST
 
 1 fila seleccionada.
 
+SQL> 
+SQL> 
+SQL> rem [RISCHERT,2004,718]
+SQL> SELECT REGEXP_INSTR('NY 10032 USA',
+  2   '[[:digit:]]{5}')
+  3   AS rx_instr
+  4   FROM dual ;
 
   RX_INSTR                                                                                                                                                                                              
 ==========                                                                                                                                                                                              
@@ -19,6 +46,12 @@ SUBST
 
 1 fila seleccionada.
 
+SQL> 
+SQL> rem [RISCHERT,2004,719]
+SQL> SELECT REGEXP_REPLACE('   Joe    Smith',
+  2   '( ){2,}', ' ')
+  3   AS RX_REPLACE
+  4   FROM dual ;
 
 RX_REPLACE                                                                                                                                                                                              
 ==========                                                                                                                                                                                              
@@ -26,3 +59,11 @@ RX_REPLACE
 
 1 fila seleccionada.
 
+SQL> 
+SQL> rem [RISCHERT,2004,726]
+SQL> SELECT REGEXP_SUBSTR('first field, second field , third field',
+  2  ', [^,]*,')
+  3  FROM dual:
+  4  
+SQL> 
+SQL> spool off;

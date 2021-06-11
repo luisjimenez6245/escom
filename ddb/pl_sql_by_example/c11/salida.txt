@@ -1,168 +1,441 @@
-Student name: Pierre Radicola                                                                                                                         
+SQL> rem ROSENZWEIG, B & SILVESTROVA, E. (2009). OracleÂ® PL/SQLâ„¢ by Example,USA:Perarson.
+SQL> 
+SQL> 
+SQL> 
+SQL> rem [ROSENZWEIG & RAKHIMOV,2009,166]
+SQL> rem 11
+SQL> rem implicit 231
+SQL> SET SERVEROUTPUT ON;
+SQL> DECLARE
+  2  v_first_name VARCHAR2(35);
+  3  v_last_name VARCHAR2(35);
+  4  BEGIN
+  5  SELECT first_name, last_name
+  6  INTO v_first_name, v_last_name
+  7  FROM student
+  8  WHERE student_id = 123;
+  9  DBMS_OUTPUT.PUT_LINE ('Student name: '||v_first_name||' '||v_last_name);
+ 10  EXCEPTION
+ 11  WHEN NO_DATA_FOUND THEN
+ 12  DBMS_OUTPUT.PUT_LINE
+ 13  ('There is no student with student ID 123');
+ 14  END;
+ 15  /
+There is no student with student ID 123                                                                                                                                                                 
 
 Procedimiento PL/SQL terminado correctamente.
 
-Scott Grant has an ID of 156                                                                                                                          
+SQL> rem 234
+SQL> rem The variable vr_student is a record type of the existing database table student. In other
+SQL> rem words, it has the same components as a row in the student table. A cursor-based record is much
+SQL> rem the same, except that it is drawn from the select list of an explicitly declared cursor.
+SQL> -- ch11_1a.sql
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2  vr_student student%ROWTYPE;
+  3  BEGIN
+  4  SELECT *
+  5  INTO vr_student
+  6  FROM student
+  7  WHERE student_id = 156;
+  8  DBMS_OUTPUT.PUT_LINE (vr_student.first_name||' '
+  9  ||vr_student.last_name||' has an ID of 156');
+ 10  EXCEPTION
+ 11  WHEN no_data_found THEN
+ 12  RAISE_APPLICATION_ERROR(-2001,'The Student '|| 'is not in the database');
+ 13  END;
+ 14  /
+DECLARE
+*
+ERROR en línea 1:
+ORA-21000: el argumento de número de error para raise_application_error de -2001 está fuera de rango 
+ORA-06512: en línea 12 
 
-Procedimiento PL/SQL terminado correctamente.
 
-Bayonne has a zipcode of 07002                                                                                                                        
+SQL> rem 241
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2  v_city zipcode.city%type;
+  3  BEGIN
+  4  SELECT city
+  5  INTO v_city
+  6  FROM zipcode
+  7  WHERE zip = 07002;
+  8  IF SQL%ROWCOUNT = 1
+  9  THEN
+ 10  DBMS_OUTPUT.PUT_LINE(v_city ||' has a '||
+ 11  'zipcode of 07002');
+ 12  ELSIF SQL%ROWCOUNT = 0
+ 13  THEN
+ 14  DBMS_OUTPUT.PUT_LINE('The zipcode 07002 is '||
+ 15  ' not in the database');
+ 16  ELSE
+ 17  DBMS_OUTPUT.PUT_LINE('Stop harassing me');
+ 18  END IF;
+ 19  END;
+ 20  /
+DECLARE
+*
+ERROR en línea 1:
+ORA-01403: No se ha encontrado ningún dato 
+ORA-06512: en línea 4 
 
-Procedimiento PL/SQL terminado correctamente.
 
+SQL> rem The declaration section declares a variable, v_city, anchored to the datatype of the city item in
+SQL> rem the zipcode table. The SELECT statement causes an implicit cursor to be opened, fetched, and then
+SQL> rem closed. The IF clause uses the attribute %ROWCOUNT to determine if the implicit cursor has a row
+SQL> rem count of 1. If it does, the first DBMS_OUTPUT line is displayed. Note that this example does not
+SQL> rem handle a situation in which the row count is greater than 1. Because the zipcode tableâ€™s primary
+SQL> rem key is the zip code, this could happen.
+SQL> 
+SQL> rem triggers
+SQL> DROP TABLE TEMPORAL5;
 
 Tabla borrada.
 
+SQL> CREATE TABLE TEMPORAL5 (X NUMBER, Y NUMBER, Z NUMBER DEFAULT 5);
 
 Tabla creada.
 
-CREATE OR REPLACE TRIGGER temp_aiur
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER temp_aiur
+  2  AFTER INSERT OR UPDATE OF Y ON TEMPORAL5
+  3  FOR EACH ROW
+  4  WHEN (OLD.Y IS NULL and NEW.Y IS NOT NULL
+  5  	   OR NEW.X BETWEEN 1 AND 10)
+  6  BEGIN
+  7  	 CASE
+  8  	 WHEN inserting THEN
+  9  	     dbms_output.put_line('X := '||:new.x);
+ 10  	 WHEN updating THEN
+ 11  	    dbms_output.put_line
+ 12  	       ('Y is reset from NULL');
+ 13  	 END CASE;
+ 14  END;
+ 15  /
 
+Disparador creado.
 
-CREATE OR REPLACE TRIGGER temp_adr2
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+SQL> 
+SQL> REM 2.  Write a trigger to print
+SQL> REM the current values in a row
+SQL> REM being deleted.
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER temp_adr2
+  2  AFTER DELETE ON TEMPORAL5
+  3  FOR EACH ROW
+  4  BEGIN
+  5  	 dbms_output.put_line
+  6  	    (:old.x||' '||:old.y||' '||:old.z);
+  7  END;
+  8  /
 
+Disparador creado.
 
-CREATE OR REPLACE TRIGGER temp_biudr2
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+SQL> 
+SQL> REM 4. Write two triggers that accomplish
+SQL> REM the same as the prior six triggers.
+SQL> REM DROP TRIGGER temp_biudr;
+SQL> CREATE OR REPLACE TRIGGER temp_biudr2
+  2  BEFORE INSERT OR UPDATE OR DELETE ON TEMPORAL5
+  3  FOR EACH ROW
+  4  BEGIN
+  5  	 CASE
+  6  	 WHEN inserting THEN
+  7  	     dbms_output.put_line('inserting before');
+  8  	 WHEN updating THEN
+  9  	     dbms_output.put_line('updating before');
+ 10  	 WHEN deleting THEN
+ 11  	     dbms_output.put_line('deleting before');
+ 12  	 END CASE;
+ 13  END;
+ 14  /
 
+Disparador creado.
 
-CREATE OR REPLACE TRIGGER temp_aiudr
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER temp_aiudr
+  2  AFTER INSERT OR UPDATE OR DELETE ON TEMPORAL5
+  3  FOR EACH ROW
+  4  BEGIN
+  5  	 CASE
+  6  	 WHEN inserting THEN
+  7  	     dbms_output.put_line('inserting after');
+  8  	 WHEN updating THEN
+  9  	     dbms_output.put_line('updating after');
+ 10  	 WHEN deleting THEN
+ 11  	     dbms_output.put_line('deleting after');
+ 12  	 END CASE;
+ 13  END;
+ 14  /
 
+Disparador creado.
 
+SQL> 
+SQL> -- DATOS DE PRUEBA
+SQL> REM
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (3);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
+X := 3                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (Y) VALUES (10);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
+X :=                                                                                                                                                                                                    
 
 1 fila creada.
 
+SQL> 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (100);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
 
 1 fila creada.
 
+SQL> SELECT * FROM TEMPORAL5;
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-         3||          ||         5                                                                                                                    
-          ||        10||         5                                                                                                                    
-       100||          ||         5                                                                                                                    
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+         3|=|s/Datos   |=|         5                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+       100|=|s/Datos   |=|         5                                                                                                                                                                    
 
+3 filas seleccionadas.
+
+SQL> UPDATE TEMPORAL5 SET X=X+1 WHERE X>=1;
+updating before                                                                                                                                                                                         
+updating after                                                                                                                                                                                          
+updating before                                                                                                                                                                                         
+updating after                                                                                                                                                                                          
 
 2 filas actualizadas.
 
+SQL> 
+SQL> SELECT * FROM TEMPORAL5;
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-         4||          ||         5                                                                                                                    
-          ||        10||         5                                                                                                                    
-       101||          ||         5                                                                                                                    
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+         4|=|s/Datos   |=|         5                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+       101|=|s/Datos   |=|         5                                                                                                                                                                    
 
+3 filas seleccionadas.
+
+SQL> DELETE FROM TEMPORAL5 WHERE X>1;
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+4  5                                                                                                                                                                                                    
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+101  5                                                                                                                                                                                                  
 
 2 filas suprimidas.
 
+SQL> SELECT * FROM TEMPORAL5;
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-          ||        10||         5                                                                                                                    
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
 
+1 fila seleccionada.
 
-1 fila creada.
-
-
-1 fila creada.
-
-
-1 fila creada.
-
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (30);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
 
 1 fila creada.
 
-
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-          ||        10||         5                                                                                                                    
-        30||          ||         5                                                                                                                    
-        40||          ||         5                                                                                                                    
-        50||          ||         5                                                                                                                    
-        60||          ||         5                                                                                                                    
-
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (40);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (50);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (60);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-          ||        10||         5                                                                                                                    
-        30||          ||         5                                                                                                                    
-        40||          ||         5                                                                                                                    
-        50||          ||         5                                                                                                                    
-        60||          ||         5                                                                                                                    
-          ||        10||         5                                                                                                                    
-       100||          ||         5                                                                                                                    
+1 fila creada.
+
+SQL> SELECT * FROM TEMPORAL5;
+
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+        30|=|s/Datos   |=|         5                                                                                                                                                                    
+        40|=|s/Datos   |=|         5                                                                                                                                                                    
+        50|=|s/Datos   |=|         5                                                                                                                                                                    
+        60|=|s/Datos   |=|         5                                                                                                                                                                    
+
+5 filas seleccionadas.
+
+SQL> INSERT INTO TEMPORAL5 (Y) VALUES (10);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
+X :=                                                                                                                                                                                                    
+
+1 fila creada.
+
+SQL> 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (100);
+inserting before                                                                                                                                                                                        
+inserting after                                                                                                                                                                                         
+
+1 fila creada.
+
+SQL> SELECT * FROM TEMPORAL5;
+
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+        30|=|s/Datos   |=|         5                                                                                                                                                                    
+        40|=|s/Datos   |=|         5                                                                                                                                                                    
+        50|=|s/Datos   |=|         5                                                                                                                                                                    
+        60|=|s/Datos   |=|         5                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+       100|=|s/Datos   |=|         5                                                                                                                                                                    
 
 7 filas seleccionadas.
 
+SQL> DELETE FROM TEMPORAL5 WHERE X>39;
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+40  5                                                                                                                                                                                                   
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+50  5                                                                                                                                                                                                   
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+60  5                                                                                                                                                                                                   
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+100  5                                                                                                                                                                                                  
 
 4 filas suprimidas.
 
+SQL> SELECT * FROM TEMPORAL5;
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-          ||        10||         5                                                                                                                    
-        30||          ||         5                                                                                                                    
-          ||        10||         5                                                                                                                    
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+        30|=|s/Datos   |=|         5                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
 
+3 filas seleccionadas.
+
+SQL> DELETE FROM TEMPORAL5 WHERE X>7;
+deleting before                                                                                                                                                                                         
+deleting after                                                                                                                                                                                          
+30  5                                                                                                                                                                                                   
 
 1 fila suprimida.
 
+SQL> SELECT * FROM TEMPORAL5;
 
-         X||         Y||         Z                                                                                                                    
-----------||----------||----------                                                                                                                    
-          ||        10||         5                                                                                                                    
-          ||        10||         5                                                                                                                    
+         X|=|         Y|=|         Z                                                                                                                                                                    
+==========|=|==========|=|==========                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
+s/Datos   |=|        10|=|         5                                                                                                                                                                    
 
-CREATE OR REPLACE TRIGGER temp5_aiur
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+2 filas seleccionadas.
 
+SQL> 
+SQL> CREATE OR REPLACE TRIGGER temp5_aiur
+  2  AFTER INSERT OR UPDATE OF Y ON TEMPORAL5
+  3  FOR EACH ROW
+  4  WHEN (OLD.Y IS NULL and NEW.Y IS NOT NULL
+  5  	   OR NEW.X BETWEEN 1 AND 10)
+  6  BEGIN
+  7  	 CASE
+  8  	 WHEN inserting THEN
+  9  	     dbms_output.put_line('X := '||:new.x);
+ 10  	 WHEN updating THEN
+ 11  	    dbms_output.put_line
+ 12  	       ('Y is reset from NULL');
+ 13  	 END CASE;
+ 14  END;
+ 15  .
+SQL> /
 
+Disparador creado.
+
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (10);
+inserting before                                                                                                                                                                                        
+X := 10                                                                                                                                                                                                 
+inserting after                                                                                                                                                                                         
+X := 10                                                                                                                                                                                                 
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (9);
+inserting before                                                                                                                                                                                        
+X := 9                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 9                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X) VALUES (8);
+inserting before                                                                                                                                                                                        
+X := 8                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 8                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> 
+SQL> INSERT INTO TEMPORAL5 (X,y,z) VALUES (7,10,20);
+inserting before                                                                                                                                                                                        
+X := 7                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 7                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X,y,z) VALUES (7,11,25);
+inserting before                                                                                                                                                                                        
+X := 7                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 7                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X,y,z) VALUES (7,12,28);
+inserting before                                                                                                                                                                                        
+X := 7                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 7                                                                                                                                                                                                  
 
 1 fila creada.
 
+SQL> INSERT INTO TEMPORAL5 (X,y,z) VALUES (7,13,20);
+inserting before                                                                                                                                                                                        
+X := 7                                                                                                                                                                                                  
+inserting after                                                                                                                                                                                         
+X := 7                                                                                                                                                                                                  
 
 1 fila creada.
 
-CREATE OR REPLACE TRIGGER temp_adr
-                          *
-ERROR en línea 1:
-ORA-04089: no se han podido crear disparadores en objetos que pertenecen a SYS 
+SQL> 
+SQL> rem
+SQL> CREATE OR REPLACE TRIGGER temp_adr
+  2  AFTER DELETE ON TEMPORAL5
+  3  FOR EACH ROW
+  4  BEGIN
+  5  	 dbms_output.put_line
+  6  	    (:old.x||' '||:old.y||' '||:old.z);
+  7  END;
+  8  /
 
+Disparador creado.
 
+SQL> spool off

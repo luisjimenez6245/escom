@@ -1,0 +1,136 @@
+SQL> rem ROSENZWEIG, B & SILVESTROVA, E. (2009). OracleÂ® PL/SQLâ„¢ by Example,USA:Perarson.
+SQL> 
+SQL> -- Triggers
+SQL> 
+SQL> rem [ROSENZWEIG,2009,268]
+SQL> CREATE OR REPLACE TRIGGER student_bi
+  2  BEFORE INSERT ON student
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_student_id STUDENT.STUDENT_ID%TYPE;
+  6  BEGIN
+  7  SELECT STUDENT_ID_SEQ.NEXTVAL
+  8  INTO v_student_id
+  9  FROM dual;
+ 10  :NEW.student_id := v_student_id;
+ 11  :NEW.created_by := USER;
+ 12  :NEW.created_date := SYSDATE;
+ 13  :NEW.modified_by := USER;
+ 14  :NEW.modified_date := SYSDATE;
+ 15  END;
+ 16  /
+
+Disparador creado.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,276]
+SQL> -- ch13_1c.sql, version 3.0
+SQL> CREATE OR REPLACE TRIGGER instructor_bi
+  2  BEFORE INSERT ON INSTRUCTOR
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_work_zip CHAR(1);
+  6  BEGIN
+  7  :NEW.CREATED_BY := USER;
+  8  :NEW.CREATED_DATE := SYSDATE;
+  9  :NEW.MODIFIED_BY := USER;
+ 10  :NEW.MODIFIED_DATE := SYSDATE;
+ 11  SELECT 'Y'
+ 12  INTO v_work_zip
+ 13  FROM zipcode
+ 14  WHERE zip = :NEW.ZIP;
+ 15  :NEW.INSTRUCTOR_ID := INSTRUCTOR_ID_SEQ.NEXTVAL;
+ 16  EXCEPTION
+ 17  WHEN NO_DATA_FOUND THEN
+ 18  RAISE_APPLICATION_ERROR (-20001, 'Zip code is not valid!');
+ 19  END;
+ 20  /
+
+Disparador creado.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,285]
+SQL> -- ch13_3a.sql, version 1.0
+SQL> CREATE OR REPLACE TRIGGER student_address_ins
+  2  INSTEAD OF INSERT ON student_address
+  3  FOR EACH ROW
+  4  BEGIN
+  5  INSERT INTO STUDENT
+  6  (student_id, first_name, last_name, street_address, zip,
+  7  registration_date, created_by, created_date, modified_by,
+  8  modified_date)
+  9  VALUES
+ 10  (:NEW.student_id, :NEW.first_name, :NEW.last_name,
+ 11  :NEW.street_address, :NEW.zip, SYSDATE, USER, SYSDATE, USER,
+ 12  SYSDATE);
+ 13  END;
+ 14  /
+INSTEAD OF INSERT ON student_address
+                     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,288]
+SQL> CREATE OR REPLACE TRIGGER student_address_ins
+  2  INSTEAD OF INSERT ON student_address
+  3  FOR EACH ROW
+  4  DECLARE
+  5  v_zip VARCHAR2(5);
+  6  BEGIN
+  7  BEGIN
+  8  SELECT zip
+  9  INTO v_zip
+ 10  FROM zipcode
+ 11  WHERE zip = :NEW.zip;
+ 12  EXCEPTION
+ 13  WHEN NO_DATA_FOUND THEN
+ 14  INSERT INTO ZIPCODE
+ 15  (zip, city, state, created_by, created_date,
+ 16  modified_by, modified_date)
+ 17  VALUES
+ 18  (:NEW.zip, :NEW.city, :NEW.state, USER, SYSDATE, USER,
+ 19  SYSDATE);
+ 20  END;
+ 21  INSERT INTO STUDENT
+ 22  (student_id, first_name, last_name, street_address, zip,
+ 23  registration_date, created_by, created_date, modified_by,
+ 24  modified_date)
+ 25  VALUES
+ 26  (:NEW.student_id, :NEW.first_name, :NEW.last_name,
+ 27  :NEW.street_address, :NEW.zip, SYSDATE, USER, SYSDATE, USER,
+ 28  SYSDATE);
+ 29  END;
+ 30  /
+INSTEAD OF INSERT ON student_address
+                     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,286]
+SQL> -- ch13_3a.sql, version 1.0
+SQL> CREATE OR REPLACE TRIGGER student_address_ins
+  2  INSTEAD OF INSERT ON student_address
+  3  FOR EACH ROW
+  4  BEGIN
+  5  INSERT INTO STUDENT
+  6  (student_id, first_name, last_name, street_address, zip,
+  7  registration_date, created_by, created_date, modified_by,
+  8  modified_date)
+  9  VALUES
+ 10  (:NEW.student_id, :NEW.first_name, :NEW.last_name,
+ 11  :NEW.street_address, :NEW.zip, SYSDATE, USER, SYSDATE, USER,
+ 12  SYSDATE);
+ 13  END;
+ 14  /
+INSTEAD OF INSERT ON student_address
+                     *
+ERROR en línea 2:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> 
+SQL> SPOOL OFF

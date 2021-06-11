@@ -1,0 +1,186 @@
+SQL> rem ROSENZWEIG, B & SILVESTROVA, E. (2009). Oracle® PL/SQL™ by Example,USA:Perarson.
+SQL> 
+SQL> -- Advanced Cursors
+SQL> 
+SQL> rem [ROSENZWEIG,2009,255]
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2  CURSOR c_student IS
+  3  SELECT first_name, last_name, student_id
+  4  FROM student
+  5  WHERE last_name LIKE 'J%';
+  6  CURSOR c_course
+  7  (i_student_id IN
+  8  student.student_id%TYPE)
+  9  IS
+ 10  SELECT c.description, s.section_id sec_id
+ 11  FROM course c, section s, enrollment e
+ 12  WHERE e.student_id = i_student_id
+ 13  AND c.course_no = s.course_no
+ 14  AND s.section_id = e.section_id;
+ 15  CURSOR c_grade(i_section_id IN
+ 16  section.section_id%TYPE,
+ 17  i_student_id IN
+ 18  student.student_id%TYPE)
+ 19  IS
+ 20  SELECT gt.description grd_desc,
+ 21  TO_CHAR
+ 22  (AVG(g.numeric_grade), '999.99')
+ 23  num_grd
+ 24  FROM enrollment e,
+ 25  grade g, grade_type gt
+ 26  WHERE e.section_id = i_section_id
+ 27  AND e.student_id = g.student_id
+ 28  AND e.student_id = i_student_id
+ 29  AND e.section_id = g.section_id
+ 30  AND g.grade_type_code =
+ 31  gt.grade_type_code
+ 32  GROUP BY gt.description ;
+ 33  BEGIN
+ 34  FOR r_student IN c_student
+ 35  LOOP
+ 36  DBMS_OUTPUT.PUT_LINE(CHR(10));
+ 37  DBMS_OUTPUT.PUT_LINE(r_student.first_name||
+ 38  ' '||r_student.last_name);
+ 39  FOR r_course IN
+ 40  c_course(r_student.student_id)
+ 41  LOOP
+ 42  DBMS_OUTPUT.PUT_LINE
+ 43  ('Grades for course :'||
+ 44  r_course.description);
+ 45  FOR r_grade IN c_grade(r_course.sec_id,
+ 46  r_student.student_id)
+ 47  LOOP
+ 48  DBMS_OUTPUT.PUT_LINE(r_grade.num_grd||
+ 49  ' '||r_grade.grd_desc);
+ 50  END LOOP;
+ 51  END LOOP;
+ 52  END LOOP;
+ 53  END;
+ 54  /
+
+                                                                                                                                                                                                       
+May Jodoin                                                                                                                                                                                              
+
+                                                                                                                                                                                                       
+Jim Joas                                                                                                                                                                                                
+
+                                                                                                                                                                                                       
+Al Jamerncy                                                                                                                                                                                             
+
+                                                                                                                                                                                                       
+Janet Jung                                                                                                                                                                                              
+
+                                                                                                                                                                                                       
+Jonathan Jaele                                                                                                                                                                                          
+
+                                                                                                                                                                                                       
+Joseph Jimenes                                                                                                                                                                                          
+
+                                                                                                                                                                                                       
+Jane Jackson                                                                                                                                                                                            
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,260]
+SQL> DECLARE
+  2  CURSOR c_grade(
+  3  i_student_id IN enrollment.student_id%TYPE,
+  4  i_section_id IN enrollment.section_id%TYPE)
+  5  IS
+  6  SELECT final_grade
+  7  FROM enrollment
+  8  WHERE student_id = i_student_id
+  9  AND section_id = i_section_id
+ 10  FOR UPDATE;
+ 11  CURSOR c_enrollment IS
+ 12  SELECT e.student_id, e.section_id
+ 13  FROM enrollment e, section s
+ 14  WHERE s.course_no = 135
+ 15  AND e.section_id = s.section_id;
+ 16  BEGIN
+ 17  FOR r_enroll IN c_enrollment
+ 18  LOOP
+ 19  FOR r_grade IN c_grade(r_enroll.student_id,
+ 20  r_enroll.section_id)
+ 21  LOOP
+ 22  UPDATE enrollment
+ 23  SET final_grade = 90
+ 24  WHERE student_id = r_enroll.student_id
+ 25  AND section_id = r_enroll.section_id;
+ 26  END LOOP;
+ 27  END LOOP;
+ 28  END;
+ 29  /
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,261]
+SQL> DECLARE
+  2  CURSOR c_stud_zip IS
+  3  SELECT s.student_id, z.city
+  4  FROM student s, zipcode z
+  5  WHERE z.city = 'Brooklyn'
+  6  AND s.zip = z.zip
+  7  FOR UPDATE OF phone;
+  8  BEGIN
+  9  FOR r_stud_zip IN c_stud_zip
+ 10  LOOP
+ 11  DBMS_OUTPUT.PUT_LINE(r_stud_zip.student_id);
+ 12  UPDATE student
+ 13  SET phone = '718'||SUBSTR(phone,4)
+ 14  WHERE CURRENT OF c_stud_zip;
+ 15  END LOOP;
+ 16  END;
+ 17  /
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,260]
+SQL> -- ch12_4a.sql
+SQL> DECLARE
+  2  CURSOR c_stud_zip IS
+  3  SELECT s.student_id, z.city
+  4  FROM student s, zipcode z
+  5  WHERE z.city = 'Brooklyn'
+  6  AND s.zip = z.zip
+  7  FOR UPDATE OF phone;
+  8  BEGIN
+  9  FOR r_stud_zip IN c_stud_zip
+ 10  LOOP
+ 11  UPDATE student
+ 12  SET phone = '718'||SUBSTR(phone,4)
+ 13  WHERE student_id = r_stud_zip.student_id;
+ 14  END LOOP;
+ 15  END;
+ 16  /
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> 
+SQL> rem [ROSENZWEIG,2009,259]
+SQL> -- ch12_2a.sql
+SQL> DECLARE
+  2  CURSOR c_course IS
+  3  SELECT course_no, cost
+  4  FROM course FOR UPDATE;
+  5  BEGIN
+  6  FOR r_course IN c_course
+  7  LOOP
+  8  IF r_course.cost < 2500
+  9  THEN
+ 10  UPDATE course
+ 11  SET cost = r_course.cost + 10
+ 12  WHERE course_no = r_course.course_no;
+ 13  END IF;
+ 14  END LOOP;
+ 15  END;
+ 16  /
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> 
+SQL> SPOOL OFF

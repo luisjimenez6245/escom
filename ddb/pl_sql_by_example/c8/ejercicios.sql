@@ -4,7 +4,7 @@ rem ROSENZWEIG, B & SILVESTROVA, E. (2009). Oracle® PL/SQL™ by Example,USA:Pe
 rem [ROSENZWEIG & RAKHIMOV,2009,166]
 -- ch02_3a.sql
 
-
+rem [ROSENZWEIG,2009,165]
 SET SERVEROUTPUT ON
 DECLARE
     v_num1 INTEGER := &sv_num1;
@@ -27,7 +27,8 @@ v_result := v_num1 / v_num2;
 DBMS_OUTPUT.PUT_LINE ('v_result: '||v_result);
 END;
 /
-rem 180
+
+rem [ROSENZWEIG,2009,180]
 DECLARE
 v_student_id NUMBER := &sv_student_id;
 v_name VARCHAR2(30);
@@ -42,7 +43,8 @@ WHEN NO_DATA_FOUND THEN
 DBMS_OUTPUT.PUT_LINE ('There is no such student');
 END;
 /
-rem 171
+
+rem [ROSENZWEIG,2009,171]
 DECLARE
 v_student_id NUMBER := &sv_student_id;
 v_enrolled VARCHAR2(3) := 'NO';
@@ -62,3 +64,4 @@ DBMS_OUTPUT.PUT_LINE
 END;
 /
 
+SPOOL OFF;

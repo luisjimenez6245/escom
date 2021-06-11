@@ -1,69 +1,118 @@
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
+SQL> rem ROSENZWEIG, B & SILVESTROVA, E. (2009). Oracle® PL/SQL™ by Example,USA:Perarson.
+SQL> 
+SQL> 
+SQL> 
+SQL> rem [ROSENZWEIG,2009,190]
+SQL> DECLARE
+  2  v_student_id student.student_id%type := &sv_student_id;
+  3  v_total_courses NUMBER;
+  4  e_invalid_id EXCEPTION;
+  5  BEGIN
+  6  IF v_student_id < 0 THEN
+  7  RAISE e_invalid_id;
+  8  ELSE
+  9  SELECT COUNT(*)
+ 10  INTO v_total_courses
+ 11  FROM enrollment
+ 12  WHERE student_id = v_student_id;
+ 13  DBMS_OUTPUT.PUT_LINE ('The student is registered for '||
+ 14  v_total_courses||' courses');
+ 15  END IF;
+ 16  DBMS_OUTPUT.PUT_LINE ('No exception has been raised');
+ 17  EXCEPTION
+ 18  WHEN e_invalid_id THEN
+ 19  DBMS_OUTPUT.PUT_LINE ('An id cannot be negative');
+ 20  END;
+ 21  /
+SP2-0552: Variable de Enlace "SV_STUDENT_ID" no declarada.
+SQL> 
+SQL> 
+SQL> 
+SQL> rem [ROSENZWEIG,2009,195]
+SQL> -- ch9_2c.sql, version 3.0
+SQL> DECLARE
+  2  v_instructor_id NUMBER := &sv_instructor_id;
+  3  v_tot_sections NUMBER;
+  4  v_name VARCHAR2(30);
+  5  e_too_many_sections EXCEPTION;
+  6  BEGIN
+  7  SELECT COUNT(*)
+  8  INTO v_tot_sections
+  9  FROM section
+ 10  WHERE instructor_id = v_instructor_id;
+ 11  SELECT RTRIM(first_name)||' '||RTRIM(last_name)
+ 12  INTO v_name
+ 13  FROM instructor
+ 14  WHERE instructor_id = v_instructor_id;
+ 15  DBMS_OUTPUT.PUT_LINE ('Instructor, '||v_name||', teaches '||
+ 16  v_tot_sections||' sections');
+ 17  IF v_tot_sections >= 10 THEN
+ 18  RAISE e_too_many_sections;
+ 19  END IF;
+ 20  EXCEPTION
+ 21  WHEN e_too_many_sections THEN
+ 22  DBMS_OUTPUT.PUT_LINE ('Instructor, '||v_name||
+ 23  ', teaches too much');
+ 24  END;
+ 25  /
+SP2-0552: Variable de Enlace "SV_INSTRUCTOR_ID" no declarada.
+SQL> 
+SQL> rem [ROSENZWEIG,2009,198]
+SQL> --outer block
+SQL> BEGIN
+  2  -- inner block
+  3  DECLARE
+  4  v_test_var CHAR(3):= 'ABCDE';
+  5  BEGIN
+  6  DBMS_OUTPUT.PUT_LINE ('This is a test');
+  7  EXCEPTION
+  8  WHEN INVALID_NUMBER OR VALUE_ERROR THEN
+  9  DBMS_OUTPUT.PUT_LINE ('An error has occurred in '||
+ 10  'the inner block');
+ 11  END;
+ 12  EXCEPTION
+ 13  WHEN INVALID_NUMBER OR VALUE_ERROR THEN
+ 14  DBMS_OUTPUT.PUT_LINE ('An error has occurred in the '||
+ 15  'program');
+ 16  END;
+ 17  /
+An error has occurred in the program                                                                                                                                                                    
 
 Procedimiento PL/SQL terminado correctamente.
 
-before continue condition, v_counter = 1                                        
-before continue condition, v_counter = 2                                        
-before continue condition, v_counter = 3                                        
-after continue condition, v_counter = 3                                         
-before continue condition, v_counter = 4                                        
-after continue condition, v_counter = 4                                         
-before continue condition, v_counter = 5                                        
-after continue condition, v_counter = 5                                         
-Done...                                                                         
+SQL> 
+SQL> rem [ROSENZWEIG,2009,207]
+SQL> DECLARE
+  2  v_course_no NUMBER := 430;
+  3  v_total NUMBER;
+  4  e_no_sections EXCEPTION;
+  5  BEGIN
+  6  BEGIN
+  7  SELECT COUNT(*)
+  8  INTO v_total
+  9  FROM section
+ 10  WHERE course_no = v_course_no;
+ 11  IF v_total = 0 THEN
+ 12  RAISE e_no_sections;
+ 13  ELSE
+ 14  DBMS_OUTPUT.PUT_LINE ('Course, '||v_course_no||
+ 15  ' has '||v_total||' sections');
+ 16  END IF;
+ 17  EXCEPTION
+ 18  WHEN e_no_sections THEN
+ 19  RAISE;
+ 20  END;
+ 21  DBMS_OUTPUT.PUT_LINE ('Done...');
+ 22  EXCEPTION
+ 23  WHEN e_no_sections THEN
+ 24  DBMS_OUTPUT.PUT_LINE ('There are no sections for course '||
+ 25  v_course_no);
+ 26  END;
+ 27  /
+There are no sections for course 430                                                                                                                                                                    
 
 Procedimiento PL/SQL terminado correctamente.
 
-Current sum is: 1                                                               
-Current sum is: 4                                                               
-Current sum is: 9                                                               
-Current sum is: 16                                                              
-Current sum is: 25                                                              
-Final sum is: 25                                                                
-
-Procedimiento PL/SQL terminado correctamente.
-
-Outer Loop                                                                      
-i = 3                                                                           
-v_test = 0                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 3                                                                           
-v_test = 1                                                                      
-Outer Loop                                                                      
-i = 2                                                                           
-v_test = 1                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 2                                                                           
-v_test = 2                                                                      
-Outer Loop                                                                      
-i = 1                                                                           
-v_test = 2                                                                      
-Inner Loop                                                                      
-j = 2                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
-Inner Loop                                                                      
-j = 1                                                                           
-i = 1                                                                           
-v_test = 3                                                                      
-
-Procedimiento PL/SQL terminado correctamente.
-
+SQL> 
+SQL> 
+SQL> SPOOL OFF;

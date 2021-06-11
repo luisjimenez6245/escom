@@ -9,31 +9,31 @@ set null s/Datos
 set feedback on
 
 rem cap 8
-rem 425
+rem [RISCHERT,2004,425]
 SELECT first_name, last_name, phone, COUNT(*)
  FROM student
  GROUP BY first_name, last_name, phone
 HAVING COUNT(*) > 1 ;
 
-rem 424
+rem [RISCHERT,2004,424]
 SELECT first_name, last_name, phone
  FROM instructor
  UNION
 SELECT first_name, last_name, phone
  FROM student ;
 
-rem 434
+rem [RISCHERT,2004,434]
 SELECT instructor_id
  FROM instructor
  MINUS
 SELECT instructor_id
  FROM section ;
 
-rem 435
+rem [RISCHERT,2004,435]
 SELECT DISTINCT instructor_id
  FROM section ;
 
-rem 437
+rem [RISCHERT,2004,437]
 SELECT created_by
  FROM enrollment
 INTERSECT
