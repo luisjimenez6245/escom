@@ -1,4 +1,13 @@
 
+SPOOL C:\Users\luisj\Documents\GitHub\escom\ddb\mastering_sql_by_example\salida.txt
+
+rem Mishra (2002). Mastering Oracle SQL,USA:Perarson.
+rem [ROSENZWEIG,2009,31]
+-- ch02_3a.sql
+SET SERVEROUTPUT ON
+
+
+
 rem 57 ignora null no toma en cuenta las filas
 SELECT COUNT(*), SUM(SALE_PRICE), AVG(SALE_PRICE)
 FROM CUST_ORDER;
