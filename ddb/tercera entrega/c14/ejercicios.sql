@@ -186,3 +186,40 @@ END enrollment_compound;
 
 
 SPOOL OFF
+
+
+
+SET SERVEROUTPUT ON
+DECLARE
+TYPE zip_cur_type IS REF CURSOR;
+zip_cur zip_cur_type;
+sql_stmt VARCHAR2(500);
+v_zip VARCHAR2(5);
+v_total NUMBER;
+v_count NUMBER;
+BEGIN
+sql_stmt := 'SELECT zip, COUNT(*) total'||
+' FROM student ' ||
+'GROUP BY zip';
+v_count := 0;
+OPEN zip_cur FOR sql_stmt;
+LOOP
+FETCH zip_cur INTO v_zip, v_total;
+EXIT WHEN zip_cur%NOTFOUND;
+-- Limit the number of lines printed on the
+-- screen to 10
+v_count := v_count + 1;
+IF v_count <= 10 THEN
+DBMS_OUTPUT.PUT_LINE ('Zip code: '||v_zip||
+' Total: '||v_total);
+END IF;
+END LOOP;
+CLOSE zip_cur;
+EXCEPTION
+WHEN OTHERS THEN
+IF zip_cur%ISOPEN THEN
+CLOSE zip_cur;
+END IF;
+DBMS_OUTPUT.PUT_LINE ('ERROR: '|| SUBSTR(SQLERRM, 1, 200));
+END;
+/
